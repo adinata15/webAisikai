@@ -1,13 +1,15 @@
 import Header from '../components/Header';
 import Hero from '../components/Hero';
+import Featured from '../components/Featured';
 
 const Index = () => {
     return(
         <section className="font-primary m-0 p-0 box-border">
-            {/* <div className='min-h-screen'> */}
+            <div className="flex flex-col gap-12">
                 <Header />
                 <Hero />
-            {/* </div> */}
+                <Featured />
+            </div>
         </section>
     )
 }
