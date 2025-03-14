@@ -12,15 +12,18 @@ const Featured = () => {
         <section className="flex flex-col justify-center items-center gap-4">
             <h2 className="font-bold text-2xl">Featured Products</h2>
             <div className="flex flex-row gap-2 text-blue-500">
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
+                <IoStarSharp className="size-8" />
+                <IoStarSharp className="size-8"/>
+                <IoStarSharp className="size-8"/>
+                <IoStarSharp className="size-8"/>
+                <IoStarSharp className="size-8"/>
             </div>
-            <div>
-                <Tabs imageName1={Image3} imageAlt1="asp-image" imageName2={Image1} imageAlt2="skt1-image" imageName3={Image2} imageAlt3="skt2-image" imageName4={Image4} imageAlt4="askq1-image"/>
+            <div className="mt-8">
+                <Tabs />
             </div>
+            <button className="mt-8 px-12 py-4 bg-blue-500 text-white font-bold text-xl">
+                <a href="">More Product</a>
+            </button>
         </section>
     )
 }

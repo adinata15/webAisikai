@@ -15,7 +15,7 @@ const Hero = () => {
                 spaceBetween={0}
                 freeMode={true}
                 loop={true}
-                autoplay={{delay: 3000}}
+                autoplay={{delay: 5000}}
                 pagination={{clickable: true}}
                 modules={[FreeMode, Pagination, Autoplay]}
                 navigation={true}
