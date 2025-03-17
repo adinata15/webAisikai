@@ -21,7 +21,7 @@ const Featured = () => {
             <div className="mt-8">
                 <Tabs />
             </div>
-            <button className="mt-8 px-12 py-4 bg-blue-500 text-white font-bold text-xl">
+            <button className="mt-8 px-16 py-2 bg-blue-500 text-white font-bold text-xl">
                 <a href="">More Product</a>
             </button>
         </section>
