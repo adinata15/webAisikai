@@ -1,10 +1,16 @@
 import Youtube from "react-youtube";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 import ImageES from "../assets/images/enterprise-spirit.webp";
 import ImageEV from "../assets/images/enterprise-vision.webp";
 import ImageBP from "../assets/images/business-philosophy.webp";
 import ImageDT from "../assets/images/development-tenet.webp";
+
+import { RiSendPlaneFill } from "react-icons/ri";
+import { HiFlag } from "react-icons/hi2";
+import { RiFirebaseFill } from "react-icons/ri";
+
 
 const AboutUs = () => {
 
@@ -17,18 +23,21 @@ const AboutUs = () => {
 
     const navToCompanyProfile = () => {
         navigate('/company-profile');
-    }   
+    }
+
+    const [isHover, setIsHover] = useState(false);
+
     
     return(
-        <section className="px-6">
+        <section className="px-6 bg-gray-100 py-12">
             <div className="flex flex-col justify-center items-center gap-6">
                 <h2 className="font-bold text-2xl">About Us</h2>
-                <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-12 justify-center items-center">
                     <div className="flex flex-col justify-center items-center gap-2">
-                        <Youtube videoId={videoYoutube} opts={opts} className=""/>
+                        <Youtube videoId={videoYoutube} opts={opts} className="w-auto self-center"/>
                         <h4 className="font-medium text-md text-gray-400">AISIKAI ELECTRIC INTRODUCTION</h4>
                     </div>
-                    <div className="flex flex-col justify-center items-start gap-6">
+                    <div className="flex flex-col justify-center items-start gap-6 text-center px-6">
                         <p>AISIKAI is located in Yangzhou, a livable and tourist city famous for her beautiful natural scenery and rich cultural heritage.
                             Since established in 2007, AISIKAI has been committed to the manufacture, research, development and marketing of the high-quality electric switch. <br />
                             AISIKAI has obtained the UKAS ISO9001 Quality Management System and SGS Global Qualified Supplier Authentication. We are awarded as the National High-Tech Enterprise, 
@@ -37,35 +46,79 @@ const AboutUs = () => {
                         </p>
                         <button onClick={navToCompanyProfile} className="self-center px-6 py-4 bg-blue-500 text-white rounded-lg"><a href="">Read More</a></button>
                     </div>
-                    <div>
-                        <div>
-                            <div>
-                                <img src="" alt="" />
-                                <h3>Enterprise Spirit</h3>
+
+                    <div className="flex flex-col justify-center items-center gap-8">
+                        <div className="flex flex-col justify-center items-center w-1/2">
+                            <div className="size-76 flex flex-col justify-center items-center"
+                                onMouseEnter={() => setIsHover(true)}
+                                onMouseLeave={() => setIsHover(false)}>
+                                    <div className="flex flex-row bg-white py-2 w-full justify-center items-center text-blue-500 gap-2">
+                                        <RiSendPlaneFill />
+                                        <h3>Enterprise Spirit</h3>
+                                    </div>
+                                    <div className="w-full h-96 relative flex flex-col justify-end">
+                                        <img src={ImageES} alt="image-enterprisespirit" className="w-full h-full object-cover"/>
+                                        {isHover && (
+                                            <p className="bg-blue-500/50 p-4 absolute flex self-end font-medium text-white text-sm">
+                                                Aware of Adversity in Prosperity, Broaden Sources and Reduce Expenditure
+                                            </p>
+                                        )}
+                                    </div>
                             </div>
-                            <img src={ImageES} alt="image-enterprisespirit" />
-                            <p className="bg-blue-500">Aware of Adversity in Prosperity, Broaden Sources and Reduce Expenditure</p>
                         </div>
-                        <div>
-                            <div>
-                                <img src="" alt="" />
-                                <h3>Enterprise Vision</h3>
+                        <div className="flex flex-col justify-center items-center w-1/2">
+                            <div className="size-76 flex flex-col justify-center items-center"
+                                onMouseEnter={() => setIsHover(true)}
+                                onMouseLeave={() => setIsHover(false)}>
+                                    <div className="flex flex-row bg-white py-2 w-full justify-center items-center text-blue-500 gap-2">
+                                        <HiFlag />
+                                        <h3>Enterprise Vision</h3>
+                                    </div>
+                                    <div className="w-full h-96 relative flex flex-col justify-end">
+                                        <img src={ImageEV} alt="image-enterprisespirit" className="w-full h-full object-cover"/>
+                                        {isHover && (
+                                            <p className="bg-blue-500/50 p-4 absolute flex self-end font-medium text-white text-sm">
+                                                Make Contributions to Society, Care About Wellbeing of  Employees
+                                            </p>
+                                        )}
+                                    </div>
                             </div>
-                            <img src={ImageEV} alt="image-enterprisevision" />
                         </div>
-                        <div>
-                            <div>
-                                <img src="" alt="" />
-                                <h3>Business Philosophy</h3>
+                        <div className="flex flex-col justify-center items-center w-1/2">
+                            <div className="size-76 flex flex-col justify-center items-center"
+                                onMouseEnter={() => setIsHover(true)}
+                                onMouseLeave={() => setIsHover(false)}>
+                                    <div className="flex flex-row bg-white py-2 w-full justify-center items-center text-blue-500 gap-2">
+                                        <RiFirebaseFill />
+                                        <h3>Business Philosophy</h3>
+                                    </div>
+                                    <div className="w-full h-96 relative flex flex-col justify-end">
+                                        <img src={ImageBP} alt="image-enterprisespirit" className="w-full h-full object-cover"/>
+                                        {isHover && (
+                                            <p className="bg-blue-500/50 p-4 absolute flex self-end font-medium text-white text-sm w-full">
+                                                Sincerity, Excellence, Perfection
+                                            </p>
+                                        )}
+                                    </div>
                             </div>
-                            <img src={ImageBP} alt="image-businessphilosophy" />
                         </div>
-                        <div>
-                            <div>
-                                <img src="" alt="" />
-                                <h3>Development Tenet</h3>
+                        <div className="flex flex-col justify-center items-center w-1/2">
+                            <div className="size-76 flex flex-col justify-center items-center"
+                                onMouseEnter={() => setIsHover(true)}
+                                onMouseLeave={() => setIsHover(false)}>
+                                    <div className="flex flex-row bg-white py-2 w-full justify-center items-center text-blue-500 gap-2">
+                                        <RiFirebaseFill />
+                                        <h3>Development Tenet</h3>
+                                    </div>
+                                    <div className="w-full h-96 relative flex flex-col justify-end">
+                                        <img src={ImageDT} alt="image-enterprisespirit" className="w-full h-full object-cover"/>
+                                        {isHover && (
+                                            <p className="bg-blue-500/50 p-4 absolute flex self-end font-medium text-white text-sm w-full">
+                                                Quality, Service, Reputation, Innovation
+                                            </p>
+                                        )}
+                                    </div>
                             </div>
-                            <img src={ImageDT} alt="image-developmenttennet" />
                         </div>
                     </div>
                 </div>
