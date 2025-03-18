@@ -9,7 +9,7 @@ import Banner2 from '../assets/images/hero-image2.jpg'
 
 const Hero = () => {
     return(
-        <section>
+        <section className="-mt-12">
             <Swiper
                 slidesPerView={1}
                 spaceBetween={0}

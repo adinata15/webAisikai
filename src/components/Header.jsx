@@ -5,6 +5,7 @@ import { FiMenu } from "react-icons/fi";
 
 import Nav from './Nav';
 import MobileMenu from './MobileMenu';
+import Footer from './Footer';
 
 import logoAisikai from '../assets/images/logo-aisikai.jpg';
 import iconIndonesia from '../assets/icons/indonesia.svg';
@@ -55,7 +56,7 @@ const Header = () => {
 
             {showMenu && 
                 (
-                    <div className="absolute top-0 w-full">
+                    <div className="absolute top-0 w-full z-20 shadow-2xl">
                         <div className="">
                             <MobileMenu logo={logoAisikai} linkToNav={navLink} handleShowMenu={handleShowMenu} />
                         </div>

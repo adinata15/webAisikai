@@ -2,6 +2,9 @@
 
 @theme {
   --font-primary: "Open Sans", sans-serif;
-  --color-primary: ##03A1EB;
+
+  --color-primary: #57BCD7;
   --color-secondary: ##F6F6F6;
+
+  --breakpoint-3xl: 1920px;
 }

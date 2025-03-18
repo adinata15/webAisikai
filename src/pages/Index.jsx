@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 const Index = () => {
     return(
         <section className="font-primary m-0 p-0 box-border">
-            <div className="flex flex-col">
+            <div className="flex flex-col gap-12">
                 <Header />
                 <Hero />
                 <Featured />

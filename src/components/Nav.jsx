@@ -8,8 +8,6 @@ const Nav = ({linkToNav}) => {
                     <a href={item.href} className="mx-4 2xl:mx-6 text-xl 2xl:text-lg">{item.label}</a>
                 </div>
             ))}
-
-            <Footer linkToNavFooter={linkToNav}/>
         </section>
 
         

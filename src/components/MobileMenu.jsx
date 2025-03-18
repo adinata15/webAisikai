@@ -33,10 +33,10 @@ const MobileMenu = ({logo, linkToNav, handleShowMenu}) => {
                     <h2 className="">Contact Us</h2>
                     <div className="flex flex-row gap-4 items-center">
                         <a href="#">
-                            <MdEmail className="size-16 text-blue-500"/>
+                            <MdEmail className="size-16 text-primary"/>
                         </a>
                         <a href="#">
-                            <RiWhatsappFill className="size-14 text-blue-500"/>
+                            <RiWhatsappFill className="size-14 text-primary"/>
                         </a>
                     </div>
                 </div>
