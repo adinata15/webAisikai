@@ -1,4 +1,3 @@
-// import Youtube from "react-youtube";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -13,13 +12,6 @@ import { RiFirebaseFill } from "react-icons/ri";
 
 
 const AboutUs = () => {
-
-    // const videoYoutube = "F4qOO5minVU";
-    // const opts = {
-    //     playerVars: {autoplay: 0,},
-    //     width: 'fit',
-    //     height: 'auto',
-    // };
 
     const navigate = useNavigate();
 
@@ -36,14 +28,28 @@ const AboutUs = () => {
                 <h2 className="font-bold text-2xl 3xl:text-3xl">About Us</h2>
                 <div className="flex flex-col gap-12 justify-center items-center 3xl:mt-8">
                     <div className="flex flex-col xl:flex-row gap-6 xl:items-start">
-                        <div className="bg-red-500 flex flex-col justify-center items-center gap-2 xl:w-1/2">
-                            {/* <div className="justify-center xl:justify-start items-center xl:items-start xl:w-full">
-                                <Youtube videoId={videoYoutube} opts={opts} className="xl:hidden"/>
-                                <Youtube videoId={videoYoutube} className="hidden xl:flex"/>
-                            </div> */}
+                        <div className="flex flex-col justify-center items-center gap-2">
+                            <iframe width="auto" height="auto" 
+                                src="https://www.youtube.com/embed/F4qOO5minVU?si=VF2pzjXsCzS9npuE" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                allowfullscreen
+                                className="xl:hidden">
+                            </iframe>
+                            <iframe width="600" height="440" 
+                                src="https://www.youtube.com/embed/F4qOO5minVU?si=VF2pzjXsCzS9npuE" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                allowfullscreen
+                                className="hidden xl:flex">
+                            </iframe>
                             <h4 className="font-medium text-md text-gray-400">AISIKAI ELECTRIC INTRODUCTION</h4>
                         </div>
-                        <div className="bg-blue-500 xl:w-1/2 flex flex-col justify-center items-start gap-6 text-center xl:text-left px-6 3xl:text-xl">
+                        <div className="flex flex-col justify-center items-start gap-6 text-center xl:text-left px-6 3xl:text-xl">
                             <p>AISIKAI is located in Yangzhou, a livable and tourist city famous for her beautiful natural scenery and rich cultural heritage.
                                 Since established in 2007, AISIKAI has been committed to the manufacture, research, development and marketing of the high-quality electric switch. <br /> <br />
                                 AISIKAI has obtained the UKAS ISO9001 Quality Management System and SGS Global Qualified Supplier Authentication. We are awarded as the National High-Tech Enterprise, 

@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Index from "./pages/Index";
+import Products from "./pages/Products";
 import CompanyProfile from "./pages/CompanyProfile";
 
 const App = () => {
@@ -8,6 +9,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/home" element={<Index />} />
+        <Route path="/products" element={<Products />} />
         <Route path="/company-profile" element={<CompanyProfile />} />  
       </Routes>
     </BrowserRouter>
