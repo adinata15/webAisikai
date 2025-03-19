@@ -14,7 +14,9 @@ const Index = () => {
                 <Featured />
                 <AboutUs />
                 <SecondHero />
-                <Footer />
+                <div className='-mt-12'>
+                    <Footer/>
+                </div>
             </div>
         </section>
     )
