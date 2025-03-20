@@ -6,6 +6,7 @@ import CompanyProfile from "./pages/CompanyProfile";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 import Download from "./pages/Download";
+import ProductDetails from "./pages/ProductDetails";
 
 const App = () => {
   return(
@@ -16,7 +17,8 @@ const App = () => {
         <Route path="/company-profile" element={<CompanyProfile />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/contact-us" element={<ContactUs />} />
-        <Route path="/download" element={<Download />} />  
+        <Route path="/download" element={<Download />} /> 
+        <Route path="/product-details" element={<ProductDetails />} /> 
       </Routes>
     </BrowserRouter>
   )
