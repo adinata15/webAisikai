@@ -14,7 +14,9 @@ const MobileMenu = ({logo, linkToNav, handleShowMenu}) => {
             </button>
             
             <div className="flex flex-col gap-8">
-                <img src={logo} alt="logo-aisikai" className="w-full"/>
+                <a href="/home">
+                    <img src={logo} alt="logo-aisikai" className="w-full"/>
+                </a>
                 
                 <div className="bg-gray-100 flex flex-row items-center px-4">
                     <FiSearch className="bg-gray-100 size-6" />

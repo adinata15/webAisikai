@@ -16,9 +16,9 @@ const Header = () => {
     const navLink = [
         {label: "Home", href: "/home"},
         {label: "Products", href: "/products"},
-        {label: "About Us", href: "#"},
-        {label: "Download", href: "#"},
-        {label: "Contact Us", href: "#"},
+        {label: "About Us", href: "/about-us"},
+        {label: "Download", href: "/download"},
+        {label: "Contact Us", href: "/contact-us"},
       ]
 
     const [showMenu, setShowMenu] = useState(false);
@@ -29,7 +29,9 @@ const Header = () => {
     return(
         <section className="bg-linear-to-r from-white via-blue-50 to-white relative flex flex-row gap-4 py-4 xl:py-2 px-6 xl:px-16 justify-between items-center">
             <div className="flex items-center justify-center">
-                <img src={logoAisikai} alt="logo-aisikai" className='w-[10rem] 2xl:w-[12rem]'/>
+                <a href="/home">
+                    <img src={logoAisikai} alt="logo-aisikai" className='w-[10rem] 2xl:w-[12rem]'/>
+                </a> 
             </div>
 
             <div className="hidden xl:flex">
