@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -55,6 +56,7 @@ import BC1 from '../assets/images/bc1.webp';
 
 const Products = () => {
     const [activeCategory, setActiveCategory] = useState();
+    const navigate = useNavigate();
 
     const categories = [
         
@@ -157,15 +159,19 @@ const Products = () => {
         setActiveCategory(defaultCategory);
     }, []);
 
+    const handleProductClick = (product) => {
+        navigate('/product-details', { state: { product } });
+    };
+
     return (
         <section className="font-primary m-0 p-0 box-border">
             <div className="flex flex-col">
                 <Header />
                 <Breadcrumb />
 
-                <div className="flex flex-col lg:flex-row gap-6 px-6 py-12">
+                <div className="flex flex-col justify-center items-center gap-6 px-6 py-12">
                     {/* Left Dropdown */}
-                    <div className="w-full lg:w-1/3 bg-gray-100 p-4 rounded-lg">
+                    <div className="w-full lg:w-1/3 bg-gray-200 p-4 rounded-lg items-center flex flex-col justify-center">
                         <h2 className="text-lg font-bold mb-4">Product Category</h2>
                         <select
                             className="w-full px-4 py-2 border border-gray-300 rounded-lg"
@@ -187,19 +193,23 @@ const Products = () => {
                     </div>
 
                     {/* Right Product Display */}
-                    <div className="w-full lg:w-2/3 bg-white p-4 rounded-lg shadow">
-                        <h2 className="text-lg font-bold mb-4">
+                    <div className="w-full bg-white p-4 rounded-lg shadow flex flex-col">
+                        <h2 className="text-lg font-bold mb-4 self-center">
                             {activeCategory ? activeCategory.name : "Select a Category"}
                         </h2>
-                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                             {activeCategory &&
                                 activeCategory.products.map((product, index) => (
-                                    <li key={index} className="flex flex-col items-center justify-center gap-4 bg-white p-4 rounded-lg shadow">
-                                        <img src={product.image} alt={product.name} className="size-42 object-cover rounded-lg"/>
-                                        <h3 className="text-md font-medium">{product.name}</h3>                                         
+                                    <li
+                                        key={index}
+                                        className="flex flex-col items-center justify-center gap-4 bg-white p-4 rounded-lg shadow cursor-pointer"
+                                        onClick={() => handleProductClick(product)}
+                                    >
+                                        <img src={product.image} alt={product.name} className="size-42 object-cover rounded-lg" />
+                                        <h3 className="text-md font-medium">{product.name}</h3>
                                         <button className='flex flex-row justify-center items-center gap-2 bg-gray-200 w-full py-2 rounded-sm'>
-                                            <PiEnvelopeSimple />    
-                                            <a href="">Inquire</a>
+                                            <PiEnvelopeSimple />
+                                            <span>Inquire</span>
                                         </button>
                                     </li>
                                 ))}
