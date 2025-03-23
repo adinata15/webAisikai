@@ -7,13 +7,13 @@ const Breadcrumb = () => {
 
     return (
         <section className='w-full'>
-            <div className='py-6 flex flex-col justify-center items-center bg-cover bg-center'
+            <div className='py-6 flex flex-col justify-center items-center bg-cover bg-center gap-2'
                 style={{backgroundImage: `url(${BreadcrumbImage})` }}>
                     <h3 className='font-bold text-2xl text-white'>Products</h3>
-                    <nav className="bg-gray-100 p-4 rounded-lg">
+                    <nav className="p-4 text-white font-medium">
                         <ul className="flex items-center gap-2 text-sm">
                             <li>
-                                <Link to="/home" className="text-primary font-medium hover:underline">
+                                <Link to="/home" className="text-white font-medium hover:underline">
                                     Home
                                 </Link>
                             </li>
@@ -22,10 +22,10 @@ const Breadcrumb = () => {
                                 const isLast = index === pathnames.length - 1;
 
                                 return (
-                                    <li key={to} className="flex items-center gap-2">
+                                    <li key={to} className="flex items-center gap-2 text-white font-medium">
                                         <span>/</span>
                                         {isLast ? (
-                                            <span className="text-gray-500">{value.replace('-', ' ')}</span>
+                                            <span className="text-white medium">{value.replace('-', ' ')}</span>
                                         ) : (
                                             <Link to={to} className="text-primary font-medium hover:underline">
                                                 {value.replace('-', ' ')}

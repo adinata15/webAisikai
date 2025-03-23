@@ -21,7 +21,7 @@ const Footer = () => {
             <div className="flex flex-col justify-center items-center gap-8">
                 <div className='flex flex-col xl:flex-row justify-between items-start gap-8'>
                     <div>
-                        <img src={logoAisikai} alt="logo-aisikai" className='w-1/2' />
+                        <img src={logoAisikai} alt="logo-aisikai" className='w-1/2 xl:w-1/4' />
                     </div>
                     <div className='flex flex-col xl:flex-row gap-8 items-start'>
                         <button onClick={navToHome}><a href="" className="text-gray-500 font-medium text-md">Home</a></button>
