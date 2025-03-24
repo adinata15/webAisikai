@@ -10,7 +10,7 @@ import Image4 from "../assets/images/askq1.jpg";
 const Featured = () => {
     return(
         <section className="flex flex-col justify-center items-center gap-4 py-12 xl:px-24">
-            <h2 className="font-bold text-2xl 3xl:text-3xl">Featured Products</h2>
+            <h2 className="font-bold text-2xl 3xl:text-4xl">Featured Products</h2>
             <div className="flex flex-row gap-2 text-primary">
                 <IoStarSharp className="size-8" />
                 <IoStarSharp className="size-8"/>

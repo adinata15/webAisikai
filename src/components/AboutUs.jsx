@@ -9,7 +9,7 @@ import ImageDT from "../assets/images/development-tenet.webp";
 import { RiSendPlaneFill } from "react-icons/ri";
 import { HiFlag } from "react-icons/hi2";
 import { RiFirebaseFill } from "react-icons/ri";
-
+import { FaLeaf } from "react-icons/fa";
 
 const AboutUs = () => {
 
@@ -25,7 +25,7 @@ const AboutUs = () => {
     return(
         <section className="px-6 xl:px-24 bg-gray-100 py-12">
             <div className="flex flex-col justify-center items-center gap-6">
-                <h2 className="font-bold text-2xl 3xl:text-3xl">About Us</h2>
+                <h2 className="font-bold text-4xl 3xl:text-5xl">About Us</h2>
                 <div className="flex flex-col gap-12 justify-center items-center 3xl:mt-8">
                     <div className="flex flex-col xl:flex-row gap-6 xl:items-start">
                         <div className="flex flex-col justify-center items-center gap-2">
@@ -84,7 +84,7 @@ const AboutUs = () => {
                             <div className="size-76 xl:size-60 2xl:size-80 flex flex-col justify-center items-center"
                                 onMouseEnter={() => setIsHover(true)}
                                 onMouseLeave={() => setIsHover(false)}>
-                                    <div className="flex flex-row bg-white py-2 w-full justify-center items-center text-blue-500 gap-2">
+                                    <div className="flex flex-row bg-white py-2 w-full justify-center items-center text-primary gap-2">
                                         <HiFlag />
                                         <h3>Enterprise Vision</h3>
                                     </div>
@@ -123,7 +123,7 @@ const AboutUs = () => {
                                 onMouseEnter={() => setIsHover(true)}
                                 onMouseLeave={() => setIsHover(false)}>
                                     <div className="flex flex-row bg-white py-2 w-full justify-center items-center text-primary gap-2">
-                                        <RiFirebaseFill />
+                                        <FaLeaf />
                                         <h3>Development Tenet</h3>
                                     </div>
                                     <div className="w-full h-96 relative flex flex-col justify-end">
