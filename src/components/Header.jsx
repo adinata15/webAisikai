@@ -27,18 +27,18 @@ const Header = () => {
     }
 
     return(
-        <section className="bg-linear-to-r from-white via-blue-50 to-white relative flex flex-row gap-4 py-2 xl:py-[0.05rem] px-6 xl:px-16 justify-center items-center">
-            <div className="w-xs flex items-center justify-start">
+        <section className="bg-linear-to-r from-white via-blue-50 to-white relative flex flex-row gap-4 py-2 xl:py-[0.05rem] px-6 xl:px-16 justify-between items-center">
+            <div className="flex items-center">
                 <a href="/home">
                     <img src={logoAisikai} alt="logo-aisikai" className='w-[10rem] 2xl:w-[12rem]'/>
                 </a> 
             </div>
 
-            <div className="hidden xl:flex self-center">
+            <div className="hidden xl:flex">
                 <Nav linkToNav={navLink}/>
             </div>
 
-            <div className='w-sm flex flex-row items-center justify-end gap-8'>
+            <div className='flex flex-row items-center justify-end gap-8'>
                 <div className='hidden xl:flex flex-row items-center px-4 bg-gray-100 rounded-full'>
                     <FiSearch className="bg-gray-100 size-4"/>
                     <input type="search" name="search" placeholder="Search" className="px-4 py-2 rounded-full outline-none flex-1 w-40" />

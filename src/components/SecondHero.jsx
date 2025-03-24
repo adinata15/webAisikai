@@ -12,13 +12,13 @@ const SecondHero = () => {
                 <div className="flex flex-col justify-center items-center xl:items-start gap-6 xl:gap-12 xl:max-w-lg xl:-ml-[24rem]">
                     <div className="flex flex-col justify-start items-center xl:items-start gap-6">
                         <h2 className="font-bold text-4xl leading-normal  text-white text-center xl:text-left">QUALITY, SERVICE, REPUTATION, INNOVATION</h2>
-                        <p className="font-reguler text-sm xl:text-md text-white text-center xl:text-left xl:max-w-sm">We’re always eager for making progress to offer reliable 
+                        <p className="font-reguler text-sm sm:text-lg text-white text-center xl:text-left xl:max-w-sm">We’re always eager for making progress to offer reliable 
                             products and impeccable services. With your support and trust, we will work towards a brighter future.
                         </p>
                     </div>
                     <div className="flex gap-4">
-                        <button><a href="" className="text-white border-2 rounded-full px-8 py-2">Product</a></button>
-                        <button><a href="" className="text-blue-500 bg-white rounded-full px-8 py-2">Contact</a></button>
+                        <button><a href="/products" className="text-white border-2 rounded-full px-8 py-2">Product</a></button>
+                        <button><a href="mailto:detapowergensetindonesia@gmail.com" className="text-primary bg-white rounded-full px-8 py-2">Contact</a></button>
                     </div>
                 </div>
                 

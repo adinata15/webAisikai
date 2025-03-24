@@ -16,7 +16,7 @@ const AboutUs = () => {
     const navigate = useNavigate();
 
     const navToCompanyProfile = () => {
-        navigate('/company-profile');
+        navigate('/about-us');
     }
 
     const [isHover, setIsHover] = useState(false);
@@ -24,7 +24,7 @@ const AboutUs = () => {
     
     return(
         <section className="px-6 xl:px-24 bg-gray-100 py-12">
-            <div className="flex flex-col justify-center items-center gap-6">
+            <div className="flex flex-col justify-center items-center gap-6 xl:gap-12">
                 <h2 className="font-bold text-4xl 3xl:text-5xl">About Us</h2>
                 <div className="flex flex-col gap-12 justify-center items-center 3xl:mt-8">
                     <div className="flex flex-col xl:flex-row gap-6 xl:items-start">

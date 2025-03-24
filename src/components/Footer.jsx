@@ -19,26 +19,26 @@ const Footer = () => {
     return(
         <section className="bg-slate-900 w-full px-6 sm:px-12 xl:px-24 py-12">
             <div className="flex flex-col justify-center items-center gap-8">
-                <div className='flex flex-col xl:flex-row justify-between items-start gap-8'>
+                <div className='flex flex-col xl:flex-row justify-between items-start xl:items-center gap-8'>
                     <div>
-                        <img src={logoAisikai} alt="logo-aisikai" className='w-1/2 xl:w-1/4' />
+                        <img src={logoAisikai} alt="logo-aisikai" className='w-1/2 xl:w-1/2' />
                     </div>
                     <div className='flex flex-col xl:flex-row gap-8 items-start'>
-                        <button onClick={navToHome}><a href="" className="text-gray-500 font-medium text-md sm:text-3xl">Home</a></button>
-                        <button onClick={navToProducts}><a href="" className="text-gray-500 font-medium text-md sm:text-3xl">Products</a></button>
-                        <button onClick={navToAboutUs}><a href="" className="text-gray-500 font-medium text-md sm:text-3xl whitespace-nowrap">About Us</a></button>
-                        <button onClick={navToDownload}><a href="" className="text-gray-500 font-medium text-md sm:text-3xl">Downloads</a></button>
-                        <button onClick={navToContactUs}><a href="" className="text-gray-500 font-medium text-md sm:text-3xl whitespace-nowrap">Contact Us</a></button>
+                        <button onClick={navToHome}><a href="" className="text-gray-500 font-medium text-3xl xl:text-xl">Home</a></button>
+                        <button onClick={navToProducts}><a href="" className="text-gray-500 font-medium text-3xl xl:text-xl">Products</a></button>
+                        <button onClick={navToAboutUs}><a href="" className="text-gray-500 font-medium text-3xl xl:text-xl whitespace-nowrap">About Us</a></button>
+                        <button onClick={navToDownload}><a href="" className="text-gray-500 font-medium text-3xl xl:text-xl">Downloads</a></button>
+                        <button onClick={navToContactUs}><a href="" className="text-gray-500 font-medium text-3xl xl:text-xl whitespace-nowrap">Contact Us</a></button>
                     </div>
                 </div>
                 <div className='w-full border-[0.1rem] border-gray-500'></div>
                 <div className='w-full flex flex-col xl:flex-row justify-between items-start gap-4'>
-                    <p className='font-regular text-gray-500 text-sm sm:text-2xl leading-normal'>All rights reserved &copy JIANGSU AISIKAI ELECTRIC CO.,LTD. Support By Leadong</p>
+                    <p className='font-regular text-gray-500 text-xl xl:text-sm leading-normal'>All rights reserved &copy JIANGSU AISIKAI ELECTRIC CO.,LTD. Support By Leadong</p>
                     <div className='flex flex-row gap-4'>
-                        <FaLinkedinIn className="text-gray-500 size-4 sm:size-6" />
-                        <FaYoutube className="text-gray-500 size-4 sm:size-6" />
-                        <FaXTwitter className="text-gray-500 size-4 sm:size-6" />
-                        <FaFacebookF className="text-gray-500 size-4 sm:size-6" />   
+                        <FaLinkedinIn className="text-gray-500 size-6 xl:size-4" />
+                        <FaYoutube className="text-gray-500 size-6 xl:size-4" />
+                        <FaXTwitter className="text-gray-500 size-6 xl:size-4" />
+                        <FaFacebookF className="text-gray-500 size-6 xl:size-4" />   
                     </div>
                 </div>
                 

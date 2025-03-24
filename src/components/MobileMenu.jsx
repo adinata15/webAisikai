@@ -8,7 +8,7 @@ import iconUk from '../assets/icons/uk.svg';
 
 const MobileMenu = ({logo, linkToNav, handleShowMenu}) => {
      return(
-         <section className="min-h-screen gap-8 bg-white flex flex-col justify-between px-6 sm:px-8 py-12">
+         <section className="min-h-screen gap-8 bg-white flex flex-col justify-between px-8 py-12">
             <button onClick={handleShowMenu} className="self-end">
                 <IoCloseCircle className="size-[3rem]"/>
             </button>
@@ -32,23 +32,23 @@ const MobileMenu = ({logo, linkToNav, handleShowMenu}) => {
                 </div>
 
                 <div className="flex flex-row items-center gap-6 font-medium text-xl">
-                    <h2 className="">Contact Us</h2>
+                    <h2 className="text-lg">Contact Us</h2>
                     <div className="flex flex-row gap-4 items-center">
-                        <a href="#">
-                            <MdEmail className="size-16 text-primary"/>
+                        <a href="mailto:detapowergensetindonesia@gmail.com" >
+                            <MdEmail className="size-10 text-primary"/>
                         </a>
-                        <a href="#">
-                            <RiWhatsappFill className="size-14 text-primary"/>
+                        <a href="https://wa.me/6285176879999?text=Halo, Saya tertarik dengan produk Aisikai">
+                            <RiWhatsappFill className="size-10 text-primary"/>
                         </a>
                     </div>
                 </div>
             </div>
 
             <div className='flex flex-row gap-8 items-center'>
-                <button className="w-12">
+                <button className="w-10">
                     <img src={iconIndonesia} alt="button-bahasaindonesia" className="w-full h-full object-cover"/>
                 </button>
-                <button className="w-12">
+                <button className="w-10">
                     <img src={iconUk} alt="button-english" className="w-full h-full object-cover"/>
                 </button>
             </div>

@@ -73,7 +73,7 @@ const AboutUs = () => {
                 <div className="flex flex-col gap-4 xl:gap-12 px-6 xl:px-24 justify-center items-center">
                     <div className="flex flex-col justify-center items-center gap-4 xl:gap-8">
                         <h3 className="text-2xl xl:text-4xl font-bold">About Aisikai</h3>
-                        <p className="font-medium text-center text-md leading-normal">AISIKAI, established in 2007, is dedicated to the high quality research, development, manufacturing, and sales of electrical products. Over the years, the company has proactively expanded its business into four major market segments: 
+                        <p className="font-medium text-center text-md 3xl:text-lg leading-normal">AISIKAI, established in 2007, is dedicated to the high quality research, development, manufacturing, and sales of electrical products. Over the years, the company has proactively expanded its business into four major market segments: 
                             New Energy, Power Quality, Industrial Control, and Power Distribution.
                             With exceptional R&D strength, AISIKAI has earned recognition as a high-tech company, a company specializing in new technology, and a software company. The company holds certifications such as ISO9001, ISO14001, ISO45001, and consistently maintains a 3A grade credit enterprise. <br /><br />
                             Since its establishment, AISIKAI has consistently prioritized product quality. Guided by independent research and development, the company continually introduces innovations, securing numerous invention patents, utility model patents, and design patents. All product software is 100% copyright protected. By working closely with renowned universities and employing a high-calibre research team, AISIKAI is continuously improving its R & D and innovation capabilities. <br /> <br />
@@ -83,7 +83,7 @@ const AboutUs = () => {
                         </p>
                     </div>
 
-                    <div className="2xl:w-2/3">
+                    <div className="w-full xl:w-2/4 2xl:w-2/5">
                         <Swiper
                             slidesPerView={1}
                             spaceBetween={0}
@@ -147,7 +147,7 @@ const AboutUs = () => {
                     </div>  
                 </div>
 
-                <div className="flex flex-col justify-center items-start xl:flex-row gap-16 3xl:gap-24 px-6 xl:px-24">
+                <div className="flex flex-row flex-wrap justify-center items-center xl:items-start xl:flex-row gap-16 3xl:gap-32 px-6 xl:px-24">
                     <div className="flex flex-col justify-center items-center gap-4">
                         <div className="flex justify-center items-center bg-gradient-to-br from-[#4990D0] to-primary size-16 rounded-full">
                             <RiSendPlaneFill className="text-white size-8"/>
@@ -240,9 +240,9 @@ const AboutUs = () => {
                     </div>
                 )}
 
-                <div className="w-screen bg-gray-200 px-8 xl:px-24 py-8 sm:py-16 flex flex-col xl:flex-row justify-between items-center gap-8">
-                    <h2 className="text-primary font-bold text-3xl sm:text-5xl">Get in touch with us</h2>
-                    <a href="" className="bg-primary px-20 py-4 text-white font-bold text-2xl rounded-full">Contact Us</a>
+                <div className="w-screen bg-gray-200 px-8 xl:px-24 py-8 sm:py-16 flex flex-col xl:flex-row justify-center items-center gap-16">
+                    <h2 className="text-primary font-bold text-3xl sm:text-4xl">Get in touch with us</h2>
+                    <a href="mailto:detapowergensetindonesia@gmail.com" className="bg-primary px-20 py-4 text-white font-bold text-xl rounded-full">Contact Us</a>
                 </div>
                 
             </div>
