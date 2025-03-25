@@ -58,9 +58,18 @@ import ATS1File from '../assets/files/ASP-Introduction.pdf';
 import ATS2File1 from '../assets/files/AISIKAI-SKT SERIES ATS USER MANUAL V2.9.pdf';
 import ATS2File2 from '../assets/files/SKT ATS-24V1.1JBen-AISIKAI.pdf';
 import ATS2File3 from '../assets/files/SKT SERIES ATS Product Selection Guide-24V1.0-AISIKAI.pdf';
+import ATS3File1 from '../assets/files/SKT SERIES ATS Product Selection Guide-24V1.0-AISIKAI.pdf';
+import ATS3File2 from '../assets/files/AISIKAI-SKT SERIES ATS USER MANUAL V2.9.pdf';
+import ATS3File3 from '../assets/files/SKT ATS-24V1.1JBen-AISIKAI.pdf';
+import ATS4File from '../assets/files/AISIKAI-ASKQ1 Selection guide 2023v1.0 (1).pdf';
+import ATS6File from '../assets/files/SKQ1 Series Automatic Transfer Switch Catalogue-ATS24V1.0-AISIKAI (1).pdf'
+import ATS7File from '../assets/files/ASKQ6 ATS Products Introduction-24V1.0-AISIKAI (1).pdf';
+import ATS8File from '../assets/files/ASKQ8 High Current Type ATS Selection Manual-ATS24V1.0-AISIKAI.pdf';
 
 import TPATS2 from '../assets/images/TPATS2.png';
 import TPATS3 from '../assets/images/TPATS3.png';
+import TPATS41 from '../assets/images/TPATS41.webp';
+import TPATS42 from '../assets/images/TPATS42.webp';
 
 const Products = () => {
     const [activeCategory, setActiveCategory] = useState();
@@ -167,47 +176,102 @@ const Products = () => {
                         <b>8. Does this ATS must work with an ATS controller for automatic transfer?</b><br />
                         No, using this ATS alone is sufficient for the automatic transfer between 2 power sources. But with ATS controller, more functions can be achieved like delay before transfer, voltage detection, communication and etc.<br />
                     </p>, 
-                    brochure: "/brochures/skt2-series-ultra-thin-class-pc-ats.pdf" 
+                    brochure: ATS3File1, ATS3File2, ATS3File3 
                 },
                 { 
                     name: "ASKQ1 Series Household ATS 16A-63A", 
                     image: ATS4, 
-                    model: "ASKQ1", 
+                    model: "ASKQ", 
                     brand: "Aisikai", 
-                    description: "A household automatic transfer switch for 16A-63A.", 
-                    brochure: "/brochures/askq1-series-household-ats.pdf" 
+                    description: <p>
+                        ASKQ series household automatic transfer switch is PC Class non-frequently operable electrical transfer switch.
+                        It has 3 working modes:Automatic, Electric(external control) and Emergency Manual. ASKQ is suitable to be used 
+                        in the 50/60Hz low voltage AC power distribution systems for the reliable transfer between two power supplies.
+                        <br /><br /> 
+                        <b>FEATURES</b> <br />
+                        - Reasonalbe structure, compact volume, beautiful appearance. <br />
+                        - Adopt excitation type electromagnet drive mechanism, which is extrmely fast in transferring. <br />
+                        - The 6A-63A switch is suitable for home use, which meets the requiremnets of the level-3 power distribution system. <br />
+                        - Mount on standard DIN rail. Quick and easy installation.
+                    </p>,
+                    technicalparameters: {TPATS41, TPATS42},
+                    faq: "",
+                    brochure: ATS4File 
                 },
                 { 
                     name: "SKQ1 MCCB Type Class CB ATS", 
-                    image: ATS5, 
-                    model: "SKQ1-MCCB", 
+                    image: ATS5,
+                    subtitle: <p>The SKQ1 series dual power automatic transfer switch is a second-generation ATS product, 
+                        classified as CB level. It is an AC-33B electrical transfer switch designed for infrequent operation, 
+                        suitable for low-voltage AC power distribution systems with a frequency of 50/60Hz. It features three 
+                        working modes: automatic (Type A), electric (Type B), and emergency manual, ensuring reliable transfer 
+                        between two power sources.</p>, 
+                    model: "SKQ1", 
                     brand: "Aisikai", 
-                    description: "An MCCB type automatic transfer switch for class CB.", 
-                    brochure: "/brochures/skq1-mccb-type-class-cb-ats.pdf" 
+                    description: <p>
+                        The SKQ1 series dual power automatic transfer switch is a second-generation ATS product, classified as CB level. 
+                        It is an AC-33B electrical transfer switch designed for infrequent operation, suitable for low-voltage AC power 
+                        distribution systems with a frequency of 50/60Hz. It features three working modes: automatic (Type A), electric 
+                        (Type B), and emergency manual, ensuring reliable transfer between two power sources.
+                    </p>,
+                    technicalparameters: "",
+                    faq: "", 
+                    brochure: "" 
                 },
                 { 
                     name: "SKQ1 MCB Type Class CB ATS", 
                     image: ATS6, 
-                    model: "SKQ1-MCB", 
+                    model: "SKQ1", 
                     brand: "Aisikai", 
-                    description: "An MCB type automatic transfer switch for class CB.", 
-                    brochure: "/brochures/skq1-mcb-type-class-cb-ats.pdf" 
+                    description: <p>
+                        SKQ1 series dual power automatic transfer switch(ATS) is the 2nd generation ATS.  It's CB class and its usage 
+                        category is AC-33B non-frequently operation electrical transfer switch. It has 3 working modes:Automatic, 
+                        Electric(external control) and Emergency Manual. SKQ1 is suitable to be used in the 50/60Hz low voltage AC power 
+                        distribution systems for the reliable transfer between two power supplies. <br /><br />
+                        <b>FEATURES</b><br />
+                        - Have Zero-position
+                        - Reasonalbe structure, compact volume, beautiful appearance.
+                        - Protective cover, much safer and more reliable
+                        - Control part is designed for easy maintenance 
+                        - Complete protection functions, provided with protection of short-circuit, overload and etc.
+                        - Noise-free operation, energy saving and consumption reducing, convenient in installation, easy in operation, reliable and stable in performance.
+                        - The interior adopts D type miniature circuit breaker.
+                    </p>,
+                    technicalparamters: "",
+                    faq: "", 
+                    brochure: ATS6File 
                 },
                 { 
                     name: "ASKQ6 Series Solenoid Type Automatic Transfer Switch", 
                     image: ATS7, 
                     model: "ASKQ6", 
                     brand: "Aisikai", 
-                    description: "A solenoid type automatic transfer switch for high performance.", 
-                    brochure: "/brochures/askq6-series-solenoid-type-ats.pdf" 
+                    description: <p>
+                        ASKQ6 Automatic Transfer Switch is suitable for AC below 415V, rated frequency 50HZ, DC 250V and below. 
+                        All specifications are available in 3 poles and 4 poles. 3 poles products are available below 400A. 
+                        This product is mainly used for the primary load specified by the state, and is widely used in important 
+                        areas of fire fighting, post and telecommunications, hospitals, hotels, high-rise buildings, industrail 
+                        assembly lines, and TV stations that need continuous power supply. The main and backup power supply can be 
+                        grid and grid, automatic start generator set, battery set, etc.
+                    </p>,
+                    technicalparameters: "",
+                    faq: "", 
+                    brochure: ATS7File 
                 },
                 { 
                     name: "ASKQ8 High Current Automatic Transfer Switch 3200~6300A", 
                     image: ATS8, 
                     model: "ASKQ8", 
                     brand: "Aisikai", 
-                    description: "A high current automatic transfer switch for 3200~6300A.", 
-                    brochure: "/brochures/askq8-high-current-ats.pdf" 
+                    description: <p>
+                        ASKQ8 series dual power automatic transfer switch is PC Class non-frequently operable electrical transfer switch.
+                        ASKQ8 High Current Automatic Transfer Switch is suitable for the 3200A~6300A AC50/60Hz low voltage AC power 
+                        distribution systems for reliable transfer between two power supplies. 3200A-6300A switch is suitable in the 
+                        industrial places for large current switching and meets the Level Ⅰ power distribution requirements.
+                    </p>,
+                    technicalparameters: "",
+                    faq: "", 
+                    brochure: ATS8File 
                 }
             ] 
         },

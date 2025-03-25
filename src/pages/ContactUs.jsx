@@ -72,16 +72,16 @@ const ContactUs = () => {
         <section>
             <Header />
 
-            <div className="xl:px-0 py-12 flex flex-col justify-center items-center gap-12">
-                <div className="bg-yellow-500 w-full flex flex-col xl:flex-row justify-between gap-12 xl:gap-2 xl:px-24">
-                    <div className="bg-red-500 flex flex-col px-6 xl:p-0 w-fit gap-8 justify-center items-center xl:items-start">
+            <div className="xl:px-0 py-12 flex flex-col justify-center items-center gap-12 xl:gap-24">
+                <div className="w-full flex flex-col xl:flex-row justify-center gap-12 xl:gap-16 xl:px-24">
+                    <div className="flex flex-col px-6 xl:p-0 gap-8 justify-center items-center xl:items-start">
                         <div className="flex flex-col justify-center items-center xl:items-start gap-2">
                             <h3 className="text-2xl xl:text-4xl font-bold mb-6">Feedback</h3>
                             <p className="font-medium text-lg text-center xl:text-left xl:max-w-lg">We serve you wholeheartedly, your satisfaction is our pursuit, 
                                 and we look forward to working together with you to create a win-win situation.</p>
                         </div>
                         
-                        <form onSubmit={handleSubmit} className="w-full max-w-lg bg-white p-6 rounded-lg shadow-md">
+                        <form onSubmit={handleSubmit} className="w-full max-w-lg bg-white p-6 rounded-lg">
                             <div className="mb-4">
                                 <label htmlFor="name" className="block text-lg font-medium mb-2">
                                     Name
@@ -154,7 +154,7 @@ const ContactUs = () => {
                             </div>
                             <button
                                 type="submit"
-                                className="w-full bg-primary text-white py-2 rounded-lg font-medium"
+                                className="w-full bg-primary text-white py-4 mt-4 rounded-lg font-medium"
                             >
                                 Submit
                             </button>
@@ -165,31 +165,40 @@ const ContactUs = () => {
                     </div>
                     
 
-                    <div className="w-fit bg-blue-500 flex flex-col justify-center xl:justify-start items-center xl:items-start gap-8 px-6">
-                        <div className="bg-red-500 flex flex-row items-center justify-center gap-4 w-">
+                    <div className=" flex flex-col justify-center xl:justify-start items-start sm:items-center xl:items-start gap-8 px-6">
+                        <div className="flex flex-row items-center justify-center gap-4">
                             <RiCustomerService2Fill className="text-primary size-16"/>
                             <div className="flex flex-col w-full">
                                 <h3 className="font-bold text-2xl">Tel</h3>
-                                <h3 className="font-medium text-xs w-fit">+62 8517 687 9999</h3>
+                                <h3 className="font-medium text-lg">+62 8517 687 9999</h3>
                             </div>
                         </div>
+
+                        <div className="border-[0.10rem] border-dashed border-gray-200 w-full"></div>
+
                         <div className="flex flex-row items-center justify-center gap-4">
-                            <MdOutlineFax className="text-primary size-16"/>
+                            <MdOutlineFax className="text-primary size-16 xl:size-14"/>
                             <div className="flex flex-col">
                                 <h3 className="font-bold text-2xl">Fax</h3>
                                 <h3 className="font-medium text-lg">+62 8517 687 9999</h3>
                             </div>
                         </div>
+
+                        <div className="border-[0.10rem] border-dashed border-gray-200 w-full"></div>
+
                         <div className="flex flex-row items-center justify-center gap-4">
-                            <MdOutlineEmail className="text-primary size-16"/>
+                            <MdOutlineEmail className="text-primary size-16 xl:size-14"/>
                             <div className="flex flex-col">
                                 <h3 className="font-bold text-2xl">Email</h3>
                                 <h3 className="xl:hidden font-medium text-lg">detapowergensetindonesia <br /> @gmail.com</h3>
                                 <h3 className="hidden font-medium text-lg">detapowergensetindonesia@gmail.com</h3>
                             </div>
                         </div>
+
+                        <div className="border-[0.10rem] border-dashed border-gray-200 w-full"></div>
+
                         <div className="flex flex-row items-center justify-center gap-4">
-                            <MdOutlinePlace className="text-primary size-16"/>
+                            <MdOutlinePlace className="text-primary size-16 xl:size-14"/>
                             <div className="flex flex-col">
                                 <h3 className="font-bold text-2xl">Place</h3>
                                 <h3 className="font-medium text-lg">East side of industiral zone, <br /> 
@@ -201,7 +210,7 @@ const ContactUs = () => {
                 
                 <div className="flex flex-col justify-center items-center gap-4 px-6 xl:px-24">
                     <h3 className="text-2xl xl:text-4xl font-bold mb-6">Our Agency</h3>
-                    <div className="flex flex-row flex-wrap gap-8 justify-center items-center">
+                    <div className="flex flex-row flex-wrap gap-8 xl:gap-12 2xl:gap-24 justify-center items-center">
                         <div className="flex flex-col justify-center items-center gap-2">
                             <img src={SA} alt="southafrica-flag" className="rounded-full size-26"/>
                             <h4 className="font-bold text-xl">SOUTH AFRICA</h4>
