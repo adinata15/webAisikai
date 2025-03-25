@@ -593,7 +593,7 @@ const Products = () => {
                 <Header />
                 {/* <Breadcrumb /> */}
 
-                <div className="flex flex-col xl:flex-row items-center xl:items-start justify-center gap-6 px-6 xl:px-16 py-12 xl:pb-16">
+                <div className="flex flex-col xl:flex-row items-center xl:items-start justify-center gap-6 px-6 xl:px-16 py-12">
                     {/* Left List Menu */}
                     <div className="w-full xl:w-[25rem] bg-gray-200 p-4 rounded-lg items-center flex flex-col justify-center">
                         <h2 className="text-lg font-bold mb-4">Product Category</h2>
