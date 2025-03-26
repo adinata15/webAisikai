@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import { PiEnvelopeSimple } from "react-icons/pi";
 import { FaFilePdf } from "react-icons/fa";
 
+// IMAGE FOR PRODUCT DETAILS
 import ATS1 from '../assets/images/ats1.webp';
 import ATS2 from '../assets/images/ats2.webp';
 import ATS3 from '../assets/images/ats3.webp';
@@ -54,6 +55,7 @@ import SPD3 from '../assets/images/spd3.webp';
 import IPM1 from '../assets/images/ipm1.webp';
 import BC1 from '../assets/images/bc1.webp';
 
+// FILES FOR DOWNLOAD BROCHURE
 import ATS1File from '../assets/files/ASP-Introduction.pdf';
 import ATS2File1 from '../assets/files/AISIKAI-SKT SERIES ATS USER MANUAL V2.9.pdf';
 import ATS2File2 from '../assets/files/SKT ATS-24V1.1JBen-AISIKAI.pdf';
@@ -65,11 +67,37 @@ import ATS4File from '../assets/files/AISIKAI-ASKQ1 Selection guide 2023v1.0 (1)
 import ATS6File from '../assets/files/SKQ1 Series Automatic Transfer Switch Catalogue-ATS24V1.0-AISIKAI (1).pdf'
 import ATS7File from '../assets/files/ASKQ6 ATS Products Introduction-24V1.0-AISIKAI (1).pdf';
 import ATS8File from '../assets/files/ASKQ8 High Current Type ATS Selection Manual-ATS24V1.0-AISIKAI.pdf';
+import IAC1File from '../assets/files/2019-(ATSC) Intelligent ATS Controller Catalogue-V1.2_190904.pdf';
+import HVVCB1File1 from '../assets/files/AISIKAI-ASKV5 SERIES ATS USER MANUAL.pdf'
+import HVVCB1File2 from '../assets/files/ASKV5 Series VCB Catalogue-24V1.2- AISIKAI.pdf'
+import UCBFile1 from '../assets/files/ASKW2 ACB英文资料-24V1.0JB-AISIKAI.pdf';
+import UCB5File1 from '../assets/files/AISIKAI-ASKW1 SERIES USER MANUAL.pdf';
+import UCB5File2 from '../assets/files/ASKW1 ACB英文资料-24V1.0JB-AISIKAI.pdf';
+import UCB5File3 from '../assets/files/AISIKAI-ASKW Series  Catalogue_2023V1.0 (1).pdf';
 
+// IMAGES FOR TECHNICAL PARAMETERS PRODUCT
 import TPATS2 from '../assets/images/TPATS2.png';
 import TPATS3 from '../assets/images/TPATS3.png';
 import TPATS41 from '../assets/images/TPATS41.webp';
 import TPATS42 from '../assets/images/TPATS42.webp';
+import TPIAC1 from '../assets/images/TPIAC1.webp';
+import TPIAC2 from '../assets/images/TPIAC2.webp';
+import TPHVVCB1 from '../assets/images/TPHVVCB1.webp';
+import TPHVVCB2 from '../assets/images/hvvcb2.webp';
+import TPUCB1 from '../assets/images/TPUCB1.webp';
+import TPUCB2 from '../assets/images/TDUCB2.webp';
+import TPUCB3 from '../assets/images/TPUCB3.webp';
+import TPUCB4 from '../assets/images/TPUCB4.webp';
+import TPUCB5 from '../assets/images/TDUCB5.webp';
+import TPUCB6 from '../assets/images/TPUCB6.webp';
+
+// IMAGE FOR DESCRIPTION PRODUCT
+import DIAC1 from '../assets/images/DIAC1.webp';
+import DIAC2 from '../assets/images/DIAC2.webp';
+
+// IMAGE FOR STRUCTURE OVERVIEW
+import SOUCB5 from '../assets/images/SOUCB5.webp';
+import SOUCB6 from '../assets/images/SOUCB6.webp';
 
 const Products = () => {
     const [activeCategory, setActiveCategory] = useState();
@@ -133,7 +161,7 @@ const Products = () => {
                         <b>10. Does this ATS must work with an ATS controller for automatic transfer?</b><br />
                         No, using this ATS alone is sufficient for the automatic transfer between 2 power sources. But with ATS controller, more functions can be achieved like delay before transfer, voltage detection, communication and etc. <br /><br />
                     </p>,
-                    brochure: ATS2File1, ATS2File2, ATS2File3 
+                    brochure: [ATS2File1, ATS2File2, ATS2File3] 
                 },
                 { 
                     name: "SKT2 Series Ultra-thin Class PC ATS", 
@@ -176,7 +204,7 @@ const Products = () => {
                         <b>8. Does this ATS must work with an ATS controller for automatic transfer?</b><br />
                         No, using this ATS alone is sufficient for the automatic transfer between 2 power sources. But with ATS controller, more functions can be achieved like delay before transfer, voltage detection, communication and etc.<br />
                     </p>, 
-                    brochure: ATS3File1, ATS3File2, ATS3File3 
+                    brochure: [ATS3File1, ATS3File2, ATS3File3] 
                 },
                 { 
                     name: "ASKQ1 Series Household ATS 16A-63A", 
@@ -284,16 +312,46 @@ const Products = () => {
                     image: IAC1, 
                     model: "SKR2-A", 
                     brand: "Aisikai", 
-                    description: "LED-based intelligent ATS controller for efficient management.", 
-                    brochure: "/brochures/skr2-a-led-ats-controller.pdf" 
+                    description: <p>
+                        <b>OVERVIEW</b> <br />
+                        SKR2-A ATS controller is designed to work with automatic transfer switch. It's based on the micro-processor 
+                        techonology. Controller can accurately detect the three/single phase(s) voltage of the dual power supplies, 
+                        make accurate judgement of voltage anomalies (power loss, over voltage, under voltage, phase missing, over 
+                        frequency, under frequency), and control the switching delay. It's suitable for the ATS with one breaking 
+                        position or no breaking position. <br /><br /> Controllers have the function of sending generator start signal after delay 
+                        when power 1# becomes abnormal. Using RS485 communication interface, controllers realize functions of remote 
+                        measurement, remote communication and remote control. <br /><br />
+                        <b>PANEL DESCRIPTION</b> <br />
+                        <img src={DIAC1} alt="paneldescription-image" />
+                    </p>, 
+                    technicalparameters: TPIAC1,
+                    faq: "",
+                    brochure: IAC1File 
                 },
                 { 
                     name: "SKR2-B LCD ATS Controller", 
                     image: IAC2, 
                     model: "SKR2-B", 
                     brand: "Aisikai", 
-                    description: "LCD-based intelligent ATS controller with advanced features.", 
-                    brochure: "/brochures/skr2-b-lcd-ats-controller.pdf" 
+                    description: <p>
+                        <b>OVERVIEW</b><br />
+                        SKR2-B ATS controller is the intelligent dual-power switch modual with programmable function, automatic measurement, 
+                        LCD display and digital funtions. <br /> <br />
+                        SKR2-B is digitalization, intellectualization and networking integrated. With the controller, the automation in 
+                        measurement and control process can be realized, while human errors can be reduces. <br /> <br />
+                        Controller is based on the micro-processor techonology. It can accurately detect the three/single phase(s) voltage 
+                        of the dual power supplies, make accurate judgement of voltage anomalies (power loss, over voltage, under voltage, 
+                        phase missing, over frequency, under frequency), and output the passive switching values. <br /> <br />
+                        The application of this controller on a variety of ATS (load automatic switch system) is fully considered. 
+                        The controller can be directly used on specialized ATS, contactors made ATS, air circuit breakers made ATS and etc. <br /> <br />
+                        It's widely used in the electrial equipment, automatic control and debug systems in the fields of power, post, 
+                        petroleum, coal, metallurgy, railway, municipal, intelligent building. <br /> <br />
+                        <b>PANEL DESCRIPTION</b> <br />
+                        <img src={DIAC2} alt="paneldescription-image" />
+                    </p>, 
+                    technicalparameters: TPIAC2,
+                    faq: "",
+                    brochure: IAC1File 
                 }
             ] 
         },
@@ -304,18 +362,50 @@ const Products = () => {
                 { 
                     name: "High Voltage Embedded Pole Type Vacuum Circuit Breaker VCB", 
                     image: HVVCB1, 
-                    model: "VCB-EP", 
+                    model: "ASKV5-G", 
                     brand: "Aisikai", 
-                    description: "An embedded pole type high voltage vacuum circuit breaker.", 
-                    brochure: "/brochures/high-voltage-embedded-pole-vcb.pdf" 
+                    description: <p>
+                        The ASKV5G series solid-sealed embedded pole indoor high-voltage vacuum circuit breaker (VCB) is characterized 
+                        by the embedded pole form of the main conductive circuit using solid-sealed insulation. This is achieved by 
+                        special embedding technology, which pours the vacuum arc-extinguishing chamber and conductive components with 
+                        ultra-low resistance values into epoxy resin to achieve solid insulation of the main conductive circuit. 
+                        The operating mechanism is a new type of spring operating mechanism. <br /><br />
+                        The primary conductive circuit of the circuit breaker adopts solid-sealed insulation technology for the 
+                        solid-sealed embedded pole, which seals the vacuum arc-extinguishing chamber and other components of the primary 
+                        conductive circuit directly in special epoxy resin material through advanced automatic pressure gelation APG process,
+                        forming a main conductive circuit module. <br /><br />
+                        The installation end of the sealed pole is designed with inner and outer double skirt edges. The pole has the 
+                        characteristics of large creepage distance, high mechanical strength, high component precision, fewer components, 
+                        no need for secondary adjustment, and fewer overlapping faces. <br /><br />
+                        The electric field distribution of the pole is uniform, avoiding the destruction of organic insulation due to 
+                        concentrated local electric fields. At the same time, using this structural design greatly simplifies the assembly 
+                        process of the primary conductive circuit, completely avoids the problem of loosening of connecting bolts of the 
+                        main conductive circuit due to vibration during operation, ensures the high reliability of the electrical 
+                        connection of the main conductive circuit, and makes it possible for the primary conductive circuit of the circuit 
+                        breaker to achieve maintenance-free operation.
+                    </p>,
+                    technicalparameters: TPHVVCB1,
+                    faq: "", 
+                    brochure: [HVVCB1File1, HVVCB1File2] 
                 },
                 { 
                     name: "High Voltage Insulating Cylinder Type Vacuum Circuit Breaker VCB", 
                     image: HVVCB2, 
-                    model: "VCB-IC", 
+                    model: "ASKV5-T", 
                     brand: "Aisikai", 
-                    description: "An insulating cylinder type high voltage vacuum circuit breaker.", 
-                    brochure: "/brochures/high-voltage-insulating-cylinder-vcb.pdf" 
+                    description: <p>
+                        The ASKV5 series fixed indoor high-voltage AC vacuum circuit breaker (VCB) arranges the vacuum extinguishing chamber of the primary main 
+                        circuit in a closed insulating cylinder, which is made of epoxy resin material with reliable mechanical and electrical performance and is 
+                        formed using advanced APG technology. <br /><br />
+                        The insulating cylinder not only provides installation support but also serves as inter-phase and ground insulation. <br /><br />
+                        The design of the insulating cylinder fully considers the requirements of national standards and harsh operating conditions, not only 
+                        preventing the vacuum extinguishing chamber from being affected by external environmental factors, preventing dust and foreign objects 
+                        from entering the main circuit, but also ensuring that even in wet, hot, and severely polluted environments, it can exhibit a high resistance 
+                        to voltage effects.
+                    </p>,
+                    technicalparameters: TPHVVCB2,
+                    faq: "",  
+                    brochure: [HVVCB1File1, HVVCB1File2] 
                 }
             ] 
         },
@@ -326,50 +416,130 @@ const Products = () => {
                 { 
                     name: "ASKW2 Series Fixed Type Intelligent Universal Circuit Breaker", 
                     image: UCB5, 
-                    model: "ASKW2-F", 
+                    model: "ASKW2", 
                     brand: "Aisikai", 
-                    description: "A fixed type intelligent universal circuit breaker.", 
-                    brochure: "/brochures/askw2-fixed-type-ucb.pdf" 
+                    description: <p>
+                        The ASKW2 series universal low-voltage circuit breaker (ACB) is suitable for distribution networks with AC 50Hz, rated voltage up to 400V (690V) 
+                        and below, rated current of 200A to 1600A. It is used to distribute electrical energy and protect lines and power equipment from the hazards of 
+                        overload, undervoltage, short circuit, single-phase grounding, etc. <br /><br />
+                        The circuit breaker has intelligent protection functions, precise selective protection, and can improve power supply reliability, avoiding 
+                        unnecessary power outages. It also has an open communication interface for remote control to meet the requirements of control centers and 
+                        automation systems. <br /><br />
+                        The circuit breaker complies with standards such as GB14048.2 "Low-voltage switchgear and controlgear - Low-voltage circuit breakers" and 
+                        IEC947-2 "Low-voltage switchgear and controlgear - Circuit breakers".
+                    </p>,
+                    technicalparameters: TPUCB1,
+                    faq: "", 
+                    brochure: UCBFile1 
                 },
                 { 
                     name: "ASKW2 Series Drawout Type Intelligent Universal Air Circuit Breaker", 
                     image: UCB6, 
-                    model: "ASKW2-D", 
+                    model: "ASKW2", 
                     brand: "Aisikai", 
-                    description: "A drawout type intelligent universal air circuit breaker.", 
-                    brochure: "/brochures/askw2-drawout-type-ucb.pdf" 
+                    description: <p>
+                        The ASKW2 series universal low-voltage circuit breaker (ACB) is suitable for distribution networks with AC 50Hz, rated voltage up to 400V (690V) 
+                        and below, rated current of 200A to 1600A. It is used to distribute electrical energy and protect lines and power equipment from the hazards of 
+                        overload, undervoltage, short circuit, single-phase grounding, etc. <br /><br />
+                        The circuit breaker has intelligent protection functions, precise selective protection, and can improve power supply reliability, avoiding 
+                        unnecessary power outages. It also has an open communication interface for remote control to meet the requirements of control centers and 
+                        automation systems. <br /><br />
+                        The circuit breaker complies with standards such as GB14048.2 "Low-voltage switchgear and controlgear - Low-voltage circuit breakers" and 
+                        IEC947-2 "Low-voltage switchgear and controlgear - Circuit breakers".
+                    </p>, 
+                    technicalparameters: TPUCB2,
+                    faq: "", 
+                    brochure: UCBFile1 
                 },
                 { 
                     name: "ASKW3 Series Drawout Type Intelligent Universal Air Circuit Breaker", 
                     image: UCB7, 
-                    model: "ASKW3-D", 
+                    model: "ASKW3", 
                     brand: "Aisikai", 
-                    description: "A drawout type intelligent universal air circuit breaker.", 
-                    brochure: "/brochures/askw3-drawout-type-ucb.pdf" 
+                    description: <p>
+                        The ASKW3 series intelligent universal circuit breaker is suitable for isolation; suitable for use at a frequency of 50/60Hz, rated operating 
+                        voltage AC380V/400V/415V/440V/480V/660V/690V/800V/1000V/1140V, and rated current of 4000A and below in distribution networks, used for 
+                        distributing electrical energy and protecting lines and power equipment from the harmful effects of overloads, undervoltage, short circuits, 
+                        grounding faults, etc. <br /><br />
+                        The circuit breaker uses a precise protection and multi-functional intelligent controller, with complete protection functions, especially 
+                        suitable for distribution networks that require improving power supply reliability and avoiding unnecessary power outages. The H-type 
+                        intelligent controller has a communication interface, making it easy to connect to the field bus, enabling the implementation of "telemetry", 
+                        "remote adjustment", "remote control", and "remote signaling" four remote functions, meeting the requirements of control automation. 
+                        Configuring a residual current transformer and the corresponding intelligent controller can achieve leakage protection. <br /><br />
+                        Circuit breakers with a rated current of 1000A and above can also be used in AC 50Hz, 400V networks as overload, short circuit, undervoltage, 
+                        and grounding fault protection for motors. Under normal conditions, they can be used for infrequent motor starting purposes.
+                    </p>, 
+                    technicalparameters: TPUCB3,
+                    faq: "", 
+                    brochure: "" 
                 },
                 { 
                     name: "ASKW3 Series Fixed Type Intelligent Universal Circuit Breaker", 
                     image: UCB8, 
-                    model: "ASKW3-F", 
+                    model: "ASKW3", 
                     brand: "Aisikai", 
-                    description: "A fixed type intelligent universal circuit breaker.", 
-                    brochure: "/brochures/askw3-fixed-type-ucb.pdf" 
+                    description: <p>
+                        The ASKW3 series intelligent universal circuit breaker is suitable for isolation; suitable for use at a frequency of 50/60Hz, rated operating 
+                        voltage AC380V/400V/415V/440V/480V/660V/690V/800V/1000V/1140V, and rated current of 4000A and below in distribution networks, used for 
+                        distributing electrical energy and protecting lines and power equipment from the harmful effects of overloads, undervoltage, short circuits, 
+                        grounding faults, etc. <br /><br />
+                        The circuit breaker uses a precise protection and multi-functional intelligent controller, with complete protection functions, especially 
+                        suitable for distribution networks that require improving power supply reliability and avoiding unnecessary power outages. The H-type 
+                        intelligent controller has a communication interface, making it easy to connect to the field bus, enabling the implementation of "telemetry", 
+                        "remote adjustment", "remote control", and "remote signaling" four remote functions, meeting the requirements of control automation. 
+                        Configuring a residual current transformer and the corresponding intelligent controller can achieve leakage protection. <br /><br />    
+                        Circuit breakers with a rated current of 1000A and above can also be used in AC 50Hz, 400V networks as overload, short circuit, undervoltage, 
+                        and grounding fault protection for motors. Under normal conditions, they can be used for infrequent motor starting purposes.
+                    </p>, 
+                    technicalparameters: TPUCB4,
+                    faq: "", 
+                    brochure: "" 
                 },
                 { 
                     name: "ASKW1 Series Fixed Type Intelligent Universal Circuit Breaker", 
                     image: UCB9, 
-                    model: "ASKW1-F", 
+                    model: "ASKW1", 
                     brand: "Aisikai", 
-                    description: "A fixed type intelligent universal circuit breaker.", 
-                    brochure: "/brochures/askw1-fixed-type-ucb.pdf" 
+                    description: <p>
+                        <b>PRODUCT OVERVIEW</b> <br />
+                        ASKW1 series intelligent type universal circuit breaker is suitable for AC50Hz/60Hz, rated voltage 400V, 690V, rated current 630A-6300A of the 
+                        distribution network used to distribute power and protect circuits and power supply equipment against overload, under-voltage, short-circuit, 
+                        single phase earth fault. <br /><br />
+
+                        Classified by the structure design , there are Fixed type and Drawer type. <br />
+                        For Fixed type, the ACB main body is fixed in the frame and can't be drawn out. <br />
+                        The "Fixed" is denoted by the letter "G" in product model code, and  "G"  can be omitted. <br /><br />
+
+                        Circuit breaker has intelligent protection and isolation function. Accurate selective protection, improve the reliability of power supply, 
+                        avoid unnecessary power outages. Circuit breaker has open communication interface for four-remote, meeting the requirements of centralized 
+                        control of automation systems.
+                    </p>,
+                    technicalparameters: TPUCB5,
+                    faq: "",  
+                    structureoverview: SOUCB5,
+                    brochure: [UCB5File1, UCB5File2, UCB5File3] 
                 },
                 { 
                     name: "ASKW1 Series Drawout Type Intelligent Universal Air Circuit Breaker", 
                     image: UCB10, 
-                    model: "ASKW1-D", 
+                    model: "ASKW1", 
                     brand: "Aisikai", 
-                    description: "A drawout type intelligent universal air circuit breaker.", 
-                    brochure: "/brochures/askw1-drawout-type-ucb.pdf" 
+                    description: <p>
+                        <b>PRODUCT OVERVIEW</b> <br />
+                        ASKW1 series intelligent type universal air circuit breaker is suitable for AC50Hz/60Hz, rated voltage 400V, 690V, rated current 630A-6300A 
+                        of the distribution network used to distribute power and protect circuits and power supply equipment against overload, under-voltage, 
+                        short-circuit, single phase earth fault. <br /><br />
+                        Classified by the structure design , there are Fixed type and Drawout type. <br />
+                        For Drawout type, the ACB main body can be drawn out from the frame, which is convenient for installation and maintenance. <br />
+                        The letter "C" in product model code denotes "Drawer" type. <br /><br />
+                        Circuit breaker has intelligent protection and isolation function. Accurate selective protection, improve the reliability of power supply, 
+                        avoid unnecessary power outages. Circuit breaker has open communication interface for four-remote, meeting the requirements of centralized 
+                        control of automation systems.
+                    </p>,
+                    technicalparameters: TPUCB6,
+                    faq: "",
+                    structureoverview: SOUCB6,  
+                    brochure: [UCB5File1, UCB5File2, UCB5File3] 
                 }
             ] 
         },
@@ -714,6 +884,12 @@ const Products = () => {
                                         </button>
 
                                         <button
+                                            className={`px-4 py-2 font-medium ${activeTab === "structureoverview" ? "border-b-2 border-primary text-primary" : "text-gray-500"}`}
+                                            onClick={() => setActiveTab("structureoverview")}>
+                                                Structure Overview
+                                        </button>
+
+                                        <button
                                             className={`px-4 py-2 font-medium ${activeTab === "faq" ? "border-b-2 border-primary text-primary" : "text-gray-500"}`}
                                             onClick={() => setActiveTab("faq")}>
                                                 FAQ
@@ -735,9 +911,15 @@ const Products = () => {
                                 
                                     {activeTab === "technicalparameters" && (
                                         <div className="h-auto text-gray-700">
-                                            <img src={selectedProduct.technicalparameters} alt="technical-parameters-image" />
+                                            <img src={selectedProduct.technicalparameters} alt="technical-parameters-image" className='w-full'/>
                                         </div>
                                     )}  
+
+                                    {activeTab === "structureoverview" && (
+                                        <div className="h-auto text-gray-700">
+                                            <img src={selectedProduct.structureoverview} alt="technical-parameters-image" className='w-full'/>
+                                        </div>
+                                    )} 
                                     
                                     {activeTab === "faq" && (
                                         <div className="h-auto text-gray-700">
@@ -746,11 +928,32 @@ const Products = () => {
                                     )}
 
                                     {activeTab === "brochure" && (
-                                        <div className='flex flex-row items-center gap-2'>
-                                            <FaFilePdf />
-                                            <a href={selectedProduct.brochure || "#"} className="text-primary font-medium underline" download>
-                                                {selectedProduct.brochure?.split('/').pop() || "Download Brochure"}
-                                            </a>
+                                        <div className="flex flex-col gap-4">
+                                            {Array.isArray(selectedProduct.brochure) ? (
+                                                selectedProduct.brochure.map((brochure, index) => (
+                                                    <div key={index} className="flex flex-row items-center gap-2">
+                                                        <FaFilePdf />
+                                                        <a
+                                                            href={brochure}
+                                                            className="text-primary font-medium underline"
+                                                            download
+                                                        >
+                                                            {brochure.split('/').pop() || `Brochure ${index + 1}`}
+                                                        </a>
+                                                    </div>
+                                                ))
+                                            ) : (
+                                                <div className="flex flex-row items-center gap-2">
+                                                    <FaFilePdf />
+                                                    <a
+                                                        href={selectedProduct.brochure || "#"}
+                                                        className="text-primary font-medium underline"
+                                                        download
+                                                    >
+                                                        {selectedProduct.brochure?.split('/').pop() || "Download Brochure"}
+                                                    </a>
+                                                </div>
+                                            )}
                                         </div>
                                     )}
                                 </div>
