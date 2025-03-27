@@ -14,7 +14,7 @@ import iconUk from '../assets/icons/uk.svg';
 const Header = () => {
 
     const navLink = [
-        {label: "Home", href: "/home"},
+        {label: "Home", href: "/"},
         {label: "Products", href: "/products"},
         {label: "About Us", href: "/about-us"},
         {label: "Download", href: "/download"},
@@ -29,7 +29,7 @@ const Header = () => {
     return(
         <section className="bg-linear-to-r from-white via-blue-50 to-white relative flex flex-row gap-4 py-6 xl:py-[0.05rem] px-6 xl:px-16 justify-between items-center">
             <div className="flex items-center">
-                <a href="/home">
+                <a href="/">
                     <img src={logoAisikai} alt="logo-aisikai" className='w-[10rem] 2xl:w-[12rem]'/>
                 </a> 
             </div>

@@ -10,7 +10,7 @@ const Footer = () => {
 
     const navigate = useNavigate();
 
-    const navToHome = () => {navigate('/home');}
+    const navToHome = () => {navigate('/');}
     const navToProducts = () => {navigate('/products');}
     const navToAboutUs = () => {navigate('/about-us');}
     const navToDownload = () => {navigate('/download');}
