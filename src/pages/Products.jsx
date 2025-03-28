@@ -74,6 +74,32 @@ import UCBFile1 from '../assets/files/ASKW2 ACB英文资料-24V1.0JB-AISIKAI.pdf
 import UCB5File1 from '../assets/files/AISIKAI-ASKW1 SERIES USER MANUAL.pdf';
 import UCB5File2 from '../assets/files/ASKW1 ACB英文资料-24V1.0JB-AISIKAI.pdf';
 import UCB5File3 from '../assets/files/AISIKAI-ASKW Series  Catalogue_2023V1.0 (1).pdf';
+import MCCB1File1 from '../assets/files/ASKM2E-Y MCCB英文-24V1.0JBen-AISIKAI.pdf';
+import MCCB2File1 from '../assets/files/ASKM2E MCCB英文-24V1.0JBen-AISIKAI.pdf';
+import MCCB3File1 from '../assets/files/ASKM1 MCCB英文资料-24V1.1JBen-AISIKAI (1).pdf';
+import MCCB3File2 from '../assets/files/AISIKAI-ASKM1  Series  Catalogue 2023V1.0 (1).pdf';
+import MCCB3File3 from '../assets/files/AISIKAI-ASKM1 SERIES MCCB USER MANUAL.pdf';
+import MCCB4File1 from '../assets/files/ASKM1L  MCCB英文资料-24V1.0JB-AISIKAI.pdf';
+import MCCB4File2 from '../assets/files/AISIKAI-ASKM1  Series  Catalogue 2023V1.0 (1).pdf';
+import MCCB4File3 from '../assets/files/AISIKAI-ASKM1 SERIES MCCB USER MANUAL.pdf';
+import MCCB5File1 from '../assets/files/AISIKAI-ASKM3  Series  Catalogue 2023V1.0.pdf';
+import MCCB5File2 from '../assets/files/AISIKAI-ASKM3 SERIES MCCB USER MANUAL.pdf';
+import MCCB6File1 from '../assets/files/AISIKAI-ASKM3  Series  Catalogue 2023V1.0.pdf';
+import MCCB6File2 from '../assets/files/AISIKAI-ASKM3 SERIES MCCB USER MANUAL.pdf';
+import MCCB10File1 from '../assets/files/ASKM1E MCCB Brief Brochure-24V1.0JB-AISIKAI.pdf';
+import MCCB10File2 from '../assets/files/AISIKAI-ASKM1  Series  Catalogue 2023V1.0 (1).pdf';
+import MCCB10File3 from '../assets/files/AISIKAI-ASKM1 SERIES MCCB USER MANUAL.pdf';
+import MCCB11File1 from '../assets/files/ASKM2L MCCB Brief Brochure-24V1.0JB-AISIKAI.pdf';
+import MCCB12File1 from '../assets/files/ASKM2 MCCB英文资料-24V1.0JB-AISIKAI.pdf';
+import MCCB13File1 from '../assets/files/ASKM2RT MCCB英文资料-24V1.0JB-AISIKAI.pdf';
+import MCB1File1 from '../assets/files/AISIKAI-ASKB6L SERIES USER MANUAL.pdf';
+import MCB3File1 from '../assets/files/AISIKAI-ASKB5L SERIES USER MANUAL.pdf';
+import MCB4File1 from '../assets/files/AISIKAI-ASKB5 SERIES USER MANUAL.pdf';
+import MCB5File1 from '../assets/files/2019-Miniature Circuit Breaker Catalogue.pdf';
+import LIS1File1 from '../assets/files/SKG1 SERIES LIS Catalogue - LIS23V1.0 - AISIKAI.pdf';
+import IPM1File1 from '../assets/files/IPM-Intelligent Power Meter Catalogue_2019.V1.0.pdf';
+import IBCFile1 from '../assets/files/AISIKAI-BAC SERIES USER MANUAL-24V1.0.pdf';
+
 
 // IMAGES FOR TECHNICAL PARAMETERS PRODUCT
 import TPATS2 from '../assets/images/TPATS2.png';
@@ -90,14 +116,26 @@ import TPUCB3 from '../assets/images/TPUCB3.webp';
 import TPUCB4 from '../assets/images/TPUCB4.webp';
 import TPUCB5 from '../assets/images/TDUCB5.webp';
 import TPUCB6 from '../assets/images/TPUCB6.webp';
+import TPMCCB3 from '../assets/images/TPMCCB3.webp';
+import TPMCB71 from '../assets/images/TPMCB71.webp';
+import TPMCB72 from '../assets/images/TPMCB72.webp';
+import TPIBC1 from '../assets/images/TPIBC1.webp';
 
 // IMAGE FOR DESCRIPTION PRODUCT
 import DIAC1 from '../assets/images/DIAC1.webp';
 import DIAC2 from '../assets/images/DIAC2.webp';
+import DMCCB4 from '../assets/images/ASKM1L-work-condition.webp';
+import DMCB81 from '../assets/images/DMCB81.webp';
+import DIBC1 from '../assets/images/DIBC1.webp';
 
 // IMAGE FOR STRUCTURE OVERVIEW
 import SOUCB5 from '../assets/images/SOUCB5.webp';
 import SOUCB6 from '../assets/images/SOUCB6.webp';
+import SOMCB7 from '../assets/images/SOMCB7.webp';
+import SOIBC1 from '../assets/images/SOIBC1.webp';
+
+//IMAGE FOR STRUCTURE DRAWING
+import SDMCCB3 from '../assets/images/SDMCCB3.webp';
 
 const Products = () => {
     const [activeCategory, setActiveCategory] = useState();
@@ -550,106 +588,165 @@ const Products = () => {
                 { 
                     name: "ASKM2E-Y Series Intelligent Electronic Molded Case Circuit Breaker", 
                     image: MCCB5, 
+                    subtitle: "ASKM2E-Y Molded Case Circuit Breaker Intelligent Electronic with LCD display",
                     model: "ASKM2E-Y", 
                     brand: "Aisikai", 
-                    description: "An intelligent electronic molded case circuit breaker.", 
-                    brochure: "/brochures/askm2e-y-mccb.pdf" 
+                    description: "", 
+                    techinicalparameters: "",
+                    faq: "",
+                    brochure: MCCB1File1 
                 },
                 { 
                     name: "ASKM2E Series Intelligent Electronic Molded Case Circuit Breaker", 
                     image: MCCB6, 
                     model: "ASKM2E", 
                     brand: "Aisikai", 
-                    description: "An intelligent electronic molded case circuit breaker.", 
-                    brochure: "/brochures/askm2e-mccb.pdf" 
+                    description: "An intelligent electronic molded case circuit breaker.",
+                    techinicalparameters: "",
+                    faq: "", 
+                    brochure: MCCB2File1 
                 },
                 { 
                     name: "ASKM1 Series Normal Protection Molded Case Circuit Breaker", 
                     image: MCCB7, 
                     model: "ASKM1", 
                     brand: "Aisikai", 
-                    description: "A normal protection molded case circuit breaker.", 
-                    brochure: "/brochures/askm1-mccb.pdf" 
+                    description: <p>
+                        ASKM1 Series Normal Protection Type MCCB have advantages like small size, high breaking capacity, short arc and vibration resistant. <br /><br />
+                        The rated insulation voltage of MCCB is 800V. It's suitable for the power distribuiton network of AC50Hz, rated working voltage 
+                        690V(400V for ASKM1-63A) and below, rated working current up to 1600A. Besides distributing the power. MCCB also works as the protection 
+                        device of circuit and power equipment for overload, short-circuit, and undervoltage. <br /><br />
+                        MCCB is also suitable for the infrequent conversions of the circuits and for the overload, short circuit, undervoltage protection and 
+                        infrequent starts of the motors. The MCCB have isolation function. <br /><br />
+                        According to the level of its rated ultimate short circuit breaking capacity, the circuit breaker is divided into three categories, 
+                        L type(normal type), M type(medium type), H(high type).
+                    </p>,
+                    technicalparameters: TPMCCB3,
+                    structuredrawings: SDMCCB3, 
+                    brochure: [MCCB3File1, MCCB3File2, MCCB3File3] 
                 },
                 { 
                     name: "ASKM1L Series Leakage Protection Molded Case Circuit Breaker", 
                     image: MCCB8, 
                     model: "ASKM1L", 
                     brand: "Aisikai", 
-                    description: "A leakage protection molded case circuit breaker.", 
-                    brochure: "/brochures/askm1l-mccb.pdf" 
+                    description: <p>
+                        <b>STANDARD</b><br />
+                        GB 14048.2, IEC60947-2 <br /><br />
+                        <b>CLASSIFICATION</b><br />
+                        There're 4  shell frames of ASKM1L according to the rated current of over-current tripper: <br />
+                        125 frame: 16, 20, 25, 32, 40, 50, 63, 80, 100, 125A; <br />
+                        250 frame: 100, 125, 140, 160, 180, 200, 225, 250; <br />
+                        400 frame: 225, 250, 315, 350, 400A; <br />
+                        630 frame: 400, 500, 630A. <br /><br />
+                        <b>WORKING CONDITIONS</b> <br />
+                        <img src={DMCCB4} alt="workingcondition-image" />
+                    </p>, 
+                    brochure: MCCB4File1, MCCB4File2, MCCB4File3  
                 },
                 { 
                     name: "ASKM3EL Series LCD Electronic Leakage Protection MCCB", 
                     image: MCCB9, 
                     model: "ASKM3EL", 
                     brand: "Aisikai", 
-                    description: "An LCD electronic leakage protection molded case circuit breaker.", 
-                    brochure: "/brochures/askm3el-mccb.pdf" 
+                    description: "", 
+                    brochure: [MCCB5File1, MCCB5File2] 
                 },
                 { 
                     name: "ASKM3E-Y Series LCD Electronic Normal Protection MCCB", 
                     image: MCCB10, 
                     model: "ASKM3E-Y", 
                     brand: "Aisikai", 
-                    description: "An LCD electronic normal protection molded case circuit breaker.", 
-                    brochure: "/brochures/askm3e-y-mccb.pdf" 
+                    description: "", 
+                    brochure: [MCCB6File1, MCCB6File2]
                 },
                 { 
                     name: "ASKM3E Series Electronic Normal Protection MCCB", 
                     image: MCCB11, 
                     model: "ASKM3E", 
                     brand: "Aisikai", 
-                    description: "An electronic normal protection molded case circuit breaker.", 
-                    brochure: "/brochures/askm3e-mccb.pdf" 
+                    description: "", 
+                    brochure: [MCCB6File1, MCCB6File2]
                 },
                 { 
                     name: "ASKM3L Series Thermomagnetic Leakage Protection MCCB", 
                     image: MCCB12, 
                     model: "ASKM3L", 
                     brand: "Aisikai", 
-                    description: "A thermomagnetic leakage protection molded case circuit breaker.", 
-                    brochure: "/brochures/askm3l-mccb.pdf" 
+                    description: "", 
+                    brochure: [MCCB6File1, MCCB6File2]
                 },
                 { 
                     name: "ASKM3 Series Thermomagnetic Normal Protection MCCB", 
                     image: MCCB13, 
                     model: "ASKM3", 
                     brand: "Aisikai", 
-                    description: "A thermomagnetic normal protection molded case circuit breaker.", 
-                    brochure: "/brochures/askm3-mccb.pdf" 
+                    description: "", 
+                    brochure: [MCCB6File1, MCCB6File2]
                 },
                 { 
                     name: "ASKM1E Series Electronic Molded Case Circuit Breaker", 
                     image: MCCB14, 
                     model: "ASKM1E", 
                     brand: "Aisikai", 
-                    description: "An electronic molded case circuit breaker.", 
-                    brochure: "/brochures/askm1e-mccb.pdf" 
+                    description: <p>
+                        ASKM1E intelligent electronic molded case circuit breaker (hereinafter referred as MCCB) is a new type of circuit breaker designed and developed by our company 
+                        using international advanced technilogy. MCCB is suitable for the distribution network of AC 50Hz, rated insulation voltage 1000V, rated voltage 400V and rated 
+                        current up to 800A. MCCB can be used for infrequent switing of lines and infrequent starting of motors. <br /><br />
+
+                        MCCB have 3-section protection function (LSI ), 4-section protection function (LSIG) and under-voltage protection function. MCCB can protect circuits and power 
+                        equipment from damage. Low temperature to -40 ℃ type circuit breaker is available.
+                    </p>, 
+                    brochure: [MCCB10File1, MCCB10File2, MCCB10File3] 
                 },
                 { 
                     name: "ASKM2L Series Leakage Protection Molded Case Circuit Breaker", 
-                    image: MCCB15, 
+                    image: MCCB15,
+                    subtitle: "ASKM2L thermomagnetic leakage protection molded case circuit breaker rated insulation voltage of MCCB is 1000V. MCCB is suitable for the distribution network of AC 50/60Hz, rated voltage 400Vand below, rated current 1up to 1250A.", 
                     model: "ASKM2L", 
                     brand: "Aisikai", 
-                    description: "A leakage protection molded case circuit breaker.", 
-                    brochure: "/brochures/askm2l-mccb.pdf" 
+                    description: <p>
+                        ASKM2L thermomagnetic leakage protection intelligent molded case circuit breaker(hereinafter referred to as MCCB) is a new type of circuit breaker designed and 
+                        developed by our company using international advanced technology. <br /><br /> 
+                        The rated insulation voltage of MCCB is 1000V. MCCB is suitable for the distribution network of AC 50Hz, rated voltage 400Vand below, rated current up to 1250A. <br /><br />
+                        MCCB can also be used for infrequent switching of lines and infrequent starting of motors. <br /><br />
+                        MCCB has overload, short-circuit and under-voltage protection, can protect the line and power equipment from damage. <br /><br />
+                        Protection can also be provided against fire hanzards that may be caused by long-standing ground faults that cannot be detected by over-current protection
+                    </p>,
+                    technicalparameters: "", 
+                    brochure: MCCB11File1 
                 },
                 { 
                     name: "ASKM2 Series Normal Protection Molded Case Circuit Breaker", 
-                    image: MCCB16, 
+                    image: MCCB16,
+                    subtitle: "ASKM2 thermomagnetic molded case circuit breaker rated insulation voltage of MCCB is 1000V. MCCB is suitable for the distribution network of AC 50/60Hz, rated voltage 690Vand below, rated current 10A-1250A.", 
                     model: "ASKM2", 
                     brand: "Aisikai", 
-                    description: "A normal protection molded case circuit breaker.", 
-                    brochure: "/brochures/askm2-mccb.pdf" 
+                    description: <p>
+                        ASKM2 thermomagnetic molded case circuit breaker(hereinafter referred to as MCCB) is a new type of circuit breaker designed and developed by our company using 
+                        international advanced technology. The rated insulation voltage of MCCB is 1000V. MCCB is suitable for the distribution network of AC 50/60Hz, rated voltage 
+                        690V and below, rated current 10A-1250A. <br /><br />
+                        MCCB can distribute power and protectcircuits and power equipment against faults like overload, under-voltage, short-circuit and under-voltage. MCCB can also be used for infrequent 
+                        switching of lines and infrequent starting of motors. <br /><br />
+                        The products have the characteristics of small volume, high breaking capacity, short flying arc, vibration resistant, etc. The whole series have isolation function.
+                    </p>, 
+                    brochure: MCCB12File1 
                 },
                 { 
                     name: "ASKM2RT Series Thermal-magnetic Adjustable Normal Protection Molded", 
                     image: MCCB17, 
+                    subtitle: "ASKM2RT thermal-magnetic molded case circuit breaker rated insulation voltage of MCCB is 1000V. MCCB is suitable for the distribution network of AC 50/60Hz, rated voltage 690Vand below, rated current 10A-8000A.",
                     model: "ASKM2RT", 
                     brand: "Aisikai", 
-                    description: "A thermal-magnetic adjustable normal protection molded case circuit breaker.", 
-                    brochure: "/brochures/askm2rt-mccb.pdf" 
+                    description: <p>
+                        ASKM2RT thermal-magnetic molded case circuit breaker(hereinafter referred to as MCCB) is a new type of circuit breaker designed and developed by our company using 
+                        international advanced technology. The rated insulation voltage of MCCB is 1000V. MCCB is suitable for the distribution network of AC 50/60Hz, rated voltage 690V 
+                        and below, rated current 10A-800A. <br /><br />
+                        MCCB can distribute power and protectcircuits and power equipment against faults like overload, under-voltage, short-circuit and under-voltage. MCCB can also be 
+                        used for infrequent switching of lines and infrequent starting of motors. <br /><br />
+                        The products have the characteristics of small volume, high breaking capacity, short flying arc, vibration resistant, etc. The whole series have isolation function.
+                    </p>, 
+                    brochure: [MCCB13File1] 
                 }
             ] 
         },
@@ -662,64 +759,164 @@ const Products = () => {
                     image: MCB5, 
                     model: "ASKB6L", 
                     brand: "Aisikai", 
-                    description: "A leakage protection miniature circuit breaker.", 
-                    brochure: "/brochures/askb6l-mcb.pdf" 
+                    description: <p>
+                        <b>OVERVIEW</b> <br />
+                        ASKB6L leakage protection type miniature circuit breaker is suitable for lines of AC 50Hzrated operational voltage 230V, rated current below 32A, used for 
+                        indirect contact protection for people, and over-current protection for buildings and lines for similar purposesASKB6L also provide protection against fires 
+                        caused by persistent ground faults due to theinaction of the over-current protection devices. Leakage circuit breakers with over-voltageprotection also protect 
+                        against excessive voltage increases due to grid faults.This series of residua current-action circuit breakers have been increasinaly used inlow-voltage distribution 
+                        systems as backup protection for ground faults and direct contactand indirect contact electric shocks.
+                    </p>, 
+                    brochure: MCB1File1 
                 },
                 { 
                     name: "ASKB6 Series Leakage Protection MCB", 
                     image: MCB6, 
                     model: "ASKB6", 
                     brand: "Aisikai", 
-                    description: "A leakage protection miniature circuit breaker.", 
-                    brochure: "/brochures/askb6-mcb.pdf" 
+                    description: <p>
+                        <b>OVERVIEW</b> <br />
+                        ASKB6 series household miniature circuit breakers are suitable for the end power distributiorlines of office buildings, residences and general industrial use. 
+                        ASKB6 can protect linesagainst overload and short-circuit, and provide functions of isolation and control. Undernormal conditions, MCB can also be used in 
+                        infrequent on-off control of electrical devices anolighting lines. The MCB are suitable for AC 50/60Hz, rated voltage below 230V. rated currentbelow 40A.
+                        </p>, 
+                    brochure: MCB1File1 
                 },
                 { 
                     name: "ASKB5L Series Leakage Protection MCB", 
                     image: MCB7, 
                     model: "ASKB5L", 
                     brand: "Aisikai", 
-                    description: "A leakage protection miniature circuit breaker.", 
-                    brochure: "/brochures/askb5l-mcb.pdf" 
+                    description: <p>
+                        <b>OVERVIEW</b> <br />
+                        ASKB5L leakage protection type miniature circuit breaker consist of ASKB5 normal protec-tion type MCB and leakage tripper. ASKB5L is the latest type of current-action 
+                        typeelectronic leakage circuit breaker. The main components include zero sequence currenttransformer, electronic detection board, tripper and the MCB body.ASKB5L is 
+                        suitable forlighting and power distribution lines of AC 50Hz, rated operational voltage 230V/400V.rated current below 63A, protecting the lines against overload, 
+                        short-circuit and leakage.
+                        </p>, 
+                    brochure: MCB3File1 
                 },
                 { 
                     name: "ASKB5 Series Leakage Protection MCB", 
                     image: MCB8, 
                     model: "ASKB5", 
                     brand: "Aisikai", 
-                    description: "A leakage protection miniature circuit breaker.", 
-                    brochure: "/brochures/askb5-mcb.pdf" 
+                    description: <p>
+                        <b>OVERVIEW</b> <br />
+                        ASKB5 normal protection type miniature circuit breaker has features as advanced structure.reliable performance, high breaking capacity, beautiful and compact appearance, 
+                        etc. Shelland three parts are made of impact resistant and high flame retardant materials. ASKB5 aresuitable for AC 50Hz or 60Hz, rated operational voltage below 400V, 
+                        rated current below 63A.MCB are mainly used for the overload and short-circuit protection of lines and equipment inlighting and power distribution in office buildings, 
+                        residences and similar buildings. Undernormal conditions, MCB can also be used in infrequent on-off control of electrical devices andlighting lines.
+                    </p>,  
+                    brochure: MCB4File1 
                 },
                 { 
                     name: "ASKB2L Series Leakage Protection MCB", 
                     image: MCB9, 
                     model: "ASKB2L", 
                     brand: "Aisikai", 
-                    description: "A leakage protection miniature circuit breaker.", 
-                    brochure: "/brochures/askb2l-mcb.pdf" 
+                    description: <p>
+                        <b>OVERVIEW</b>
+                        ASKB2 series home use circuit breakers are suitable for commercial office buildings, residential buildings and general industrial terminal distribution lines, 
+                        providing overload and short-circuit protection.  ASKB2 can also be used for  the infrequently switch of circuit. This circuit breaker is used in circuits of AC 50/60Hz, 
+                        rated voltage 230V, rated current 32A. <br /><br />
+                        The on/off status of the breaker can be clearly distinguished from the red/green color of the windows on the front panel. <br /><br />
+                        <b>STANDARDS</b> <br />
+                        IEC/EN 61009-1
+                        GB10917.1
+                    </p>, 
+                    brochure: MCB5File1 
                 },
                 { 
                     name: "ASKB2 Series Normal Protection MCB", 
                     image: MCB10, 
                     model: "ASKB2", 
                     brand: "Aisikai", 
-                    description: "A normal protection miniature circuit breaker.", 
-                    brochure: "/brochures/askb2-mcb.pdf" 
+                    description: <p>
+                    <b>OVERVIEW</b>
+                    ASKB2 series home use circuit breakers are suitable for commercial office buildings, residential buildings and general industrial terminal distribution lines, providing 
+                    overload and short-circuit protection.  ASKB2 can also be used for  the infrequently switch of circuit. This circuit breaker is used in circuits of AC 50/60Hz, 
+                    rated voltage 230V, rated current 32A. <br /><br />
+                    The circuit breaker adopts innovative design of "phase line+N line", so phase lines and neutral line can be cut off at the same time. This design improves the use safety, 
+                    because it avoids the personal and fire hazards caused by the reverse connection between phase line and neutral line or the high ground potential caused by neutral 
+                    line when using unipolar circuit breaker. <br /><br />
+                    The compact shape design makes it only 18mm thick. Meet the high standard requirement of components volume for household distribution boxes. <br /><br />
+                    It has a high breaking ability and adopts modular design. It can be used in conjunction with a variety of accessories to meet customers' requirements. <br /><br />
+                    The on/off status of the breaker can be clearly distinguished from the red/green color of the windows on the front panel. <br /><br />
+                    <b>STANDARDS</b> <br />
+                    IEC60898-1
+                    GB10963.1 <br /><br />
+                    <b>FEATURES</b> <br />
+                    Clear View For On/Off Status <br />
+                    Innovative design of "phase line+N line", which makes it possible to cut off phase lines and neutral lines at the same time. <br />
+                    Great improves safety. <br />
+                    High Breaking Capacity, Up to 10KA <br />
+                    Ventilation Groove Shell Design, Active Cooling, Reducing Temperature Rise <br />
+                    Composite High Conductive Material, Longer Service Life <br />
+                    Ergonomic Operation Design, Anti-Skid Handle, Easy to Operate <br />
+                    Advanced Structrure, Reliable Performance <br />
+                    Beautiful Design, Compact Size <br />
+                    High Impact Resistant, High Flame Retardant Material <br /> 
+                </p>,  
+                    brochure: MCB5File1 
                 },
                 { 
                     name: "ASKB1L Series Leakage Protection MCB", 
                     image: MCB11, 
                     model: "ASKB1L", 
                     brand: "Aisikai", 
-                    description: "A leakage protection miniature circuit breaker.", 
-                    brochure: "/brochures/askb1l-mcb.pdf" 
+                    description: <p>
+                    <b>OVERVIEW</b>
+                    ASKB1L leakage protection miniature circuit breaker is composed of ASKB1 normal type and the leakage release. <br />
+                    It's the latest type of current action type electronic leakage protection circuit breaker. <br />
+                    Its main components include zero-sequence current transformer, electronic detection board, release and miniature breaker main body. <br />
+                    ASKB1L is suitable for the AC50Hz, rated working voltage 230/400V, rated current 125A lighting and distribution system circuits. It can protect the circuits from overload, 
+                    short circuit and leakage. <br />
+                    The on/off status of the breaker can be clearly distinguished from the red/green color of the windows on the front panel. <br /><br />
+                    <b>STANDARDS</b> <br />
+                    IEC61009-1 <br />
+                    GB10917.1/22 <br /><br />
+                    <b>FEATURES</b> <br />
+                    Clear View For On/Off Status <br />
+                    Advanced Structrure, Reliable Performance <br />  
+                    High Breaking Capacity <br />
+                    Beautiful Design, Compact Size <br />
+                    High Impact Resistant, High Flame Retardant Material 
+                </p>,
+                    technicalparameters: [TPMCB71, TPMCB72],
+                    structureoverview: SOMCB7,  
+                    brochure: MCB5File1 
                 },
                 { 
                     name: "ASKB1 Series Normal Protection MCB", 
                     image: MCB12, 
                     model: "ASKB1", 
                     brand: "Aisikai", 
-                    description: "A normal protection miniature circuit breaker.", 
-                    brochure: "/brochures/askb1-mcb.pdf" 
+                    description: <p>
+                        <b>OVERVIEW</b><br />
+                        ASKB1-63 series high-segment miniature circuit breaker has the characteristics of advanced stucture, reliable performance, 
+                        high breaking capacity and compact appearance. The shell and other parts are made of impact resistant and high flame 
+                        retardant materials. Used in places with AC 50Hz or 60Hz, rated working voltage below 400V and rated current below 125A.
+                        It is mainly used for overload and short circuit protection of circuits and equipments in lighting system and power 
+                        distribution system of office buildings, residential buildings and etc. It can also control the opening and closing of 
+                        electrical devices and lighting lines in normal conditions. The on/off status of the breaker can be clearly distinguished 
+                        from the red/green color of the windows on the front panel.<br /><br />
+                        <b>STANDARDS</b><br />
+                        IEC60898-1 <br />
+                        GB10963.1<br /><br />
+                        <b>FEATURES</b>
+                        Clear View For On/Off Status <br />
+                        High Breaking Capacity, Up to 10KA <br />
+                        Ventilation Groove Shell Design, Active Cooling, Reducing Temperature Rise <br />
+                        Composite High Conductive Material, Longer Service Life <br />
+                        Ergonomic Operation Design, Anti-Skid Handle, Easy to Operate <br />
+                        Advanced Structrure, Reliable Performance <br /> 
+                        Beautiful Design, Compact Size <br />
+                        High Impact Resistant, High Flame Retardant Material <br /><br />
+                        <b>USE CONDITIONSD</b><br />
+                        <img src={DMCB81} />
+                    </p>, 
+                    brochure: MCB5File1 
                 }
             ] 
         },
@@ -732,8 +929,19 @@ const Products = () => {
                     image: LIS1, 
                     model: "SKG1", 
                     brand: "Aisikai", 
-                    description: "A load isolation switch for electrical systems.", 
-                    brochure: "/brochures/skg1-load-isolation-switch.pdf" 
+                    description: <p>
+                        <b>OVERVIEW</b><br />
+                        Load isolation switch is indipensible device in power distribution field. SKG1 series LIS is installed on the primary 
+                        distribution system, can isolate the main power from the lower distribution system, greatly  improve the safety factor of 
+                        maintenance personnel when overhaul distribution system. Load isolation switch is capable of on load operating. Load 
+                        isolation switch is the ideal substitute for the knife isolation switch, for LIS has much better performance in safety and 
+                        reliability. LIS is widely used in the power distribution system and automation system in the fields of construction, 
+                        electricity, petrochemistry and etc.<br /><br />
+                        <b>STANDARDS</b><br />
+                        IEC60898-1-2002 <br />
+                        GB10963.1-2005
+                    </p>, 
+                    brochure: LIS1File1 
                 }
             ] 
         },
@@ -746,8 +954,13 @@ const Products = () => {
                     image: OAUP1, 
                     model: "OAUP", 
                     brand: "Aisikai", 
-                    description: "A protector for overvoltage and undervoltage conditions.", 
-                    brochure: "/brochures/overvoltage-undervoltage-protector.pdf" 
+                    description: <p>
+                        <b>OVERVIEW</b> <br />
+                        ASKP Overvoltage and Undervoltage Protector(also called VPS) cut off power fastly in the case of overvoltage or 
+                        undervoltage, prevent electrical devices from being damaged from the transient impulse voltage. When power voltage 
+                        recovers normal, after a delay time, ASKP VPS can re-connect power circuits and restore electric service. 
+                    </p>, 
+                    brochure: "" 
                 }
             ] 
         },
@@ -760,24 +973,51 @@ const Products = () => {
                     image: SPD1, 
                     model: "SKD3", 
                     brand: "Aisikai", 
-                    description: "A surge protective device for electrical systems.", 
-                    brochure: "/brochures/skd3-surge-protective-device.pdf" 
+                    description: <p>
+                        <b>OVERVIEW</b> <br />
+                        Surge Protective Device is used to limit the transient overvoltage and take surge current, providing protections from surges 
+                        caused by indirect lightning, direct lightning or other transient overvoltage. <br /><br />
+                        SPD have protective modes like phase-phase, phase-earth, phase-neutral, neutral-earth and etc.
+                        <br /><br />
+                        SKD series SPD belongs to one terminal type SPD. It is the dedicated product designed for the lightning protection in power 
+                        systems. SPD protect circuit devices by releasing the massive pulse engergy caused by induced lightning strikes on circuit, 
+                        short-circuit discharge to earth , reducing the potential difference between device interfaces. 
+                    </p>, 
+                    brochure: "" 
                 },
                 { 
                     name: "SKD2 Series Surge Protective Device", 
                     image: SPD2, 
                     model: "SKD2", 
                     brand: "Aisikai", 
-                    description: "A surge protective device for electrical systems.", 
-                    brochure: "/brochures/skd2-surge-protective-device.pdf" 
+                    description: <p>
+                        <b>OVERVIEW</b> <br />
+                        Surge Protective Device is used to limit the transient overvoltage and take surge current, providing protections from surges 
+                        caused by indirect lightning, direct lightning or other transient overvoltage. <br /><br />
+                        SPD have protective modes like phase-phase, phase-earth, phase-neutral, neutral-earth and etc.
+                        <br /><br />
+                        SKD series SPD belongs to one terminal type SPD. It is the dedicated product designed for the lightning protection in power 
+                        systems. SPD protect circuit devices by releasing the massive pulse engergy caused by induced lightning strikes on circuit, 
+                        short-circuit discharge to earth , reducing the potential difference between device interfaces.
+                    </p>, 
+                    brochure: "" 
                 },
                 { 
                     name: "SKD1 Series Surge Protective Device", 
                     image: SPD3, 
                     model: "SKD1", 
                     brand: "Aisikai", 
-                    description: "A surge protective device for electrical systems.", 
-                    brochure: "/brochures/skd1-surge-protective-device.pdf" 
+                    description: <p>
+                    <b>OVERVIEW</b> <br />
+                    Surge Protective Device is used to limit the transient overvoltage and take surge current, providing protections from surges 
+                    caused by indirect lightning, direct lightning or other transient overvoltage. <br /><br />
+                    SPD have protective modes like phase-phase, phase-earth, phase-neutral, neutral-earth and etc.
+                    <br /><br />
+                    SKD series SPD belongs to one terminal type SPD. It is the dedicated product designed for the lightning protection in power 
+                    systems. SPD protect circuit devices by releasing the massive pulse engergy caused by induced lightning strikes on circuit, 
+                    short-circuit discharge to earth , reducing the potential difference between device interfaces.
+                </p>, 
+                    brochure: "" 
                 }
             ] 
         },
@@ -788,10 +1028,10 @@ const Products = () => {
                 { 
                     name: "Intelligent Power Meter", 
                     image: IPM1, 
-                    model: "IPM", 
+                    model: "ASKY", 
                     brand: "Aisikai", 
-                    description: "An intelligent power meter for monitoring electrical systems.", 
-                    brochure: "/brochures/intelligent-power-meter.pdf" 
+                    description: "", 
+                    brochure: IPM1File1 
                 }
             ] 
         },
@@ -802,10 +1042,27 @@ const Products = () => {
                 { 
                     name: "Intelligent Battery Charger", 
                     image: BC1, 
-                    model: "IBC", 
+                    model: "BAC", 
                     brand: "Aisikai", 
-                    description: "An intelligent battery charger for various applications.", 
-                    brochure: "/brochures/intelligent-battery-charger.pdf" 
+                    description: <p>
+                        BAC series battery charger is specially designed for the  generator starting lead-acid battery. It uses the latest switch 
+                        power components and 2-stages charging method. BAC06A is suitable for the long-term trickle charging(floating charge) of 
+                        lead-acid battery. The maximum charging current for 12V charger is 6A, and the maximum charge current for 24V charger is 10A. 
+                        <br /><br />
+                        <b>FEATURES</b> <br />
+                        1. Switch power structure design; wide range of AC voltage input; small volume, light weight and high efficiency. <br />
+                        2. Use 2-stages charging method: constant current firsty and then constant voltage. Fully follow the charging
+                           characteristic of the lead-acid battery, can avoid overcharging and largely extend the battery life. <br />
+                        3. Protection of short circuit and reverse connection. <br />
+                        4. Charging voltage and current can be field adjusted via potentiometer. <br />
+                        5. LED display for AC power indication and charging indication. <br />
+                        6. Easy to install horizontally. <br /><br />
+                        <b>CHARGING PRINCIPLE</b> <br />
+                        <img src={DIBC1} />
+                    </p>, 
+                    technicalparameters: TPIBC1, 
+                    structureoverview: SOIBC1,
+                    brochure: IBCFile1 
                 }
             ] 
         }
@@ -855,22 +1112,23 @@ const Products = () => {
                             <div className='flex flex-col gap-4'>
                                 {/* Product Details */}
                                 <div className="w-full bg-white px-6 rounded-lg shadow flex flex-col xl:flex-row gap-6 justify-center items-center">
-                                    <div className='size-1/3 p-24'>
+                                    <div className='size-full xl:size-1/3 p-2 xl:p-24'>
                                         <img src={selectedProduct.image} alt={selectedProduct.name} className="w-full h-full object-cover" />
                                     </div>
                                     
-                                    <div className="w-1/2 flex flex-col justify-start">
+                                    <div className="xl:w-1/2 flex flex-col justify-start py-4">
                                         <h1 className="text-2xl font-bold mb-4">{selectedProduct.name}</h1>
                                         <p className='text-md mb-4'> {selectedProduct.subtitle || "N/A"} </p>
 
                                         <p className="text-md mb-4"><strong>Model:</strong> {selectedProduct.model || "N/A"}</p>
                                         <p className="text-md mb-4"><strong>Brand:</strong> {selectedProduct.brand || "N/A"}</p>
+                                        <a href="mailto:detapowergensetindonesia@gmail.com" className='text-white bg-primary px-18 xl:px-12 py-2 w-1/3 font-medium text-lg border-[0.1rem] rounded-full flex items-center justify-center'>Inquire</a>
                                     </div>
                                 </div>
 
                                 {/* Tabs for Description and Brochure */}
                                 <div className="w-full bg-gray-100 p-6 rounded-lg shadow">
-                                    <div className="flex border-b border-gray-300 mb-4">
+                                    <div className="flex flex-col xl:flex-row border-b border-gray-300 mb-4">
                                         <button
                                             className={`px-4 py-2 font-medium ${activeTab === "description" ? "border-b-2 border-primary text-primary" : "text-gray-500"}`}
                                             onClick={() => setActiveTab("description")}>
@@ -911,13 +1169,19 @@ const Products = () => {
                                 
                                     {activeTab === "technicalparameters" && (
                                         <div className="h-auto text-gray-700">
-                                            <img src={selectedProduct.technicalparameters} alt="technical-parameters-image" className='w-full'/>
+                                            {Array.isArray(selectedProduct.technicalparameters) ? (
+                                                selectedProduct.technicalparameters.map((image, index) => (
+                                                    <img key={index} src={image || selectedProduct.none} className="w-full mb-4" />
+                                                ))
+                                            ) : (
+                                                <img src={selectedProduct.technicalparameters || selectedProduct.none} className="w-full" />
+                                            )}
                                         </div>
                                     )}  
 
                                     {activeTab === "structureoverview" && (
                                         <div className="h-auto text-gray-700">
-                                            <img src={selectedProduct.structureoverview} alt="technical-parameters-image" className='w-full'/>
+                                            <img src={selectedProduct.structureoverview || selectedProduct.none} className='w-full h-full object-contain'/>
                                         </div>
                                     )} 
                                     
@@ -928,14 +1192,14 @@ const Products = () => {
                                     )}
 
                                     {activeTab === "brochure" && (
-                                        <div className="flex flex-col gap-4">
+                                        <div className="flex flex-col gap-4 overflow-auto">
                                             {Array.isArray(selectedProduct.brochure) ? (
                                                 selectedProduct.brochure.map((brochure, index) => (
-                                                    <div key={index} className="flex flex-row items-center gap-2">
+                                                    <div key={index} className="flex flex-col xl:flex-row items-start justify-start">
                                                         <FaFilePdf />
                                                         <a
                                                             href={brochure}
-                                                            className="text-primary font-medium underline"
+                                                            className="text-primary font-medium underline xl:px-12"
                                                             download
                                                         >
                                                             {brochure.split('/').pop() || `Brochure ${index + 1}`}
