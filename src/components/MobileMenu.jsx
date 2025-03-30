@@ -68,7 +68,7 @@ const MobileMenu = ({ logo, linkToNav, handleShowMenu }) => {
             </button>
             
             <div className="flex flex-col gap-8">
-                <a href="/home">
+                <a href="/">
                     <img src={logo} alt="logo-aisikai" className="w-full"/>
                 </a>
                 
