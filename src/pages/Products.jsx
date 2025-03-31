@@ -1080,19 +1080,19 @@ const Products = () => {
 
     return (
         <section className="font-primary m-0 p-0 box-border">
-            <div className="flex flex-col">
+            <div className="flex flex-col 3xl:px-">
                 <Header />
                 {/* <Breadcrumb /> */}
 
                 <div className="flex flex-col xl:flex-row items-center xl:items-start justify-center gap-6 px-6 xl:px-16 py-12">
                     {/* Left List Menu */}
                     <div className="w-full xl:w-[25rem] bg-gray-200 p-4 rounded-lg items-center flex flex-col justify-center">
-                        <h2 className="text-lg font-bold mb-4">Product Category</h2>
+                        <h2 className="text-md font-bold mb-4">Product Category</h2>
                         <ul className="w-full flex flex-col gap-2">
                             {categories.map((category) => (
                                 <li
                                     key={category.id}
-                                    className={`px-4 py-2 border border-gray-300 rounded-lg cursor-pointer ${
+                                    className={`px-4 py-2 text-sm border border-gray-300 rounded-lg cursor-pointer ${
                                         activeCategory?.id === category.id ? "bg-primary text-white" : "bg-white text-gray-700"
                                     }`}
                                     onClick={() => {
@@ -1111,18 +1111,18 @@ const Products = () => {
                         {selectedProduct ? (
                             <div className='flex flex-col gap-4'>
                                 {/* Product Details */}
-                                <div className="w-full bg-white px-6 rounded-lg shadow flex flex-col xl:flex-row gap-6 justify-center items-center">
-                                    <div className='size-full xl:size-1/3 p-2 xl:p-24'>
+                                <div className="w-full px-6 rounded-lg shadow flex flex-col xl:flex-row gap-6 justify-center items-center">
+                                    <div className='size-full xl:size-1/2 p-2'>
                                         <img src={selectedProduct.image} alt={selectedProduct.name} className="w-full h-full object-cover" />
                                     </div>
                                     
                                     <div className="xl:w-1/2 flex flex-col justify-start py-4">
                                         <h1 className="text-2xl font-bold mb-4">{selectedProduct.name}</h1>
-                                        <p className='text-md mb-4'> {selectedProduct.subtitle || "N/A"} </p>
+                                        <p className='text-sm mb-4'> {selectedProduct.subtitle || "N/A"} </p>
 
                                         <p className="text-md mb-4"><strong>Model:</strong> {selectedProduct.model || "N/A"}</p>
                                         <p className="text-md mb-4"><strong>Brand:</strong> {selectedProduct.brand || "N/A"}</p>
-                                        <a href="mailto:detapowergensetindonesia@gmail.com" className='text-white bg-primary px-18 xl:px-12 py-2 w-1/3 font-medium text-lg border-[0.1rem] rounded-full flex items-center justify-center'>Inquire</a>
+                                        <a href="mailto:detapowergensetindonesia@gmail.com" className='text-white bg-primary px-18 xl:mb-6 xl:px-24 py-2 w-1/3 font-medium text-md border-[0.1rem] rounded-full flex items-center justify-center'>Inquire</a>
                                     </div>
                                 </div>
 
@@ -1163,7 +1163,7 @@ const Products = () => {
                                     {/* Tab Content */}
                                     {activeTab === "description" && (
                                         <div className="h-auto text-gray-700">
-                                            <p>{selectedProduct.description || "No description available."}</p>
+                                            <p className='text-sm font-medium'>{selectedProduct.description || "No description available."}</p>
                                         </div>
                                     )}
                                 
@@ -1187,7 +1187,7 @@ const Products = () => {
                                     
                                     {activeTab === "faq" && (
                                         <div className="h-auto text-gray-700">
-                                            <p>{selectedProduct.faq || "No FAQ Available"}</p>
+                                            <p className='text-sm font-medium'>{selectedProduct.faq || "No FAQ Available"}</p>
                                         </div>
                                     )}
 

@@ -24,11 +24,15 @@ const Footer = () => {
                         <img src={logoAisikai} alt="logo-aisikai" className='w-1/2 xl:w-1/2' />
                     </div>
                     <div className='flex flex-col xl:flex-row gap-8 items-start'>
-                        <button onClick={navToHome}><a href="" className="text-gray-500 font-medium text-3xl xl:text-xl">Home</a></button>
-                        <button onClick={navToProducts}><a href="" className="text-gray-500 font-medium text-3xl xl:text-xl">Products</a></button>
-                        <button onClick={navToAboutUs}><a href="" className="text-gray-500 font-medium text-3xl xl:text-xl whitespace-nowrap">About Us</a></button>
-                        <button onClick={navToDownload}><a href="" className="text-gray-500 font-medium text-3xl xl:text-xl">Downloads</a></button>
-                        <button onClick={navToContactUs}><a href="" className="text-gray-500 font-medium text-3xl xl:text-xl whitespace-nowrap">Contact Us</a></button>
+                        <button onClick={navToHome}><a href="" className={`text-gray-500 ${location.pathname === "/" ? "text-primary" : ""} font-medium text-3xl xl:text-sm`}>Home</a></button>
+                        <span className='text-gray-500'>|</span>
+                        <button onClick={navToProducts}><a href="" className={`text-gray-500 ${location.pathname === "/products" ? "text-primary" : ""} font-medium text-3xl xl:text-sm`}>Products</a></button>
+                        <span className='text-gray-500'>|</span>
+                        <button onClick={navToAboutUs}><a href="" className={`text-gray-500 ${location.pathname === "/about-us" ? "text-primary" : ""} font-medium text-3xl xl:text-sm whitespace-nowrap`}>About Us</a></button>
+                        <span className='text-gray-500'>|</span>
+                        <button onClick={navToDownload}><a href="" className={`text-gray-500 ${location.pathname === "/download" ? "text-primary" : ""} font-medium text-3xl xl:text-sm`}>Downloads</a></button>
+                        <span className='text-gray-500'>|</span>
+                        <button onClick={navToContactUs}><a href="" className={`text-gray-500 ${location.pathname === "/contact-us" ? "text-primary" : ""} font-medium text-3xl xl:text-sm whitespace-nowrap`}>Contact Us</a></button>
                     </div>
                 </div>
                 <div className='w-full border-[0.1rem] border-gray-500'></div>

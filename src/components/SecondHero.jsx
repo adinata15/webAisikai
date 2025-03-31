@@ -11,8 +11,8 @@ const SecondHero = () => {
             <div className="flex flex-col xl:flex-row justify-center items-center gap-8 xl:max-w-3xl">
                 <div className="flex flex-col justify-center items-center xl:items-start gap-6 xl:gap-12 xl:max-w-lg xl:-ml-[24rem]">
                     <div className="flex flex-col justify-start items-center xl:items-start gap-6">
-                        <h2 className="font-bold text-4xl leading-normal  text-white text-center xl:text-left">QUALITY, SERVICE, REPUTATION, INNOVATION</h2>
-                        <p className="font-reguler text-sm sm:text-lg text-white text-center xl:text-left xl:max-w-sm">We’re always eager for making progress to offer reliable 
+                        <h2 className="font-bold text-3xl leading-normal  text-white text-center xl:text-left">QUALITY, SERVICE, REPUTATION, INNOVATION</h2>
+                        <p className="font-reguler text-sm sm:text-md text-white text-center xl:text-left xl:max-w-md">We’re always eager for making progress to offer reliable 
                             products and impeccable services. With your support and trust, we will work towards a brighter future.
                         </p>
                     </div>

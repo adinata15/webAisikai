@@ -102,7 +102,7 @@ const MobileMenu = ({ logo, linkToNav, handleShowMenu }) => {
                 <div className="flex flex-col">
                     {linkToNav.map((item, index) => (
                         <div key={index} className="my-2 sm:my-4 text-4xl sm:text-5xl font-medium">
-                            <a href={item.href}>{item.label}</a>
+                            <a href={item.href} className={`${location.pathname === item.href ? "text-primary" : ""}`}>{item.label}</a>
                         </div>
                     ))}
                 </div>

@@ -4,12 +4,17 @@ import Featured from '../components/Featured';
 import AboutUs from '../components/AboutUs';
 import SecondHero from '../components/SecondHero';
 import Footer from '../components/Footer';
+import SideContact from '../components/SideContact';
 
 const Index = () => {
     return(
         <section className="font-primary m-0 p-0 box-border">
-            <div className="flex flex-col gap-12">
-                <Header />
+            <div className="relative flex flex-col gap-12">
+                <SideContact className="absolute"/>
+                <div className="-mt-12">
+                    <Header />
+                </div>
+                
                 <Hero />
                 <Featured />
                 <AboutUs />
@@ -17,6 +22,7 @@ const Index = () => {
                 <div className='-mt-12'>
                     <Footer/>
                 </div>
+                
             </div>
         </section>
     )
