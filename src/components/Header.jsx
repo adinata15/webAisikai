@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { FiSearch } from "react-icons/fi";
@@ -61,24 +61,36 @@ const Header = () => {
         setFilteredProducts([]);
     };
 
-    const toggleLanguage = (lang) => {
+    const handleLanguageChange = (lang) => {
         setLanguage(lang);
-        document.documentElement.lang = lang;
-
         if (lang === "id") {
-            // Translate to Indonesian
-            document.querySelectorAll("[data-translate]").forEach((element) => {
-                const translation = element.getAttribute("data-translate-id");
-                if (translation) element.textContent = translation;
-            });
+            if (!window.google || !window.google.translate) {
+                const script = document.createElement('script');
+                script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+                script.async = true;
+                window.googleTranslateElementInit = () => {
+                    new window.google.translate.TranslateElement(
+                        { pageLanguage: 'en', includedLanguages: 'id', layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE },
+                        'google_translate_element'
+                    );
+                };
+                document.body.appendChild(script);
+            } else {
+                new window.google.translate.TranslateElement(
+                    { pageLanguage: 'en', includedLanguages: 'id', layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE },
+                    'google_translate_element'
+                );
+            }
         } else {
-            // Revert to English
-            document.querySelectorAll("[data-translate]").forEach((element) => {
-                const original = element.getAttribute("data-translate-en");
-                if (original) element.textContent = original;
-            });
+            window.location.reload(); // Reload the page to reset to English
         }
     };
+
+    useEffect(() => {
+        if (language === "id") {
+            handleLanguageChange("id");
+        }
+    }, [language]);
 
     return (
         <section className="bg-linear-to-r from-white via-blue-50 to-white relative flex flex-row gap-4 py-6 xl:py-[0.05rem] px-6 xl:px-16 justify-between items-center">
@@ -121,10 +133,10 @@ const Header = () => {
                 </div>
 
                 <div className='hidden xl:flex flex-row gap-4 justify-center items-center'>
-                    <button className="w-8" onClick={() => toggleLanguage("id")}>
+                    <button className="w-8" onClick={() => handleLanguageChange("id")}>
                         <img src={iconIndonesia} alt="button-bahasaindonesia" className="w-full h-full object-cover"/>
                     </button>
-                    <button className="w-8" onClick={() => toggleLanguage("en")}>
+                    <button className="w-8" onClick={() => handleLanguageChange("en")}>
                         <img src={iconUk} alt="button-english" className="w-full h-full object-cover"/>
                     </button>
                 </div>

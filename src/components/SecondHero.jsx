@@ -18,7 +18,7 @@ const SecondHero = () => {
                     </div>
                     <div className="flex gap-4">
                         <button><a href="/products" className="text-white border-2 rounded-full px-8 py-2">Product</a></button>
-                        <button><a href="mailto:detapowergensetindonesia@gmail.com" className="text-primary bg-white rounded-full px-8 py-2">Contact</a></button>
+                        <button><a href="/contact-us" className="text-primary bg-white rounded-full px-8 py-2">Contact</a></button>
                     </div>
                 </div>
                 

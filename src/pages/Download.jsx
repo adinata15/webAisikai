@@ -1,5 +1,7 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Breadcrumb from "../components/Breadcrumb";
+import SideContact from "../components/SideContact.jsx";
 
 import FD1 from '../assets/files/Product Catalog 2024—24V1.1-AISIKAI.pdf';
 import FD2 from '../assets/files/SKT SERIES ATS Product Selection Guide-24V1.0-AISIKAI.pdf';
@@ -31,7 +33,9 @@ import FD12image from '../assets/images/fd12.webp';
 const Download = () => {
     return(
         <section>
+            <SideContact className="absolute"/>
             <Header />
+            <Breadcrumb pageName="Download" />
 
             <div className="px-6 xl:px-24 py-12 xl:pb-16 flex flex-col justify-center items-center gap-8 xl:gap-12">
                 <h3 className="text-2xl xl:text-4xl font-bold">Download</h3>

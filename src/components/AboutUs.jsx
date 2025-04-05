@@ -9,14 +9,14 @@ import ImageDT from "../assets/images/development-tenet.webp";
 import { RiSendPlaneFill } from "react-icons/ri";
 import { HiFlag } from "react-icons/hi2";
 import { RiFirebaseFill } from "react-icons/ri";
-import { FaLeaf } from "react-icons/fa";
+
 
 const AboutUs = () => {
 
     const navigate = useNavigate();
 
     const navToCompanyProfile = () => {
-        navigate('/about-us');
+        navigate('/company-profile');
     }
 
     const [isHover, setIsHover] = useState(false);
@@ -24,8 +24,8 @@ const AboutUs = () => {
     
     return(
         <section className="px-6 xl:px-24 bg-gray-100 py-12">
-            <div className="flex flex-col justify-center items-center gap-6 xl:gap-12">
-                <h2 className="font-bold text-2xl 3xl:text-4xl">About Us</h2>
+            <div className="flex flex-col justify-center items-center gap-6">
+                <h2 className="font-bold text-2xl 3xl:text-3xl">About Us</h2>
                 <div className="flex flex-col gap-12 justify-center items-center 3xl:mt-8">
                     <div className="flex flex-col xl:flex-row gap-6 xl:items-start">
                         <div className="flex flex-col justify-center items-center gap-2">
@@ -47,16 +47,16 @@ const AboutUs = () => {
                                 allowfullscreen
                                 className="hidden xl:flex">
                             </iframe>
-                            <h4 className="font-medium text-sm text-gray-800">AISIKAI ELECTRIC INTRODUCTION</h4>
+                            <h4 className="font-medium text-md text-gray-400">AISIKAI ELECTRIC INTRODUCTION</h4>
                         </div>
-                        <div className="flex flex-col justify-between items-start gap-6 text-center xl:text-left px-6 xl:text-md 3xl:text-xl">
+                        <div className="flex flex-col justify-center items-start gap-6 text-center xl:text-left px-6 3xl:text-xl">
                             <p>AISIKAI is located in Yangzhou, a livable and tourist city famous for her beautiful natural scenery and rich cultural heritage.
                                 Since established in 2007, AISIKAI has been committed to the manufacture, research, development and marketing of the high-quality electric switch. <br /> <br />
                                 AISIKAI has obtained the UKAS ISO9001 Quality Management System and SGS Global Qualified Supplier Authentication. We are awarded as the National High-Tech Enterprise, 
                                 Ten Major Brands in Industry and Contract-keeping and Trustworthy Enterprise. Our product lines cover level Ⅰ,Ⅱ,Ⅲ power distribution filed. All products have  Chinese 
                                 Compulsory Certification CCC and European Certification CE. We have several patented technologies, and all products own proprietary intellectual property rights.
                             </p>
-                            <button onClick={navToCompanyProfile} className="self-center px-12 py-2 bg-primary text-white rounded-sm xl:self-start"><a href="">See More</a></button>
+                            <button onClick={navToCompanyProfile} className="self-center px-6 py-4 bg-primary text-white rounded-lg xl:self-start"><a href="">Read More</a></button>
                         </div>
                     </div>
 
@@ -84,7 +84,7 @@ const AboutUs = () => {
                             <div className="size-76 xl:size-60 2xl:size-80 flex flex-col justify-center items-center"
                                 onMouseEnter={() => setIsHover(true)}
                                 onMouseLeave={() => setIsHover(false)}>
-                                    <div className="flex flex-row bg-white py-2 w-full justify-center items-center text-primary gap-2">
+                                    <div className="flex flex-row bg-white py-2 w-full justify-center items-center text-blue-500 gap-2">
                                         <HiFlag />
                                         <h3>Enterprise Vision</h3>
                                     </div>
@@ -123,7 +123,7 @@ const AboutUs = () => {
                                 onMouseEnter={() => setIsHover(true)}
                                 onMouseLeave={() => setIsHover(false)}>
                                     <div className="flex flex-row bg-white py-2 w-full justify-center items-center text-primary gap-2">
-                                        <FaLeaf />
+                                        <RiFirebaseFill />
                                         <h3>Development Tenet</h3>
                                     </div>
                                     <div className="w-full h-96 relative flex flex-col justify-end">

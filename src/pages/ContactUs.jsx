@@ -3,6 +3,8 @@ import emailjs from "emailjs-com";
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Breadcrumb from "../components/Breadcrumb";
+import SideContact from "../components/SideContact";
 
 import { RiCustomerService2Fill } from "react-icons/ri";
 import { MdOutlineFax } from "react-icons/md";
@@ -70,48 +72,55 @@ const ContactUs = () => {
 
     return (
         <section>
+            <SideContact className="absolute"/>
             <Header />
+            <Breadcrumb pageName="Contact Us" />
 
-            <div className="xl:px-0 py-12 flex flex-col justify-center items-center gap-12 xl:gap-24">
-                <div className="w-full flex flex-col xl:flex-row justify-center gap-12 xl:gap-16 xl:px-24">
-                    <div className="flex flex-col px-6 xl:p-0 gap-8 justify-center items-center xl:items-start">
+            <div className="py-12 flex flex-col justify-center items-center gap-12 xl:gap-24">
+                <div className="w-full flex flex-col xl:flex-row justify-center gap-12 xl:gap-16">
+                    <div className="flex flex-col px-6 xl:p-0 gap-2 justify-center items-center xl:items-start">
                         <div className="flex flex-col justify-center items-center xl:items-start gap-2">
                             <h3 className="text-2xl xl:text-4xl font-bold mb-6">Feedback</h3>
-                            <p className="font-medium text-lg text-center xl:text-left xl:max-w-lg">We serve you wholeheartedly, your satisfaction is our pursuit, 
+                            <p className="font-normal text-lg text-center xl:text-left xl:max-w-lg">We serve you wholeheartedly, your satisfaction is our pursuit, 
                                 and we look forward to working together with you to create a win-win situation.</p>
                         </div>
                         
-                        <form onSubmit={handleSubmit} className="w-full max-w-lg bg-white p-6 rounded-lg">
-                            <div className="mb-4">
-                                <label htmlFor="name" className="block text-lg font-medium mb-2">
-                                    Name
-                                </label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
-                                    required
-                                />
+                        <form onSubmit={handleSubmit} className="w-full max-w-2xl bg-white py-6">
+                            <div className="flex flex-col xl:flex-row justify-between">
+                                <div className="mb-4">
+                                    <label htmlFor="name" className="block text-md font-normal mb-2">
+                                        Name
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        className="w-full px-4 py-2 border border-gray-300"
+                                        size={25}
+                                        required
+                                    />
+                                </div>
+                                <div className="mb-4">
+                                    <label htmlFor="phone" className="block text-md font-normal mb-2">
+                                        Phone
+                                    </label>
+                                    <input
+                                        type="tel"
+                                        id="phone"
+                                        name="phone"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        className="w-full px-4 py-2 border border-gray-300"
+                                        size={25}
+                                        required
+                                    />
+                                </div>
                             </div>
+                            
                             <div className="mb-4">
-                                <label htmlFor="phone" className="block text-lg font-medium mb-2">
-                                    Phone
-                                </label>
-                                <input
-                                    type="tel"
-                                    id="phone"
-                                    name="phone"
-                                    value={formData.phone}
-                                    onChange={handleChange}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
-                                    required
-                                />
-                            </div>
-                            <div className="mb-4">
-                                <label htmlFor="email" className="block text-lg font-medium mb-2">
+                                <label htmlFor="email" className="block text-md font-normal mb-2">
                                     Email
                                 </label>
                                 <input
@@ -120,12 +129,12 @@ const ContactUs = () => {
                                     name="email"
                                     value={formData.email}
                                     onChange={handleChange}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                                    className="w-full px-4 py-2 border border-gray-300"
                                     required
                                 />
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="message" className="block text-lg font-medium mb-2">
+                                <label htmlFor="message" className="block text-md font-normal mb-2">
                                     Message
                                 </label>
                                 <textarea
@@ -133,13 +142,13 @@ const ContactUs = () => {
                                     name="message"
                                     value={formData.message}
                                     onChange={handleChange}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                                    className="w-full px-4 py-2 border border-gray-300"
                                     rows="4"
                                     required
                                 ></textarea>
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="verifyCode" className="block text-lg font-medium mb-2">
+                                <label htmlFor="verifyCode" className="block text-md font-normal mb-2">
                                     Verify Code (Enter "12345")
                                 </label>
                                 <input
@@ -148,7 +157,7 @@ const ContactUs = () => {
                                     name="verifyCode"
                                     value={formData.verifyCode}
                                     onChange={handleChange}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                                    className="w-50vh px-4 py-2 border border-gray-300"
                                     required
                                 />
                             </div>
@@ -166,42 +175,54 @@ const ContactUs = () => {
                     
 
                     <div className=" flex flex-col justify-center xl:justify-start items-start sm:items-center xl:items-start gap-8 px-6">
-                        <div className="flex flex-row items-center justify-center gap-4">
-                            <RiCustomerService2Fill className="text-primary size-16"/>
+                        <div className="flex flex-row items-center justify-center gap-10">
+                            <div className=" border-2 rounded-full p-4 border-primary/25">
+                                <RiCustomerService2Fill className="text-primary size-10"/>
+                            </div>
+                            
                             <div className="flex flex-col w-full">
                                 <h3 className="font-bold text-2xl">Tel</h3>
-                                <h3 className="font-medium text-lg">+62 8517 687 9999</h3>
+                                <h3 className="font-normal text-lg xl:text-sm">+62 8517 687 9999</h3>
                             </div>
                         </div>
 
                         <div className="border-[0.10rem] border-dashed border-gray-200 w-full"></div>
 
-                        <div className="flex flex-row items-center justify-center gap-4">
-                            <MdOutlineFax className="text-primary size-16 xl:size-14"/>
+                        <div className="flex flex-row items-center justify-center gap-10">
+                            <div className=" border-2 rounded-full p-4 border-primary/25"> 
+                                <MdOutlineFax className="text-primary size-16 xl:size-10"/>
+                            </div>
+                            
                             <div className="flex flex-col">
                                 <h3 className="font-bold text-2xl">Fax</h3>
-                                <h3 className="font-medium text-lg">+62 8517 687 9999</h3>
+                                <h3 className="font-normal text-lg xl:text-sm">+62 8517 687 9999</h3>
                             </div>
                         </div>
 
                         <div className="border-[0.10rem] border-dashed border-gray-200 w-full"></div>
 
-                        <div className="flex flex-row items-center justify-center gap-4">
-                            <MdOutlineEmail className="text-primary size-16 xl:size-14"/>
+                        <div className="flex flex-row items-center justify-center gap-10">
+                            <div className=" border-2 rounded-full p-4 border-primary/25">
+                                <MdOutlineEmail className="text-primary size-16 xl:size-10"/>
+                            </div>  
+                                
                             <div className="flex flex-col">
                                 <h3 className="font-bold text-2xl">Email</h3>
                                 <h3 className="xl:hidden font-medium text-lg">detapowergensetindonesia <br /> @gmail.com</h3>
-                                <h3 className="hidden font-medium text-lg">detapowergensetindonesia@gmail.com</h3>
+                                <h3 className="font-normal text-lg xl:text-sm">detapowergensetindonesia@gmail.com</h3>
                             </div>
                         </div>
 
                         <div className="border-[0.10rem] border-dashed border-gray-200 w-full"></div>
 
-                        <div className="flex flex-row items-center justify-center gap-4">
-                            <MdOutlinePlace className="text-primary size-16 xl:size-14"/>
+                        <div className="flex flex-row items-center justify-center gap-10">
+                            <div className=" border-2 rounded-full p-4 border-primary/25">
+                                <MdOutlinePlace className="text-primary size-16 xl:size-10"/>
+                            </div>
+                            
                             <div className="flex flex-col">
                                 <h3 className="font-bold text-2xl">Place</h3>
-                                <h3 className="font-medium text-lg">East side of industiral zone, <br /> 
+                                <h3 className="font-normal text-lg xl:text-sm">East side of industiral zone, <br /> 
                                     Chenji Town, Yizheng City, <br /> Jiangsu Province, China</h3>
                             </div>
                         </div>

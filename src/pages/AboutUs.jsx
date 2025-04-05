@@ -6,6 +6,7 @@ import 'swiper/css/pagination';
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Breadcrumb from "../components/Breadcrumb";
 
 import { IoStarSharp } from "react-icons/io5";
 import { RiSendPlaneFill } from "react-icons/ri";
@@ -66,14 +67,18 @@ const AboutUs = () => {
     return(
         <section>
             <Header />
+            <Breadcrumb pageName={"About Us"} />
 
             <div className="flex flex-col py-12 gap-12 xl:gap-24 -mb-12">
 
                 {/* Company Profile */}
-                <div className="flex flex-col gap-4 xl:gap-12 px-6 xl:px-24 justify-center items-center">
-                    <div className="flex flex-col justify-center items-center gap-4 xl:gap-8">
-                        <h3 className="text-2xl xl:text-4xl font-bold">About Aisikai</h3>
-                        <p className="font-medium text-center text-md leading-normal">AISIKAI, established in 2007, is dedicated to the high quality research, development, manufacturing, and sales of electrical products. Over the years, the company has proactively expanded its business into four major market segments: 
+                <div className="flex flex-col xl:flex-row gap-4 xl:gap-12 px-6 xl:px-24 justify-center items-center">
+                    <div className="flex flex-col justify-center items-center xl:items-start gap-4 xl:gap-8">
+                        <div className="flex flex-row justify-start items-center gap-2">
+                            <div className="h-8 border-2 border-primary"></div>
+                            <h3 className="text-2xl xl:text-4xl font-bold">About Aisikai</h3>
+                        </div>
+                        <p className="font-medium text-center xl:text-left text-md leading-normal">AISIKAI, established in 2007, is dedicated to the high quality research, development, manufacturing, and sales of electrical products. Over the years, the company has proactively expanded its business into four major market segments: 
                             New Energy, Power Quality, Industrial Control, and Power Distribution.
                             With exceptional R&D strength, AISIKAI has earned recognition as a high-tech company, a company specializing in new technology, and a software company. The company holds certifications such as ISO9001, ISO14001, ISO45001, and consistently maintains a 3A grade credit enterprise. <br /><br />
                             Since its establishment, AISIKAI has consistently prioritized product quality. Guided by independent research and development, the company continually introduces innovations, securing numerous invention patents, utility model patents, and design patents. All product software is 100% copyright protected. By working closely with renowned universities and employing a high-calibre research team, AISIKAI is continuously improving its R & D and innovation capabilities. <br /> <br />
@@ -83,7 +88,7 @@ const AboutUs = () => {
                         </p>
                     </div>
 
-                    <div className="w-full 2xl:w-2/3">
+                    <div className="w-full 2xl:w-1/2">
                         <Swiper
                             slidesPerView={1}
                             spaceBetween={0}

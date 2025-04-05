@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-// import Breadcrumb from '../components/Breadcrumb';
+import Breadcrumb from '../components/Breadcrumb';
+import SideContact from '../components/SideContact';
 
 import { PiEnvelopeSimple } from "react-icons/pi";
 import { FaFilePdf } from "react-icons/fa";
@@ -138,9 +140,17 @@ import SOIBC1 from '../assets/images/SOIBC1.webp';
 import SDMCCB3 from '../assets/images/SDMCCB3.webp';
 
 const Products = () => {
-    const [activeCategory, setActiveCategory] = useState();
+    const [activeCategory, setActiveCategory] = useState(null); // Ensure initial state is null
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [activeTab, setActiveTab] = useState("description");
+    // const navigate = useNavigate();
+    
+    // const location = useLocation();
+    // const searchParams = new URLSearchParams(location.search);
+    // const activeCategoryParam = searchParams.get('activeCategory');
+
+    const { productId } = useParams();
+    const { id } = useParams();
 
     const categories = [
         { 
@@ -148,6 +158,7 @@ const Products = () => {
             name: "Automatic Transfer Switch", 
             products: [
                 { 
+                    productId: 11,
                     name: "ASP Anti-Surge Module", 
                     image: ATS1,
                     subtitle: "At the moment of lightning release, the voltage is very high, the current is very large, and the energy release time is short. It is not enough to only use external lightning protection (lightning rod, etc.). lightning over-voltage will produce a great danger to electronic and electrical equipment. ASP anti-surge module has the function of lightning protection, which can effectively absorb the surge pulse from the power system to ensure the safe use of ATS in harsh environment and lightning areas, and reduce the probability of ATS being damaged by lightning in lightning environment",                                                                                                                                        
@@ -162,6 +173,7 @@ const Products = () => {
                     brochure: ATS1File 
                 },
                 { 
+                    productId: 12,
                     name: "SKT1 Series Class PC ATS", 
                     image: ATS2, 
                     model: "SKT1", 
@@ -202,6 +214,7 @@ const Products = () => {
                     brochure: [ATS2File1, ATS2File2, ATS2File3] 
                 },
                 { 
+                    productId: 13,
                     name: "SKT2 Series Ultra-thin Class PC ATS", 
                     image: ATS3, 
                     model: "SKT2", 
@@ -245,6 +258,7 @@ const Products = () => {
                     brochure: [ATS3File1, ATS3File2, ATS3File3] 
                 },
                 { 
+                    productId: 14,
                     name: "ASKQ1 Series Household ATS 16A-63A", 
                     image: ATS4, 
                     model: "ASKQ", 
@@ -452,6 +466,7 @@ const Products = () => {
             name: "Universal Circuit Breaker", 
             products: [
                 { 
+                    productId: 41,
                     name: "ASKW2 Series Fixed Type Intelligent Universal Circuit Breaker", 
                     image: UCB5, 
                     model: "ASKW2", 
@@ -471,6 +486,7 @@ const Products = () => {
                     brochure: UCBFile1 
                 },
                 { 
+                    productId: 42,
                     name: "ASKW2 Series Drawout Type Intelligent Universal Air Circuit Breaker", 
                     image: UCB6, 
                     model: "ASKW2", 
@@ -490,6 +506,7 @@ const Products = () => {
                     brochure: UCBFile1 
                 },
                 { 
+                    productId: 43,
                     name: "ASKW3 Series Drawout Type Intelligent Universal Air Circuit Breaker", 
                     image: UCB7, 
                     model: "ASKW3", 
@@ -512,6 +529,7 @@ const Products = () => {
                     brochure: "" 
                 },
                 { 
+                    productId: 44,
                     name: "ASKW3 Series Fixed Type Intelligent Universal Circuit Breaker", 
                     image: UCB8, 
                     model: "ASKW3", 
@@ -586,6 +604,7 @@ const Products = () => {
             name: "Molded Case Circuit Breaker", 
             products: [
                 { 
+                    productId: 51,
                     name: "ASKM2E-Y Series Intelligent Electronic Molded Case Circuit Breaker", 
                     image: MCCB5, 
                     subtitle: "ASKM2E-Y Molded Case Circuit Breaker Intelligent Electronic with LCD display",
@@ -597,6 +616,7 @@ const Products = () => {
                     brochure: MCCB1File1 
                 },
                 { 
+                    productId: 52,
                     name: "ASKM2E Series Intelligent Electronic Molded Case Circuit Breaker", 
                     image: MCCB6, 
                     model: "ASKM2E", 
@@ -607,6 +627,7 @@ const Products = () => {
                     brochure: MCCB2File1 
                 },
                 { 
+                    productId: 53,
                     name: "ASKM1 Series Normal Protection Molded Case Circuit Breaker", 
                     image: MCCB7, 
                     model: "ASKM1", 
@@ -626,6 +647,7 @@ const Products = () => {
                     brochure: [MCCB3File1, MCCB3File2, MCCB3File3] 
                 },
                 { 
+                    productId: 54,
                     name: "ASKM1L Series Leakage Protection Molded Case Circuit Breaker", 
                     image: MCCB8, 
                     model: "ASKM1L", 
@@ -755,6 +777,7 @@ const Products = () => {
             name: "Miniature Circuit Breaker", 
             products: [
                 { 
+                    productId: 61,
                     name: "ASKB6L Series Leakage Protection MCB", 
                     image: MCB5, 
                     model: "ASKB6L", 
@@ -770,6 +793,7 @@ const Products = () => {
                     brochure: MCB1File1 
                 },
                 { 
+                    productId: 62,
                     name: "ASKB6 Series Leakage Protection MCB", 
                     image: MCB6, 
                     model: "ASKB6", 
@@ -783,6 +807,7 @@ const Products = () => {
                     brochure: MCB1File1 
                 },
                 { 
+                    productId: 63,
                     name: "ASKB5L Series Leakage Protection MCB", 
                     image: MCB7, 
                     model: "ASKB5L", 
@@ -797,6 +822,7 @@ const Products = () => {
                     brochure: MCB3File1 
                 },
                 { 
+                    productId: 64,
                     name: "ASKB5 Series Leakage Protection MCB", 
                     image: MCB8, 
                     model: "ASKB5", 
@@ -1068,21 +1094,49 @@ const Products = () => {
         }
     ];
 
+    // useEffect(() => {
+    //     // Set the default category to "Automatic Transfer Switch" (id 1)
+    //     const defaultCategory = categories.find(category => category.id === 1);
+    //     setActiveCategory(defaultCategory);
+    // }, []);
+
     useEffect(() => {
-        // Set the default category to "Automatic Transfer Switch" (id 1)
-        const defaultCategory = categories.find(category => category.id === 1);
-        setActiveCategory(defaultCategory);
-    }, []);
+        const allProducts = categories.flatMap(category => category.products);
+
+        if (productId) {
+            const found = allProducts.find(product => product.productId === Number(productId));
+            if (found) {
+                setSelectedProduct(found);
+                const categoryOfProdcut = categories.find(category => 
+                    category.products.some(product => product.productId === found.productId)
+                );
+                if (categoryOfProdcut) {
+                    setActiveCategory(categoryOfProdcut);
+                }
+            } else {
+                setSelectedProduct(null);
+            }
+
+        } else {
+            const defaultCategory = categories.find(category => category.id === 1);
+            setActiveCategory(defaultCategory);
+            setSelectedProduct(null);
+        }; // Clear selected product to show the product list    
+    }, [productId]);
+
+    
 
     const handleProductClick = (product) => {
         setSelectedProduct(product);
     };
 
+    
     return (
         <section className="font-primary m-0 p-0 box-border">
             <div className="flex flex-col 3xl:px-">
+                <SideContact className="absolute" />
                 <Header />
-                {/* <Breadcrumb /> */}
+                <Breadcrumb pageName={"Products"}/>
 
                 <div className="flex flex-col xl:flex-row items-center xl:items-start justify-center gap-6 px-6 xl:px-16 py-12">
                     {/* Left List Menu */}
@@ -1270,6 +1324,7 @@ const Products = () => {
                         )}
                     </div>
                 </div>
+                
                 <Footer />
             </div>
         </section>
