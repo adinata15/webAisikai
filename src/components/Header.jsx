@@ -63,41 +63,39 @@ const Header = () => {
 
     const handleLanguageChange = (lang) => {
         if (lang === "id") {
-            const loadTranslate = () => {
+            // Load script Google Translate
+            const script = document.createElement('script');
+            script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+            script.async = true;
+            document.body.appendChild(script);
+    
+            // Global init function (HARUS GLOBAL)
+            window.googleTranslateElementInit = () => {
                 new window.google.translate.TranslateElement(
                     {
                         pageLanguage: 'en',
                         includedLanguages: 'id',
                         layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
-                        autoDisplay: false,
+                        autoDisplay: false
                     },
                     'google_translate_element'
                 );
     
-                // Polling untuk tunggu iframe muncul dan klik bahasa Indonesia
-                const tryClickIndonesian = setInterval(() => {
+                // Polling untuk klik Bahasa Indonesia
+                const interval = setInterval(() => {
                     const iframe = document.querySelector('iframe.goog-te-menu-frame');
                     if (iframe) {
                         const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-                        const idOption = innerDoc?.querySelector('a[lang="id"]');
-                        if (idOption) {
-                            idOption.click();
-                            clearInterval(tryClickIndonesian);
+                        const langOption = innerDoc.querySelector('a[lang="id"]');
+                        if (langOption) {
+                            langOption.click();
+                            clearInterval(interval);
                         }
                     }
                 }, 500);
             };
-    
-            if (!window.google || !window.google.translate) {
-                const script = document.createElement('script');
-                script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-                script.async = true;
-                window.googleTranslateElementInit = loadTranslate;
-                document.body.appendChild(script);
-            } else {
-                loadTranslate();
-            }
         } else {
+            // Reset ke Inggris dengan reload
             window.location.reload();
         }
     };
