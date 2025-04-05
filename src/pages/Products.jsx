@@ -150,7 +150,7 @@ const Products = () => {
     // const activeCategoryParam = searchParams.get('activeCategory');
 
     const { productId } = useParams();
-    const { id } = useParams();
+    const { category } = useParams();
 
     const categories = [
         { 
@@ -1124,13 +1124,20 @@ const Products = () => {
         }; // Clear selected product to show the product list    
     }, [productId]);
 
-    
+    useEffect(() => {
+        if (category) {
+            const decoded = decodeURIComponent(category);
+            const foundCategory = categories.find((cat) => cat.name === decoded);
+            if (foundCategory) {
+                setActiveCategory(foundCategory);
+            }
+        }
+    }, [category]);
 
     const handleProductClick = (product) => {
         setSelectedProduct(product);
     };
 
-    
     return (
         <section className="font-primary m-0 p-0 box-border">
             <div className="flex flex-col 3xl:px-">

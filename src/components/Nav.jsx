@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router"; 
 
 import ATS from "../assets/images/ats2.webp"
 import ITS from "../assets/images/iac1.webp"
@@ -19,7 +19,11 @@ const Nav = ({linkToNav}) => {
     const [showproducts, setShowProducts] = useState(false);
     const navigate = useNavigate();
 
-    // const toATS = () => {navigate("products/1");}
+    // const categories = [
+    //     { id: 1, name: "Intelligent ATS Controller" },
+    // ];
+
+    const toATS = () => {navigate("/products");}
     // const toITS = () => {navigate("products/2");}
     // const toHVVCB = () => {navigate("products/3");}
     // const toUACB = () => {navigate("products/4");}
@@ -31,7 +35,12 @@ const Nav = ({linkToNav}) => {
     // const toIPM = () => {navigate("products/10");}
     // const toBC = () => {navigate("products/11");}
 
-    const toITS = () => {navigate("products", { state: {category: "Intelligent ATS Controller"}});}
+    // const toITS = () => {navigate("products", { state: {category: "Intelligent ATS Controller"}});}
+
+    // const handleCategoryClick = (categoryName) => {
+    //     const encodedCategory = encodeURIComponent(categoryName);
+    //     navigate(`/products/${encodedCategory}`)
+    // }
 
     return(
         <section className="flex flex-col xl:flex-row relative">
@@ -44,94 +53,121 @@ const Nav = ({linkToNav}) => {
                 </div>
             ))}
 
+            {/* <ul>
+                {categories.map((cat) => (
+                    <li key={cat.id} onClick={() => handleCategoryClick(cat.name)}>
+                        {cat.name}
+                    </li>
+                ))}
+            </ul> */}
+
             {showproducts && (
                 <div className="absolute top-14 bg-white border border-gray-300 shadow-lg z-10 justify-center items-center"
                     onMouseEnter={() => setShowProducts(true)}
                     onMouseLeave={() => setShowProducts(false)}>
+
                     <div className="p-8 flex flex-col gap-8 justify-start items-center self-center">
                         <div className="flex flex-row justify-center items-center gap-2">
                             <div className="flex flex-col justify-center items-center w-44">
-                                <button className="cursor-pointer" >
+                                <button className="cursor-pointer" onClick={toATS} >
                                     <img src={ATS} alt="image-automatictransferswitch" className="w-22"/>
                                 </button>
-                                <button className="cursor-pointer w-full hover:text-primary" >
+                                <button className="cursor-pointer w-full hover:text-primary" onClick={toATS}>
                                     <h3 className="text-center font-normal text-sm">Automatic Transfer Switch</h3>
                                 </button>
                             </div>
 
                             <div className="flex flex-col justify-center items-center w-44">
-                                <button onClick={toITS}>
-                                    <img alt="image-intelligentatscontroller" className="w-22"/>
+                                <button onClick={toATS} className="cursor-pointer">
+                                    <img src={ITS} alt="image-intelligentatscontroller" className="w-22"/>
                                 </button>
-                                <button className="w-full hover:text-primary" onClick={toITS}>
+                                <button className="w-full hover:text-primary cursor-pointer" onClick={toATS}>
                                     <h3 className="text-center font-normal text-sm">Intelligent ATS Controller</h3>
                                 </button>
                             </div>
 
                             <div className="flex flex-col justify-center items-center w-44">
-                                <a href="/products">
+                                <button onClick={toATS} className="cursor-pointer">
                                     <img src={HVVCB} alt="image-automatictransferswitch" className="w-22"/>
-                                </a>
-                                <h3 className="text-center font-normal text-sm">High Voltage Vacuum Circuit Breaker</h3>
+                                </button>
+                                <button className="cursor-pointer w-full hover:text-primary" onClick={toATS}>
+                                    <h3 className="text-center font-normal text-sm">High Voltage Vacuum Circuit Breaker</h3>
+                                </button>
                             </div>
 
                             <div className="flex flex-col justify-center items-center w-44">
-                                <a href="/products">
+                                <button onClick={toATS} className="cursor-pointer">
                                     <img src={UACB} alt="image-automatictransferswitch" className="w-22"/>
-                                </a>
-                                <h3 className="text-center font-normal text-sm">Universal Air Circuit Breaker</h3>
+                                </button>
+                                <button className="cursor-pointer w-full hover:text-primary" onClick={toATS}>
+                                    <h3 className="text-center font-normal text-sm">Universal Air Circuit Breaker</h3>
+                                </button>                             
                             </div>
 
                             <div className="flex flex-col justify-center items-center w-44">
-                                <a href="/products">
+                                <button onClick={toATS} className="cursor-pointer">
                                     <img src={MCCB} alt="image-automatictransferswitch" className="w-22"/>
-                                </a>
-                                <h3 className="text-center font-normal text-sm">Molded Case Circuit Breaker</h3>
+                                </button>
+                                <button className="cursor-pointer w-full hover:text-primary" onClick={toATS}>
+                                    <h3 className="text-center font-normal text-sm">Molded Case Circuit Breaker</h3>
+                                </button>                              
                             </div>
                         </div>
 
                         <div className="flex flex-row justify-center items-center gap-2">
                             <div className="flex flex-col justify-center items-center w-44">
-                                <a href="/products">
+                                <button onClick={toATS} className="cursor-pointer">
                                     <img src={MCB} alt="image-automatictransferswitch" className="w-22"/>
-                                </a>
-                                <h3 className="text-center font-normal text-sm">Miniature Circuit Breaker</h3>
+                                </button>
+                                <button className="cursor-pointer w-full hover:text-primary" onClick={toATS}>
+                                    <h3 className="text-center font-normal text-sm">Miniature Circuit Breaker</h3>
+                                </button>           
                             </div>
 
                             <div className="flex flex-col justify-center items-center w-44">
-                                <a href="/products">
+                                <button onClick={toATS} className="cursor-pointer">
                                     <img src={LIS} alt="image-automatictransferswitch" className="w-22"/>
-                                </a>
-                                <h3 className="text-center font-normal text-sm">Load Isolation Switch</h3>
+                                </button>
+                                <button className="cursor-pointer w-full hover:text-primary" onClick={toATS}>
+                                    <h3 className="text-center font-normal text-sm">Load Isolation Switch</h3>
+                                </button>                               
                             </div>
 
                             <div className="flex flex-col justify-center items-center w-44">
-                                <a href="/products">
+                                <button onClick={toATS} className="cursor-pointer">
                                     <img src={OAUP} alt="image-automatictransferswitch" className="w-22"/>
-                                </a>
-                                <h3 className="text-center font-normal text-sm">Overvoltage And Undervoltage Protector</h3>
+                                </button>
+                                <button className="cursor-pointer w-full hover:text-primary" onClick={toATS}>
+                                    <h3 className="text-center font-normal text-sm">Overvoltage And Undervoltage Protector</h3>
+                                </button>                                
                             </div>
 
                             <div className="flex flex-col justify-center items-center w-44">
-                                <a href="/products">
+                                <button onClick={toATS} className="cursor-pointer">
                                     <img src={SPD} alt="image-automatictransferswitch" className="w-22"/>
-                                </a>
-                                <h3 className="text-center font-normal text-sm">Surge Protective Device</h3>
+                                </button>
+                                <button className="cursor-pointer w-full hover:text-primary" onClick={toATS}>
+                                    <h3 className="text-center font-normal text-sm">Surge Protective Device</h3>
+                                </button>                                
                             </div>
 
                             <div className="flex flex-col justify-center items-center w-44">
-                                <a href="/products">
+                                <button onClick={toATS} className="cursor-pointer">
                                     <img src={IPM} alt="image-automatictransferswitch" className="w-22"/>
-                                </a>
-                                <h3 className="text-center font-normal text-sm">Intelligent Power Meter</h3>
+                                </button>
+                                <button className="cursor-pointer w-full hover:text-primary" onClick={toATS}>
+                                    <h3 className="text-center font-normal text-sm">Intelligent Power Meter</h3>
+                                </button>                               
                             </div>
                         </div>
 
                         <div className="flex flex-col justify-center items-center self-start w-44 hover:text-primary">
-                            <a href="/products">
+                            <button onClick={toATS} className="cursor-pointer">
                                 <img src={BC} alt="image-automatictransferswitch" className="w-22"/>
-                            </a>
-                            <h3 className="text-center font-normal text-sm">Battery Charge</h3>
+                            </button>
+                            <button className="cursor-pointer w-full hover:text-primary" onClick={toATS}>
+                                <h3 className="text-center font-normal text-sm">Battery Charge</h3>
+                            </button>                           
                         </div>
                         
                     </div>

@@ -62,27 +62,43 @@ const Header = () => {
     };
 
     const handleLanguageChange = (lang) => {
-        setLanguage(lang);
         if (lang === "id") {
+            const loadTranslate = () => {
+                new window.google.translate.TranslateElement(
+                    {
+                        pageLanguage: 'en',
+                        includedLanguages: 'id',
+                        layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+                        autoDisplay: false,
+                    },
+                    'google_translate_element'
+                );
+    
+                // Polling untuk tunggu iframe muncul dan klik bahasa Indonesia
+                const tryClickIndonesian = setInterval(() => {
+                    const iframe = document.querySelector('iframe.goog-te-menu-frame');
+                    if (iframe) {
+                        const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+                        const idOption = innerDoc?.querySelector('a[lang="id"]');
+                        if (idOption) {
+                            idOption.click();
+                            clearInterval(tryClickIndonesian);
+                        }
+                    }
+                }, 500);
+            };
+    
             if (!window.google || !window.google.translate) {
                 const script = document.createElement('script');
                 script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
                 script.async = true;
-                window.googleTranslateElementInit = () => {
-                    new window.google.translate.TranslateElement(
-                        { pageLanguage: 'en', includedLanguages: 'id', layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE },
-                        'google_translate_element'
-                    );
-                };
+                window.googleTranslateElementInit = loadTranslate;
                 document.body.appendChild(script);
             } else {
-                new window.google.translate.TranslateElement(
-                    { pageLanguage: 'en', includedLanguages: 'id', layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE },
-                    'google_translate_element'
-                );
+                loadTranslate();
             }
         } else {
-            window.location.reload(); // Reload the page to reset to English
+            window.location.reload();
         }
     };
 
@@ -133,10 +149,10 @@ const Header = () => {
                 </div>
 
                 <div className='hidden xl:flex flex-row gap-4 justify-center items-center'>
-                    <button className="w-8" onClick={() => handleLanguageChange("id")}>
+                    <button className="w-8 cursor-pointer" onClick={() => handleLanguageChange("id")}>
                         <img src={iconIndonesia} alt="button-bahasaindonesia" className="w-full h-full object-cover"/>
                     </button>
-                    <button className="w-8" onClick={() => handleLanguageChange("en")}>
+                    <button className="w-8 cursor-pointer" onClick={() => handleLanguageChange("en")}>
                         <img src={iconUk} alt="button-english" className="w-full h-full object-cover"/>
                     </button>
                 </div>
@@ -155,8 +171,12 @@ const Header = () => {
                     </div> 
                 )
             }
-        </section>            
+
+            <div id='google_translate_element' className='hidden'></div>
+        </section>
     );
+
+    
 };
 
 export default Header;
