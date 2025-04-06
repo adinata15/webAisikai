@@ -106,7 +106,7 @@ const Tabs = () => {
                         </div>
                         
                         <button className='px-6 py-4 text-primary self-end text-md font-medium 3xl:mt-8'>
-                            <a href="">More &#8594;</a>
+                            <a href="/products">More &#8594;</a>
                         </button>
                     </div>
                 )}
@@ -149,7 +149,7 @@ const Tabs = () => {
                         </div>
                         
                         <button className='px-6 py-4 text-primary self-end text-md font-medium 3xl:mt-8'>
-                            <a href="">More &#8594;</a>
+                            <a href="/products">More &#8594;</a>
                         </button>
                     </div>
                 )}
@@ -192,7 +192,7 @@ const Tabs = () => {
                         </div>
                         
                         <button className='px-6 py-4 text-primary self-end text-md font-medium 3xl:mt-8'>
-                            <a href="">More &#8594;</a>
+                            <a href="/products">More &#8594;</a>
                         </button>
                     </div>
                 )}
@@ -235,7 +235,7 @@ const Tabs = () => {
                         </div>
                         
                         <button className='px-6 py-4 text-primary self-end text-md font-medium 3xl:mt-8 '>
-                            <a href="">More &#8594;</a>
+                            <a href="/products">More &#8594;</a>
                         </button>
                     </div>
                 )}

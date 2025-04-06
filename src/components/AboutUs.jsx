@@ -19,7 +19,10 @@ const AboutUs = () => {
         navigate('/company-profile');
     }
 
-    const [isHover, setIsHover] = useState(false);
+    const [isHover1, setIsHover1] = useState(false);
+    const [isHover2, setIsHover2] = useState(false);
+    const [isHover3, setIsHover3] = useState(false);
+    const [isHover4, setIsHover4] = useState(false);
 
     
     return(
@@ -63,15 +66,15 @@ const AboutUs = () => {
                     <div className="flex flex-col xl:flex-row justify-between items-center gap-8 w-full">
                         <div className="flex flex-col justify-center items-center">
                             <div className="size-76 xl:size-60 2xl:size-80 3xl:size-84 flex flex-col justify-center items-center"
-                                onMouseEnter={() => setIsHover(true)}
-                                onMouseLeave={() => setIsHover(false)}>
+                                onMouseEnter={() => setIsHover1(true)}
+                                onMouseLeave={() => setIsHover1(false)}>
                                     <div className="flex flex-row bg-white py-2 w-full justify-center items-center text-primary gap-2">
                                         <RiSendPlaneFill />
                                         <h3>Enterprise Spirit</h3>
                                     </div>
                                     <div className="w-full h-96 relative flex flex-col justify-end">
                                         <img src={ImageES} alt="image-enterprisespirit" className="w-full h-full object-cover"/>
-                                        {isHover && (
+                                        {isHover1 && (
                                             <p className="bg-primary/50 p-4 absolute flex self-end font-medium text-white text-sm">
                                                 Aware of Adversity in Prosperity, Broaden Sources and Reduce Expenditure
                                             </p>
@@ -82,15 +85,15 @@ const AboutUs = () => {
 
                         <div className="flex flex-col justify-center items-center">
                             <div className="size-76 xl:size-60 2xl:size-80 flex flex-col justify-center items-center"
-                                onMouseEnter={() => setIsHover(true)}
-                                onMouseLeave={() => setIsHover(false)}>
+                                onMouseEnter={() => setIsHover2(true)}
+                                onMouseLeave={() => setIsHover2(false)}>
                                     <div className="flex flex-row bg-white py-2 w-full justify-center items-center text-blue-500 gap-2">
                                         <HiFlag />
                                         <h3>Enterprise Vision</h3>
                                     </div>
                                     <div className="w-full h-96 relative flex flex-col justify-end">
                                         <img src={ImageEV} alt="image-enterprisespirit" className="w-full h-full object-cover"/>
-                                        {isHover && (
+                                        {isHover2 && (
                                             <p className="bg-primary/50 p-4 absolute flex self-end font-medium text-white text-sm">
                                                 Make Contributions to Society, Care About Wellbeing of  Employees
                                             </p>
@@ -101,15 +104,15 @@ const AboutUs = () => {
 
                         <div className="flex flex-col justify-center items-center">
                             <div className="size-76 xl:size-60 2xl:size-80 3xl:size-84 flex flex-col justify-center items-center"
-                                onMouseEnter={() => setIsHover(true)}
-                                onMouseLeave={() => setIsHover(false)}>
+                                onMouseEnter={() => setIsHover3(true)}
+                                onMouseLeave={() => setIsHover3(false)}>
                                     <div className="flex flex-row bg-white py-2 w-full justify-center items-center text-primary gap-2">
                                         <RiFirebaseFill />
                                         <h3>Business Philosophy</h3>
                                     </div>
                                     <div className="w-full h-96 relative flex flex-col justify-end">
                                         <img src={ImageBP} alt="image-enterprisespirit" className="w-full h-full object-cover"/>
-                                        {isHover && (
+                                        {isHover3 && (
                                             <p className="bg-primary/50 p-4 absolute flex self-end font-medium text-white text-sm w-full">
                                                 Sincerity, Excellence, Perfection
                                             </p>
@@ -120,15 +123,15 @@ const AboutUs = () => {
 
                         <div className="flex flex-col justify-center items-center">
                             <div className="size-76 xl:size-60 2xl:size-80 3xl:size-90 flex flex-col justify-center items-center"
-                                onMouseEnter={() => setIsHover(true)}
-                                onMouseLeave={() => setIsHover(false)}>
+                                onMouseEnter={() => setIsHover4(true)}
+                                onMouseLeave={() => setIsHover4(false)}>
                                     <div className="flex flex-row bg-white py-2 w-full justify-center items-center text-primary gap-2">
                                         <RiFirebaseFill />
                                         <h3>Development Tenet</h3>
                                     </div>
                                     <div className="w-full h-96 relative flex flex-col justify-end">
                                         <img src={ImageDT} alt="image-enterprisespirit" className="w-full h-full object-cover"/>
-                                        {isHover && (
+                                        {isHover4 && (
                                             <p className="bg-primary/50 p-4 absolute flex self-end font-medium text-white text-sm w-full">
                                                 Quality, Service, Reputation, Innovation
                                             </p>

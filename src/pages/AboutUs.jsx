@@ -88,7 +88,7 @@ const AboutUs = () => {
                         </p>
                     </div>
 
-                    <div className="w-full 2xl:w-1/2">
+                    <div className="w-full xl:w-1/2 2xl:w-1/2">
                         <Swiper
                             slidesPerView={1}
                             spaceBetween={0}
