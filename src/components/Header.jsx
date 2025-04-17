@@ -36,7 +36,67 @@ const Header = () => {
     const [showMenu, setShowMenu] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const [filteredProducts, setFilteredProducts] = useState([]);
-    const [language, setLanguage] = useState("en"); // Default language is English
+    const [language, setLanguage] = useState(() => {
+        // Inisialisasi dari localStorage saat komponen dimuat pertama kali
+        return localStorage.getItem('preferredLanguage') || "en";
+    });
+    // Default language is English
+
+    // Inject CSS untuk menyembunyikan bar Google Translate
+    useEffect(() => {
+        const style = document.createElement('style');
+        style.textContent = `
+            .goog-te-banner-frame, .skiptranslate {
+                display: none !important;
+            }
+            body {
+                top: 0 !important;
+            }
+            .goog-tooltip {
+                display: none !important;
+            }
+            .goog-tooltip:hover {
+                display: none !important;
+            }
+            .goog-text-highlight {
+                background-color: transparent !important;
+                border: none !important; 
+                box-shadow: none !important;
+            }
+        `;
+        document.head.appendChild(style);
+        return () => {
+            document.head.removeChild(style);
+        };
+    }, []);
+
+    // Fungsi untuk menetapkan cookie lintas domain
+    const setCrossDomainCookie = (name, value, domain) => {
+        // Set untuk domain saat ini
+        document.cookie = `${name}=${value}; path=/;`;
+
+        // Set untuk root domain
+        if (domain) {
+            document.cookie = `${name}=${value}; path=/; domain=${domain};`;
+        }
+
+        // Set untuk subdomain
+        if (window.location.hostname !== 'localhost') {
+            document.cookie = `${name}=${value}; path=/; domain=.${window.location.hostname};`;
+        }
+    };
+
+    // Fungsi untuk mendapatkan domain root
+    const getRootDomain = () => {
+        const hostname = window.location.hostname;
+        if (hostname === 'localhost') return null;
+
+        const parts = hostname.split('.');
+        if (parts.length <= 2) return hostname; // domain.com
+
+        // mendapatkan domain.com dari subdomain.domain.com
+        return parts.slice(-2).join('.');
+    };
 
     const handleShowMenu = () => {
         setShowMenu(!showMenu);
@@ -62,49 +122,95 @@ const Header = () => {
     };
 
     const handleLanguageChange = (lang) => {
+        // Simpan preferensi bahasa di localStorage
+        localStorage.setItem('preferredLanguage', lang);
+        setLanguage(lang);
+
         if (lang === "id") {
-            // Load script Google Translate
+            const existingElements = document.querySelectorAll('.skiptranslate, #google_translate_element');
+            existingElements.forEach(el => {
+                if (el.parentNode) {
+                    el.parentNode.removeChild(el);
+                }
+            });
+
+            // 2. Buat container untuk Google Translate yang tersembunyi
+            const div = document.createElement('div');
+            div.id = 'google_translate_element';
+            div.style.display = 'none';
+            document.body.appendChild(div);
+
+            // 3. Set cookie untuk Google Translate di semua domain/subdomain yang mungkin
+            const rootDomain = getRootDomain();
+            setCrossDomainCookie('googtrans', '/en/id', rootDomain);
+            setCrossDomainCookie('googtrans', '/en/id', null);
+
+            // 4. Hapus script yang sudah ada
+            const existingScript = document.getElementById('google-translate-script');
+            if (existingScript) {
+                existingScript.remove();
+            }
+
+            // 5. Tambahkan script baru
             const script = document.createElement('script');
+            script.id = 'google-translate-script';
             script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
             script.async = true;
             document.body.appendChild(script);
-    
-            // Global init function (HARUS GLOBAL)
-            window.googleTranslateElementInit = () => {
-                new window.google.translate.TranslateElement(
-                    {
-                        pageLanguage: 'en',
-                        includedLanguages: 'id',
-                        layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
-                        autoDisplay: false
-                    },
-                    'google_translate_element'
-                );
-    
-                // Polling untuk klik Bahasa Indonesia
-                const interval = setInterval(() => {
-                    const iframe = document.querySelector('iframe.goog-te-menu-frame');
-                    if (iframe) {
-                        const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-                        const langOption = innerDoc.querySelector('a[lang="id"]');
-                        if (langOption) {
-                            langOption.click();
-                            clearInterval(interval);
-                        }
-                    }
-                }, 500);
+
+            // 6. Definisikan fungsi init global
+            window.googleTranslateElementInit = function() {
+                new window.google.translate.TranslateElement({
+                    pageLanguage: 'en',
+                    includedLanguages: 'id,en',
+                    autoDisplay: false,
+                    layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE
+                }, 'google_translate_element');
+
+                // Tambahkan class untuk membantu CSS menyembunyikan banner
+                document.body.classList.add('translated');
+
+                // Atur ulang posisi halaman setelah Google Translate mengubahnya
+                setTimeout(() => {
+                    document.body.style.top = '0px';
+                    document.getElementsByTagName('html')[0].style.transform = 'none';
+                }, 300);
             };
         } else {
-            // Reset ke Inggris dengan reload
+            // Kembali ke bahasa Inggris
+            // Hapus cookie Google Translate dari semua domain yang mungkin
+            const rootDomain = getRootDomain();
+            document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            if (rootDomain) {
+                document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${rootDomain};`;
+            }
+            document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.${window.location.hostname};`;
+
+            // Hapus class
+            document.body.classList.remove('translated');
+
+            // Refresh halaman untuk kembali ke bahasa asli
             window.location.reload();
         }
     };
 
+    // Panggil handleLanguageChange saat komponen dimount
+    // jika bahasa sudah diset sebagai 'id' di localStorage
     useEffect(() => {
-        if (language === "id") {
-            handleLanguageChange("id");
+        const savedLang = localStorage.getItem('preferredLanguage');
+        if (savedLang === 'id') {
+            handleLanguageChange('id');
         }
-    }, [language]);
+
+        // Cleanup
+        return () => {
+            // Bersihkan semua interval dan timeout yang dibuat
+            const highestTimeoutId = window.setTimeout(() => {}, 0);
+            for (let i = 0; i < highestTimeoutId; i++) {
+                window.clearTimeout(i);
+            }
+        };
+    }, []);
 
     return (
         <section className="bg-linear-to-r from-white via-blue-50 to-white relative flex flex-row gap-4 py-6 xl:py-[0.05rem] px-6 xl:px-16 justify-between items-center">
