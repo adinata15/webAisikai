@@ -4,7 +4,8 @@
   --font-primary: "Open Sans", sans-serif;
 
   --color-primary: #04A1EA;
-  --color-secondary: ##F6F6F6;
+  --color-secondary: #F6F6F6;
+  --color-gray: #9B9B9B;
 
   --breakpoint-3xl: 1920px;
 }
