@@ -8,6 +8,7 @@ import SideContact from '../components/SideContact';
 
 import { PiEnvelopeSimple } from "react-icons/pi";
 import { FaFilePdf } from "react-icons/fa";
+import { RiArrowDropDownLine } from "react-icons/ri";
 
 // IMAGE FOR PRODUCT DETAILS
 import ATS1 from '../assets/images/ats1.webp';
@@ -143,6 +144,9 @@ const Products = () => {
     const [activeCategory, setActiveCategory] = useState(null); // Ensure initial state is null
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [activeTab, setActiveTab] = useState("description");
+    const [currentPage, setCurrentPage] = useState(1);
+    const [productsToShow, setProductsToShow] = useState([]);
+    const productsPerPage = 9; // Menampilkan 3 baris dengan 3 produk per baris
     // const navigate = useNavigate();
     
     // const location = useLocation();
@@ -164,13 +168,14 @@ const Products = () => {
                     subtitle: "At the moment of lightning release, the voltage is very high, the current is very large, and the energy release time is short. It is not enough to only use external lightning protection (lightning rod, etc.). lightning over-voltage will produce a great danger to electronic and electrical equipment. ASP anti-surge module has the function of lightning protection, which can effectively absorb the surge pulse from the power system to ensure the safe use of ATS in harsh environment and lightning areas, and reduce the probability of ATS being damaged by lightning in lightning environment",                                                                                                                                        
                     model: "", 
                     brand: "", 
-                    description: <p>ASP anti-surge module can absorb surges and effectively  counteract the damage caused by surges to smart electric  appliances through the built-in surge protection device.
-                            Surges occur with high frequency and irregularity, so it is  necessary to take continuous protection for smart appliances.  Anti-surge module can effectively block high, medium and  low spike voltage of different intensities without interruption.
+                    description: <p className="text-xl">ASP anti-surge module can absorb surges and effectively  counteract the damage caused by surges to smart electric  appliances through the built-in surge protection device. <br/> <br/>
+                            Surges occur with high frequency and irregularity, so it is  necessary to take continuous protection for smart appliances.  Anti-surge module can effectively block high, medium and  low spike voltage of different intensities without interruption. <br/> <br/>
                             For the instantaneous burst of ultra-high current, the slightest  flow into the sophisticated control circuit of ATS can have  fatal consequences. Anti-surge module can effectively cut off  the ultra-high current in nanosecond, providing a high level of  protection for intelligent appliances. This module can effectively protect the internal control board of ATS.
                         </p>,
                     technicalparameters: "",
                     faq: "", 
-                    brochure: ATS1File 
+                    brochure: ATS1File,
+                    categori: "ASP Anti-Surge Module"
                 },
                 { 
                     productId: 12,
@@ -178,11 +183,11 @@ const Products = () => {
                     image: ATS2, 
                     model: "SKT1", 
                     brand: "Aisikai", 
-                    description: <p>SKT series Automatic Transfer Switch(ATS) is the most advanced 3rd generation ATS.  
+                    description: <p className="text-xl">SKT series Automatic Transfer Switch(ATS) is the most advanced 3rd generation ATS.
                             It's of PC Class (one-piece structure). SKT standard type can handle current from 20A to 3200A.  
-                            It  reaches the highest AC-33A Use Class. <br />
-                            <b>STANDARDS</b>
-                            IEC60947-6-1 <br />
+                            It  reaches the highest AC-33A Use Class. <br /> <br/> <br/>
+                            <b className="text-primary font-secondary text-2xl font-bold underline italic">STANDARDS</b> <br />
+                            IEC60947-6-1 <br/> <br/>
                             <b>FEATURES</b> <br />
                             Using LED indicators for working conditions
                             External replaceable fuses, easy for maintenance  
@@ -195,7 +200,7 @@ const Products = () => {
                             Mechanical Interlock & Electrical Interlock
                         </p>,
                     technicalparameters: TPATS2,
-                    faq: <p>
+                    faq: <p className="text-xl">
                         <b>1. Your nameplate color is not we see in the market. Which color is the authentic？</b><br />
                         In the past, the ATS we sold to foreign and domestic markets use the classic AISIKAI BLUE . Recently, we use this new light blue for foreign market. Both are authentic.<br /><br />
                         <b>2. What is the meaning of  CK in our model? Why does some ATS have, some does not?</b><br />
@@ -211,7 +216,8 @@ const Products = () => {
                         <b>10. Does this ATS must work with an ATS controller for automatic transfer?</b><br />
                         No, using this ATS alone is sufficient for the automatic transfer between 2 power sources. But with ATS controller, more functions can be achieved like delay before transfer, voltage detection, communication and etc. <br /><br />
                     </p>,
-                    brochure: [ATS2File1, ATS2File2, ATS2File3] 
+                    brochure: [ATS2File1, ATS2File2, ATS2File3],
+                    categori: "SKT Series PC Class ATS"
                 },
                 { 
                     productId: 13,
@@ -219,25 +225,25 @@ const Products = () => {
                     image: ATS3, 
                     model: "SKT2", 
                     brand: "Aisikai", 
-                    description: <p> SKT series automatic transfer switch(ATS) is the most advanced 3rd generation ATS.  
+                    description: <p className="text-xl"> SKT series automatic transfer switch(ATS) is the most advanced 3rd generation ATS.  
                         It's in the one-piece structure and  PC Class. SKT2 series is the most compact type that is just the of 50% size of the standard SKT.
                         <br />
-                        <strong>STANDARDS</strong>
+                        <strong className="text-primary font-secondary text-2xl font-bold underline italic">STANDARDS</strong>
                         <br />
                         IEC60947-6-1 <br />
                         GB/T14048.11 <br />
-                        <b>FEATURES</b>
+                        <b className="text-primary font-secondary text-2xl font-bold underline italic">FEATURES</b>
                         Compact Volume,  Saving Space <br />
                         External Replaceable Fuses, Easy For Maintenance <br />   
                         Rear Copper Bars Are Made Longer,  Convenient For Wiring Cables <br />
                         Silver Plated High Purity Copper Bar <br />
-                        Brige Connect Structure on Load Side <br />
+                        Bridge Connect Structure on Load Side <br />
                         Three-Sections Design (I – 0 – II),  Zero Position For Dual Powers Off <br />
                         Pluggable Wiring Terminals <br />
                         Mechanical Interlock & Electrical Interlock <br />
                     </p>,
                     technicalparameters: TPATS3,
-                    faq: <p>
+                    faq: <p className="text-xl">
                         <b>1. Your nameplate color is not we see in the market. Which color is the authentic？</b><br />
                         In the past, the ATS we sold to foreign and domestic markets use the classic AISIKAI BLUE . Recently, we use this new light blue for foreign market. Both are authentic.   
                         <b>2. What is the meaning of  CK in our model? Why does some ATS have, some does not?</b><br />
@@ -255,7 +261,8 @@ const Products = () => {
                         <b>8. Does this ATS must work with an ATS controller for automatic transfer?</b><br />
                         No, using this ATS alone is sufficient for the automatic transfer between 2 power sources. But with ATS controller, more functions can be achieved like delay before transfer, voltage detection, communication and etc.<br />
                     </p>, 
-                    brochure: [ATS3File1, ATS3File2, ATS3File3] 
+                    brochure: [ATS3File1, ATS3File2, ATS3File3],
+                    categori: "SKT Series PC Class ATS"
                 },
                 { 
                     productId: 14,
@@ -263,12 +270,12 @@ const Products = () => {
                     image: ATS4, 
                     model: "ASKQ", 
                     brand: "Aisikai", 
-                    description: <p>
+                    description: <p className="text-xl">
                         ASKQ series household automatic transfer switch is PC Class non-frequently operable electrical transfer switch.
                         It has 3 working modes:Automatic, Electric(external control) and Emergency Manual. ASKQ is suitable to be used 
                         in the 50/60Hz low voltage AC power distribution systems for the reliable transfer between two power supplies.
                         <br /><br /> 
-                        <b>FEATURES</b> <br />
+                        <b className="text-primary font-secondary text-2xl font-bold underline italic">FEATURES</b> <br />
                         - Reasonalbe structure, compact volume, beautiful appearance. <br />
                         - Adopt excitation type electromagnet drive mechanism, which is extrmely fast in transferring. <br />
                         - The 6A-63A switch is suitable for home use, which meets the requiremnets of the level-3 power distribution system. <br />
@@ -276,19 +283,20 @@ const Products = () => {
                     </p>,
                     technicalparameters: {TPATS41, TPATS42},
                     faq: "",
-                    brochure: ATS4File 
+                    brochure: ATS4File,
+                    categori: "ASKQ Series PC Class ATS"
                 },
                 { 
                     name: "SKQ1 MCCB Type Class CB ATS", 
                     image: ATS5,
-                    subtitle: <p>The SKQ1 series dual power automatic transfer switch is a second-generation ATS product, 
+                    subtitle: <p className="text-xl">The SKQ1 series dual power automatic transfer switch is a second-generation ATS product, 
                         classified as CB level. It is an AC-33B electrical transfer switch designed for infrequent operation, 
                         suitable for low-voltage AC power distribution systems with a frequency of 50/60Hz. It features three 
                         working modes: automatic (Type A), electric (Type B), and emergency manual, ensuring reliable transfer 
                         between two power sources.</p>, 
                     model: "SKQ1", 
                     brand: "Aisikai", 
-                    description: <p>
+                    description: <p className="text-xl">
                         The SKQ1 series dual power automatic transfer switch is a second-generation ATS product, classified as CB level. 
                         It is an AC-33B electrical transfer switch designed for infrequent operation, suitable for low-voltage AC power 
                         distribution systems with a frequency of 50/60Hz. It features three working modes: automatic (Type A), electric 
@@ -296,19 +304,20 @@ const Products = () => {
                     </p>,
                     technicalparameters: "",
                     faq: "", 
-                    brochure: "" 
+                    brochure: "",
+                    categori: "SKQ1 Series CB Class ATS"
                 },
                 { 
                     name: "SKQ1 MCB Type Class CB ATS", 
                     image: ATS6, 
                     model: "SKQ1", 
                     brand: "Aisikai", 
-                    description: <p>
+                    description: <p className="text-xl">
                         SKQ1 series dual power automatic transfer switch(ATS) is the 2nd generation ATS.  It's CB class and its usage 
                         category is AC-33B non-frequently operation electrical transfer switch. It has 3 working modes:Automatic, 
                         Electric(external control) and Emergency Manual. SKQ1 is suitable to be used in the 50/60Hz low voltage AC power 
                         distribution systems for the reliable transfer between two power supplies. <br /><br />
-                        <b>FEATURES</b><br />
+                        <b className="text-primary font-secondary text-2xl font-bold underline italic">FEATURES</b><br />
                         - Have Zero-position
                         - Reasonalbe structure, compact volume, beautiful appearance.
                         - Protective cover, much safer and more reliable
@@ -319,14 +328,15 @@ const Products = () => {
                     </p>,
                     technicalparamters: "",
                     faq: "", 
-                    brochure: ATS6File 
+                    brochure: ATS6File,
+                    categori: "SKQ1 Series CB Class ATS"
                 },
                 { 
                     name: "ASKQ6 Series Solenoid Type Automatic Transfer Switch", 
                     image: ATS7, 
                     model: "ASKQ6", 
                     brand: "Aisikai", 
-                    description: <p>
+                    description: <p className="text-xl">
                         ASKQ6 Automatic Transfer Switch is suitable for AC below 415V, rated frequency 50HZ, DC 250V and below. 
                         All specifications are available in 3 poles and 4 poles. 3 poles products are available below 400A. 
                         This product is mainly used for the primary load specified by the state, and is widely used in important 
@@ -336,14 +346,15 @@ const Products = () => {
                     </p>,
                     technicalparameters: "",
                     faq: "", 
-                    brochure: ATS7File 
+                    brochure: ATS7File,
+                    categori: "ASKQ Series PC Class ATS"
                 },
                 { 
                     name: "ASKQ8 High Current Automatic Transfer Switch 3200~6300A", 
                     image: ATS8, 
                     model: "ASKQ8", 
                     brand: "Aisikai", 
-                    description: <p>
+                    description: <p className="text-xl">
                         ASKQ8 series dual power automatic transfer switch is PC Class non-frequently operable electrical transfer switch.
                         ASKQ8 High Current Automatic Transfer Switch is suitable for the 3200A~6300A AC50/60Hz low voltage AC power 
                         distribution systems for reliable transfer between two power supplies. 3200A-6300A switch is suitable in the 
@@ -351,7 +362,8 @@ const Products = () => {
                     </p>,
                     technicalparameters: "",
                     faq: "", 
-                    brochure: ATS8File 
+                    brochure: ATS8File,
+                    categori: "ASKQ Series PC Class ATS"
                 }
             ] 
         },
@@ -364,8 +376,8 @@ const Products = () => {
                     image: IAC1, 
                     model: "SKR2-A", 
                     brand: "Aisikai", 
-                    description: <p>
-                        <b>OVERVIEW</b> <br />
+                    description: <p className="text-xl">
+                        <b className="text-primary font-secondary text-2xl font-bold underline italic">OVERVIEW</b> <br />
                         SKR2-A ATS controller is designed to work with automatic transfer switch. It's based on the micro-processor 
                         techonology. Controller can accurately detect the three/single phase(s) voltage of the dual power supplies, 
                         make accurate judgement of voltage anomalies (power loss, over voltage, under voltage, phase missing, over 
@@ -373,7 +385,7 @@ const Products = () => {
                         position or no breaking position. <br /><br /> Controllers have the function of sending generator start signal after delay 
                         when power 1# becomes abnormal. Using RS485 communication interface, controllers realize functions of remote 
                         measurement, remote communication and remote control. <br /><br />
-                        <b>PANEL DESCRIPTION</b> <br />
+                        <b className="text-primary font-secondary text-2xl font-bold underline italic">PANEL DESCRIPTION</b> <br />
                         <img src={DIAC1} alt="paneldescription-image" />
                     </p>, 
                     technicalparameters: TPIAC1,
@@ -385,8 +397,8 @@ const Products = () => {
                     image: IAC2, 
                     model: "SKR2-B", 
                     brand: "Aisikai", 
-                    description: <p>
-                        <b>OVERVIEW</b><br />
+                    description: <p className="text-xl">
+                        <b className="text-primary font-secondary text-2xl font-bold underline italic">OVERVIEW</b><br />
                         SKR2-B ATS controller is the intelligent dual-power switch modual with programmable function, automatic measurement, 
                         LCD display and digital funtions. <br /> <br />
                         SKR2-B is digitalization, intellectualization and networking integrated. With the controller, the automation in 
@@ -398,7 +410,7 @@ const Products = () => {
                         The controller can be directly used on specialized ATS, contactors made ATS, air circuit breakers made ATS and etc. <br /> <br />
                         It's widely used in the electrial equipment, automatic control and debug systems in the fields of power, post, 
                         petroleum, coal, metallurgy, railway, municipal, intelligent building. <br /> <br />
-                        <b>PANEL DESCRIPTION</b> <br />
+                        <b className="text-primary font-secondary text-2xl font-bold underline italic">PANEL DESCRIPTION</b> <br />
                         <img src={DIAC2} alt="paneldescription-image" />
                     </p>, 
                     technicalparameters: TPIAC2,
@@ -416,7 +428,7 @@ const Products = () => {
                     image: HVVCB1, 
                     model: "ASKV5-G", 
                     brand: "Aisikai", 
-                    description: <p>
+                    description: <p className="text-xl">
                         The ASKV5G series solid-sealed embedded pole indoor high-voltage vacuum circuit breaker (VCB) is characterized 
                         by the embedded pole form of the main conductive circuit using solid-sealed insulation. This is achieved by 
                         special embedding technology, which pours the vacuum arc-extinguishing chamber and conductive components with 
@@ -445,7 +457,7 @@ const Products = () => {
                     image: HVVCB2, 
                     model: "ASKV5-T", 
                     brand: "Aisikai", 
-                    description: <p>
+                    description: <p className="text-xl">
                         The ASKV5 series fixed indoor high-voltage AC vacuum circuit breaker (VCB) arranges the vacuum extinguishing chamber of the primary main 
                         circuit in a closed insulating cylinder, which is made of epoxy resin material with reliable mechanical and electrical performance and is 
                         formed using advanced APG technology. <br /><br />
@@ -471,7 +483,7 @@ const Products = () => {
                     image: UCB5, 
                     model: "ASKW2", 
                     brand: "Aisikai", 
-                    description: <p>
+                    description: <p className="text-xl">
                         The ASKW2 series universal low-voltage circuit breaker (ACB) is suitable for distribution networks with AC 50Hz, rated voltage up to 400V (690V) 
                         and below, rated current of 200A to 1600A. It is used to distribute electrical energy and protect lines and power equipment from the hazards of 
                         overload, undervoltage, short circuit, single-phase grounding, etc. <br /><br />
@@ -491,7 +503,7 @@ const Products = () => {
                     image: UCB6, 
                     model: "ASKW2", 
                     brand: "Aisikai", 
-                    description: <p>
+                    description: <p className="text-xl">
                         The ASKW2 series universal low-voltage circuit breaker (ACB) is suitable for distribution networks with AC 50Hz, rated voltage up to 400V (690V) 
                         and below, rated current of 200A to 1600A. It is used to distribute electrical energy and protect lines and power equipment from the hazards of 
                         overload, undervoltage, short circuit, single-phase grounding, etc. <br /><br />
@@ -511,7 +523,7 @@ const Products = () => {
                     image: UCB7, 
                     model: "ASKW3", 
                     brand: "Aisikai", 
-                    description: <p>
+                    description: <p className="text-xl">
                         The ASKW3 series intelligent universal circuit breaker is suitable for isolation; suitable for use at a frequency of 50/60Hz, rated operating 
                         voltage AC380V/400V/415V/440V/480V/660V/690V/800V/1000V/1140V, and rated current of 4000A and below in distribution networks, used for 
                         distributing electrical energy and protecting lines and power equipment from the harmful effects of overloads, undervoltage, short circuits, 
@@ -556,8 +568,8 @@ const Products = () => {
                     image: UCB9, 
                     model: "ASKW1", 
                     brand: "Aisikai", 
-                    description: <p>
-                        <b>PRODUCT OVERVIEW</b> <br />
+                    description: <p className="text-xl">
+                        <b className="text-primary font-secondary text-2xl font-bold underline italic">PRODUCT OVERVIEW</b> <br />
                         ASKW1 series intelligent type universal circuit breaker is suitable for AC50Hz/60Hz, rated voltage 400V, 690V, rated current 630A-6300A of the 
                         distribution network used to distribute power and protect circuits and power supply equipment against overload, under-voltage, short-circuit, 
                         single phase earth fault. <br /><br />
@@ -580,8 +592,8 @@ const Products = () => {
                     image: UCB10, 
                     model: "ASKW1", 
                     brand: "Aisikai", 
-                    description: <p>
-                        <b>PRODUCT OVERVIEW</b> <br />
+                    description: <p className="text-xl">
+                        <b className="text-primary font-secondary text-2xl font-bold underline italic">PRODUCT OVERVIEW</b> <br />
                         ASKW1 series intelligent type universal air circuit breaker is suitable for AC50Hz/60Hz, rated voltage 400V, 690V, rated current 630A-6300A 
                         of the distribution network used to distribute power and protect circuits and power supply equipment against overload, under-voltage, 
                         short-circuit, single phase earth fault. <br /><br />
@@ -613,7 +625,8 @@ const Products = () => {
                     description: "", 
                     techinicalparameters: "",
                     faq: "",
-                    brochure: MCCB1File1 
+                    brochure: MCCB1File1,
+                    categori: "ASKM2 MCCB"
                 },
                 { 
                     productId: 52,
@@ -624,7 +637,8 @@ const Products = () => {
                     description: "An intelligent electronic molded case circuit breaker.",
                     techinicalparameters: "",
                     faq: "", 
-                    brochure: MCCB2File1 
+                    brochure: MCCB2File1,
+                    categori: "ASKM2 MCCB"
                 },
                 { 
                     productId: 53,
@@ -644,7 +658,8 @@ const Products = () => {
                     </p>,
                     technicalparameters: TPMCCB3,
                     structuredrawings: SDMCCB3, 
-                    brochure: [MCCB3File1, MCCB3File2, MCCB3File3] 
+                    brochure: [MCCB3File1, MCCB3File2, MCCB3File3],
+                    categori: "ASKM1 MCCB"
                 },
                 { 
                     productId: 54,
@@ -664,7 +679,8 @@ const Products = () => {
                         <b>WORKING CONDITIONS</b> <br />
                         <img src={DMCCB4} alt="workingcondition-image" />
                     </p>, 
-                    brochure: MCCB4File1, MCCB4File2, MCCB4File3  
+                    brochure: MCCB4File1, MCCB4File2, MCCB4File3,
+                    categori: "ASKM1 MCCB"
                 },
                 { 
                     name: "ASKM3EL Series LCD Electronic Leakage Protection MCCB", 
@@ -672,7 +688,8 @@ const Products = () => {
                     model: "ASKM3EL", 
                     brand: "Aisikai", 
                     description: "", 
-                    brochure: [MCCB5File1, MCCB5File2] 
+                    brochure: [MCCB5File1, MCCB5File2],
+                    categori: "ASKM3 MCCB"
                 },
                 { 
                     name: "ASKM3E-Y Series LCD Electronic Normal Protection MCCB", 
@@ -680,7 +697,8 @@ const Products = () => {
                     model: "ASKM3E-Y", 
                     brand: "Aisikai", 
                     description: "", 
-                    brochure: [MCCB6File1, MCCB6File2]
+                    brochure: [MCCB6File1, MCCB6File2],
+                    categori: "ASKM3 MCCB"
                 },
                 { 
                     name: "ASKM3E Series Electronic Normal Protection MCCB", 
@@ -688,7 +706,8 @@ const Products = () => {
                     model: "ASKM3E", 
                     brand: "Aisikai", 
                     description: "", 
-                    brochure: [MCCB6File1, MCCB6File2]
+                    brochure: [MCCB6File1, MCCB6File2],
+                    categori: "ASKM3 MCCB"
                 },
                 { 
                     name: "ASKM3L Series Thermomagnetic Leakage Protection MCCB", 
@@ -696,7 +715,8 @@ const Products = () => {
                     model: "ASKM3L", 
                     brand: "Aisikai", 
                     description: "", 
-                    brochure: [MCCB6File1, MCCB6File2]
+                    brochure: [MCCB6File1, MCCB6File2],
+                    categori: "ASKM3 MCCB"
                 },
                 { 
                     name: "ASKM3 Series Thermomagnetic Normal Protection MCCB", 
@@ -704,7 +724,8 @@ const Products = () => {
                     model: "ASKM3", 
                     brand: "Aisikai", 
                     description: "", 
-                    brochure: [MCCB6File1, MCCB6File2]
+                    brochure: [MCCB6File1, MCCB6File2],
+                    categori: "ASKM3 MCCB"
                 },
                 { 
                     name: "ASKM1E Series Electronic Molded Case Circuit Breaker", 
@@ -719,7 +740,8 @@ const Products = () => {
                         MCCB have 3-section protection function (LSI ), 4-section protection function (LSIG) and under-voltage protection function. MCCB can protect circuits and power 
                         equipment from damage. Low temperature to -40 ℃ type circuit breaker is available.
                     </p>, 
-                    brochure: [MCCB10File1, MCCB10File2, MCCB10File3] 
+                    brochure: [MCCB10File1, MCCB10File2, MCCB10File3],
+                    categori: "ASKM1 MCCB"
                 },
                 { 
                     name: "ASKM2L Series Leakage Protection Molded Case Circuit Breaker", 
@@ -736,7 +758,8 @@ const Products = () => {
                         Protection can also be provided against fire hanzards that may be caused by long-standing ground faults that cannot be detected by over-current protection
                     </p>,
                     technicalparameters: "", 
-                    brochure: MCCB11File1 
+                    brochure: MCCB11File1,
+                    categori: "ASKM2 MCCB"
                 },
                 { 
                     name: "ASKM2 Series Normal Protection Molded Case Circuit Breaker", 
@@ -744,7 +767,7 @@ const Products = () => {
                     subtitle: "ASKM2 thermomagnetic molded case circuit breaker rated insulation voltage of MCCB is 1000V. MCCB is suitable for the distribution network of AC 50/60Hz, rated voltage 690Vand below, rated current 10A-1250A.", 
                     model: "ASKM2", 
                     brand: "Aisikai", 
-                    description: <p>
+                    description: <p className="text-xl">
                         ASKM2 thermomagnetic molded case circuit breaker(hereinafter referred to as MCCB) is a new type of circuit breaker designed and developed by our company using 
                         international advanced technology. The rated insulation voltage of MCCB is 1000V. MCCB is suitable for the distribution network of AC 50/60Hz, rated voltage 
                         690V and below, rated current 10A-1250A. <br /><br />
@@ -752,7 +775,8 @@ const Products = () => {
                         switching of lines and infrequent starting of motors. <br /><br />
                         The products have the characteristics of small volume, high breaking capacity, short flying arc, vibration resistant, etc. The whole series have isolation function.
                     </p>, 
-                    brochure: MCCB12File1 
+                    brochure: MCCB12File1,
+                    categori: "ASKM2 MCCB"
                 },
                 { 
                     name: "ASKM2RT Series Thermal-magnetic Adjustable Normal Protection Molded", 
@@ -768,7 +792,8 @@ const Products = () => {
                         used for infrequent switching of lines and infrequent starting of motors. <br /><br />
                         The products have the characteristics of small volume, high breaking capacity, short flying arc, vibration resistant, etc. The whole series have isolation function.
                     </p>, 
-                    brochure: [MCCB13File1] 
+                    brochure: [MCCB13File1],
+                    categori: "ASKM2 MCCB"
                 }
             ] 
         },
@@ -782,8 +807,8 @@ const Products = () => {
                     image: MCB5, 
                     model: "ASKB6L", 
                     brand: "Aisikai", 
-                    description: <p>
-                        <b>OVERVIEW</b> <br />
+                    description: <p className="text-xl">
+                        <b className="text-primary font-secondary text-2xl font-bold underline italic">OVERVIEW</b> <br />
                         ASKB6L leakage protection type miniature circuit breaker is suitable for lines of AC 50Hzrated operational voltage 230V, rated current below 32A, used for 
                         indirect contact protection for people, and over-current protection for buildings and lines for similar purposesASKB6L also provide protection against fires 
                         caused by persistent ground faults due to theinaction of the over-current protection devices. Leakage circuit breakers with over-voltageprotection also protect 
@@ -955,15 +980,15 @@ const Products = () => {
                     image: LIS1, 
                     model: "SKG1", 
                     brand: "Aisikai", 
-                    description: <p>
-                        <b>OVERVIEW</b><br />
+                    description: <p className="text-xl">
+                        <b className="text-primary font-secondary text-2xl font-bold underline italic">OVERVIEW</b><br />
                         Load isolation switch is indipensible device in power distribution field. SKG1 series LIS is installed on the primary 
                         distribution system, can isolate the main power from the lower distribution system, greatly  improve the safety factor of 
                         maintenance personnel when overhaul distribution system. Load isolation switch is capable of on load operating. Load 
                         isolation switch is the ideal substitute for the knife isolation switch, for LIS has much better performance in safety and 
                         reliability. LIS is widely used in the power distribution system and automation system in the fields of construction, 
                         electricity, petrochemistry and etc.<br /><br />
-                        <b>STANDARDS</b><br />
+                        <b className="text-primary font-secondary text-2xl font-bold underline italic">STANDARDS</b><br />
                         IEC60898-1-2002 <br />
                         GB10963.1-2005
                     </p>, 
@@ -980,8 +1005,8 @@ const Products = () => {
                     image: OAUP1, 
                     model: "OAUP", 
                     brand: "Aisikai", 
-                    description: <p>
-                        <b>OVERVIEW</b> <br />
+                    description: <p className="text-xl">
+                        <b className="text-primary font-secondary text-2xl font-bold underline italic">OVERVIEW</b> <br />
                         ASKP Overvoltage and Undervoltage Protector(also called VPS) cut off power fastly in the case of overvoltage or 
                         undervoltage, prevent electrical devices from being damaged from the transient impulse voltage. When power voltage 
                         recovers normal, after a delay time, ASKP VPS can re-connect power circuits and restore electric service. 
@@ -999,8 +1024,8 @@ const Products = () => {
                     image: SPD1, 
                     model: "SKD3", 
                     brand: "Aisikai", 
-                    description: <p>
-                        <b>OVERVIEW</b> <br />
+                    description: <p className="text-xl">
+                        <b className="text-primary font-secondary text-2xl font-bold underline italic">OVERVIEW</b> <br />
                         Surge Protective Device is used to limit the transient overvoltage and take surge current, providing protections from surges 
                         caused by indirect lightning, direct lightning or other transient overvoltage. <br /><br />
                         SPD have protective modes like phase-phase, phase-earth, phase-neutral, neutral-earth and etc.
@@ -1016,8 +1041,8 @@ const Products = () => {
                     image: SPD2, 
                     model: "SKD2", 
                     brand: "Aisikai", 
-                    description: <p>
-                        <b>OVERVIEW</b> <br />
+                    description: <p className="text-xl">
+                        <b className="text-primary font-secondary text-2xl font-bold underline italic">OVERVIEW</b> <br />
                         Surge Protective Device is used to limit the transient overvoltage and take surge current, providing protections from surges 
                         caused by indirect lightning, direct lightning or other transient overvoltage. <br /><br />
                         SPD have protective modes like phase-phase, phase-earth, phase-neutral, neutral-earth and etc.
@@ -1033,8 +1058,8 @@ const Products = () => {
                     image: SPD3, 
                     model: "SKD1", 
                     brand: "Aisikai", 
-                    description: <p>
-                    <b>OVERVIEW</b> <br />
+                    description: <p className="text-xl">
+                    <b className="text-primary font-secondary text-2xl font-bold underline italic">OVERVIEW</b> <br />
                     Surge Protective Device is used to limit the transient overvoltage and take surge current, providing protections from surges 
                     caused by indirect lightning, direct lightning or other transient overvoltage. <br /><br />
                     SPD have protective modes like phase-phase, phase-earth, phase-neutral, neutral-earth and etc.
@@ -1070,12 +1095,12 @@ const Products = () => {
                     image: BC1, 
                     model: "BAC", 
                     brand: "Aisikai", 
-                    description: <p>
+                    description: <p className="text-xl">
                         BAC series battery charger is specially designed for the  generator starting lead-acid battery. It uses the latest switch 
                         power components and 2-stages charging method. BAC06A is suitable for the long-term trickle charging(floating charge) of 
                         lead-acid battery. The maximum charging current for 12V charger is 6A, and the maximum charge current for 24V charger is 10A. 
                         <br /><br />
-                        <b>FEATURES</b> <br />
+                        <b className="text-primary font-secondary text-2xl font-bold underline italic">FEATURES</b> <br />
                         1. Switch power structure design; wide range of AC voltage input; small volume, light weight and high efficiency. <br />
                         2. Use 2-stages charging method: constant current firsty and then constant voltage. Fully follow the charging
                            characteristic of the lead-acid battery, can avoid overcharging and largely extend the battery life. <br />
@@ -1083,7 +1108,7 @@ const Products = () => {
                         4. Charging voltage and current can be field adjusted via potentiometer. <br />
                         5. LED display for AC power indication and charging indication. <br />
                         6. Easy to install horizontally. <br /><br />
-                        <b>CHARGING PRINCIPLE</b> <br />
+                        <b className="text-primary font-secondary text-2xl font-bold underline italic">CHARGING PRINCIPLE</b> <br />
                         <img src={DIBC1} />
                     </p>, 
                     technicalparameters: TPIBC1, 
@@ -1100,28 +1125,49 @@ const Products = () => {
     //     setActiveCategory(defaultCategory);
     // }, []);
 
+    // Mengambil semua produk dari semua kategori
+    const getAllProducts = () => {
+        return categories.flatMap(category => 
+            category.products.map(product => ({
+                ...product,
+                categoryName: category.name,
+                categoryId: category.id
+            }))
+        );
+    };
+    
+    // Menangani perubahan halaman pagination
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+    
     useEffect(() => {
-        const allProducts = categories.flatMap(category => category.products);
-
+        const allProducts = getAllProducts();
+    
         if (productId) {
             const found = allProducts.find(product => product.productId === Number(productId));
             if (found) {
                 setSelectedProduct(found);
-                const categoryOfProdcut = categories.find(category => 
+                const categoryOfProduct = categories.find(category => 
                     category.products.some(product => product.productId === found.productId)
                 );
-                if (categoryOfProdcut) {
-                    setActiveCategory(categoryOfProdcut);
+                if (categoryOfProduct) {
+                    setActiveCategory(categoryOfProduct);
                 }
             } else {
                 setSelectedProduct(null);
             }
-
         } else {
-            const defaultCategory = categories.find(category => category.id === 1);
-            setActiveCategory(defaultCategory);
+            // Jika tidak ada produk yang dipilih, tampilkan semua produk
             setSelectedProduct(null);
-        }; // Clear selected product to show the product list    
+            
+            // Tanpa memilih kategori (untuk menampilkan semua produk)
+            if (!activeCategory) {
+                // Tampilkan semua produk dengan pagination
+                const allProducts = getAllProducts();
+                setProductsToShow(allProducts);
+            }
+        }
     }, [productId]);
 
     useEffect(() => {
@@ -1133,9 +1179,76 @@ const Products = () => {
             }
         }
     }, [category]);
+    
+    // Efek untuk mengupdate produk yang ditampilkan saat kategori aktif berubah
+    useEffect(() => {
+        // Reset halaman pagination ke halaman pertama saat kategori berubah
+        setCurrentPage(1);
+        
+        if (activeCategory) {
+            // Jika kategori dipilih, tampilkan produk dari kategori tersebut
+            setProductsToShow(activeCategory.products.map(product => ({
+                ...product,
+                categoryName: activeCategory.name,
+                categoryId: activeCategory.id
+            })));
+        } else {
+            // Jika tidak ada kategori yang dipilih, tampilkan semua produk
+            setProductsToShow(getAllProducts());
+        }
+    }, [activeCategory]);
 
     const handleProductClick = (product) => {
         setSelectedProduct(product);
+    };
+    
+    // Menghitung jumlah total halaman
+    const totalPages = Math.ceil(productsToShow.length / productsPerPage);
+    
+    // Mendapatkan produk untuk halaman saat ini
+    const getCurrentPageProducts = () => {
+        const indexOfLastProduct = currentPage * productsPerPage;
+        const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+        return productsToShow.slice(indexOfFirstProduct, indexOfLastProduct);
+    };
+    
+    // Komponen Pagination
+    const Pagination = ({ totalPages, currentPage, onPageChange }) => {
+        const pageNumbers = [];
+        
+        for (let i = 1; i <= totalPages; i++) {
+            pageNumbers.push(i);
+        }
+        
+        return (
+            <div className="flex justify-center mt-6 gap-2">
+                <button 
+                    onClick={() => onPageChange(Math.max(1, currentPage - 1))}
+                    disabled={currentPage === 1}
+                    className={`px-3 py-1 rounded ${currentPage === 1 ? 'bg-gray-300 cursor-not-allowed' : 'bg-gray-200 hover:bg-gray-300'}`}
+                >
+                    &laquo;
+                </button>
+                
+                {pageNumbers.map(number => (
+                    <button
+                        key={number}
+                        onClick={() => onPageChange(number)}
+                        className={`px-3 py-1 rounded ${currentPage === number ? 'bg-primary text-white' : 'bg-gray-200 hover:bg-gray-300'}`}
+                    >
+                        {number}
+                    </button>
+                ))}
+                
+                <button 
+                    onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
+                    disabled={currentPage === totalPages}
+                    className={`px-3 py-1 rounded ${currentPage === totalPages ? 'bg-gray-300 cursor-not-allowed' : 'bg-gray-200 hover:bg-gray-300'}`}
+                >
+                    &raquo;
+                </button>
+            </div>
+        );
     };
 
     return (
@@ -1147,21 +1260,73 @@ const Products = () => {
 
                 <div className="flex flex-col xl:flex-row items-center xl:items-start justify-center gap-6 px-6 xl:px-16 py-12">
                     {/* Left List Menu */}
-                    <div className="w-full xl:w-[25rem] bg-gray-200 p-4 rounded-lg items-center flex flex-col justify-center">
-                        <h2 className="text-md font-bold mb-4">Product Category</h2>
-                        <ul className="w-full flex flex-col gap-2">
+                    <div className="w-full xl:w-[25rem] p-4 rounded-lg items-center flex flex-col justify-center">
+                        <div className="bg-primary flex justify-center items-center w-full py-4">
+                            <h2 className="text-md font-bold text-white">Product Category</h2>
+                        </div>
+
+                        <ul className="w-full flex flex-col border border-gray-300">
                             {categories.map((category) => (
-                                <li
-                                    key={category.id}
-                                    className={`px-4 py-2 text-sm border border-gray-300 rounded-lg cursor-pointer ${
-                                        activeCategory?.id === category.id ? "bg-primary text-white" : "bg-white text-gray-700"
-                                    }`}
-                                    onClick={() => {
-                                        setActiveCategory(category);
-                                        setSelectedProduct(null); // Clear selected product to show the product list
-                                    }}
-                                >
-                                    {category.name}
+                                <li key={category.id}>
+                                    {category.id === 1 || category.id === 5 ? ( // Automatic Transfer Switch atau Molded Case Circuit Breaker
+                                        <div className="mb-2">
+                                            <div
+                                                className={`px-4 py-3 text-sm border-b border-gray-300 cursor-pointer flex justify-between items-center
+                                                ${activeCategory?.id === category.id ? "bg-white text-primary" : "bg-white text-gray-700"}`}
+                                                onClick={() => {
+                                                    setActiveCategory(category);
+                                                    setSelectedProduct(null); // Clear selected product to show the product list
+                                                }}
+                                            >
+                                                <span>{category.name}</span>
+                                                {/* Icon dropdown */}
+                                                <RiArrowDropDownLine className="text-xl" />
+                                            </div>
+                                            
+                                            {/* Dropdown untuk sub-kategori */}
+                                            {activeCategory?.id === category.id && (
+                                                <div className="ml-4 mt-2">
+                                                    {/* Ambil semua subkategori unik berdasarkan properti 'categori' */}
+                                                    {[...new Set(category.products
+                                                        .filter(product => product.categori)
+                                                        .map(product => product.categori))
+                                                    ].map((subcategory, idx) => (
+                                                        <div 
+                                                            key={idx}
+                                                            className="px-3 py-2 text-sm mb-1 cursor-pointer hover:text-primary hover:underline"
+                                                            onClick={() => {
+                                                                // Filter produk berdasarkan subkategori
+                                                                const filteredProducts = category.products
+                                                                    .filter(product => product.categori === subcategory)
+                                                                    .map(product => ({
+                                                                        ...product,
+                                                                        categoryName: category.name,
+                                                                        categoryId: category.id
+                                                                    }));
+                                                                
+                                                                setProductsToShow(filteredProducts);
+                                                                setCurrentPage(1); // Reset ke halaman pertama
+                                                            }}
+                                                        >
+                                                            {subcategory}
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
+                                    ) : (
+                                        <div
+                                            className={`px-4 py-4 text-sm border-b border-gray-300 cursor-pointer hover:bg-gray-200 hover:text-primary ${
+                                                activeCategory?.id === category.id ? "bg-white text-primary" : "bg-white text-gray-700"
+                                            }`}
+                                            onClick={() => {
+                                                setActiveCategory(category);
+                                                setSelectedProduct(null); // Clear selected product to show the product list
+                                            }}
+                                        >
+                                            {category.name}
+                                        </div>
+                                    )}
                                 </li>
                             ))}
                         </ul>
@@ -1306,27 +1471,40 @@ const Products = () => {
                             </div>
                         ) : (
                             <>
-                                {/* Product List */}
+                                {/* Product List dengan Pagination */}
                                 <h2 className="text-lg font-bold mb-4 self-center">
-                                    {activeCategory ? activeCategory.name : "Select a Category"}
+                                    {activeCategory ? activeCategory.name : "All Products"}
                                 </h2>
+                                
+                                {/* Grid layout untuk menampilkan produk dalam 3 baris */}
                                 <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                                    {activeCategory &&
-                                        activeCategory.products.map((product, index) => (
-                                            <li
-                                                key={index}
-                                                className="flex flex-col items-center justify-center gap-4 bg-white p-4 rounded-lg shadow cursor-pointer"
-                                                onClick={() => handleProductClick(product)}
-                                            >
-                                                <img src={product.image} alt={product.name} className="size-42 object-cover rounded-lg" />
-                                                <h3 className="text-md font-medium">{product.name}</h3>
-                                                <button className='flex flex-row justify-center items-center gap-2 bg-gray-200 w-full py-2 rounded-sm'>
-                                                    <PiEnvelopeSimple />
-                                                    <span>Inquire</span>
-                                                </button>
-                                            </li>
-                                        ))}
+                                    {getCurrentPageProducts().map((product, index) => (
+                                        <li
+                                            key={index}
+                                            className="flex flex-col items-center justify-center gap-4 bg-white p-4 rounded-lg shadow cursor-pointer"
+                                            onClick={() => handleProductClick(product)}
+                                        >
+                                            <img src={product.image} alt={product.name} className="size-42 object-cover rounded-lg" />
+                                            <h3 className="text-md font-medium">{product.name}</h3>
+                                            {product.categoryName && !activeCategory && (
+                                                <p className="text-sm text-gray-500">{product.categoryName}</p>
+                                            )}
+                                            <button className='flex flex-row justify-center items-center gap-2 bg-gray-200 w-full py-2 rounded-sm'>
+                                                <PiEnvelopeSimple />
+                                                <span>Inquire</span>
+                                            </button>
+                                        </li>
+                                    ))}
                                 </ul>
+                                
+                                {/* Pagination component */}
+                                {totalPages > 1 && (
+                                    <Pagination 
+                                        totalPages={totalPages} 
+                                        currentPage={currentPage} 
+                                        onPageChange={handlePageChange}
+                                    />
+                                )}
                             </>
                         )}
                     </div>

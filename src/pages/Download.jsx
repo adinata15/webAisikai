@@ -41,144 +41,270 @@ const Download = () => {
             <Breadcrumb pageName="Download" />
 
             <div className="px-6 xl:px-24 py-12 xl:pb-16 flex flex-col justify-center items-center gap-8 xl:gap-12">
-                <h3 className="text-2xl xl:text-4xl font-bold">Download</h3>
-                <div className="flex flex-col xl:flex-row xl:flex-wrap items-center justify-center gap-8">
-
-                    <div className="flex flex-col justify-center items-center shadow-lg rounded-lg xl:w-[20rem]">
+                <div className="flex flex-col xl:flex-row xl:flex-wrap items-center justify-center gap-10">
+                    <div className="flex flex-col justify-center items-center rounded-lg xl:w-[20rem]">
                         <div className="flex flex-col justify-between items-start gap-2">
                             <div className="flex row justify-between items-start gap-6">
-                                <h3 className="text-sm sm:text-xl text-gray">2024-07-03</h3>
+                                <h3 className="text-sm text-gray">2024-07-03</h3>
                                 <div className="flex flex-row justify-between items-center gap-2">
                                     <FaDownload className="text-gray"/>
-                                    <h3 className="text-sm sm:text-xl text-gray">1462</h3>
+                                    <h3 className="text-sm text-gray">1462</h3>
                                 </div>
                             </div>
-                            <h3 className="text-sm sm:text-sm">AISIKAI-ASKM1 Series Catalogue 2023V1.0.pdf</h3>
+                            <h3 className="text-sm">AISIKAI-ASKM1 Series Catalogue 2023V1.0.pdf</h3>
                         </div>
-                        <div className="flex flex-col justify-center items-center gap-4 bg-gray-50 p-8 w-full h-[10rem]">
+
+                        <div className="mt-10 flex flex-col justify-center items-center gap-4 bg-gray-50 p-8 w-full h-[12rem]">
                             <div className="size-[15rem]">
                                 <img src={FD1image} alt="fd1image" className="w-full h-full object-contain"/>
                             </div>                            
                         </div>
-                        <div className="bg-primary flex flex-row justify-between items-center gap-2 w-full h-[3rem]">
-                            <a href={FD1} download className="text-white w-full py-2 sm:py-6 font-bold text-lg flex justify-center">View More</a>
-
+                        <div className="bg-primary flex flex-row justify-center items-center gap-2 w-full h-[2.5rem]">
+                            <a href={FD1} download className="text-white py-2 sm:py-6 font-normal text-sm flex justify-center">View More</a>
+                            <GrView className="text-white"/>
                         </div>
                     </div>
 
-                    <div className="flex flex-col justify-center items-center shadow-lg rounded-lg xl:w-1/5">
-                        <div className=" flex flex-col justify-center items-center gap-4 bg-white p-8">
-                            <h3 className="text-lg sm:text-xl">SKT SERIES ATS Catalogue -24V1.0-AISIKAI.pdf</h3>
+                    <div className="flex flex-col justify-center items-center rounded-lg xl:w-[20rem]">
+                        <div className="flex flex-col justify-between items-start gap-2">
+                            <div className="flex row justify-between items-start gap-6">
+                                <h3 className="text-sm text-gray">2025-04-03</h3>
+                                <div className="flex flex-row justify-between items-center gap-2">
+                                    <FaDownload className="text-gray"/>
+                                    <h3 className="text-sm text-gray">8652</h3>
+                                </div>
+                            </div>
+                            <h3 className="text-sm">SKT SERIES ATS Catalogue -24V1.0-AISIKAI.pdf</h3>
+                        </div>
+                        <div className="mt-10 flex flex-col justify-center items-center gap-4 bg-gray-50 p-8 w-full h-[12rem]">
                             <div className="size-[15rem]">
                                 <img src={FD2image} alt="fd2image" className="w-full h-full object-contain"/>
-                            </div>                           
+                            </div>
                         </div>
-                        <a href={FD2} download className="bg-primary text-white w-full py-2 sm:py-6 font-bold text-lg flex justify-center">Download</a>
+                        <div className="bg-primary flex flex-row justify-center items-center gap-2 w-full h-[2.5rem]">
+                            <a href={FD2} download className="text-white py-2 sm:py-6 font-normal text-sm flex justify-center">View More</a>
+                            <GrView className="text-white"/>
+                        </div>
                     </div>
 
-                    <div className="flex flex-col justify-center items-center shadow-lg rounded-lg xl:w-1/5">
-                        <div className="flex flex-col justify-center items-center gap-4 bg-white p-8">
-                            <h3 className="text-lg sm:text-xl">AISIKAI-ASKQ1 Selection guide 2023v1.0.pdf</h3>
+                    <div className="flex flex-col justify-center items-center rounded-lg xl:w-[20rem]">
+                        <div className="flex flex-col justify-between items-start gap-2">
+                            <div className="flex row justify-between items-start gap-6">
+                                <h3 className="text-sm text-gray">2022-07-26</h3>
+                                <div className="flex flex-row justify-between items-center gap-2">
+                                    <FaDownload className="text-gray"/>
+                                    <h3 className="text-sm text-gray">904</h3>
+                                </div>
+                            </div>
+                            <h3 className="text-sm">AISIKAI-ASKQ1 Selection guide 2023v1.0.pdf</h3>
+                        </div>
+                        <div className="mt-10 flex flex-col justify-center items-center gap-4 bg-gray-50 p-8 w-full h-[12rem]">
                             <div className="size-[15rem]">
-                                <img src={FD3image} alt="fd3image" className="w-full h-full object-contain"/>
-                            </div>                           
+                                <img src={FD3image} alt="fd2image" className="w-full h-full object-contain"/>
+                            </div>
                         </div>
-
-                        <div>
-                            <a href={FD3} download className="bg-primary text-white w-full py-2 sm:py-6 font-bold text-lg flex justify-center">View More</a>
-                            <GrView />
+                        <div className="bg-primary flex flex-row justify-center items-center gap-2 w-full h-[2.5rem]">
+                            <a href={FD3} download className="text-white py-2 sm:py-6 font-normal text-sm flex justify-center">View More</a>
+                            <GrView className="text-white"/>
                         </div>
-
                     </div>
 
-                    <div className="flex flex-col justify-center items-center shadow-lg rounded-lg xl:w-1/5">
-                        <div className="flex flex-col justify-center items-center gap-4 bg-white p-8">
-                            <h3 className="text-lg sm:text-xl">ASKQ6 ATS Products Introduction-24V1.0-AISIKAI.pdf</h3>
+                    <div className="flex flex-col justify-center items-center rounded-lg xl:w-[20rem]">
+                        <div className="flex flex-col justify-between items-start gap-2">
+                            <div className="flex row justify-between items-start gap-6">
+                                <h3 className="text-sm text-gray">2024-12-10</h3>
+                                <div className="flex flex-row justify-between items-center gap-2">
+                                    <FaDownload className="text-gray"/>
+                                    <h3 className="text-sm text-gray">117</h3>
+                                </div>
+                            </div>
+                            <h3 className="text-sm">ASKQ6 ATS Products Introduction-24V1.0-AISIKAI.pdf</h3>
+                        </div>
+                        <div className="mt-5 flex flex-col justify-center items-center gap-4 bg-gray-50 p-8 w-full h-[12rem]">
                             <div className="size-[15rem]">
-                                <img src={FD4image} alt="fd4image" className="w-full h-full object-contain"/>
-                            </div>                           
-                        </div>
-                        <a href={FD4} download className="bg-primary text-white w-full py-2 sm:py-6 font-bold text-lg flex justify-center">Download</a>
-                    </div>
-
-                    <div className="flex flex-col justify-center items-center shadow-lg rounded-lg xl:w-1/5">
-                        <div className="flex flex-col justify-center items-center gap-4 bg-white p-8">
-                            <h3 className="text-lg sm:text-xl">AISIKAI-ASKM1 Series Catalogue 2023V1.0.pdf</h3>
-                            <div className="size-[16.8rem] 3xl:size-[15rem]">
-                                <img src={FD5image} alt="fd5image" className="w-full h-full object-contain"/>
+                                <img src={FD4image} alt="fd2image" className="w-full h-full object-contain"/>
                             </div>
                         </div>
-                        <a href={FD5} download className="bg-primary text-white w-full py-2 sm:py-6 font-bold text-lg flex justify-center">Download</a>
+                        <div className="bg-primary flex flex-row justify-center items-center gap-2 w-full h-[2.5rem]">
+                            <a href={FD4} download className="text-white py-2 sm:py-6 font-normal text-sm flex justify-center">View More</a>
+                            <GrView className="text-white"/>
+                        </div>
                     </div>
 
-                    <div className="flex flex-col justify-center items-center shadow-lg rounded-lg xl:w-1/5">
-                        <div className="flex flex-col justify-center items-center gap-4 bg-white p-8">
-                            <h3 className="text-lg sm:text-xl">AISIKAI-ASKM3 Series Complete Catalogue 2023V1.0.pdf</h3>
+                    <div className="flex flex-col justify-center items-center rounded-lg xl:w-[20rem]">
+                        <div className="flex flex-col justify-between items-start gap-2">
+                            <div className="flex row justify-between items-start gap-6">
+                                <h3 className="text-sm text-gray">2024-06-06</h3>
+                                <div className="flex flex-row justify-between items-center gap-2">
+                                    <FaDownload className="text-gray"/>
+                                    <h3 className="text-sm text-gray">539</h3>
+                                </div>
+                            </div>
+                            <h3 className="text-sm">AISIKAI-ASKM1 Series Catalogue 2023V1.0.pdf</h3>
+                        </div>
+                        <div className="mt-10 flex flex-col justify-center items-center gap-4 bg-gray-50 p-8 w-full h-[12rem]">
                             <div className="size-[15rem]">
-                                <img src={FD6image} alt="fd6image" className="w-full h-full object-contain"/>
+                                <img src={FD5image} alt="fd2image" className="w-[12rem] ml-5 h-full object-contain self-center"/>
                             </div>
                         </div>
-                        <a href={FD6} download className="bg-primary text-white w-full py-2 sm:py-6 font-bold text-lg flex justify-center">Download</a>
-                    </div>
-
-                    <div className="flex flex-col justify-center items-center shadow-lg rounded-lg xl:w-1/5">
-                        <div className="flex flex-col justify-center items-center gap-4 bg-white p-8">
-                            <h3 className="text-lg sm:text-xl">ACB Catalog-ASKW Series_2023V1.0.pdf</h3>
-                            <div className="size-[16.8rem]">
-                                <img src={FD7image} alt="fd7image" className="w-full h-full object-contain"/>
-                            </div>
+                        <div className="bg-primary flex flex-row justify-center items-center gap-2 w-full h-[2.5rem]">
+                            <a href={FD5} download className="text-white py-2 sm:py-6 font-normal text-sm flex justify-center">View More</a>
+                            <GrView className="text-white"/>
                         </div>
-                        <a href={FD7} download className="bg-primary text-white w-full py-2 sm:py-6 font-bold text-lg flex justify-center">Download</a>
                     </div>
 
-                    <div className="flex flex-col justify-center items-center shadow-lg rounded-lg xl:w-1/5">
-                        <div className="flex flex-col justify-center items-center gap-4 bg-white p-8">
-                            <h3 className="text-lg sm:text-xl">ASKV5 Series VCB Complete Catalogue-24V1.2- AISIKAI.pdf</h3>
-                            <div className="size-[15rem] 2xl:size-[16.8rem] 3xl:size-[15rem]">
-                                <img src={FD8image} alt="fd8image" className="w-full h-full object-contain"/>
+                    <div className="flex flex-col justify-center items-center rounded-lg xl:w-[20rem]">
+                        <div className="flex flex-col justify-between items-start gap-2">
+                            <div className="flex row justify-between items-start gap-6">
+                                <h3 className="text-sm text-gray">2024-05-24</h3>
+                                <div className="flex flex-row justify-between items-center gap-2">
+                                    <FaDownload className="text-gray"/>
+                                    <h3 className="text-sm text-gray">429</h3>
+                                </div>
                             </div>
+                            <h3 className="text-sm">AISIKAI-ASKM3 Series Complete Catalogue 2023V1.0.pdf</h3>
                         </div>
-                        <a href={FD8} download className="bg-primary text-white w-full py-2 sm:py-6 font-bold text-lg flex justify-center">Download</a>
-                    </div>
-
-                    <div className="flex flex-col justify-center items-center shadow-lg rounded-lg xl:w-1/5">
-                        <div className="flex flex-col justify-center items-center gap-4 bg-white p-8">
-                            <h3 className="text-lg sm:text-xl">SKQ1 Series Automatic Transfer Switch Catalogue-ATS24V1.0-AISIKAI.pdf</h3>
+                        <div className="mt-5 flex flex-col justify-center items-center gap-4 bg-gray-50 p-8 w-full h-[12rem]">
                             <div className="size-[15rem]">
-                                <img src={FD9image} alt="fd9image" className="w-full h-full object-contain"/>
+                                <img src={FD6image} alt="fd2image" className="w-[12rem] ml-5 h-full object-contain"/>
                             </div>
                         </div>
-                        <a href={FD9} download className="bg-primary text-white w-full py-2 sm:py-6 font-bold text-lg flex justify-center">Download</a>
+                        <div className="bg-primary flex flex-row justify-center items-center gap-2 w-full h-[2.5rem]">
+                            <a href={FD6} download className="text-white py-2 sm:py-6 font-normal text-sm flex justify-center">View More</a>
+                            <GrView className="text-white"/>
+                        </div>
                     </div>
 
-                    <div className="flex flex-col justify-center items-center shadow-lg rounded-lg xl:w-1/5">
-                        <div className="flex flex-col justify-center items-center gap-4 bg-white p-8">
-                            <h3 className="text-lg sm:text-xl">AISIKAI-BAC SERIES USER MANUAL-24V1.0.pdf</h3>
-                            <div className="size-[17rem]">
-                                <img src={FD10image} alt="fd10image" className="w-full h-full object-contain"/>
+                    <div className="flex flex-col justify-center items-center rounded-lg xl:w-[20rem]">
+                        <div className="flex flex-col justify-between items-start gap-2">
+                            <div className="flex row justify-between items-start gap-6">
+                                <h3 className="text-sm text-gray">2022-09-30</h3>
+                                <div className="flex flex-row justify-between items-center gap-2">
+                                    <FaDownload className="text-gray"/>
+                                    <h3 className="text-sm text-gray">340</h3>
+                                </div>
+                            </div>
+                            <h3 className="text-sm">ACB Catalog-ASKW Series_2023V1.0.pdf</h3>
+                        </div>
+                        <div className="mt-10 flex flex-col justify-center items-center gap-4 bg-gray-50 p-8 w-full h-[12rem]">
+                            <div className="size-[15rem]">
+                                <img src={FD7image} alt="fd2image" className="w-[12rem] ml-5 h-full object-contain"/>
                             </div>
                         </div>
-                        <a href={FD10} download className="bg-primary text-white w-full py-2 sm:py-6 font-bold text-lg flex justify-center">Download</a>
+                        <div className="bg-primary flex flex-row justify-center items-center gap-2 w-full h-[2.5rem]">
+                            <a href={FD7} download className="text-white py-2 sm:py-6 font-normal text-sm flex justify-center">View More</a>
+                            <GrView className="text-white"/>
+                        </div>
                     </div>
 
-                    <div className="flex flex-col justify-center items-center shadow-lg rounded-lg xl:w-1/5">
-                        <div className="flex flex-col justify-center items-center gap-4 bg-white p-8">
-                            <h3 className="text-lg sm:text-xl">MCB Catalogue.pdf</h3>
-                            <div className="size-[18.5rem]">
-                                <img src={FD11image} alt="fd11image" className="w-full h-full object-contain"/>
+                    <div className="flex flex-col justify-center items-center rounded-lg xl:w-[20rem]">
+                        <div className="flex flex-col justify-between items-start gap-2">
+                            <div className="flex row justify-between items-start gap-6">
+                                <h3 className="text-sm text-gray">2022-02-17</h3>
+                                <div className="flex flex-row justify-between items-center gap-2">
+                                    <FaDownload className="text-gray"/>
+                                    <h3 className="text-sm text-gray">1634</h3>
+                                </div>
+                            </div>
+                            <h3 className="text-sm">ASKV5 Series VCB Complete Catalogue-24V1.2- AISIKAI.pdf</h3>
+                        </div>
+                        <div className="mt-5 flex flex-col justify-center items-center gap-4 bg-gray-50 p-8 w-full h-[12rem]">
+                            <div className="size-[15rem]">
+                                <img src={FD8image} alt="fd2image" className="w-full h-full object-contain"/>
                             </div>
                         </div>
-                        <a href={FD11} download className="bg-primary text-white w-full py-2 sm:py-6 font-bold text-lg flex justify-center">Download</a>
+                        <div className="bg-primary flex flex-row justify-center items-center gap-2 w-full h-[2.5rem]">
+                            <a href={FD8} download className="text-white py-2 sm:py-6 font-normal text-sm flex justify-center">View More</a>
+                            <GrView className="text-white"/>
+                        </div>
                     </div>
 
-                    <div className="flex flex-col justify-center items-center shadow-lg rounded-lg xl:w-1/5">
-                        <div className="flex flex-col justify-center items-center gap-4 bg-white p-8">
-                            <h3 className="text-lg sm:text-xl">2019-(ATSC) Intelligent ATS Controller Catalogue-V1.2_190904.pdf</h3>
-                            <div className="size-[15rem] 3xl:size-[16.7rem]">
-                                <img src={FD12image} alt="fd12image" className="w-full h-full object-contain"/>
+                    <div className="flex flex-col justify-center items-center rounded-lg xl:w-[20rem]">
+                        <div className="flex flex-col justify-between items-start gap-2">
+                            <div className="flex row justify-between items-start gap-6">
+                                <h3 className="text-sm text-gray">2024-12-10</h3>
+                                <div className="flex flex-row justify-between items-center gap-2">
+                                    <FaDownload className="text-gray"/>
+                                    <h3 className="text-sm text-gray">546</h3>
+                                </div>
+                            </div>
+                            <h3 className="text-sm">SKQ1 Series Automatic Transfer Switch Catalogue-ATS24V1.0-AISIKAI.pdf</h3>
+                        </div>
+                        <div className="mt-10 flex flex-col justify-center items-center gap-4 bg-gray-50 p-8 w-full h-[12rem]">
+                            <div className="size-[15rem]">
+                                <img src={FD9image} alt="fd2image" className="w-full h-full object-contain"/>
                             </div>
                         </div>
-                        <a href={FD12} download className="bg-primary text-white w-full py-2 sm:py-6 font-bold text-lg flex justify-center">Download</a>
+                        <div className="bg-primary flex flex-row justify-center items-center gap-2 w-full h-[2.5rem]">
+                            <a href={FD9} download className="text-white py-2 sm:py-6 font-normal text-sm flex justify-center">View More</a>
+                            <GrView className="text-white"/>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col justify-center items-center rounded-lg xl:w-[20rem]">
+                        <div className="flex flex-col justify-between items-start gap-2">
+                            <div className="flex row justify-between items-start gap-6">
+                                <h3 className="text-sm text-gray">2024-05-24</h3>
+                                <div className="flex flex-row justify-between items-center gap-2">
+                                    <FaDownload className="text-gray"/>
+                                    <h3 className="text-sm text-gray">429</h3>
+                                </div>
+                            </div>
+                            <h3 className="text-sm">AISIKAI-BAC SERIES USER MANUAL-24V1.0.pdf</h3>
+                        </div>
+                        <div className="mt-15 flex flex-col justify-center items-center gap-4 bg-gray-50 p-8 w-full h-[12rem]">
+                            <div className="size-[15rem]">
+                                <img src={FD10image} alt="fd2image" className="w-full h-full object-contain"/>
+                            </div>
+                        </div>
+                        <div className="bg-primary flex flex-row justify-center items-center gap-2 w-full h-[2.5rem]">
+                            <a href={FD10} download className="text-white py-2 sm:py-6 font-normal text-sm flex justify-center">View More</a>
+                            <GrView className="text-white"/>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col justify-center items-center rounded-lg xl:w-[20rem]">
+                        <div className="flex flex-col justify-between items-start gap-2">
+                            <div className="flex row justify-between items-start gap-6">
+                                <h3 className="text-sm text-gray">2022-09-30</h3>
+                                <div className="flex flex-row justify-between items-center gap-2">
+                                    <FaDownload className="text-gray"/>
+                                    <h3 className="text-sm text-gray">340</h3>
+                                </div>
+                            </div>
+                            <h3 className="text-sm">MCB Catalogue.pdf</h3>
+                        </div>
+                        <div className="mt-15 flex flex-col justify-center items-center gap-4 bg-gray-50 p-8 w-full h-[12rem]">
+                            <div className="size-[15rem]">
+                                <img src={FD11image} alt="fd2image" className="w-full h-full object-contain"/>
+                            </div>
+                        </div>
+                        <div className="bg-primary flex flex-row justify-center items-center gap-2 w-full h-[2.5rem]">
+                            <a href={FD11} download className="text-white py-2 sm:py-6 font-normal text-sm flex justify-center">View More</a>
+                            <GrView className="text-white"/>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col justify-center items-center rounded-lg xl:w-[20rem]">
+                        <div className="flex flex-col justify-between items-start gap-2">
+                            <div className="flex row justify-between items-start gap-6">
+                                <h3 className="text-sm text-gray">2022-02-17</h3>
+                                <div className="flex flex-row justify-between items-center gap-2">
+                                    <FaDownload className="text-gray"/>
+                                    <h3 className="text-sm text-gray">1634</h3>
+                                </div>
+                            </div>
+                            <h3 className="text-sm">2019-(ATSC) Intelligent ATS Controller Catalogue-V1.2_190904.pdf</h3>
+                        </div>
+                        <div className="mt-10 flex flex-col justify-center items-center gap-4 bg-gray-50 p-8 w-full h-[12rem]">
+                            <div className="size-[15rem]">
+                                <img src={FD12image} alt="fd2image" className="w-full h-full object-contain"/>
+                            </div>
+                        </div>
+                        <div className="bg-primary flex flex-row justify-center items-center gap-2 w-full h-[2.5rem]">
+                            <a href={FD12} download className="text-white py-2 sm:py-6 font-normal text-sm flex justify-center">View More</a>
+                            <GrView className="text-white"/>
+                        </div>
                     </div>
                 </div>
             </div>

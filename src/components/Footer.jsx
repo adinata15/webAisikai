@@ -19,9 +19,9 @@ const Footer = () => {
     return(
         <section className="bg-slate-900 w-full px-6 sm:px-12 xl:px-24 py-12">
             <div className="flex flex-col justify-center items-center gap-8">
-                <div className='flex flex-col xl:flex-row justify-between items-start gap-8'>
+                <div className='flex flex-col xl:flex-row justify-between items-start gap-8 w-full'>
                     <div>
-                        <img src={logoAisikai} alt="logo-aisikai" className='w-1/2' />
+                        <img src={logoAisikai} alt="logo-aisikai" className='w-1/2 xl:w-[12rem]' />
                     </div>
                     <div className='flex flex-col xl:flex-row gap-8 items-start'>
                         <button onClick={navToHome}><a href="" className="text-gray-500 font-medium text-md">Home</a></button>
@@ -31,7 +31,9 @@ const Footer = () => {
                         <button onClick={navToContactUs}><a href="" className="text-gray-500 font-medium text-md whitespace-nowrap">Contact Us</a></button>
                     </div>
                 </div>
+
                 <div className='w-full border-[0.1rem] border-gray-500'></div>
+
                 <div className='w-full flex flex-col xl:flex-row justify-between items-start gap-4'>
                     <p className='font-regular text-gray-500 text-sm leading-normal'>All rights reserved &copy JIANGSU AISIKAI ELECTRIC CO.,LTD. Support By Leadong</p>
                     <div className='flex flex-row gap-4'>
@@ -41,7 +43,6 @@ const Footer = () => {
                         <FaFacebookF className="text-gray-500 size-4" />   
                     </div>
                 </div>
-                
             </div>
         </section>
     )
