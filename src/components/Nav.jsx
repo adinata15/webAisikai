@@ -17,6 +17,7 @@ import BC from "../assets/images/bc1.webp"
 const Nav = ({linkToNav}) => {
 
     const [showproducts, setShowProducts] = useState(false);
+    const [showaboutus, setShowaboutus] = useState(false);
     const navigate = useNavigate();
 
     // const categories = [
@@ -24,6 +25,9 @@ const Nav = ({linkToNav}) => {
     // ];
 
     const toATS = () => {navigate("/products");}
+    const toAboutUs = () => {navigate("/about-us");}
+    const toCertificated = () => {navigate("/certificate");}
+    const toPhotoGallery = () => {navigate("/photo-gallery");}
     // const toITS = () => {navigate("products/2");}
     // const toHVVCB = () => {navigate("products/3");}
     // const toUACB = () => {navigate("products/4");}
@@ -45,9 +49,17 @@ const Nav = ({linkToNav}) => {
     return(
         <section className="flex flex-col xl:flex-row relative">
             {linkToNav.map((item, index) => (
-                <div key={index} className="my-6 xl:font-medium"
-                    onMouseEnter={() => item.label === "Products" && setShowProducts(true)}
-                    onMouseLeave={() => item.label === "Products" && setShowProducts(false)}>
+                <div 
+                    key={index} 
+                    className="my-6 xl:font-medium"
+                    onMouseEnter={() => {
+                        if (item.label === "Products") setShowProducts(true);
+                        if (item.label === "About Us") setShowaboutus(true);
+                    }}
+                    onMouseLeave={() => {
+                        if (item.label === "Products") setShowProducts(false);
+                        if (item.label === "About Us") setShowaboutus(false);
+                    }}>
                         <a href={item.href} className={`mx-4 2xl:mx-6 text-md 2xl:text-lg font-normal hover:text-primary ${location.pathname === item.href ? "text-primary" : ""}`}
                         >{item.label}</a>
                 </div>
@@ -173,9 +185,20 @@ const Nav = ({linkToNav}) => {
                     </div>
                 </div>
             )}
-        </section>
 
-        
+            {showaboutus && (
+                <div className="absolute top-14 ml-12 bg-white border border-gray-300 shadow-lg z-10 justify-center items-center"
+                     onMouseEnter={() => setShowaboutus(true)}
+                     onMouseLeave={() => setShowaboutus(false)}>
+
+                    <div className="flex flex-row justify-between items-center gap-8 py-6 px-24 w-full">
+                        <button className="cursor-pointer hover:text-primary text-center font-normal text-sm" onClick={toAboutUs}>About Us</button>
+                        <button className="cursor-pointer hover:text-primary text-center font-normal text-sm" onClick={toCertificated}>Certificate</button>
+                        <button className="cursor-pointer hover:text-primary text-center font-normal text-sm" onClick={toPhotoGallery}>Photo Gallery</button>
+                    </div>
+                </div>
+            )}
+        </section>
     )
 }
 

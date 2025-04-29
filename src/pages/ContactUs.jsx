@@ -77,7 +77,7 @@ const ContactUs = () => {
             <Breadcrumb pageName="Contact Us" />
 
             <div className="py-12 flex flex-col justify-center items-center gap-12 xl:gap-24">
-                <div className="w-full flex flex-col xl:flex-row justify-center gap-12 xl:gap-16">
+                <div className="w-full flex flex-col xl:flex-row justify-center gap-12 xl:gap-16 3xl:px-60">
                     <div className="flex flex-col px-6 xl:p-0 gap-2 justify-center items-center xl:items-start">
                         <div className="flex flex-col justify-center items-center xl:items-start gap-2">
                             <h3 className="text-2xl xl:text-4xl font-bold mb-6">Feedback</h3>

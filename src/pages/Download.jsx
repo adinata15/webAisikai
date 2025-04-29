@@ -40,7 +40,7 @@ const Download = () => {
             <Header />
             <Breadcrumb pageName="Download" />
 
-            <div className="px-6 xl:px-24 py-12 xl:pb-16 flex flex-col justify-center items-center gap-8 xl:gap-12">
+            <div className="px-6 xl:px-24 3xl:px-60 py-12 xl:pb-16 flex flex-col justify-center items-center gap-8 xl:gap-12">
                 <div className="flex flex-col xl:flex-row xl:flex-wrap items-center justify-center gap-10">
                     <div className="flex flex-col justify-center items-center rounded-lg xl:w-[20rem]">
                         <div className="flex flex-col justify-between items-start gap-2">

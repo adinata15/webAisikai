@@ -76,7 +76,7 @@ const AboutUs = () => {
             <div className="flex flex-col py-12 gap-12 xl:gap-24 -mb-12">
 
                 {/* Company Profile */}
-                <div className="flex flex-col xl:flex-row gap-4 xl:gap-12 px-6 xl:px-24 justify-center items-center xl:items-start">
+                <div className="flex flex-col xl:flex-row gap-4 xl:gap-12 px-6 xl:px-24 3xl:px-60 justify-center items-center xl:items-start">
                     <div className="flex flex-col justify-center items-center xl:items-start gap-4 xl:gap-8">
                         <div className="flex flex-row justify-start items-center gap-2">
                             <div className="h-8 border-2 border-primary"></div>
@@ -269,7 +269,7 @@ const AboutUs = () => {
                     
                 </div>
 
-                <div className="w-full bg-gray-200 px-8 xl:px-24 py-8 sm:py-16 flex flex-col xl:flex-row justify-between items-center gap-8">
+                <div className="w-full bg-gray-200 px-8 xl:px-24 3xl:px-60 py-8 sm:py-16 flex flex-col xl:flex-row justify-between items-center gap-8">
                     <h2 className="text-primary font-bold xl:font-medium text-3xl sm:text-5xl xl:text-4xl">Get in touch with us</h2>
                     <a href="" className="bg-primary px-20 py-4 text-white font-bold text-2xl rounded-full">Contact Us</a>
                 </div>

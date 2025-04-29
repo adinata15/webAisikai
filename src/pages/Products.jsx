@@ -1255,12 +1255,12 @@ const Products = () => {
 
     return (
         <section className="font-primary m-0 p-0 box-border">
-            <div className="flex flex-col 3xl:px-">
+            <div className="flex flex-col">
                 <SideContact className="absolute" />
                 <Header />
                 <Breadcrumb pageName={"Products"}/>
 
-                <div className="flex flex-col xl:flex-row items-center xl:items-start justify-center gap-6 px-6 xl:px-16 py-12">
+                <div className="flex flex-col xl:flex-row items-center xl:items-start justify-center gap-6 px-6 xl:px-16 3xl:px-60 py-12">
                     {/* Left List Menu */}
                     <div className="w-full xl:w-[25rem] p-4 rounded-lg items-center flex flex-col justify-center">
                         <div className="bg-primary flex justify-center items-center w-full py-4">

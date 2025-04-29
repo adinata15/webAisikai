@@ -100,11 +100,94 @@ const MobileMenu = ({ logo, linkToNav, handleShowMenu }) => {
                 </div>
 
                 <div className="flex flex-col">
-                    {linkToNav.map((item, index) => (
-                        <div key={index} className="my-2 sm:my-4 text-4xl sm:text-5xl font-medium">
-                            <a href={item.href} className={`${location.pathname === item.href ? "text-primary" : ""}`}>{item.label}</a>
-                        </div>
-                    ))}
+                    {linkToNav.map((item, index) => {
+                        const [isAboutUsOpen, setIsAboutUsOpen] = useState(false);
+                        
+                        if (item.label === "About Us") {
+                            return (
+                                <div key={index} className="my-2 sm:my-4">
+                                    <div 
+                                        className="text-4xl sm:text-5xl font-medium flex flex-col" 
+                                        onClick={() => {
+                                            if (!isAboutUsOpen) {
+                                                navigate(item.href);
+                                                handleShowMenu();
+                                            } else {
+                                                setIsAboutUsOpen(!isAboutUsOpen);
+                                            }
+                                        }}
+                                    >
+                                        <a 
+                                            href={item.href} 
+                                            className={`${location.pathname === item.href ? "text-primary" : ""}`}
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                if (!isAboutUsOpen) {
+                                                    setIsAboutUsOpen(true);
+                                                }
+                                            }}
+                                        >
+                                            {item.label}
+                                        </a>
+                                    </div>
+                                    
+                                    {isAboutUsOpen && (
+                                        <div className="flex flex-col pl-4 mt-2">
+                                            <a 
+                                                href="/about-us" 
+                                                className="text-2xl sm:text-3xl py-2"
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    navigate("/about-us");
+                                                    handleShowMenu();
+                                                }}
+                                            >
+                                                About Us
+                                            </a>
+                                            <a 
+                                                href="/certificates" 
+                                                className="text-2xl sm:text-3xl py-2"
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    navigate("/certificates");
+                                                    handleShowMenu();
+                                                }}
+                                            >
+                                                Certificate
+                                            </a>
+                                            <a 
+                                                href="/photo-gallery" 
+                                                className="text-2xl sm:text-3xl py-2"
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    navigate("/photo-gallery");
+                                                    handleShowMenu();
+                                                }}
+                                            >
+                                                Photo Gallery
+                                            </a>
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        }
+                        
+                        return (
+                            <div key={index} className="my-2 sm:my-4 text-4xl sm:text-5xl font-medium">
+                                <a 
+                                    href={item.href} 
+                                    className={`${location.pathname === item.href ? "text-primary" : ""}`}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        navigate(item.href);
+                                        handleShowMenu();
+                                    }}
+                                >
+                                    {item.label}
+                                </a>
+                            </div>
+                        );
+                    })}
                 </div>
 
                 <div className="flex flex-row items-center gap-6 font-medium text-xl">

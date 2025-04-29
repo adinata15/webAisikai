@@ -17,7 +17,7 @@ const Footer = () => {
     const navToContactUs = () => {navigate('/contact-us');}
 
     return(
-        <section className="bg-slate-900 w-full px-6 sm:px-12 xl:px-24 py-12">
+        <section className="bg-slate-900 w-full px-6 sm:px-12 xl:px-24 3xl:px-60 py-12">
             <div className="flex flex-col justify-center items-center gap-8">
                 <div className='flex flex-col xl:flex-row justify-between items-start gap-8 w-full'>
                     <div>

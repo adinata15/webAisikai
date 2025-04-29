@@ -6,7 +6,7 @@ import { FiMenu } from "react-icons/fi";
 
 import Nav from './Nav';
 import MobileMenu from './MobileMenu';
-import Footer from './Footer';
+import AboutUsLinks from "./AboutUsLinks.jsx";
 
 import logoAisikai from '../assets/images/logo-aisikai.jpg';
 import iconIndonesia from '../assets/icons/indonesia.svg';
@@ -33,7 +33,14 @@ const Header = () => {
         // ...add more product names here...
     ];
 
+    const aboutUsLinks = [
+        {label: "About Us", href: "/about-us"},
+        {label: "Certificate", href: "/certificates"},
+        {label: "Photo Gallery", href: "/photo-gallery"},
+    ];
+    
     const [showMenu, setShowMenu] = useState(false);
+    const [hoveredAboutUs, sethovereAboutUs] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [language, setLanguage] = useState(() => {
@@ -221,7 +228,7 @@ const Header = () => {
             </div>
 
             <div className="hidden xl:flex">
-                <Nav linkToNav={navLink}/>
+                <Nav linkToNav={navLink} aboutUsLinks={aboutUsLinks} />
             </div>
 
             <div className='flex flex-row items-center justify-end gap-8'>
