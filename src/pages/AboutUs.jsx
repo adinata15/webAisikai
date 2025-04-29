@@ -1,8 +1,10 @@
 import { Swiper, SwiperSlide} from "swiper/react";
-import { FreeMode, Pagination, Autoplay } from 'swiper/modules';
+import { FreeMode, Pagination, Autoplay, Navigation, Thumbs } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import 'swiper/css/thumbs';
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -14,22 +16,22 @@ import { HiFlag } from "react-icons/hi2";
 import { RiFirebaseFill } from "react-icons/ri";
 import { FaLeaf } from "react-icons/fa";
 
-import PG1 from '../assets/images/photogallery1.webp';
-import PG2 from '../assets/images/photogallery2.webp';
-import PG3 from '../assets/images/photogallery3.webp';
-import PG4 from '../assets/images/photogallery4.webp';
-import PG5 from '../assets/images/photogallery5.webp';
-import PG6 from '../assets/images/photogallery6.webp';
-import PG7 from '../assets/images/photogallery7.webp';
+import PG1 from '../assets/images/photogallery1.jpg';
+import PG2 from '../assets/images/photogallery2.jpg';
+import PG3 from '../assets/images/photogallery3.jpg';
+import PG4 from '../assets/images/photogallery4.jpg';
+import PG5 from '../assets/images/photogallery5.jpg';
+import PG6 from '../assets/images/photogallery6.jpg';
+import PG7 from '../assets/images/photogallery7.jpg';
 import PG8 from '../assets/images/photogallery8.webp';
-import PG9 from '../assets/images/photogallery9.webp';
-import PG10 from '../assets/images/photogallery10.webp';
-import PG11 from '../assets/images/photogallery11.webp';
-import PG12 from '../assets/images/photogallery12.webp';
-import PG13 from '../assets/images/photogallery13.webp';
-import PG14 from '../assets/images/photogallery14.webp';
-import PG15 from '../assets/images/photogallery15.webp';
-import PG16 from '../assets/images/photogallery16.webp';
+import PG9 from '../assets/images/photogallery9.jpg';
+import PG10 from '../assets/images/photogallery10.jpg';
+import PG11 from '../assets/images/photogallery11.jpg';
+import PG12 from '../assets/images/photogallery12.jpg';
+import PG13 from '../assets/images/photogallery13.jpg';
+import PG14 from '../assets/images/photogallery14.jpg';
+import PG15 from '../assets/images/photogallery15.jpg';
+import PG16 from '../assets/images/photogallery16.jpg';
 import Cert1 from '../assets/images/cert1.webp';
 import Cert2 from '../assets/images/cert2.webp';
 import Cert3 from '../assets/images/cert3.webp';
@@ -56,6 +58,8 @@ import { useState } from 'react';
 const AboutUs = () => {
     const [popupImage, setPopupImage] = useState(null);
 
+    const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
     const handleImageClick = (image) => {
         setPopupImage(image);
     };
@@ -72,13 +76,13 @@ const AboutUs = () => {
             <div className="flex flex-col py-12 gap-12 xl:gap-24 -mb-12">
 
                 {/* Company Profile */}
-                <div className="flex flex-col xl:flex-row gap-4 xl:gap-12 px-6 xl:px-24 justify-center items-center">
+                <div className="flex flex-col xl:flex-row gap-4 xl:gap-12 px-6 xl:px-24 justify-center items-center xl:items-start">
                     <div className="flex flex-col justify-center items-center xl:items-start gap-4 xl:gap-8">
                         <div className="flex flex-row justify-start items-center gap-2">
                             <div className="h-8 border-2 border-primary"></div>
                             <h3 className="text-2xl xl:text-4xl font-bold">About Aisikai</h3>
                         </div>
-                        <p className="font-medium text-center xl:text-left text-md leading-normal">AISIKAI, established in 2007, is dedicated to the high quality research, development, manufacturing, and sales of electrical products. Over the years, the company has proactively expanded its business into four major market segments: 
+                        <p className="font-medium text-center xl:text-left text-md xl:text-sm leading-normal">AISIKAI, established in 2007, is dedicated to the high quality research, development, manufacturing, and sales of electrical products. Over the years, the company has proactively expanded its business into four major market segments:
                             New Energy, Power Quality, Industrial Control, and Power Distribution.
                             With exceptional R&D strength, AISIKAI has earned recognition as a high-tech company, a company specializing in new technology, and a software company. The company holds certifications such as ISO9001, ISO14001, ISO45001, and consistently maintains a 3A grade credit enterprise. <br /><br />
                             Since its establishment, AISIKAI has consistently prioritized product quality. Guided by independent research and development, the company continually introduces innovations, securing numerous invention patents, utility model patents, and design patents. All product software is 100% copyright protected. By working closely with renowned universities and employing a high-calibre research team, AISIKAI is continuously improving its R & D and innovation capabilities. <br /> <br />
@@ -90,64 +94,127 @@ const AboutUs = () => {
 
                     <div className="w-full xl:w-1/2 2xl:w-1/2">
                         <Swiper
-                            slidesPerView={1}
-                            spaceBetween={0}
-                            freeMode={true}
+                            style={{
+                                '--swiper-navigation-color': '#1e1e1e',
+                                '--swiper-pagination-color': '#1e1e1e',
+                            }}
+                            thumbs={{swiper: thumbsSwiper}}
+                            spaceBetween={10}
                             loop={true}
                             autoplay={{delay: 10000}}
-                            pagination={{clickable: true}}
-                            modules={[FreeMode, Pagination, Autoplay]}
+                            modules={[FreeMode, Pagination, Autoplay, Navigation, Thumbs]}
                             navigation={true}
                             className="mySwiper">
             
-                            <SwiperSlide className="mb-12">
+                            <SwiperSlide className="mb-6">
                                 <img src={PG1} alt="shoes1-image" className='w-full'/>
                             </SwiperSlide>
-                            <SwiperSlide className="mb-12">
+                            <SwiperSlide className="mb-6">
                                 <img src={PG2} alt="shoes2-image" className='w-full'/>
                             </SwiperSlide>
-                            <SwiperSlide className="mb-12">
+                            <SwiperSlide className="mb-6">
                                 <img src={PG3} alt="shoes1-image" className='w-full'/>
                             </SwiperSlide>
-                            <SwiperSlide className="mb-12">
+                            <SwiperSlide className="mb-6">
                                 <img src={PG4} alt="shoes2-image" className='w-full'/>
                             </SwiperSlide>
-                            <SwiperSlide className="mb-12">
+                            <SwiperSlide className="mb-6">
                                 <img src={PG5} alt="shoes1-image" className='w-full'/>
                             </SwiperSlide>
-                            <SwiperSlide className="mb-12">
+                            <SwiperSlide className="mb-6">
                                 <img src={PG6} alt="shoes2-image" className='w-full'/>
                             </SwiperSlide>
-                            <SwiperSlide className="mb-12">
+                            <SwiperSlide className="mb-6">
                                 <img src={PG7} alt="shoes1-image" className='w-full'/>
                             </SwiperSlide>
-                            <SwiperSlide className="mb-12">
+                            <SwiperSlide className="mb-6">
                                 <img src={PG8} alt="shoes2-image" className='w-full'/>
                             </SwiperSlide>
-                            <SwiperSlide className="mb-12">
+                            <SwiperSlide className="mb-6">
                                 <img src={PG9} alt="shoes1-image" className='w-full'/>
                             </SwiperSlide>
-                            <SwiperSlide className="mb-12">
+                            <SwiperSlide className="mb-6">
                                 <img src={PG10} alt="shoes2-image" className='w-full'/>
                             </SwiperSlide>
-                            <SwiperSlide className="mb-12">
+                            <SwiperSlide className="mb-6">
                                 <img src={PG11} alt="shoes1-image" className='w-full'/>
                             </SwiperSlide>
-                            <SwiperSlide className="mb-12">
+                            <SwiperSlide className="mb-6">
                                 <img src={PG12} alt="shoes2-image" className='w-full'/>
                             </SwiperSlide>
-                            <SwiperSlide className="mb-12">
+                            <SwiperSlide className="mb-6">
                                 <img src={PG13} alt="shoes1-image" className='w-full'/>
                             </SwiperSlide>
-                            <SwiperSlide className="mb-12">
+                            <SwiperSlide className="mb-6">
                                 <img src={PG14} alt="shoes2-image" className='w-full'/>
                             </SwiperSlide>
-                            <SwiperSlide className="mb-12">
+                            <SwiperSlide className="mb-6">
                                 <img src={PG15} alt="shoes1-image" className='w-full'/>
                             </SwiperSlide>
-                            <SwiperSlide className="mb-12">
+                            <SwiperSlide className="mb-6">
                                 <img src={PG16} alt="shoes2-image" className='w-full'/>
                             </SwiperSlide> 
+                        </Swiper>
+
+                        <Swiper
+                            onSwiper={setThumbsSwiper}
+                            loop={true}
+                            spaceBetween={10}
+                            slidesPerView={5}
+                            freeMode={true}
+                            watchSlidesProgress={true}
+                            modules={[FreeMode, Navigation, Thumbs]}
+                            className="mySwiper"
+                            style={{padding: "0 50px"}}>
+
+                                <SwiperSlide className="mb-12">
+                                    <img src={PG1} alt="shoes1-image" className='w-full'/>
+                                </SwiperSlide>
+                                <SwiperSlide className="mb-12">
+                                    <img src={PG2} alt="shoes2-image" className='w-full'/>
+                                </SwiperSlide>
+                                <SwiperSlide className="mb-12">
+                                    <img src={PG3} alt="shoes1-image" className='w-full'/>
+                                </SwiperSlide>
+                                <SwiperSlide className="mb-12">
+                                    <img src={PG4} alt="shoes2-image" className='w-full'/>
+                                </SwiperSlide>
+                                <SwiperSlide className="mb-12">
+                                    <img src={PG5} alt="shoes1-image" className='w-full'/>
+                                </SwiperSlide>
+                                <SwiperSlide className="mb-12">
+                                    <img src={PG6} alt="shoes2-image" className='w-full'/>
+                                </SwiperSlide>
+                                <SwiperSlide className="mb-12">
+                                    <img src={PG7} alt="shoes1-image" className='w-full'/>
+                                </SwiperSlide>
+                                <SwiperSlide className="mb-12">
+                                    <img src={PG8} alt="shoes2-image" className='w-full'/>
+                                </SwiperSlide>
+                                <SwiperSlide className="mb-12">
+                                    <img src={PG9} alt="shoes1-image" className='w-full'/>
+                                </SwiperSlide>
+                                <SwiperSlide className="mb-12">
+                                    <img src={PG10} alt="shoes2-image" className='w-full'/>
+                                </SwiperSlide>
+                                <SwiperSlide className="mb-12">
+                                    <img src={PG11} alt="shoes1-image" className='w-full'/>
+                                </SwiperSlide>
+                                <SwiperSlide className="mb-12">
+                                    <img src={PG12} alt="shoes2-image" className='w-full'/>
+                                </SwiperSlide>
+                                <SwiperSlide className="mb-12">
+                                    <img src={PG13} alt="shoes1-image" className='w-full'/>
+                                </SwiperSlide>
+                                <SwiperSlide className="mb-12">
+                                    <img src={PG14} alt="shoes2-image" className='w-full'/>
+                                </SwiperSlide>
+                                <SwiperSlide className="mb-12">
+                                    <img src={PG15} alt="shoes1-image" className='w-full'/>
+                                </SwiperSlide>
+                                <SwiperSlide className="mb-12">
+                                    <img src={PG16} alt="shoes2-image" className='w-full'/>
+                                </SwiperSlide>
                         </Swiper>
                     </div>  
                 </div>
@@ -202,51 +269,8 @@ const AboutUs = () => {
                     
                 </div>
 
-                {/* Certificate */}
-                <div className="flex flex-col justify-center items-center gap-4 xl:gap-8 px-6 xl:px-24">
-                    <h2 className="font-bold text-2xl xl:text-4xl">Our Honor</h2>
-
-                    <div className="flex flex-col xl:flex-row xl:flex-wrap gap-2 xl:gap-6 justify-center items-center">
-                        <img src={Cert1} alt="" className="xl:size-1/6" onClick={() => handleImageClick(Cert1)} />
-                        <img src={Cert2} alt="" className="xl:size-1/6" onClick={() => handleImageClick(Cert2)}/>
-                        <img src={Cert3} alt="" className="xl:size-1/6" onClick={() => handleImageClick(Cert3)}/>
-                        <img src={Cert4} alt="" className="xl:size-1/6" onClick={() => handleImageClick(Cert4)}/>
-                        <img src={Cert5} alt="" className="xl:size-1/6" onClick={() => handleImageClick(Cert5)}/> 
-                        <img src={Cert6} alt="" className="xl:size-1/6" onClick={() => handleImageClick(Cert6)}/>
-                        <img src={Cert7} alt="" className="xl:size-1/6" onClick={() => handleImageClick(Cert7)}/>
-                        <img src={Cert8} alt="" className="xl:size-1/6" onClick={() => handleImageClick(Cert8)}/>
-                        <img src={Cert9} alt="" className="xl:size-1/6" onClick={() => handleImageClick(Cert9)}/>
-                        <img src={Cert10} alt="" className="xl:size-1/6" onClick={() => handleImageClick(Cert10)}/> 
-                        <img src={Cert11} alt="" className="xl:size-1/6" onClick={() => handleImageClick(Cert11)}/>
-                        <img src={Cert12} alt="" className="xl:size-1/6" onClick={() => handleImageClick(Cert12)}/>
-                        <img src={Cert12} alt="" className="xl:size-1/6" onClick={() => handleImageClick(Cert13)}/>
-                        <img src={Cert14} alt="" className="xl:size-1/6" onClick={() => handleImageClick(Cert14)}/>
-                        <img src={Cert15} alt="" className="xl:size-1/6" onClick={() => handleImageClick(Cert15)}/> 
-                        <img src={Cert16} alt="" className="xl:size-1/6" onClick={() => handleImageClick(Cert16)}/>
-                        <img src={Cert17} alt="" className="xl:size-1/6" onClick={() => handleImageClick(Cert17)}/>
-                        <img src={Cert18} alt="" className="xl:size-1/6" onClick={() => handleImageClick(Cert18)}/>
-                        <img src={Cert19} alt="" className="xl:size-1/6" onClick={() => handleImageClick(Cert19)}/>
-                        <img src={Cert20} alt="" className="xl:size-1/6" onClick={() => handleImageClick(Cert20)}/> 
-                    </div>
-                </div>
-
-                {/* Popup */}
-                {popupImage && (
-                    <div className="fixed inset-0 bg-black/50 bg-opacity-75 flex justify-center items-center z-50 px-6">
-                        <div className="relative">
-                            <button
-                                className="absolute top-2 right-2 text-slate-900 text-5xl sm:text-7xl"
-                                onClick={closePopup}>
-                                    &otimes;
-                            </button>
-
-                            <img src={popupImage} alt="Popup" className="max-w-full max-h-full rounded-lg" />                       
-                        </div>
-                    </div>
-                )}
-
-                <div className="w-screen bg-gray-200 px-8 xl:px-24 py-8 sm:py-16 flex flex-col xl:flex-row justify-between items-center gap-8">
-                    <h2 className="text-primary font-bold text-3xl sm:text-5xl">Get in touch with us</h2>
+                <div className="w-full bg-gray-200 px-8 xl:px-24 py-8 sm:py-16 flex flex-col xl:flex-row justify-between items-center gap-8">
+                    <h2 className="text-primary font-bold xl:font-medium text-3xl sm:text-5xl xl:text-4xl">Get in touch with us</h2>
                     <a href="" className="bg-primary px-20 py-4 text-white font-bold text-2xl rounded-full">Contact Us</a>
                 </div>
                 

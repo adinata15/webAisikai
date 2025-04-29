@@ -7,7 +7,6 @@ import Breadcrumb from '../components/Breadcrumb';
 import SideContact from '../components/SideContact';
 
 import { PiEnvelopeSimple } from "react-icons/pi";
-import { FaFilePdf } from "react-icons/fa";
 import { RiArrowDropDownLine } from "react-icons/ri";
 
 // IMAGE FOR PRODUCT DETAILS
@@ -140,6 +139,9 @@ import SOIBC1 from '../assets/images/SOIBC1.webp';
 //IMAGE FOR STRUCTURE DRAWING
 import SDMCCB3 from '../assets/images/SDMCCB3.webp';
 
+import { IoMdCloudDownload } from "react-icons/io";
+import { FaFilePdf } from "react-icons/fa6";
+
 const Products = () => {
     const [activeCategory, setActiveCategory] = useState(null); // Ensure initial state is null
     const [selectedProduct, setSelectedProduct] = useState(null);
@@ -201,19 +203,19 @@ const Products = () => {
                         </p>,
                     technicalparameters: TPATS2,
                     faq: <p className="text-xl">
-                        <b>1. Your nameplate color is not we see in the market. Which color is the authentic？</b><br />
-                        In the past, the ATS we sold to foreign and domestic markets use the classic AISIKAI BLUE . Recently, we use this new light blue for foreign market. Both are authentic.<br /><br />
-                        <b>2. What is the meaning of  CK in our model? Why does some ATS have, some does not?</b><br />
+                        <b className="text-primary text-xl">1. Your nameplate color is not we see in the market. Which color is the authentic？</b><br />
+                        In the past, the ATS we sold to foreign and domestic markets use the classic AISIKAI BLUE . Recently, we use this new light blue for foreign market. Both are authentic.<br /> <br />
+                        <b className="text-primary text-xl">2. What is the meaning of  CK in our model? Why does some ATS have, some does not?</b><br />
                         CK means "Export". Because foreign trade transportation usually has a higher risk of damage than domestic transportation, our workers  take additional measures such as bubble wrap when shipping ATS with CK. Recently, we started using different nameplate colors to distinguish Export goods, and CK may not be used.<br /><br />
-                        <b>3. What will this ATS operate when a power failure occurs?</b><br />
+                        <b className="text-primary text-xl">3. What will this ATS operate when a power failure occurs?</b><br />
                         In general, ATS will transfer to the standby power when the utility power(main power) fails. Also, ATS will transfer to the utility power when utility power returns. In this way, ATS ensures you have the continuous power.<br /><br />
-                        <b>4. What's the other control voltage besides 220V AC?</b><br />
+                        <b className="text-primary text-xl">4. What's the other control voltage besides 220V AC?</b><br />
                         AC110V, AC280V, DC24V are available. Please consult us for other voltages.<br /><br />
-                        <b>5. Can I operate this ATS  manually?</b><br />
+                        <b className="text-primary text-xl">5. Can I operate this ATS  manually?</b><br />
                         Yes, our ATS have both electric and manual mode(switchable using the black button on front panel), you can operate our ATS using handler.  <br /><br />
-                        <b>6. What does accessories list include?</b><br />
+                        <b className="text-primary text-xl">6. What does accessories list include?</b><br />
                         Scews and bolts; A pair of safety protection boards; A handler for manual operation.<br /><br />
-                        <b>10. Does this ATS must work with an ATS controller for automatic transfer?</b><br />
+                        <b className="text-primary text-xl">7. Does this ATS must work with an ATS controller for automatic transfer?</b><br />
                         No, using this ATS alone is sufficient for the automatic transfer between 2 power sources. But with ATS controller, more functions can be achieved like delay before transfer, voltage detection, communication and etc. <br /><br />
                     </p>,
                     brochure: [ATS2File1, ATS2File2, ATS2File3],
@@ -244,21 +246,21 @@ const Products = () => {
                     </p>,
                     technicalparameters: TPATS3,
                     faq: <p className="text-xl">
-                        <b>1. Your nameplate color is not we see in the market. Which color is the authentic？</b><br />
+                        <b className="text-primary text-xl">1. Your nameplate color is not we see in the market. Which color is the authentic？</b><br />
                         In the past, the ATS we sold to foreign and domestic markets use the classic AISIKAI BLUE . Recently, we use this new light blue for foreign market. Both are authentic.   
-                        <b>2. What is the meaning of  CK in our model? Why does some ATS have, some does not?</b><br />
+                        <b className="text-primary text-xl">2. What is the meaning of  CK in our model? Why does some ATS have, some does not?</b><br />
                         CK means "Export". Because foreign trade transportation usually has a higher risk of damage than domestic transportation, our workers  take additional measures such as bubble wrap when shipping ATS with CK. Recently, we started using different nameplate colors to distinguish Export goods, and CK may not be used. <br /> 
-                        <b>3. What will this ATS operate when a power failure occurs?</b><br />
+                        <b className="text-primary text-xl">3. What will this ATS operate when a power failure occurs?</b><br />
                         In general, ATS will transfer to the standby power when the utility power(main power) fails. Also, ATS will transfer to the utility power when utility power returns. In this way, ATS ensures you have the continuous power. <br />
-                        <b>4. What's the maximum current can SKT2  handle ?</b><br />
+                        <b className="text-primary text-xl">4. What's the maximum current can SKT2  handle ?</b><br />
                         100A. <br />
-                        <b>5. What's the other control voltage besides 220V AC?</b><br />
+                        <b className="text-primary text-xl">5. What's the other control voltage besides 220V AC?</b><br />
                         AC110V, AC280V, DC24V are available. Please consult us for other voltages.<br />
-                        <b>6. Can I operate this ATS  manually?</b><br />
+                        <b className="text-primary text-xl">6. Can I operate this ATS  manually?</b><br />
                         Yes, our ATS have both electric and manual mode(switchable using the black button on front panel), you can operate our ATS using handler.<br />
-                        <b>7. What does accessories list include?</b><br />
+                        <b className="text-primary text-xl">7. What does accessories list include?</b><br />
                         Scews and bolts; A pair of safety protection boards; A handler for manual operation.<br />
-                        <b>8. Does this ATS must work with an ATS controller for automatic transfer?</b><br />
+                        <b className="text-primary text-xl">8. Does this ATS must work with an ATS controller for automatic transfer?</b><br />
                         No, using this ATS alone is sufficient for the automatic transfer between 2 power sources. But with ATS controller, more functions can be achieved like delay before transfer, voltage detection, communication and etc.<br />
                     </p>, 
                     brochure: [ATS3File1, ATS3File2, ATS3File3],
@@ -1353,34 +1355,34 @@ const Products = () => {
                                 </div>
 
                                 {/* Tabs for Description and Brochure */}
-                                <div className="w-full bg-gray-100 p-6 rounded-lg shadow">
-                                    <div className="flex flex-col xl:flex-row border-b border-gray-300 mb-4">
+                                <div className="w-full bg-gray-100 rounded-lg border border-gray-300">
+                                    <div className="flex flex-col xl:flex-row">
                                         <button
-                                            className={`px-4 py-2 font-medium ${activeTab === "description" ? "border-b-2 border-primary text-primary" : "text-gray-500"}`}
+                                            className={`bg-gray-100 px-4 py-3 font-medium ${activeTab === "description" ? "bg-white text-primary" : ""}`}
                                             onClick={() => setActiveTab("description")}>
                                                 Description
                                         </button>
 
                                         <button
-                                            className={`px-4 py-2 font-medium ${activeTab === "technicalparameters" ? "border-b-2 border-primary text-primary" : "text-gray-500"}`}
+                                            className={`bg-gray-100 px-4 py-3 font-medium ${activeTab === "technicalparameters" ? "bg-white text-primary" : ""}`}
                                             onClick={() => setActiveTab("technicalparameters")}>
                                                 Technical Parameters
                                         </button>
 
                                         <button
-                                            className={`px-4 py-2 font-medium ${activeTab === "structureoverview" ? "border-b-2 border-primary text-primary" : "text-gray-500"}`}
+                                            className={`bg-gray-100 px-4 py-3 font-medium ${activeTab === "structureoverview" ? "bg-white text-primary" : ""}`}
                                             onClick={() => setActiveTab("structureoverview")}>
                                                 Structure Overview
                                         </button>
 
                                         <button
-                                            className={`px-4 py-2 font-medium ${activeTab === "faq" ? "border-b-2 border-primary text-primary" : "text-gray-500"}`}
+                                            className={`bg-gray-100 px-4 py-3 font-medium ${activeTab === "faq" ? "bg-white text-primary" : ""}`}
                                             onClick={() => setActiveTab("faq")}>
                                                 FAQ
                                         </button>
 
                                         <button
-                                            className={`px-4 py-2 font-medium ${activeTab === "brochure" ? "border-b-2 border-primary text-primary" : "text-gray-500"}`}
+                                            className={`bg-gray-100 px-4 py-3 font-medium ${activeTab === "brochure" ? "bg-white text-primary" : ""}`}
                                             onClick={() => setActiveTab("brochure")}>
                                                 Brochure
                                         </button>
@@ -1389,12 +1391,12 @@ const Products = () => {
                                     {/* Tab Content */}
                                     {activeTab === "description" && (
                                         <div className="h-auto text-gray-700">
-                                            <p className='text-sm font-medium'>{selectedProduct.description || "No description available."}</p>
+                                            <p className='text-sm font-medium p-6 bg-white'>{selectedProduct.description || "No description available."}</p>
                                         </div>
                                     )}
                                 
                                     {activeTab === "technicalparameters" && (
-                                        <div className="h-auto text-gray-700">
+                                        <div className="h-auto text-gray-700 p-6 bg-white">
                                             {Array.isArray(selectedProduct.technicalparameters) ? (
                                                 selectedProduct.technicalparameters.map((image, index) => (
                                                     <img key={index} src={image || selectedProduct.none} className="w-full mb-4" />
@@ -1406,30 +1408,29 @@ const Products = () => {
                                     )}  
 
                                     {activeTab === "structureoverview" && (
-                                        <div className="h-auto text-gray-700">
+                                        <div className="h-auto text-gray-700 p-6 bg-white">
                                             <img src={selectedProduct.structureoverview || selectedProduct.none} className='w-full h-full object-contain'/>
                                         </div>
                                     )} 
                                     
                                     {activeTab === "faq" && (
-                                        <div className="h-auto text-gray-700">
+                                        <div className="h-auto text-gray-700 p-6 bg-white">
                                             <p className='text-sm font-medium'>{selectedProduct.faq || "No FAQ Available"}</p>
                                         </div>
                                     )}
 
                                     {activeTab === "brochure" && (
-                                        <div className="flex flex-col gap-4 overflow-auto">
+                                        <div className="flex flex-col gap-4 overflow-auto bg-white px-12 justify-between">
                                             {Array.isArray(selectedProduct.brochure) ? (
                                                 selectedProduct.brochure.map((brochure, index) => (
-                                                    <div key={index} className="flex flex-col xl:flex-row items-start justify-start">
-                                                        <FaFilePdf />
-                                                        <a
-                                                            href={brochure}
-                                                            className="text-primary font-medium underline xl:px-12"
-                                                            download
-                                                        >
-                                                            {brochure.split('/').pop() || `Brochure ${index + 1}`}
-                                                        </a>
+                                                    <div key={index} className="flex flex-col xl:flex-row items-start justify-between py-6 border-b border-b-gray-300 hover:text-primary">
+                                                        <div className="flex flex-row items-center w-full gap-2">
+                                                            <FaFilePdf className="size-8 text-red-500"/>
+                                                            <a href={brochure} className="w-full font-medium" download>
+                                                                {brochure.split('/').pop() || `Brochure ${index + 1}`}
+                                                            </a>
+                                                        </div>
+                                                        <IoMdCloudDownload className="size-7"/>
                                                     </div>
                                                 ))
                                             ) : (
