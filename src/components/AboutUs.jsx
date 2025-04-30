@@ -157,85 +157,85 @@ const AboutUs = () => {
                     </div>
                 </div>
 
-                {/* Photo Gallery Section with Tabs */}
-                <div className="w-full mt-16">
-                    <h2 className="font-bold text-2xl 3xl:text-3xl text-center mb-8">Photo Gallery</h2>
-                    
-                    {/* Tabs */}
-                    <div className="flex justify-center mb-8">
-                        <div className="flex border-b border-gray-300 w-full max-w-xl">
-                            <button
-                                className={`py-3 px-6 text-lg font-medium flex-1 ${
-                                    activeTab === "company-environment" 
-                                    ? "border-b-2 border-primary text-primary" 
-                                    : "text-gray-600 hover:text-primary"
-                                }`}
-                                onClick={() => setActiveTab("company-environment")}
-                            >
-                                Company Environment
-                            </button>
-                            <button
-                                className={`py-3 px-6 text-lg font-medium flex-1 ${
-                                    activeTab === "global-exhibition" 
-                                    ? "border-b-2 border-primary text-primary" 
-                                    : "text-gray-600 hover:text-primary"
-                                }`}
-                                onClick={() => setActiveTab("global-exhibition")}
-                            >
-                                Global Exhibition
-                            </button>
-                        </div>
-                    </div>
-                    
-                    {/* Gallery images */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {activeTab === "company-environment" && (
-                            <>
-                                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                                    <img src={PG1} alt="Company Environment 1" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />
-                                </div>
-                                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                                    <img src={PG2} alt="Company Environment 2" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />
-                                </div>
-                                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                                    <img src={PG3} alt="Company Environment 3" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />
-                                </div>
-                                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                                    <img src={PG4} alt="Company Environment 4" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />
-                                </div>
-                                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                                    <img src={PG5} alt="Company Environment 5" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />
-                                </div>
-                                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                                    <img src={PG6} alt="Company Environment 6" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />
-                                </div>
-                            </>
-                        )}
-                        
-                        {activeTab === "global-exhibition" && (
-                            <>
-                                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                                    <img src={PG7} alt="Global Exhibition 1" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />
-                                </div>
-                                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                                    <img src={PG8} alt="Global Exhibition 2" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />
-                                </div>
-                                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                                    <img src={PG9} alt="Global Exhibition 3" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />
-                                </div>
-                                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                                    <img src={PG10} alt="Global Exhibition 4" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />
-                                </div>
-                                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                                    <img src={PG11} alt="Global Exhibition 5" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />
-                                </div>
-                                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                                    <img src={PG12} alt="Global Exhibition 6" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />
-                                </div>
-                            </>
-                        )}
-                    </div>
-                </div>
+                {/*/!* Photo Gallery Section with Tabs *!/*/}
+                {/*<div className="w-full mt-16">*/}
+                {/*    <h2 className="font-bold text-2xl 3xl:text-3xl text-center mb-8">Photo Gallery</h2>*/}
+                {/*    */}
+                {/*    /!* Tabs *!/*/}
+                {/*    <div className="flex justify-center mb-8">*/}
+                {/*        <div className="flex border-b border-gray-300 w-full max-w-xl">*/}
+                {/*            <button*/}
+                {/*                className={`py-3 px-6 text-lg font-medium flex-1 ${*/}
+                {/*                    activeTab === "company-environment" */}
+                {/*                    ? "border-b-2 border-primary text-primary" */}
+                {/*                    : "text-gray-600 hover:text-primary"*/}
+                {/*                }`}*/}
+                {/*                onClick={() => setActiveTab("company-environment")}*/}
+                {/*            >*/}
+                {/*                Company Environment*/}
+                {/*            </button>*/}
+                {/*            <button*/}
+                {/*                className={`py-3 px-6 text-lg font-medium flex-1 ${*/}
+                {/*                    activeTab === "global-exhibition" */}
+                {/*                    ? "border-b-2 border-primary text-primary" */}
+                {/*                    : "text-gray-600 hover:text-primary"*/}
+                {/*                }`}*/}
+                {/*                onClick={() => setActiveTab("global-exhibition")}*/}
+                {/*            >*/}
+                {/*                Global Exhibition*/}
+                {/*            </button>*/}
+                {/*        </div>*/}
+                {/*    </div>*/}
+                {/*    */}
+                {/*    /!* Gallery images *!/*/}
+                {/*    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">*/}
+                {/*        {activeTab === "company-environment" && (*/}
+                {/*            <>*/}
+                {/*                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">*/}
+                {/*                    <img src={PG1} alt="Company Environment 1" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />*/}
+                {/*                </div>*/}
+                {/*                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">*/}
+                {/*                    <img src={PG2} alt="Company Environment 2" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />*/}
+                {/*                </div>*/}
+                {/*                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">*/}
+                {/*                    <img src={PG3} alt="Company Environment 3" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />*/}
+                {/*                </div>*/}
+                {/*                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">*/}
+                {/*                    <img src={PG4} alt="Company Environment 4" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />*/}
+                {/*                </div>*/}
+                {/*                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">*/}
+                {/*                    <img src={PG5} alt="Company Environment 5" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />*/}
+                {/*                </div>*/}
+                {/*                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">*/}
+                {/*                    <img src={PG6} alt="Company Environment 6" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />*/}
+                {/*                </div>*/}
+                {/*            </>*/}
+                {/*        )}*/}
+                {/*        */}
+                {/*        {activeTab === "global-exhibition" && (*/}
+                {/*            <>*/}
+                {/*                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">*/}
+                {/*                    <img src={PG7} alt="Global Exhibition 1" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />*/}
+                {/*                </div>*/}
+                {/*                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">*/}
+                {/*                    <img src={PG8} alt="Global Exhibition 2" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />*/}
+                {/*                </div>*/}
+                {/*                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">*/}
+                {/*                    <img src={PG9} alt="Global Exhibition 3" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />*/}
+                {/*                </div>*/}
+                {/*                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">*/}
+                {/*                    <img src={PG10} alt="Global Exhibition 4" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />*/}
+                {/*                </div>*/}
+                {/*                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">*/}
+                {/*                    <img src={PG11} alt="Global Exhibition 5" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />*/}
+                {/*                </div>*/}
+                {/*                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">*/}
+                {/*                    <img src={PG12} alt="Global Exhibition 6" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />*/}
+                {/*                </div>*/}
+                {/*            </>*/}
+                {/*        )}*/}
+                {/*    </div>*/}
+                {/*</div>*/}
             </div>
         </section>
     )

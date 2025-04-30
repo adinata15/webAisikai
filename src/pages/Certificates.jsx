@@ -25,6 +25,7 @@ import Cert20 from '../assets/images/cert20.webp';
 
 import { useState } from 'react';
 import {IoStarSharp} from "react-icons/io5";
+import SideContact from "../components/SideContact.jsx";
 
 const Certificates = () => {
     const [popupImage, setPopupImage] = useState(null);
@@ -41,6 +42,7 @@ const Certificates = () => {
 
     return(
         <section>
+            <SideContact className="absolute"/>
             <Header />
             <Breadcrumb pageName={"About Us"} />
 

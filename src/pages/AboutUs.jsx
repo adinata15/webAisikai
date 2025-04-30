@@ -54,6 +54,7 @@ import Cert19 from '../assets/images/cert19.webp';
 import Cert20 from '../assets/images/cert20.webp';
 
 import { useState } from 'react';
+import SideContact from '../components/SideContact.jsx';
 
 const AboutUs = () => {
     const [popupImage, setPopupImage] = useState(null);
@@ -70,6 +71,7 @@ const AboutUs = () => {
 
     return(
         <section>
+            <SideContact className="absolute"/>
             <Header />
             <Breadcrumb pageName={"About Us"} />
 

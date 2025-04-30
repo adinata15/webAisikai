@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Breadcrumb from "../components/Breadcrumb";
+import SideContact from "../components/SideContact";
 
 import PG1 from '../assets/images/photogallery1.jpg';
 import PG2 from '../assets/images/photogallery2.jpg';
@@ -25,15 +26,16 @@ const PhotoGallery = () => {
 
     return(
         <section>
+            <SideContact className="absolute"/>
             <Header />
             <Breadcrumb pageName={"Photo Gallery"} />
 
-            <div className="flex flex-col py-12 gap-12 xl:gap-24 xl:px-8 xl:px-24 3xl:px-60">
-                <div className="container mx-auto px-4 flex flex-col gap-12 justify-center items-center">
+            <div className="px-6 flex flex-col py-12 gap-12 xl:gap-24 xl:px-24 3xl:px-60">
+                <div className="container px-4 flex flex-col gap-12 justify-center items-center">
 
                     {/* Tab Navigation */}
-                    <div className="flex justify-center mb-10 w-1/2">
-                        <div className="flex w-full max-w-2xl gap-12">
+                    <div className="flex justify-center items-center mb-1 w-full xl:w-1/2">
+                        <div className="flex w-full gap-12">
                             <button
                                 className={`py-3 px-4 text-lg font-medium flex-1 cursor-pointer ${
                                     activeTab === "company-environment"

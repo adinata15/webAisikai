@@ -72,7 +72,7 @@ const Tabs = () => {
                     <div className="flex flex-col gap-4">
                         <div className="flex flex-col xl:flex-row items-start gap-12">
                             <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailATS1}>
+                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailATS1}>
                                     <img src={ImageName1} alt="image-ats1" className="w-1/2 xl:w-[25rem]"/>
                                 </button>
                                 <button className='hover:text-primary cursor-pointer' onClick={toDetailATS1}>
@@ -80,7 +80,7 @@ const Tabs = () => {
                                 </button>
                             </div>
                             <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailATS2}>
+                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailATS2}>
                                     <img src={ImageName2} alt="image-ats2" className="w-1/2 xl:w-[25rem]"/>
                                 </button>
                                 <button className='hover:text-primary cursor-pointer' onClick={toDetailATS2}>
@@ -88,7 +88,7 @@ const Tabs = () => {
                                 </button>
                             </div>
                             <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailATS3}>
+                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailATS3}>
                                     <img src={ImageName3} alt="image-ats3" className="w-1/2 xl:w-[25rem]"/>
                                 </button>
                                 <button className='hover:text-primary cursoir-pointer' onClick={toDetailATS3}>
@@ -96,7 +96,7 @@ const Tabs = () => {
                                 </button>
                             </div>
                             <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailATS4}>
+                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailATS4}>
                                     <img src={ImageName4} alt="image-ats4" className="w-1/2 xl:w-[25rem]"/>
                                 </button>
                                 <button className='hover:text-primary cursor-pointer' onClick={toDetailATS4}>
@@ -105,7 +105,7 @@ const Tabs = () => {
                             </div>
                         </div>
                         
-                        <button className='px-6 py-4 text-primary self-end text-md font-medium 3xl:mt-8'>
+                        <button className='px-6 py-4 text-primary self-center xl:self-end text-md font-medium 3xl:mt-8'>
                             <a href="/products">More &#8594;</a>
                         </button>
                     </div>
@@ -115,7 +115,7 @@ const Tabs = () => {
                     <div className="flex flex-col gap-4">
                         <div className="flex flex-col xl:flex-row items-start gap-12">
                             <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailMCCB1}>    
+                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailMCCB1}>
                                     <img src={ImageName5} alt="image-mccb1" className="w-1/2 xl:w-[25rem]"/>
                                 </button>
                                 <button className='hover:text-primary cursor-pointer' onClick={toDetailMCCB1}>
@@ -123,7 +123,7 @@ const Tabs = () => {
                                 </button>                              
                             </div>
                             <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailMCCB2}>
+                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailMCCB2}>
                                     <img src={ImageName6} alt="image-mccb2" className="w-1/2 xl:w-[25rem]"/>
                                 </button>
                                 <button className='hover:text-primary cursor-pointer' onClick={toDetailMCCB2}>
@@ -131,7 +131,7 @@ const Tabs = () => {
                                 </button>
                             </div>
                             <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailMCCB3}>
+                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailMCCB3}>
                                     <img src={ImageName7} alt="image-mccb3" className="w-1/2 xl:w-[25rem]"/>
                                 </button>
                                 <button className='hover:text-primary cursor-pointer' onClick={toDetailMCCB3}>
@@ -139,7 +139,7 @@ const Tabs = () => {
                                 </button>
                             </div>
                             <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailMCCB4}>
+                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailMCCB4}>
                                     <img src={ImageName8} alt="image-mccb4" className="w-1/2 xl:w-[25rem]"/>
                                 </button>
                                 <button className='hover:text-primary cursor-pointer' onClick={toDetailMCCB4}>
@@ -148,7 +148,7 @@ const Tabs = () => {
                             </div>
                         </div>
                         
-                        <button className='px-6 py-4 text-primary self-end text-md font-medium 3xl:mt-8'>
+                        <button className='px-6 py-4 text-primary self-center xl:self-end text-md font-medium 3xl:mt-8'>
                             <a href="/products">More &#8594;</a>
                         </button>
                     </div>
@@ -158,7 +158,7 @@ const Tabs = () => {
                     <div id="tab-ucb" className="flex flex-col gap-4">
                         <div className="flex flex-col xl:flex-row items-start gap-12">
                             <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailUCB1}>
+                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailUCB1}>
                                     <img src={ImageName9} alt="image-ucb1" className="w-1/2 xl:w-[25rem]"/>
                                 </button>
                                 <button className='hover:text-primary cursor-pointer' onClick={toDetailUCB1}>
@@ -166,7 +166,7 @@ const Tabs = () => {
                                 </button>
                             </div>
                             <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailUCB2}>
+                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailUCB2}>
                                     <img src={ImageName10} alt="image-ucb2" className="w-1/2 xl:w-[25rem]"/>
                                 </button>
                                 <button className='hover:text-primary cursor-pointer' onClick={toDetailUCB2}>
@@ -174,7 +174,7 @@ const Tabs = () => {
                                 </button>
                             </div>
                             <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailUCB3}>
+                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailUCB3}>
                                     <img src={ImageName11} alt="image-ucb3" className="w-1/2 xl:w-[25rem]"/>
                                 </button>
                                 <button className='hover:text-primary cursor-pointer' onClick={toDetailUCB3}>
@@ -182,7 +182,7 @@ const Tabs = () => {
                                 </button>
                             </div>
                             <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailUCB4}>
+                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailUCB4}>
                                     <img src={ImageName12} alt="image-ucb4" className="w-1/2 xl:w-[25rem]"/>
                                 </button>
                                 <button className='hover:text-primary cursor-pointer' onClick={toDetailUCB4}>
@@ -191,7 +191,7 @@ const Tabs = () => {
                            </div>
                         </div>
                         
-                        <button className='px-6 py-4 text-primary self-end text-md font-medium 3xl:mt-8'>
+                        <button className='px-6 py-4 text-primary self-center xl:self-end text-md font-medium 3xl:mt-8'>
                             <a href="/products">More &#8594;</a>
                         </button>
                     </div>
@@ -201,7 +201,7 @@ const Tabs = () => {
                     <div id="tab-mcb" className="flex flex-col gap-4">
                         <div className="flex flex-col xl:flex-row items-start gap-12">
                             <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailMCB1}>
+                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailMCB1}>
                                     <img src={ImageName13} alt="image-mc1" className="w-1/2 xl:w-[25rem]"/>
                                 </button>
                                 <button className='hover:text-primary cursor-pointer' onClick={toDetailMCB1}>
@@ -209,7 +209,7 @@ const Tabs = () => {
                                 </button>
                             </div>
                             <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailMCB2}>
+                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailMCB2}>
                                     <img src={ImageName14} alt="image-mc2" className="w-1/2 xl:w-[25rem]"/>
                                 </button>
                                 <button className='hover:text-primary cursor-pointer' onClick={toDetailMCB2}>
@@ -217,7 +217,7 @@ const Tabs = () => {
                                 </button>
                             </div>
                             <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailMCB3}>
+                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailMCB3}>
                                     <img src={ImageName15} alt="image-mc3" className="w-1/2 xl:w-[25rem]"/>
                                 </button>
                                 <button className='hover:text-primary cursor-pointer' onClick={toDetailMCB3}>
@@ -225,7 +225,7 @@ const Tabs = () => {
                                 </button>
                             </div>
                             <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailMCB4}>
+                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailMCB4}>
                                     <img src={ImageName16} alt="image-mc4" className="w-1/2 xl:w-[25rem]"/>
                                 </button>
                                 <button className='hover:text-primary cursor-pointer' onClick={toDetailMCB4}>
@@ -234,7 +234,7 @@ const Tabs = () => {
                             </div>
                         </div>
                         
-                        <button className='px-6 py-4 text-primary self-end text-md font-medium 3xl:mt-8 '>
+                        <button className='px-6 py-4 text-primary self-center xl:self-end text-md font-medium 3xl:mt-8 '>
                             <a href="/products">More &#8594;</a>
                         </button>
                     </div>
