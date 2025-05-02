@@ -8,9 +8,32 @@ import { RiWhatsappFill } from "react-icons/ri";
 
 import iconIndonesia from '../assets/icons/indonesia.svg';
 import iconUk from '../assets/icons/uk.svg';
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 const MobileMenu = ({ logo, linkToNav, handleShowMenu }) => {
     const navigate = useNavigate();
+
+    const [isAboutUsOpen, setIsAboutUsOpen] = useState(false);
+    const [isProductsOpen, setIsProductsOpen] = useState(false);
+
+    const productCategories = [
+        "Automatic Transfer Switch",
+        "Intelligent ATS Controller",
+        "High Voltage Vacuum Circuit Breaker",
+        "Universal Circuit Breaker",
+        "Molded Case Circuit Breaker",
+        "Miniature Circuit Breaker",
+        "Load Isolation Switch",
+        "Overvoltage and Undervoltage Protector",
+        "Surge Protective Device",
+        "Intelligent Power Meter",
+        "Battery Charger"
+    ];
+
+    const handleCategoryClick = (category) => {
+        navigate(`/products`, { state: { category } });
+        handleShowMenu();
+    };
 
     const products = [
         "ASP Anti-Surge Module",
@@ -62,16 +85,18 @@ const MobileMenu = ({ logo, linkToNav, handleShowMenu }) => {
     };
 
     return (
-        <section className="min-h-screen gap-8 bg-white flex flex-col justify-between px-8 py-12">
-            <button onClick={handleShowMenu} className="self-end">
-                <IoCloseCircle className="size-[3rem]"/>
-            </button>
-            
-            <div className="flex flex-col gap-8">
+        <section className="min-h-screen gap-8 bg-white flex flex-col p-8">
+            <div className="flex flex-row justify-between items-center">
                 <a href="/">
-                    <img src={logo} alt="logo-aisikai" className="w-full"/>
+                    <img src={logo} alt="logo-aisikai" className="w-30"/>
                 </a>
-                
+
+                <button onClick={handleShowMenu} className="self-end">
+                    <IoCloseCircle className="size-[2rem]"/>
+                </button>
+            </div>
+
+            <div className="flex flex-col gap-8">
                 <div className="relative">
                     <div className="bg-gray-100 flex flex-row items-center px-4">
                         <FiSearch className="bg-gray-100 size-6" />
@@ -99,108 +124,165 @@ const MobileMenu = ({ logo, linkToNav, handleShowMenu }) => {
                     )}
                 </div>
 
-                <div className="flex flex-col">
-                    {linkToNav.map((item, index) => {
-                        const [isAboutUsOpen, setIsAboutUsOpen] = useState(false);
-                        
-                        if (item.label === "About Us") {
-                            return (
-                                <div key={index} className="my-2 sm:my-4">
-                                    <div 
-                                        className="text-4xl sm:text-5xl font-medium flex flex-col" 
-                                        onClick={() => {
-                                            if (!isAboutUsOpen) {
-                                                navigate(item.href);
-                                                handleShowMenu();
-                                            } else {
-                                                setIsAboutUsOpen(!isAboutUsOpen);
-                                            }
-                                        }}
-                                    >
-                                        <a 
-                                            href={item.href} 
-                                            className={`${location.pathname === item.href ? "text-primary" : ""}`}
-                                            onClick={(e) => {
-                                                e.preventDefault();
-                                                if (!isAboutUsOpen) {
-                                                    setIsAboutUsOpen(true);
-                                                }
-                                            }}
-                                        >
-                                            {item.label}
-                                        </a>
-                                    </div>
-                                    
-                                    {isAboutUsOpen && (
-                                        <div className="flex flex-col pl-4 mt-2">
-                                            <a 
-                                                href="/about-us" 
-                                                className="text-2xl sm:text-3xl py-2"
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    navigate("/about-us");
-                                                    handleShowMenu();
-                                                }}
-                                            >
-                                                About Us
-                                            </a>
-                                            <a 
-                                                href="/certificates" 
-                                                className="text-2xl sm:text-3xl py-2"
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    navigate("/certificates");
-                                                    handleShowMenu();
-                                                }}
-                                            >
-                                                Certificate
-                                            </a>
-                                            <a 
-                                                href="/photo-gallery" 
-                                                className="text-2xl sm:text-3xl py-2"
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    navigate("/photo-gallery");
-                                                    handleShowMenu();
-                                                }}
-                                            >
-                                                Photo Gallery
-                                            </a>
-                                        </div>
-                                    )}
-                                </div>
-                            );
-                        }
-                        
-                        return (
-                            <div key={index} className="my-2 sm:my-4 text-4xl sm:text-5xl font-medium">
-                                <a 
-                                    href={item.href} 
-                                    className={`${location.pathname === item.href ? "text-primary" : ""}`}
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        navigate(item.href);
-                                        handleShowMenu();
-                                    }}
-                                >
-                                    {item.label}
-                                </a>
-                            </div>
-                        );
-                    })}
-                </div>
+                <nav className="flex flex-col gap-3 text-lg">
+                    <a href="/" className="py-2 border-b-2 border-black/10">Home</a>
 
-                <div className="flex flex-row items-center gap-6 font-medium text-xl">
-                    <h2 className="text-lg">Contact Us</h2>
-                    <div className="flex flex-row gap-4 items-center">
-                        <a href="mailto:detapowergensetindonesia@gmail.com" >
-                            <MdEmail className="size-10 text-primary"/>
-                        </a>
-                        <a href="https://wa.me/6285176879999?text=Halo, Saya tertarik dengan produk Aisikai">
-                            <RiWhatsappFill className="size-10 text-primary"/>
-                        </a>
+                    {/* Products dropdown */}
+                    <div className="flex flex-col border-b-2 border-black/10">
+                        <button
+                            className="flex items-center justify-between py-2"
+                            onClick={() => setIsProductsOpen(!isProductsOpen)}
+                        >
+                            <span>Products</span>
+                            {isProductsOpen ?
+                                <IoIosArrowUp className="size-5" /> :
+                                <IoIosArrowDown className="size-5" />
+                            }
+                        </button>
+
+                        {isProductsOpen && (
+                            <ul className="pl-4 py-2 flex flex-col gap-2 border-l-2 border-gray-200">
+                                {productCategories.map((category, index) => (
+                                    <li
+                                        key={index}
+                                        className="py-1 hover:text-blue-600 cursor-pointer"
+                                        onClick={() => handleCategoryClick(category)}
+                                    >
+                                        {category}
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
                     </div>
-                </div>
+
+                    {/* About Us dropdown (existing) */}
+                    <div className="flex flex-col border-b-2 border-black/10">
+                        <button
+                            className="flex items-center justify-between py-2"
+                            onClick={() => setIsAboutUsOpen(!isAboutUsOpen)}
+                        >
+                            <span>About Us</span>
+                            {isAboutUsOpen ?
+                                <IoIosArrowUp className="size-5" /> :
+                                <IoIosArrowDown className="size-5" />
+                            }
+                        </button>
+
+                        {isAboutUsOpen && (
+                            <div className="pl-4 py-2 flex flex-col gap-2 border-l-2 border-gray-200">
+                                <a href="/about-us" className="py-2">About Us</a>
+                                <a href="/certificate" className="py-2">Certificate</a>
+                                <a href="/photo-gallery" className="py-2">Photo Gallery</a>
+                            </div>
+                        )}
+                    </div>
+
+                    <a href="/download" className="py-2 border-b-2 border-black/10">Download</a>
+
+                    <a href="/contact-us" className="py-2 border-b-2 border-black/10">Contact Us</a>
+                </nav>
+
+
+                {/*<div className="flex flex-col">*/}
+                {/*    {linkToNav.map((item, index) => {*/}
+                {/*        if (item.label === "About Us") {*/}
+                {/*            return (*/}
+                {/*                <div key={index} className="my-2 sm:my-4">*/}
+                {/*                    <div */}
+                {/*                        className="text-4xl sm:text-5xl font-medium flex flex-col" */}
+                {/*                        onClick={() => {*/}
+                {/*                            if (!isAboutUsOpen) {*/}
+                {/*                                navigate(item.href);*/}
+                {/*                                handleShowMenu();*/}
+                {/*                            } else {*/}
+                {/*                                setIsAboutUsOpen(!isAboutUsOpen);*/}
+                {/*                            }*/}
+                {/*                        }}*/}
+                {/*                    >*/}
+                {/*                        <a */}
+                {/*                            href={item.href} */}
+                {/*                            className={`${location.pathname === item.href ? "text-primary" : ""}`}*/}
+                {/*                            onClick={(e) => {*/}
+                {/*                                e.preventDefault();*/}
+                {/*                                if (!isAboutUsOpen) {*/}
+                {/*                                    setIsAboutUsOpen(true);*/}
+                {/*                                }*/}
+                {/*                            }}*/}
+                {/*                        >*/}
+                {/*                            {item.label}*/}
+                {/*                        </a>*/}
+                {/*                    </div>*/}
+                {/*                    */}
+                {/*                    {isAboutUsOpen && (*/}
+                {/*                        <div className="flex flex-col pl-4 mt-2">*/}
+                {/*                            <a */}
+                {/*                                href="/about-us" */}
+                {/*                                className="text-2xl sm:text-3xl py-2"*/}
+                {/*                                onClick={(e) => {*/}
+                {/*                                    e.preventDefault();*/}
+                {/*                                    navigate("/about-us");*/}
+                {/*                                    handleShowMenu();*/}
+                {/*                                }}*/}
+                {/*                            >*/}
+                {/*                                About Us*/}
+                {/*                            </a>*/}
+                {/*                            <a */}
+                {/*                                href="/certificates" */}
+                {/*                                className="text-2xl sm:text-3xl py-2"*/}
+                {/*                                onClick={(e) => {*/}
+                {/*                                    e.preventDefault();*/}
+                {/*                                    navigate("/certificates");*/}
+                {/*                                    handleShowMenu();*/}
+                {/*                                }}*/}
+                {/*                            >*/}
+                {/*                                Certificate*/}
+                {/*                            </a>*/}
+                {/*                            <a */}
+                {/*                                href="/photo-gallery" */}
+                {/*                                className="text-2xl sm:text-3xl py-2"*/}
+                {/*                                onClick={(e) => {*/}
+                {/*                                    e.preventDefault();*/}
+                {/*                                    navigate("/photo-gallery");*/}
+                {/*                                    handleShowMenu();*/}
+                {/*                                }}*/}
+                {/*                            >*/}
+                {/*                                Photo Gallery*/}
+                {/*                            </a>*/}
+                {/*                        </div>*/}
+                {/*                    )}*/}
+                {/*                </div>*/}
+                {/*            );*/}
+                {/*        }*/}
+                {/*        */}
+                {/*        return (*/}
+                {/*            <div key={index} className="my-2 sm:my-4 text-4xl sm:text-5xl font-medium">*/}
+                {/*                <a */}
+                {/*                    href={item.href} */}
+                {/*                    className={`${location.pathname === item.href ? "text-primary" : ""}`}*/}
+                {/*                    onClick={(e) => {*/}
+                {/*                        e.preventDefault();*/}
+                {/*                        navigate(item.href);*/}
+                {/*                        handleShowMenu();*/}
+                {/*                    }}*/}
+                {/*                >*/}
+                {/*                    {item.label}*/}
+                {/*                </a>*/}
+                {/*            </div>*/}
+                {/*        );*/}
+                {/*    })}*/}
+                {/*</div>*/}
+
+                {/*<div className="flex flex-row items-center gap-6 font-medium text-xl">*/}
+                {/*    <h2 className="text-lg">Contact Us</h2>*/}
+                {/*    <div className="flex flex-row gap-4 items-center">*/}
+                {/*        <a href="mailto:detapowergensetindonesia@gmail.com" >*/}
+                {/*            <MdEmail className="size-10 text-primary"/>*/}
+                {/*        </a>*/}
+                {/*        <a href="https://wa.me/6285176879999?text=Halo, Saya tertarik dengan produk Aisikai">*/}
+                {/*            <RiWhatsappFill className="size-10 text-primary"/>*/}
+                {/*        </a>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
             </div>
 
             <div className='flex flex-row gap-8 items-center'>

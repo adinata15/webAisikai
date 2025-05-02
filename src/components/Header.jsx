@@ -275,7 +275,7 @@ const Header = () => {
 
             {showMenu && 
                 (
-                    <div className="absolute top-0 w-full z-20 shadow-2xl">
+                    <div className="absolute top-0 w-full left-0 z-20">
                         <div className="">
                             <MobileMenu logo={logoAisikai} linkToNav={navLink} handleShowMenu={handleShowMenu} />
                         </div>

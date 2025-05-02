@@ -18,7 +18,6 @@ const Hero = () => {
                 autoplay={{delay: 5000}}
                 pagination={{clickable: true}}
                 modules={[FreeMode, Pagination, Autoplay]}
-                navigation={true}
                 className="mySwiper">
 
                 <SwiperSlide className="mb-12">
