@@ -15,6 +15,8 @@ import iconUk from '../assets/icons/uk.svg';
 const Header = () => {
     const navigate = useNavigate();
 
+    
+
     const navLink = [
         {label: "Home", href: "/"},
         {label: "Products", href: "/products"},

@@ -1223,7 +1223,7 @@ const Products = () => {
         }
         
         return (
-            <div className="flex justify-center mt-6 gap-2">
+            <div className="flex justify-center mt-6 gap-2 notranslate" translate="no">
                 <button 
                     onClick={() => onPageChange(Math.max(1, currentPage - 1))}
                     disabled={currentPage === 1}
@@ -1490,10 +1490,16 @@ const Products = () => {
                                             {product.categoryName && !activeCategory && (
                                                 <p className="text-sm text-gray-500">{product.categoryName}</p>
                                             )}
-                                            <button className='flex flex-row justify-center items-center gap-2 bg-gray-200 w-full py-2 rounded-sm'>
+                                            <a
+                                                href="https://wa.me/6285176879999?text=Halo, Saya tertarik dengan produk Aisikai"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className='flex flex-row justify-center items-center gap-2 bg-gray-200 w-full py-2 rounded-sm'
+                                                onClick={e => e.stopPropagation()}
+                                            >
                                                 <PiEnvelopeSimple />
                                                 <span>Inquire</span>
-                                            </button>
+                                            </a>
                                         </li>
                                     ))}
                                 </ul>
