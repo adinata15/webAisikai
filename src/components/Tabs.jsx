@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import {useNavigate} from 'react-router-dom';
+import { Link, useSearchParams } from "react-router-dom";
+
+import { catalog, catalogHref } from "../catalog/catalog.js";
 
 import ImageName1 from "../assets/images/asp.jpg";
 import ImageName2 from "../assets/images/skt1.jpg";
@@ -18,230 +19,125 @@ import ImageName14 from "../assets/images/mcb2.webp";
 import ImageName15 from "../assets/images/mcb3.webp";
 import ImageName16 from "../assets/images/mcb4.webp";
 
-const Tabs = () => {
-    const [activetab, setActiveTab] = useState('ats');
-    const navigate = useNavigate();
+const FEATURED_IMAGES = {
+    11: ImageName1,
+    12: ImageName2,
+    13: ImageName3,
+    14: ImageName4,
+    51: ImageName5,
+    52: ImageName6,
+    53: ImageName7,
+    54: ImageName8,
+    41: ImageName9,
+    42: ImageName10,
+    43: ImageName11,
+    44: ImageName12,
+    61: ImageName13,
+    62: ImageName14,
+    63: ImageName15,
+    64: ImageName16,
+};
 
-    const toDetailATS1 = () => {navigate("/products/11");}
-    const toDetailATS2 = () => {navigate("/products/12");}
-    const toDetailATS3 = () => {navigate("/products/13");}
-    const toDetailATS4 = () => {navigate("/products/14");}
-
-    const toDetailMCCB1 = () => {navigate("/products/51");}
-    const toDetailMCCB2 = () => {navigate("/products/52");}
-    const toDetailMCCB3 = () => {navigate("/products/53");}
-    const toDetailMCCB4 = () => {navigate("/products/54");}
-
-    const toDetailUCB1 = () => {navigate("/products/41");}
-    const toDetailUCB2 = () => {navigate("/products/42");}
-    const toDetailUCB3 = () => {navigate("/products/43");}
-    const toDetailUCB4 = () => {navigate("/products/44");}
-
-    const toDetailMCB1 = () => {navigate("/products/61");}
-    const toDetailMCB2 = () => {navigate("/products/62");}
-    const toDetailMCB3 = () => {navigate("/products/63");}
-    const toDetailMCB4 = () => {navigate("/products/64");}
-
-    return(
-        <section className="flex flex-col items-center justify-center gap-12 px-6 xl:px-12">
-            <div className='flex flex-col xl:flex-row justify-center items-start gap-2'>
-                <button
-                    className={`px-6 py-4 text-sm 2xl:text-md font-medium text-slate-900 ${activetab === "ats" ? 'bg-primary text-white' : 'text-slate-900'}`}
-                    onMouseEnter={() => setActiveTab("ats")}>
-                        Automatic Transfer Switch
-                </button>
-                <button
-                    className={`px-6 py-4 text-sm 2xl:text-md font-medium text-slate-900 ${activetab === "mccb" ? 'bg-primary text-white' : 'text-slate-900'}`}
-                    onMouseEnter={() => setActiveTab("mccb")}>
-                        Molded Case Circuit Breaker
-                </button>
-                <button
-                    className={`px-6 py-4 text-sm 2xl:text-md font-medium text-slate-900 ${activetab === "ucb" ? 'bg-primary text-white' : 'text-slate-900'}`}
-                    onMouseEnter={() => setActiveTab("ucb")}>
-                        Universal Circuit Breaker
-                </button>
-                <button
-                    className={`px-6 py-4 text-sm 2xl:text-md font-medium text-slate-900 ${activetab === "mcb" ? 'bg-primary text-white' : 'text-slate-900'}`}
-                    onMouseEnter={() => setActiveTab("mcb")}>
-                        Miniature Circuit Breaker
-                </button>
-            </div>
-
-            <div className='flex flex-col justify-center items-center'>
-                {activetab === 'ats' && (
-                    <div className="flex flex-col gap-4">
-                        <div className="flex flex-col xl:flex-row items-start gap-12">
-                            <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailATS1}>
-                                    <img src={ImageName1} alt="image-ats1" className="w-1/2 xl:w-[25rem]"/>
-                                </button>
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailATS1}>
-                                    <h3 className="font-medium text-sm 2xl:text-md text-center">SP Anti-surge Module</h3>
-                                </button>
-                            </div>
-                            <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailATS2}>
-                                    <img src={ImageName2} alt="image-ats2" className="w-1/2 xl:w-[25rem]"/>
-                                </button>
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailATS2}>
-                                    <h3 className="font-medium text-sm 2xl:text-md text-center">SKT1 Series Class PC ATS</h3>
-                                </button>
-                            </div>
-                            <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailATS3}>
-                                    <img src={ImageName3} alt="image-ats3" className="w-1/2 xl:w-[25rem]"/>
-                                </button>
-                                <button className='hover:text-primary cursoir-pointer' onClick={toDetailATS3}>
-                                    <h3 className="font-medium text-sm 2xl:text-md text-center">SKT2 Series Ultra-thin Class PC ATS</h3>
-                                </button>
-                            </div>
-                            <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailATS4}>
-                                    <img src={ImageName4} alt="image-ats4" className="w-1/2 xl:w-[25rem]"/>
-                                </button>
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailATS4}>
-                                    <h3 className="font-medium text-sm 2xl:text-md text-center">ASKQ1 Series Household ATS 16A-63A</h3>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <button className='px-6 py-4 text-primary self-center xl:self-end text-md font-medium 3xl:mt-8'>
-                            <a href="/products">More &#8594;</a>
-                        </button>
-                    </div>
-                )}
-
-                {activetab === 'mccb' && (
-                    <div className="flex flex-col gap-4">
-                        <div className="flex flex-col xl:flex-row items-start gap-12">
-                            <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailMCCB1}>
-                                    <img src={ImageName5} alt="image-mccb1" className="w-1/2 xl:w-[25rem]"/>
-                                </button>
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailMCCB1}>
-                                    <h3 className="font-medium text-sm 2xl:text-md text-center">ASKM2E-Y Series Intelligent Electronic Molded Case Circuit Breaker</h3>
-                                </button>                              
-                            </div>
-                            <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailMCCB2}>
-                                    <img src={ImageName6} alt="image-mccb2" className="w-1/2 xl:w-[25rem]"/>
-                                </button>
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailMCCB2}>
-                                    <h3 className="font-medium text-sm 2xl:text-md text-center">ASKM2E Series Intelligent Electronic Molded Case Circuit Breaker</h3>
-                                </button>
-                            </div>
-                            <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailMCCB3}>
-                                    <img src={ImageName7} alt="image-mccb3" className="w-1/2 xl:w-[25rem]"/>
-                                </button>
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailMCCB3}>
-                                    <h3 className="font-medium text-sm 2xl:text-md text-center">ASKM1 Series Normal Protected Molded Case Circuit Breaker</h3>
-                                </button>
-                            </div>
-                            <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailMCCB4}>
-                                    <img src={ImageName8} alt="image-mccb4" className="w-1/2 xl:w-[25rem]"/>
-                                </button>
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailMCCB4}>
-                                    <h3 className="font-medium text-sm 2xl:text-md text-center">ASKM1L Series Leaked Protected Molded Case Circuit Breaker</h3>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <button className='px-6 py-4 text-primary self-center xl:self-end text-md font-medium 3xl:mt-8'>
-                            <a href="/products">More &#8594;</a>
-                        </button>
-                    </div>
-                )}
-
-                {activetab === 'ucb' && (
-                    <div id="tab-ucb" className="flex flex-col gap-4">
-                        <div className="flex flex-col xl:flex-row items-start gap-12">
-                            <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailUCB1}>
-                                    <img src={ImageName9} alt="image-ucb1" className="w-1/2 xl:w-[25rem]"/>
-                                </button>
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailUCB1}>
-                                    <h3 className="font-medium text-sm 2xl:text-md text-center">ASKW2 Series Fixed Type Intelligent Universal Circuit Breaker</h3>
-                                </button>
-                            </div>
-                            <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailUCB2}>
-                                    <img src={ImageName10} alt="image-ucb2" className="w-1/2 xl:w-[25rem]"/>
-                                </button>
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailUCB2}>
-                                    <h3 className="font-medium text-sm 2xl:text-md text-center">ASKW2 Series Drawout Type Intelligent Universal Air Circuit Breaker</h3>
-                                </button>
-                            </div>
-                            <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailUCB3}>
-                                    <img src={ImageName11} alt="image-ucb3" className="w-1/2 xl:w-[25rem]"/>
-                                </button>
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailUCB3}>
-                                    <h3 className="font-medium text-sm 2xl:text-md text-center">ASKW2 Series Drawout Type Intelligent Universal Air Circuit Breaker </h3>
-                                </button>
-                            </div>
-                            <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailUCB4}>
-                                    <img src={ImageName12} alt="image-ucb4" className="w-1/2 xl:w-[25rem]"/>
-                                </button>
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailUCB4}>
-                                    <h3 className="font-medium text-sm 2xl:text-md text-center">ASKW3 Series Fixed Type Intelligent Universal Circuit Breaker</h3>
-                                </button>
-                           </div>
-                        </div>
-                        
-                        <button className='px-6 py-4 text-primary self-center xl:self-end text-md font-medium 3xl:mt-8'>
-                            <a href="/products">More &#8594;</a>
-                        </button>
-                    </div>
-                )}
-
-                {activetab === 'mcb' && (
-                    <div id="tab-mcb" className="flex flex-col gap-4">
-                        <div className="flex flex-col xl:flex-row items-start gap-12">
-                            <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailMCB1}>
-                                    <img src={ImageName13} alt="image-mc1" className="w-1/2 xl:w-[25rem]"/>
-                                </button>
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailMCB1}>
-                                    <h3 className="font-medium text-sm 2xl:text-md text-center">ASKB6L Series Leakage Protection MCB</h3>
-                                </button>
-                            </div>
-                            <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailMCB2}>
-                                    <img src={ImageName14} alt="image-mc2" className="w-1/2 xl:w-[25rem]"/>
-                                </button>
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailMCB2}>
-                                    <h3 className="font-medium text-sm 2xl:text-md text-center">ASKB6 Series Leakage Protection MCB</h3>
-                                </button>
-                            </div>
-                            <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailMCB3}>
-                                    <img src={ImageName15} alt="image-mc3" className="w-1/2 xl:w-[25rem]"/>
-                                </button>
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailMCB3}>
-                                    <h3 className="font-medium text-sm 2xl:text-md text-center">ASKB5L Series Leakage Protection MCB</h3>
-                                </button>
-                            </div>
-                            <div className="flex flex-col justify-center items-center gap-4">
-                                <button className='hover:text-primary cursor-pointer flex justify-center' onClick={toDetailMCB4}>
-                                    <img src={ImageName16} alt="image-mc4" className="w-1/2 xl:w-[25rem]"/>
-                                </button>
-                                <button className='hover:text-primary cursor-pointer' onClick={toDetailMCB4}>
-                                    <h3 className="font-medium text-sm 2xl:text-md text-center">ASKB5 Series Leakage Protection MCB</h3>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <button className='px-6 py-4 text-primary self-center xl:self-end text-md font-medium 3xl:mt-8 '>
-                            <a href="/products">More &#8594;</a>
-                        </button>
-                    </div>
-                )}
-            </div>
-        </section>
-    )
+function moveTabIndex(tabs, currentSlug, key) {
+    const index = tabs.findIndex((tab) => tab.slug === currentSlug);
+    if (index < 0) return null;
+    if (key === "ArrowRight") return tabs[(index + 1) % tabs.length].slug;
+    if (key === "ArrowLeft") return tabs[(index - 1 + tabs.length) % tabs.length].slug;
+    return null;
 }
+
+const Tabs = () => {
+    const featuredTabs = catalog.getFeaturedTabs();
+    const [searchParams, setSearchParams] = useSearchParams();
+    const tabFromUrl = searchParams.get("featured");
+    const activeSlug = featuredTabs.some((tab) => tab.slug === tabFromUrl)
+        ? tabFromUrl
+        : featuredTabs[0]?.slug;
+    const activeTab = featuredTabs.find((tab) => tab.slug === activeSlug) ?? featuredTabs[0];
+
+    const selectTab = (slug) => {
+        const next = new URLSearchParams(searchParams);
+        if (slug === featuredTabs[0]?.slug) {
+            next.delete("featured");
+        } else {
+            next.set("featured", slug);
+        }
+        setSearchParams(next, { replace: true });
+    };
+
+    return (
+        <section className="flex flex-col items-center justify-center gap-12 px-6 xl:px-12">
+            <div className="flex flex-wrap justify-center items-start gap-2" role="tablist" aria-label="Featured product categories">
+                {featuredTabs.map((tab) => {
+                    const selected = activeSlug === tab.slug;
+                    return (
+                        <button
+                            key={tab.slug}
+                            type="button"
+                            role="tab"
+                            id={`featured-tab-${tab.slug}`}
+                            aria-selected={selected}
+                            aria-controls={`featured-panel-${tab.slug}`}
+                            tabIndex={selected ? 0 : -1}
+                            className={`min-h-11 rounded-lg border px-4 py-3 text-sm font-medium ${selected ? "border-accent bg-accent text-white" : "border-border bg-card text-foreground hover:bg-background"}`}
+                            onClick={() => selectTab(tab.slug)}
+                            onKeyDown={(event) => {
+                                const nextSlug = moveTabIndex(featuredTabs, tab.slug, event.key);
+                                if (!nextSlug) return;
+                                event.preventDefault();
+                                selectTab(nextSlug);
+                            }}
+                        >
+                            {tab.name}
+                        </button>
+                    );
+                })}
+            </div>
+
+            {activeTab && (
+                <div
+                    id={`featured-panel-${activeTab.slug}`}
+                    role="tabpanel"
+                    aria-labelledby={`featured-tab-${activeTab.slug}`}
+                    className="flex flex-col gap-4 w-full"
+                >
+                    <div className="grid w-full grid-cols-2 gap-2 xl:grid-cols-4">
+                        {activeTab.products.map((product) => (
+                            <div key={product.productId} className="min-w-0">
+                                <Link
+                                    to={catalogHref({ productId: product.productId })}
+                                    className="flex h-full flex-col items-center gap-2 rounded-lg border border-border bg-card p-2 text-foreground hover:bg-background"
+                                >
+                                    <div className="aspect-square w-full">
+                                        <img
+                                            src={FEATURED_IMAGES[product.productId]}
+                                            alt={product.name}
+                                            width={400}
+                                            height={400}
+                                            loading="lazy"
+                                            className="h-full w-full object-contain"
+                                            translate="no"
+                                        />
+                                    </div>
+                                    <h3 className="line-clamp-2 text-center text-sm font-medium" translate="no">{product.name}</h3>
+                                    {product.categoryName && (
+                                        <p className="text-center text-sm text-muted" translate="no">{product.categoryName}</p>
+                                    )}
+                                </Link>
+                            </div>
+                        ))}
+                    </div>
+
+                    <Link
+                        to={activeTab.href}
+                        className="self-center rounded-sm px-2 py-2 text-sm font-medium text-link hover:underline xl:self-end"
+                    >
+                        See {activeTab.name}
+                    </Link>
+                </div>
+            )}
+        </section>
+    );
+};
 
 export default Tabs;
