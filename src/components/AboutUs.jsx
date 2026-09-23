@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import ImageES from "../assets/images/enterprise-spirit.webp";
@@ -25,13 +25,6 @@ import { RiFirebaseFill } from "react-icons/ri";
 
 
 const AboutUs = () => {
-
-    const navigate = useNavigate();
-
-    const navToCompanyProfile = () => {
-        navigate('/company-profile');
-    }
-
     const [isHover1, setIsHover1] = useState(false);
     const [isHover2, setIsHover2] = useState(false);
     const [isHover3, setIsHover3] = useState(false);
@@ -74,7 +67,7 @@ const AboutUs = () => {
                                 Ten Major Brands in Industry and Contract-keeping and Trustworthy Enterprise. Our product lines cover level Ⅰ,Ⅱ,Ⅲ power distribution filed. All products have  Chinese 
                                 Compulsory Certification CCC and European Certification CE. We have several patented technologies, and all products own proprietary intellectual property rights.
                             </p>
-                            <button onClick={navToCompanyProfile} className="self-center px-6 py-4 bg-primary text-white rounded-lg xl:self-start"><a href="">Read More</a></button>
+                            <Link to="/about-us" className="self-center px-6 py-4 bg-primary text-white rounded-lg xl:self-start">Read More</Link>
                         </div>
                     </div>
 

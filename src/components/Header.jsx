@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { FiSearch } from "react-icons/fi";
 import { FiMenu } from "react-icons/fi";
 
 import Nav from './Nav';
 import MobileMenu from './MobileMenu';
-import AboutUsLinks from "./AboutUsLinks.jsx";
+import { catalog, catalogHref } from '../catalog/catalog.js';
 
 import logoAisikai from '../assets/images/logo-aisikai.jpg';
 import iconIndonesia from '../assets/icons/indonesia.svg';
@@ -14,8 +14,6 @@ import iconUk from '../assets/icons/uk.svg';
 
 const Header = () => {
     const navigate = useNavigate();
-
-    
 
     const navLink = [
         {label: "Home", href: "/"},
@@ -25,27 +23,10 @@ const Header = () => {
         {label: "Contact Us", href: "/contact-us"},
     ];
 
-    const products = [
-        "ASP Anti-Surge Module",
-        "SKT1 Series Class PC ATS",
-        "SKT2 Series Ultra-thin Class PC ATS",
-        "ASKQ1 Series Household ATS 16A-63A",
-        "ASKM2E-Y Series Intelligent Electronic Molded Case Circuit Breaker",
-        "ASKW2 Series Fixed Type Intelligent Universal Circuit Breaker",
-        // ...add more product names here...
-    ];
-
-    const aboutUsLinks = [
-        {label: "About Us", href: "/about-us"},
-        {label: "Certificate", href: "/certificates"},
-        {label: "Photo Gallery", href: "/photo-gallery"},
-    ];
-    
     const [showMenu, setShowMenu] = useState(false);
-    const [hoveredAboutUs, sethovereAboutUs] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const [filteredProducts, setFilteredProducts] = useState([]);
-    const [language, setLanguage] = useState(() => {
+    const [, setLanguage] = useState(() => {
         // Inisialisasi dari localStorage saat komponen dimuat pertama kali
         return localStorage.getItem('preferredLanguage') || "en";
     });
@@ -112,22 +93,23 @@ const Header = () => {
     };
 
     const handleSearch = (e) => {
-        const query = e.target.value.toLowerCase();
+        const query = e.target.value;
         setSearchQuery(query);
-        if (query) {
-            const results = products.filter(product =>
-                product.toLowerCase().includes(query)
-            );
-            setFilteredProducts(results);
-        } else {
-            setFilteredProducts([]);
-        }
+        setFilteredProducts(catalog.searchProducts(query));
     };
 
-    const handleProductClick = (productName) => {
-        navigate('/products', { state: { search: productName } });
+    const clearSearch = () => {
         setSearchQuery("");
         setFilteredProducts([]);
+    };
+
+    const submitSearch = () => {
+        const query = searchQuery.trim();
+        if (!query) {
+            return;
+        }
+        navigate(catalogHref({ query }));
+        clearSearch();
     };
 
     const handleLanguageChange = (lang) => {
@@ -224,13 +206,13 @@ const Header = () => {
     return (
         <section className="bg-linear-to-r from-white via-blue-50 to-white relative flex flex-row gap-4 py-6 xl:py-[0.05rem] px-6 xl:px-16 justify-between items-center">
             <div className="flex items-center">
-                <a href="/">
+                <Link to="/">
                     <img src={logoAisikai} alt="logo-aisikai" className='w-[10rem] 2xl:w-[12rem]'/>
-                </a> 
+                </Link> 
             </div>
 
             <div className="hidden xl:flex">
-                <Nav linkToNav={navLink} aboutUsLinks={aboutUsLinks} />
+                <Nav linkToNav={navLink} />
             </div>
 
             <div className='flex flex-row items-center justify-end gap-8'>
@@ -240,21 +222,28 @@ const Header = () => {
                         <input
                             type="search"
                             name="search"
-                            placeholder="Search"
+                            placeholder="Search…"
                             value={searchQuery}
                             onChange={handleSearch}
+                            onKeyDown={(event) => {
+                                if (event.key !== "Enter") return;
+                                event.preventDefault();
+                                submitSearch();
+                            }}
                             className="px-4 py-2 rounded-full outline-none flex-1 w-40"
                         />
                     </div>
                     {filteredProducts.length > 0 && (
                         <ul className="absolute top-12 left-0 bg-white border border-gray-300 rounded-lg shadow-lg w-full z-10">
-                            {filteredProducts.map((product, index) => (
-                                <li
-                                    key={index}
-                                    className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                                    onClick={() => handleProductClick(product)}
-                                >
-                                    {product}
+                            {filteredProducts.map((product) => (
+                                <li key={product.productId}>
+                                    <Link
+                                        to={catalogHref({ productId: product.productId })}
+                                        className="block px-4 py-2 hover:bg-gray-100"
+                                        onClick={clearSearch}
+                                    >
+                                        {product.name}
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
@@ -279,7 +268,7 @@ const Header = () => {
                 (
                     <div className="absolute top-0 w-full left-0 z-20">
                         <div className="">
-                            <MobileMenu logo={logoAisikai} linkToNav={navLink} handleShowMenu={handleShowMenu} />
+                            <MobileMenu logo={logoAisikai} handleShowMenu={handleShowMenu} />
                         </div>
                     </div> 
                 )

@@ -44,7 +44,7 @@ const Certificates = () => {
         <section>
             <SideContact className="absolute"/>
             <Header />
-            <Breadcrumb pageName={"About Us"} />
+            <Breadcrumb pageName={"Certificates"} />
 
             <div className="flex flex-col py-12 gap-12 xl:gap-24 xl:px-8 xl:px-24 3xl:px-60">
                 <div className="flex flex-col justify-center items-center gap-4 xl:gap-8 px-6 xl:px-24">

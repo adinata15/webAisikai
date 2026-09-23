@@ -54,6 +54,7 @@ import Cert19 from '../assets/images/cert19.webp';
 import Cert20 from '../assets/images/cert20.webp';
 
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import SideContact from '../components/SideContact.jsx';
 
 const AboutUs = () => {
@@ -273,7 +274,7 @@ const AboutUs = () => {
 
                 <div className="w-full bg-gray-200 px-8 xl:px-24 3xl:px-60 py-8 sm:py-16 flex flex-col xl:flex-row justify-between items-center gap-8">
                     <h2 className="text-primary font-bold xl:font-medium text-3xl sm:text-5xl xl:text-4xl">Get in touch with us</h2>
-                    <a href="" className="bg-primary px-20 py-4 text-white font-bold text-2xl rounded-full">Contact Us</a>
+                    <Link to="/contact-us" className="bg-primary px-20 py-4 text-white font-bold text-2xl rounded-full">Contact Us</Link>
                 </div>
                 
             </div>

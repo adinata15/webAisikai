@@ -1,10 +1,8 @@
-import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 import SecondHeroImage from "../assets/images/secondheroimage.webp";
 
 const SecondHero = () => {
-
-    const navigate = useNavigate();
 
     return (
         <section className="xl:mt-26 relative bg-gradient-to-r from-[#4A8CD1] to bg-primary w-full px-6 xl:px-18 py-12 xl:py-20 flex items-center justify-center">    
@@ -17,8 +15,8 @@ const SecondHero = () => {
                         </p>
                     </div>
                     <div className="flex gap-4">
-                        <button><a href="/products" className="text-white border-2 rounded-full px-8 py-2">Product</a></button>
-                        <button><a href="/contact-us" className="text-primary bg-white rounded-full px-8 py-2">Contact</a></button>
+                        <Link to="/products" className="text-white border-2 rounded-full px-8 py-2">Products</Link>
+                        <Link to="/contact-us" className="text-primary bg-white rounded-full px-8 py-2">Contact</Link>
                     </div>
                 </div>
                 
