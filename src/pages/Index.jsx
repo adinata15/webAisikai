@@ -1,31 +1,22 @@
-import Header from '../components/Header';
+import PageShell from '../components/PageShell';
 import Hero from '../components/Hero';
+import ProofStrip from '../components/ProofStrip';
 import Featured from '../components/Featured';
 import AboutUs from '../components/AboutUs';
 import SecondHero from '../components/SecondHero';
-import Footer from '../components/Footer';
-import SideContact from '../components/SideContact';
 
 const Index = () => {
-    return(
-        <section className="font-primary m-0 p-0 box-border">
-            <div className="relative flex flex-col gap-12">
-                <SideContact className="absolute"/>
-                <div className="-mt-12">
-                    <Header />
-                </div>
-                
+    return (
+        <PageShell>
+            <div className="flex flex-col gap-12">
                 <Hero />
+                <ProofStrip />
                 <Featured />
                 <AboutUs />
                 <SecondHero />
-                <div className='-mt-12'>
-                    <Footer/>
-                </div>
-                
             </div>
-        </section>
-    )
-}
+        </PageShell>
+    );
+};
 
 export default Index;

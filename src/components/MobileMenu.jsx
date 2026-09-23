@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { catalog, catalogHref } from "../catalog/catalog.js";
 
@@ -6,24 +6,72 @@ import { IoCloseCircle } from "react-icons/io5";
 import { FiSearch } from "react-icons/fi";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
-import iconIndonesia from '../assets/icons/indonesia.svg';
-import iconUk from '../assets/icons/uk.svg';
+import iconIndonesia from "../assets/icons/indonesia.svg";
+import iconUk from "../assets/icons/uk.svg";
+import ThemeToggle from "./ThemeToggle";
 
-const ABOUT_LINKS = [
-    { label: "About Us", href: "/about-us" },
-    { label: "Certificate", href: "/certificate" },
-    { label: "Photo Gallery", href: "/photo-gallery" },
-];
+const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
-const MobileMenu = ({ logo, handleShowMenu }) => {
+function AccordionSection({ label, open, onToggle, children }) {
+    return (
+        <div className="flex flex-col border-b border-border">
+            <button
+                type="button"
+                className="flex items-center justify-between py-2 min-h-11 rounded-sm"
+                aria-expanded={open}
+                onClick={onToggle}
+            >
+                <span>{label}</span>
+                {open
+                    ? <IoIosArrowUp className="size-5" aria-hidden="true" />
+                    : <IoIosArrowDown className="size-5" aria-hidden="true" />}
+            </button>
+            {open && children}
+        </div>
+    );
+}
+
+const MobileMenu = ({ logo, onClose, onLanguageChange, language, isDark, onToggleTheme }) => {
     const navigate = useNavigate();
+    const dialogRef = useRef(null);
+    const closeButtonRef = useRef(null);
 
-    const [isAboutUsOpen, setIsAboutUsOpen] = useState(false);
     const [isProductsOpen, setIsProductsOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const [filteredProducts, setFilteredProducts] = useState([]);
 
     const productCategories = catalog.getCategories();
+
+    useEffect(() => {
+        closeButtonRef.current?.focus();
+
+        const onKeyDown = (event) => {
+            if (event.key === "Escape") {
+                event.preventDefault();
+                onClose();
+                return;
+            }
+
+            if (event.key !== "Tab" || !dialogRef.current) return;
+
+            const focusable = [...dialogRef.current.querySelectorAll(FOCUSABLE)];
+            if (focusable.length === 0) return;
+
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault();
+                last.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault();
+                first.focus();
+            }
+        };
+
+        document.addEventListener("keydown", onKeyDown);
+        return () => document.removeEventListener("keydown", onKeyDown);
+    }, [onClose]);
 
     const handleSearch = (e) => {
         const query = e.target.value;
@@ -38,96 +86,82 @@ const MobileMenu = ({ logo, handleShowMenu }) => {
 
     const closeMenu = () => {
         clearSearch();
-        handleShowMenu();
+        onClose();
     };
 
     const submitSearch = () => {
         const query = searchQuery.trim();
-        if (!query) {
-            return;
-        }
+        if (!query) return;
         navigate(catalogHref({ query }));
         closeMenu();
     };
 
-    const toggleLanguage = (lang) => {
-        document.documentElement.lang = lang;
-
-        document.querySelectorAll("[data-translate]").forEach((element) => {
-            const translation = element.getAttribute(lang === "id" ? "data-translate-id" : "data-translate-en");
-            if (translation) element.textContent = translation;
-        });
-    };
-
     return (
-        <section className="min-h-screen gap-8 bg-white flex flex-col p-8">
-            <div className="flex flex-row justify-between items-center">
-                <Link to="/" onClick={handleShowMenu}>
-                    <img src={logo} alt="logo-aisikai" className="w-30"/>
-                </Link>
+        <div
+            className="fixed inset-0 z-50 bg-black/40 xl:hidden"
+            role="presentation"
+            onClick={onClose}
+        >
+            <div
+                ref={dialogRef}
+                id="mobile-menu"
+                role="dialog"
+                aria-modal="true"
+                aria-label="Site menu"
+                className="absolute inset-0 min-h-screen gap-8 bg-card text-foreground flex flex-col p-8 overflow-y-auto overscroll-contain"
+                onClick={(event) => event.stopPropagation()}
+            >
+                <div className="flex flex-row justify-between items-center">
+                    <Link to="/" onClick={onClose} aria-label="AISIKAI home">
+                        <img src={logo} alt="AISIKAI" width={120} height={40} translate="no" className="w-30 h-auto" />
+                    </Link>
 
-                <button onClick={handleShowMenu} className="self-end">
-                    <IoCloseCircle className="size-[2rem]"/>
-                </button>
-            </div>
-
-            <div className="flex flex-col gap-8">
-                <div className="relative">
-                    <div className="bg-gray-100 flex flex-row items-center px-4">
-                        <FiSearch className="bg-gray-100 size-6" />
-                        <input
-                            type="search"
-                            name="search"
-                            placeholder="Search…"
-                            value={searchQuery}
-                            onChange={handleSearch}
-                            onKeyDown={(event) => {
-                                if (event.key !== "Enter") return;
-                                event.preventDefault();
-                                submitSearch();
-                            }}
-                            className="bg-gray-100 px-4 py-4 rounded-full outline-none flex-1"
-                        />
+                    <div className="flex items-center gap-2">
+                        <ThemeToggle isDark={isDark} onToggle={onToggleTheme} />
+                        <button
+                            ref={closeButtonRef}
+                            type="button"
+                            onClick={onClose}
+                            className="self-end min-h-11 min-w-11 flex items-center justify-center rounded-sm"
+                            aria-label="Close menu"
+                        >
+                            <IoCloseCircle className="size-[2rem]" aria-hidden="true" />
+                        </button>
                     </div>
-                    {filteredProducts.length > 0 && (
-                        <ul className="absolute top-12 left-0 bg-white border border-gray-300 rounded-lg shadow-lg w-full z-10">
-                            {filteredProducts.map((product) => (
-                                <li key={product.productId}>
-                                    <Link
-                                        to={catalogHref({ productId: product.productId })}
-                                        className="block px-4 py-2 hover:bg-gray-100"
-                                        onClick={closeMenu}
-                                    >
-                                        {product.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    )}
                 </div>
 
-                <nav className="flex flex-col gap-3 text-lg">
-                    <Link to="/" className="py-2 border-b-2 border-black/10" onClick={handleShowMenu}>Home</Link>
-
-                    <div className="flex flex-col border-b-2 border-black/10">
-                        <button
-                            className="flex items-center justify-between py-2"
-                            onClick={() => setIsProductsOpen(!isProductsOpen)}
-                        >
-                            <span>Products</span>
-                            {isProductsOpen ? <IoIosArrowUp className="size-5" /> : <IoIosArrowDown className="size-5" />}
-                        </button>
-
-                        {isProductsOpen && (
-                            <ul className="pl-4 py-2 flex flex-col gap-2 border-l-2 border-gray-200">
-                                {productCategories.map((category) => (
-                                    <li key={category.slug}>
+                <div className="flex flex-col gap-8">
+                    <div className="relative">
+                        <div className="flex flex-row items-center rounded-lg border border-border bg-background px-4 focus-within:ring-2 focus-within:ring-focus">
+                            <FiSearch className="size-6 text-muted" aria-hidden="true" />
+                            <label htmlFor="mobile-search" className="sr-only">Search products</label>
+                            <input
+                                id="mobile-search"
+                                type="search"
+                                name="search"
+                                autoComplete="off"
+                                placeholder="Search…"
+                                value={searchQuery}
+                                onChange={handleSearch}
+                                onKeyDown={(event) => {
+                                    if (event.key !== "Enter") return;
+                                    event.preventDefault();
+                                    submitSearch();
+                                }}
+                                className="flex-1 bg-transparent px-4 py-4 text-foreground focus:outline-none"
+                            />
+                        </div>
+                        {filteredProducts.length > 0 && (
+                            <ul className="absolute top-14 left-0 z-10 w-full rounded-lg border border-border bg-card shadow-lg">
+                                {filteredProducts.map((product) => (
+                                    <li key={product.productId}>
                                         <Link
-                                            to={catalogHref({ categorySlug: category.slug })}
-                                            className="block py-1 hover:text-blue-600"
-                                            onClick={handleShowMenu}
+                                            to={catalogHref({ productId: product.productId })}
+                                            className="block px-4 py-2 hover:bg-background"
+                                            onClick={closeMenu}
+                                            translate="no"
                                         >
-                                            {category.name}
+                                            {product.name}
                                         </Link>
                                     </li>
                                 ))}
@@ -135,40 +169,60 @@ const MobileMenu = ({ logo, handleShowMenu }) => {
                         )}
                     </div>
 
-                    <div className="flex flex-col border-b-2 border-black/10">
-                        <button
-                            className="flex items-center justify-between py-2"
-                            onClick={() => setIsAboutUsOpen(!isAboutUsOpen)}
+                    <nav className="flex flex-col gap-3 text-lg" aria-label="Mobile">
+                        <Link to="/" className="py-2 border-b border-border rounded-sm" onClick={onClose}>Home</Link>
+
+                        <AccordionSection
+                            label="Products"
+                            open={isProductsOpen}
+                            onToggle={() => setIsProductsOpen((open) => !open)}
                         >
-                            <span>About Us</span>
-                            {isAboutUsOpen ? <IoIosArrowUp className="size-5" /> : <IoIosArrowDown className="size-5" />}
-                        </button>
-
-                        {isAboutUsOpen && (
-                            <div className="pl-4 py-2 flex flex-col gap-2 border-l-2 border-gray-200">
-                                {ABOUT_LINKS.map((link) => (
-                                    <Link key={link.href} to={link.href} className="py-2" onClick={handleShowMenu}>
-                                        {link.label}
-                                    </Link>
+                            <ul className="pl-4 py-2 flex flex-col gap-2 border-l-2 border-border">
+                                {productCategories.map((category) => (
+                                    <li key={category.slug}>
+                                        <Link
+                                            to={catalogHref({ categorySlug: category.slug })}
+                                            className="block py-1 hover:text-link rounded-sm"
+                                            onClick={onClose}
+                                            translate="no"
+                                        >
+                                            {category.name}
+                                        </Link>
+                                    </li>
                                 ))}
-                            </div>
-                        )}
-                    </div>
+                            </ul>
+                        </AccordionSection>
 
-                    <Link to="/download" className="py-2 border-b-2 border-black/10" onClick={handleShowMenu}>Download</Link>
-                    <Link to="/contact-us" className="py-2 border-b-2 border-black/10" onClick={handleShowMenu}>Contact Us</Link>
-                </nav>
-            </div>
+                        <Link to="/about-us" className="py-2 border-b border-border rounded-sm" onClick={onClose}>About Us</Link>
+                        <Link to="/certificate" className="py-2 border-b border-border rounded-sm" onClick={onClose}>Certificates</Link>
+                        <Link to="/gallery" className="py-2 border-b border-border rounded-sm" onClick={onClose}>Gallery</Link>
+                        <Link to="/catalogue" className="py-2 border-b border-border rounded-sm" onClick={onClose}>Catalogue</Link>
+                        <Link to="/contact-us" className="py-2 border-b border-border rounded-sm" onClick={onClose}>Contact Us</Link>
+                    </nav>
+                </div>
 
-            <div className='flex flex-row gap-8 items-center'>
-                <button className="w-10" onClick={() => toggleLanguage("id")}>
-                    <img src={iconIndonesia} alt="button-bahasaindonesia" className="w-full h-full object-cover"/>
-                </button>
-                <button className="w-10" onClick={() => toggleLanguage("en")}>
-                    <img src={iconUk} alt="button-english" className="w-full h-full object-cover"/>
-                </button>
+                <div className="flex flex-row gap-2 items-center pb-16">
+                    <button
+                        type="button"
+                        className={`inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border-2 p-1 ${language === "id" ? "border-link bg-background" : "border-border bg-card"}`}
+                        onClick={() => onLanguageChange("id")}
+                        aria-label="Switch to Bahasa Indonesia"
+                        aria-pressed={language === "id"}
+                    >
+                        <img src={iconIndonesia} alt="" width={28} height={28} className="size-7 object-cover" aria-hidden="true" />
+                    </button>
+                    <button
+                        type="button"
+                        className={`inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border-2 p-1 ${language === "en" ? "border-link bg-background" : "border-border bg-card"}`}
+                        onClick={() => onLanguageChange("en")}
+                        aria-label="Switch to English"
+                        aria-pressed={language === "en"}
+                    >
+                        <img src={iconUk} alt="" width={28} height={28} className="size-7 object-cover" aria-hidden="true" />
+                    </button>
+                </div>
             </div>
-        </section>
+        </div>
     );
 };
 

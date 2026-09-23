@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 import { catalog, catalogHref } from "../catalog/catalog.js";
 
@@ -39,43 +38,91 @@ const FEATURED_IMAGES = {
     64: ImageName16,
 };
 
+function moveTabIndex(tabs, currentSlug, key) {
+    const index = tabs.findIndex((tab) => tab.slug === currentSlug);
+    if (index < 0) return null;
+    if (key === "ArrowRight") return tabs[(index + 1) % tabs.length].slug;
+    if (key === "ArrowLeft") return tabs[(index - 1 + tabs.length) % tabs.length].slug;
+    return null;
+}
+
 const Tabs = () => {
     const featuredTabs = catalog.getFeaturedTabs();
-    const [activeSlug, setActiveSlug] = useState(featuredTabs[0]?.slug);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const tabFromUrl = searchParams.get("featured");
+    const activeSlug = featuredTabs.some((tab) => tab.slug === tabFromUrl)
+        ? tabFromUrl
+        : featuredTabs[0]?.slug;
     const activeTab = featuredTabs.find((tab) => tab.slug === activeSlug) ?? featuredTabs[0];
+
+    const selectTab = (slug) => {
+        const next = new URLSearchParams(searchParams);
+        if (slug === featuredTabs[0]?.slug) {
+            next.delete("featured");
+        } else {
+            next.set("featured", slug);
+        }
+        setSearchParams(next, { replace: true });
+    };
 
     return (
         <section className="flex flex-col items-center justify-center gap-12 px-6 xl:px-12">
-            <div className="flex flex-col xl:flex-row justify-center items-start gap-2" role="tablist">
-                {featuredTabs.map((tab) => (
-                    <button
-                        key={tab.slug}
-                        type="button"
-                        role="tab"
-                        aria-selected={activeSlug === tab.slug}
-                        className={`px-6 py-4 text-sm 2xl:text-md font-medium ${activeSlug === tab.slug ? "bg-primary text-white" : "text-slate-900"}`}
-                        onClick={() => setActiveSlug(tab.slug)}
-                    >
-                        {tab.name}
-                    </button>
-                ))}
+            <div className="flex flex-wrap justify-center items-start gap-2" role="tablist" aria-label="Featured product categories">
+                {featuredTabs.map((tab) => {
+                    const selected = activeSlug === tab.slug;
+                    return (
+                        <button
+                            key={tab.slug}
+                            type="button"
+                            role="tab"
+                            id={`featured-tab-${tab.slug}`}
+                            aria-selected={selected}
+                            aria-controls={`featured-panel-${tab.slug}`}
+                            tabIndex={selected ? 0 : -1}
+                            className={`min-h-11 rounded-lg border px-4 py-3 text-sm font-medium ${selected ? "border-accent bg-accent text-white" : "border-border bg-card text-foreground hover:bg-background"}`}
+                            onClick={() => selectTab(tab.slug)}
+                            onKeyDown={(event) => {
+                                const nextSlug = moveTabIndex(featuredTabs, tab.slug, event.key);
+                                if (!nextSlug) return;
+                                event.preventDefault();
+                                selectTab(nextSlug);
+                            }}
+                        >
+                            {tab.name}
+                        </button>
+                    );
+                })}
             </div>
 
             {activeTab && (
-                <div className="flex flex-col gap-4">
-                    <div className="flex flex-col xl:flex-row items-start gap-12">
+                <div
+                    id={`featured-panel-${activeTab.slug}`}
+                    role="tabpanel"
+                    aria-labelledby={`featured-tab-${activeTab.slug}`}
+                    className="flex flex-col gap-4 w-full"
+                >
+                    <div className="grid w-full grid-cols-2 gap-2 xl:grid-cols-4">
                         {activeTab.products.map((product) => (
-                            <div key={product.productId} className="flex flex-col justify-center items-center gap-4">
+                            <div key={product.productId} className="min-w-0">
                                 <Link
                                     to={catalogHref({ productId: product.productId })}
-                                    className="hover:text-primary cursor-pointer flex flex-col justify-center items-center gap-4"
+                                    className="flex h-full flex-col items-center gap-2 rounded-lg border border-border bg-card p-2 text-foreground hover:bg-background"
                                 >
-                                    <img
-                                        src={FEATURED_IMAGES[product.productId]}
-                                        alt={product.name}
-                                        className="w-1/2 xl:w-[25rem]"
-                                    />
-                                    <h3 className="font-medium text-sm 2xl:text-md text-center">{product.name}</h3>
+                                    <div className="aspect-square w-full">
+                                        <img
+                                            src={FEATURED_IMAGES[product.productId]}
+                                            alt={product.name}
+                                            width={400}
+                                            height={400}
+                                            loading="lazy"
+                                            className="h-full w-full object-contain"
+                                            translate="no"
+                                        />
+                                    </div>
+                                    <h3 className="line-clamp-2 text-center text-sm font-medium" translate="no">{product.name}</h3>
+                                    {product.categoryName && (
+                                        <p className="text-center text-sm text-muted" translate="no">{product.categoryName}</p>
+                                    )}
                                 </Link>
                             </div>
                         ))}
@@ -83,9 +130,9 @@ const Tabs = () => {
 
                     <Link
                         to={activeTab.href}
-                        className="px-6 py-4 text-primary self-center xl:self-end text-md font-medium 3xl:mt-8"
+                        className="self-center rounded-sm px-2 py-2 text-sm font-medium text-link hover:underline xl:self-end"
                     >
-                        More →
+                        See {activeTab.name}
                     </Link>
                 </div>
             )}

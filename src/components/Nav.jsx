@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import { catalog, catalogHref } from "../catalog/catalog.js";
@@ -29,99 +29,116 @@ const NAV_IMAGES = {
     "battery-charger": BC,
 };
 
-const ABOUT_LINKS = [
-    { label: "About Us", href: "/about-us" },
-    { label: "Certificate", href: "/certificate" },
-    { label: "Photo Gallery", href: "/photo-gallery" },
-];
-
 const DROPDOWN = {
     Products: "products",
-    "About Us": "about",
 };
 
 const Nav = ({ linkToNav }) => {
     const location = useLocation();
     const [openMenu, setOpenMenu] = useState(null);
+    const closeTimer = useRef(null);
     const navCategories = catalog.getCategories();
 
-    const openDropdown = (label) => {
-        const menu = DROPDOWN[label];
-        if (menu) setOpenMenu(menu);
+    const openMenuNow = (menu) => {
+        if (closeTimer.current) clearTimeout(closeTimer.current);
+        setOpenMenu(menu);
     };
 
-    const closeDropdown = (label) => {
-        if (DROPDOWN[label]) setOpenMenu(null);
+    const scheduleClose = () => {
+        if (closeTimer.current) clearTimeout(closeTimer.current);
+        closeTimer.current = setTimeout(() => setOpenMenu(null), 180);
     };
+
+    useEffect(() => () => {
+        if (closeTimer.current) clearTimeout(closeTimer.current);
+    }, []);
+
+    useEffect(() => {
+        if (!openMenu) return undefined;
+
+        const onKeyDown = (event) => {
+            if (event.key === "Escape") setOpenMenu(null);
+        };
+
+        document.addEventListener("keydown", onKeyDown);
+        return () => document.removeEventListener("keydown", onKeyDown);
+    }, [openMenu]);
 
     return (
-        <section className="flex flex-col xl:flex-row relative">
-            {linkToNav.map((item) => (
-                <div
-                    key={item.href}
-                    className="my-6 xl:font-medium"
-                    onMouseEnter={() => openDropdown(item.label)}
-                    onMouseLeave={() => closeDropdown(item.label)}
-                    onFocus={() => openDropdown(item.label)}
-                >
-                    <Link
-                        to={item.href}
-                        className={`mx-4 2xl:mx-6 text-md 2xl:text-lg font-normal hover:text-primary ${location.pathname === item.href ? "text-primary" : ""}`}
+        <nav className="flex flex-col xl:flex-row relative" aria-label="Primary">
+            {linkToNav.map((item) => {
+                const menuId = DROPDOWN[item.label];
+                const isOpen = openMenu === menuId;
+
+                return (
+                    <div
+                        key={item.href}
+                        className="my-6 xl:font-medium shrink-0"
+                        onMouseEnter={() => menuId && openMenuNow(menuId)}
+                        onMouseLeave={() => menuId && scheduleClose()}
+                        onFocus={() => menuId && openMenuNow(menuId)}
+                        onBlur={(event) => {
+                            if (!event.currentTarget.contains(event.relatedTarget)) {
+                                setOpenMenu(null);
+                            }
+                        }}
                     >
-                        {item.label}
-                    </Link>
-                </div>
-            ))}
+                        <Link
+                            to={item.href}
+                            className={`mx-2 2xl:mx-4 whitespace-nowrap text-sm 2xl:text-base font-normal rounded-sm text-foreground hover:text-link ${location.pathname === item.href ? "text-link" : ""}`}
+                            aria-expanded={menuId ? isOpen : undefined}
+                            aria-haspopup={menuId ? "true" : undefined}
+                            onKeyDown={(event) => {
+                                if (!menuId) return;
+                                if (event.key === "ArrowDown" || event.key === "Enter" || event.key === " ") {
+                                    event.preventDefault();
+                                    openMenuNow(menuId);
+                                }
+                            }}
+                        >
+                            {item.label}
+                        </Link>
+
+                    </div>
+                );
+            })}
 
             {openMenu === "products" && (
                 <div
-                    className="absolute top-14 bg-white border border-gray-300 shadow-lg z-10 justify-center items-center"
-                    onMouseEnter={() => setOpenMenu("products")}
-                    onMouseLeave={() => setOpenMenu(null)}
+                    className="fixed inset-x-4 top-[5.5rem] z-40 xl:right-20"
+                    onMouseEnter={() => openMenuNow("products")}
+                    onMouseLeave={scheduleClose}
                 >
-                    <div className="p-8 flex flex-col gap-8 justify-start items-center self-center">
-                        <div className="grid grid-cols-5 gap-2">
+                    <div
+                        className="mx-auto max-h-[calc(100vh-7rem)] w-full max-w-6xl overflow-y-auto rounded-lg border border-border bg-card p-4 shadow-lg"
+                        role="menu"
+                        aria-label="Product categories"
+                    >
+                        <div className="grid grid-cols-2 gap-2 md:grid-cols-3 xl:grid-cols-5">
                             {navCategories.map((category) => (
                                 <Link
                                     key={category.slug}
                                     to={catalogHref({ categorySlug: category.slug })}
-                                    className="flex flex-col justify-center items-center w-44 hover:text-primary"
+                                    className="flex flex-col items-center gap-2 rounded-lg p-2 text-foreground hover:bg-background hover:text-link"
                                     onClick={() => setOpenMenu(null)}
+                                    role="menuitem"
                                 >
                                     <img
                                         src={NAV_IMAGES[category.slug]}
-                                        alt={category.name}
-                                        className="w-22"
+                                        alt=""
+                                        width={88}
+                                        height={88}
+                                        className="h-16 w-auto object-contain"
+                                        aria-hidden="true"
                                     />
-                                    <h3 className="text-center font-normal text-sm">{category.name}</h3>
+                                    <span className="text-center text-sm font-normal" translate="no">{category.name}</span>
                                 </Link>
                             ))}
                         </div>
                     </div>
                 </div>
             )}
-
-            {openMenu === "about" && (
-                <div
-                    className="absolute top-14 ml-12 bg-white border border-gray-300 shadow-lg z-10 justify-center items-center"
-                    onMouseEnter={() => setOpenMenu("about")}
-                    onMouseLeave={() => setOpenMenu(null)}
-                >
-                    <div className="flex flex-row justify-between items-center gap-8 py-6 px-24 w-full">
-                        {ABOUT_LINKS.map((link) => (
-                            <Link
-                                key={link.href}
-                                to={link.href}
-                                className="hover:text-primary text-center font-normal text-sm"
-                                onClick={() => setOpenMenu(null)}
-                            >
-                                {link.label}
-                            </Link>
-                        ))}
-                    </div>
-                </div>
-            )}
-        </section>
+        </nav>
     );
 };
 

@@ -1,53 +1,54 @@
 import { Link } from "react-router-dom";
 
 import logoAisikai from "../assets/images/logo-aisikai.jpg";
-import { FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
-import { FaYoutube, FaFacebookF } from "react-icons/fa";
 
 const FOOTER_LINKS = [
     { label: "Home", href: "/" },
     { label: "Products", href: "/products" },
     { label: "About Us", href: "/about-us", nowrap: true },
-    { label: "Downloads", href: "/download" },
+    { label: "Certificates", href: "/certificate" },
+    { label: "Gallery", href: "/gallery", nowrap: true },
+    { label: "Catalogue", href: "/catalogue" },
     { label: "Contact Us", href: "/contact-us", nowrap: true },
 ];
 
 const Footer = () => {
     return (
-        <section className="bg-slate-900 w-full px-6 sm:px-12 xl:px-24 3xl:px-60 py-12">
+        <footer className="bg-footer w-full px-6 sm:px-12 xl:px-24 3xl:px-60 pt-12 pb-24 xl:pb-12">
             <div className="flex flex-col justify-center items-center gap-8">
                 <div className="flex flex-col xl:flex-row justify-between items-start gap-8 w-full">
                     <div>
-                        <img src={logoAisikai} alt="logo-aisikai" className="w-1/2 xl:w-[12rem]" />
+                        <img
+                            src={logoAisikai}
+                            alt="AISIKAI"
+                            width={192}
+                            height={64}
+                            translate="no"
+                            className="w-1/2 xl:w-[12rem] h-auto"
+                        />
                     </div>
-                    <div className="flex flex-col xl:flex-row gap-8 items-start">
+                    <nav className="flex flex-col xl:flex-row gap-8 items-start" aria-label="Footer">
                         {FOOTER_LINKS.map((link) => (
                             <Link
                                 key={link.href}
                                 to={link.href}
-                                className={`text-gray-500 font-medium text-md hover:text-white ${link.nowrap ? "whitespace-nowrap" : ""}`}
+                                className={`text-footer-muted font-medium text-md hover:text-white rounded-sm ${link.nowrap ? "whitespace-nowrap" : ""}`}
                             >
                                 {link.label}
                             </Link>
                         ))}
-                    </div>
+                    </nav>
                 </div>
 
-                <div className="w-full border-[0.1rem] border-gray-500"></div>
+                <div className="w-full border-t border-footer-line" aria-hidden="true" />
 
                 <div className="w-full flex flex-col xl:flex-row justify-between items-start gap-4">
-                    <p className="font-regular text-gray-500 text-sm leading-normal">
-                        All rights reserved &copy; JIANGSU AISIKAI ELECTRIC CO.,LTD. Support By Leadong
+                    <p className="font-normal text-footer-muted text-sm leading-normal">
+                        All rights reserved &copy; <span translate="no">JIANGSU AISIKAI ELECTRIC CO.,LTD.</span> Support By Leadong
                     </p>
-                    <div className="flex flex-row gap-4">
-                        <FaLinkedinIn className="text-gray-500 size-4" />
-                        <FaYoutube className="text-gray-500 size-4" />
-                        <FaXTwitter className="text-gray-500 size-4" />
-                        <FaFacebookF className="text-gray-500 size-4" />
-                    </div>
                 </div>
             </div>
-        </section>
+        </footer>
     );
 };
 

@@ -1,237 +1,146 @@
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { FiAward, FiFlag, FiPlay, FiSend, FiZap } from "react-icons/fi";
 
 import ImageES from "../assets/images/enterprise-spirit.webp";
 import ImageEV from "../assets/images/enterprise-vision.webp";
 import ImageBP from "../assets/images/business-philosophy.webp";
 import ImageDT from "../assets/images/development-tenet.webp";
 
-import PG1 from '../assets/images/photogallery1.jpg';
-import PG2 from '../assets/images/photogallery2.jpg';
-import PG3 from '../assets/images/photogallery3.jpg';
-import PG4 from '../assets/images/photogallery4.jpg';
-import PG5 from '../assets/images/photogallery5.jpg';
-import PG6 from '../assets/images/photogallery6.jpg';
-import PG7 from '../assets/images/photogallery7.jpg';
-import PG8 from '../assets/images/photogallery8.webp';
-import PG9 from '../assets/images/photogallery9.jpg';
-import PG10 from '../assets/images/photogallery10.jpg';
-import PG11 from '../assets/images/photogallery11.jpg';
-import PG12 from '../assets/images/photogallery12.jpg';
+const VIDEO_ID = "F4qOO5minVU";
+const YOUTUBE_POSTER = `https://i.ytimg.com/vi/${VIDEO_ID}/hqdefault.jpg`;
+const YOUTUBE_EMBED = `https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1`;
 
-import { RiSendPlaneFill } from "react-icons/ri";
-import { HiFlag } from "react-icons/hi2";
-import { RiFirebaseFill } from "react-icons/ri";
-
+const VALUE_CARDS = [
+    {
+        title: "Enterprise Spirit",
+        caption: "Aware of Adversity in Prosperity, Broaden Sources and Reduce Expenditure",
+        image: ImageES,
+        Icon: FiSend,
+    },
+    {
+        title: "Enterprise Vision",
+        caption: "Make Contributions to Society, Care About Wellbeing of Employees",
+        image: ImageEV,
+        Icon: FiFlag,
+    },
+    {
+        title: "Business Philosophy",
+        caption: "Sincerity, Excellence, Perfection",
+        image: ImageBP,
+        Icon: FiAward,
+    },
+    {
+        title: "Development Tenet",
+        caption: "Quality, Service, Reputation, Innovation",
+        image: ImageDT,
+        Icon: FiZap,
+    },
+];
 
 const AboutUs = () => {
-    const [isHover1, setIsHover1] = useState(false);
-    const [isHover2, setIsHover2] = useState(false);
-    const [isHover3, setIsHover3] = useState(false);
-    const [isHover4, setIsHover4] = useState(false);
-    
-    const [activeTab, setActiveTab] = useState("company-environment");
+    const [playing, setPlaying] = useState(false);
+    const [posterSrc, setPosterSrc] = useState(YOUTUBE_POSTER);
+    const playerRef = useRef(null);
 
-    
-    return(
-        <section className="px-6 xl:px-24 3xl:px-60 bg-gray-100 py-12">
-            <div className="flex flex-col justify-center items-center gap-6">
-                <h2 className="font-bold text-2xl 3xl:text-3xl">About Us</h2>
-                <div className="flex flex-col gap-12 justify-center items-center 3xl:mt-8">
-                    <div className="flex flex-col xl:flex-row gap-6 xl:items-start">
-                        <div className="flex flex-col justify-center items-center gap-2">
-                            <iframe width="auto" height="auto" 
-                                src="https://www.youtube.com/embed/F4qOO5minVU?si=VF2pzjXsCzS9npuE" 
-                                title="YouTube video player" 
-                                frameborder="0" 
-                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                referrerpolicy="strict-origin-when-cross-origin" 
-                                allowfullscreen
-                                className="xl:hidden">
-                            </iframe>
-                            <iframe width="600" height="440" 
-                                src="https://www.youtube.com/embed/F4qOO5minVU?si=VF2pzjXsCzS9npuE" 
-                                title="YouTube video player" 
-                                frameborder="0" 
-                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                referrerpolicy="strict-origin-when-cross-origin" 
-                                allowfullscreen
-                                className="hidden xl:flex">
-                            </iframe>
-                            <h4 className="font-medium text-md text-gray-400">AISIKAI ELECTRIC INTRODUCTION</h4>
+    useEffect(() => {
+        if (!playing || !playerRef.current) return;
+        playerRef.current.focus();
+    }, [playing]);
+
+    return (
+        <section className="bg-background px-6 py-12 xl:px-24 3xl:px-60">
+            <div className="flex flex-col items-center justify-center gap-6">
+                <h2 className="text-2xl font-bold">About Us</h2>
+                <div className="section-rule" aria-hidden="true" />
+                <div className="flex w-full flex-col items-center justify-center gap-12">
+                    <div className="grid w-full grid-cols-1 items-start gap-6 xl:grid-cols-5">
+                        <div className="w-full xl:col-span-3">
+                            <div
+                                ref={playerRef}
+                                tabIndex={playing ? -1 : undefined}
+                                className="aspect-video w-full overflow-hidden rounded-lg border border-border outline-none focus-visible:ring-2 focus-visible:ring-link"
+                                aria-label={playing ? "AISIKAI Electric introduction" : undefined}
+                            >
+                                {playing ? (
+                                    <iframe
+                                        className="h-full w-full"
+                                        src={YOUTUBE_EMBED}
+                                        title="AISIKAI Electric introduction"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        referrerPolicy="strict-origin-when-cross-origin"
+                                        allowFullScreen
+                                    />
+                                ) : (
+                                    <button
+                                        type="button"
+                                        className="group relative h-full w-full cursor-pointer bg-slate-950 text-left"
+                                        onClick={() => setPlaying(true)}
+                                        aria-label="Play AISIKAI Electric introduction"
+                                    >
+                                        <img
+                                            src={posterSrc}
+                                            alt=""
+                                            width={1280}
+                                            height={720}
+                                            loading="lazy"
+                                            className="h-full w-full object-cover"
+                                            aria-hidden="true"
+                                            onError={() => setPosterSrc(ImageES)}
+                                        />
+                                        <span className="absolute inset-0 bg-slate-950/45 transition-colors group-hover:bg-slate-950/35" aria-hidden="true" />
+                                        <span className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-4 text-center text-white">
+                                            <span className="flex size-14 items-center justify-center rounded-full border border-white/40 bg-slate-950/70 text-white shadow-lg transition-transform group-hover:scale-105">
+                                                <FiPlay className="size-7 translate-x-0.5" aria-hidden="true" />
+                                            </span>
+                                            <span className="max-w-sm text-sm font-medium tracking-wide sm:text-base" translate="no">
+                                                AISIKAI Electric introduction
+                                            </span>
+                                        </span>
+                                    </button>
+                                )}
+                            </div>
                         </div>
-                        <div className="flex flex-col justify-center items-start gap-6 text-center xl:text-left px-6 3xl:text-xl">
-                            <p>AISIKAI is located in Yangzhou, a livable and tourist city famous for her beautiful natural scenery and rich cultural heritage.
-                                Since established in 2007, AISIKAI has been committed to the manufacture, research, development and marketing of the high-quality electric switch. <br /> <br />
-                                AISIKAI has obtained the UKAS ISO9001 Quality Management System and SGS Global Qualified Supplier Authentication. We are awarded as the National High-Tech Enterprise, 
-                                Ten Major Brands in Industry and Contract-keeping and Trustworthy Enterprise. Our product lines cover level Ⅰ,Ⅱ,Ⅲ power distribution filed. All products have  Chinese 
-                                Compulsory Certification CCC and European Certification CE. We have several patented technologies, and all products own proprietary intellectual property rights.
+
+                        <div className="flex flex-col items-center justify-center gap-6 px-2 text-center xl:col-span-2 xl:items-start xl:text-left">
+                            <p>
+                                <span translate="no">AISIKAI</span> is located in Yangzhou, a livable and tourist city famous for her beautiful natural scenery and rich cultural heritage.
+                                Since established in 2007, AISIKAI has been committed to the manufacture, research, development and marketing of the high-quality electric switch.
                             </p>
-                            <Link to="/about-us" className="self-center px-6 py-4 bg-primary text-white rounded-lg xl:self-start">Read More</Link>
+                            <Link to="/about-us" className="btn-primary self-center xl:self-start">
+                                Read More
+                            </Link>
                         </div>
                     </div>
 
-                    <div className="flex flex-col xl:flex-row justify-between items-center gap-8 w-full">
-                        <div className="flex flex-col justify-center items-center">
-                            <div className="size-76 xl:size-60 2xl:size-80 3xl:size-84 flex flex-col justify-center items-center"
-                                onMouseEnter={() => setIsHover1(true)}
-                                onMouseLeave={() => setIsHover1(false)}>
-                                    <div className="flex flex-row bg-white py-2 w-full justify-center items-center text-primary gap-2">
-                                        <RiSendPlaneFill />
-                                        <h3>Enterprise Spirit</h3>
-                                    </div>
-                                    <div className="w-full h-96 relative flex flex-col justify-end">
-                                        <img src={ImageES} alt="image-enterprisespirit" className="w-full h-full object-cover"/>
-                                        {isHover1 && (
-                                            <p className="bg-primary/50 p-4 absolute flex self-end font-medium text-white text-sm">
-                                                Aware of Adversity in Prosperity, Broaden Sources and Reduce Expenditure
-                                            </p>
-                                        )}
-                                    </div>
-                            </div>
-                        </div>
-
-                        <div className="flex flex-col justify-center items-center">
-                            <div className="size-76 xl:size-60 2xl:size-80 flex flex-col justify-center items-center"
-                                onMouseEnter={() => setIsHover2(true)}
-                                onMouseLeave={() => setIsHover2(false)}>
-                                    <div className="flex flex-row bg-white py-2 w-full justify-center items-center text-blue-500 gap-2">
-                                        <HiFlag />
-                                        <h3>Enterprise Vision</h3>
-                                    </div>
-                                    <div className="w-full h-96 relative flex flex-col justify-end">
-                                        <img src={ImageEV} alt="image-enterprisespirit" className="w-full h-full object-cover"/>
-                                        {isHover2 && (
-                                            <p className="bg-primary/50 p-4 absolute flex self-end font-medium text-white text-sm">
-                                                Make Contributions to Society, Care About Wellbeing of  Employees
-                                            </p>
-                                        )}
-                                    </div>
-                            </div>
-                        </div>
-
-                        <div className="flex flex-col justify-center items-center">
-                            <div className="size-76 xl:size-60 2xl:size-80 3xl:size-84 flex flex-col justify-center items-center"
-                                onMouseEnter={() => setIsHover3(true)}
-                                onMouseLeave={() => setIsHover3(false)}>
-                                    <div className="flex flex-row bg-white py-2 w-full justify-center items-center text-primary gap-2">
-                                        <RiFirebaseFill />
-                                        <h3>Business Philosophy</h3>
-                                    </div>
-                                    <div className="w-full h-96 relative flex flex-col justify-end">
-                                        <img src={ImageBP} alt="image-enterprisespirit" className="w-full h-full object-cover"/>
-                                        {isHover3 && (
-                                            <p className="bg-primary/50 p-4 absolute flex self-end font-medium text-white text-sm w-full">
-                                                Sincerity, Excellence, Perfection
-                                            </p>
-                                        )}
-                                    </div>
-                            </div>
-                        </div>
-
-                        <div className="flex flex-col justify-center items-center">
-                            <div className="size-76 xl:size-60 2xl:size-80 3xl:size-90 flex flex-col justify-center items-center"
-                                onMouseEnter={() => setIsHover4(true)}
-                                onMouseLeave={() => setIsHover4(false)}>
-                                    <div className="flex flex-row bg-white py-2 w-full justify-center items-center text-primary gap-2">
-                                        <RiFirebaseFill />
-                                        <h3>Development Tenet</h3>
-                                    </div>
-                                    <div className="w-full h-96 relative flex flex-col justify-end">
-                                        <img src={ImageDT} alt="image-enterprisespirit" className="w-full h-full object-cover"/>
-                                        {isHover4 && (
-                                            <p className="bg-primary/50 p-4 absolute flex self-end font-medium text-white text-sm w-full">
-                                                Quality, Service, Reputation, Innovation
-                                            </p>
-                                        )}
-                                    </div>
-                            </div>
-                        </div>
+                    <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 xl:grid-cols-4">
+                        {VALUE_CARDS.map(({ title, caption, image, Icon }) => (
+                            <article key={title} className="flex flex-col overflow-hidden rounded-lg border border-border bg-card">
+                                <div className="flex flex-row items-center justify-center gap-2 border-b border-border px-2 py-2 text-link">
+                                    <Icon aria-hidden="true" />
+                                    <h3 className="font-medium">{title}</h3>
+                                </div>
+                                <div className="relative aspect-[3/4] w-full">
+                                    <img
+                                        src={image}
+                                        alt=""
+                                        width={320}
+                                        height={420}
+                                        loading="lazy"
+                                        className="h-full w-full object-cover"
+                                        aria-hidden="true"
+                                    />
+                                    <p className="absolute inset-x-0 bottom-0 bg-slate-950/80 p-4 text-sm font-medium text-white">
+                                        {caption}
+                                    </p>
+                                </div>
+                            </article>
+                        ))}
                     </div>
                 </div>
-
-                {/*/!* Photo Gallery Section with Tabs *!/*/}
-                {/*<div className="w-full mt-16">*/}
-                {/*    <h2 className="font-bold text-2xl 3xl:text-3xl text-center mb-8">Photo Gallery</h2>*/}
-                {/*    */}
-                {/*    /!* Tabs *!/*/}
-                {/*    <div className="flex justify-center mb-8">*/}
-                {/*        <div className="flex border-b border-gray-300 w-full max-w-xl">*/}
-                {/*            <button*/}
-                {/*                className={`py-3 px-6 text-lg font-medium flex-1 ${*/}
-                {/*                    activeTab === "company-environment" */}
-                {/*                    ? "border-b-2 border-primary text-primary" */}
-                {/*                    : "text-gray-600 hover:text-primary"*/}
-                {/*                }`}*/}
-                {/*                onClick={() => setActiveTab("company-environment")}*/}
-                {/*            >*/}
-                {/*                Company Environment*/}
-                {/*            </button>*/}
-                {/*            <button*/}
-                {/*                className={`py-3 px-6 text-lg font-medium flex-1 ${*/}
-                {/*                    activeTab === "global-exhibition" */}
-                {/*                    ? "border-b-2 border-primary text-primary" */}
-                {/*                    : "text-gray-600 hover:text-primary"*/}
-                {/*                }`}*/}
-                {/*                onClick={() => setActiveTab("global-exhibition")}*/}
-                {/*            >*/}
-                {/*                Global Exhibition*/}
-                {/*            </button>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-                {/*    */}
-                {/*    /!* Gallery images *!/*/}
-                {/*    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">*/}
-                {/*        {activeTab === "company-environment" && (*/}
-                {/*            <>*/}
-                {/*                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">*/}
-                {/*                    <img src={PG1} alt="Company Environment 1" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />*/}
-                {/*                </div>*/}
-                {/*                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">*/}
-                {/*                    <img src={PG2} alt="Company Environment 2" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />*/}
-                {/*                </div>*/}
-                {/*                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">*/}
-                {/*                    <img src={PG3} alt="Company Environment 3" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />*/}
-                {/*                </div>*/}
-                {/*                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">*/}
-                {/*                    <img src={PG4} alt="Company Environment 4" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />*/}
-                {/*                </div>*/}
-                {/*                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">*/}
-                {/*                    <img src={PG5} alt="Company Environment 5" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />*/}
-                {/*                </div>*/}
-                {/*                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">*/}
-                {/*                    <img src={PG6} alt="Company Environment 6" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />*/}
-                {/*                </div>*/}
-                {/*            </>*/}
-                {/*        )}*/}
-                {/*        */}
-                {/*        {activeTab === "global-exhibition" && (*/}
-                {/*            <>*/}
-                {/*                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">*/}
-                {/*                    <img src={PG7} alt="Global Exhibition 1" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />*/}
-                {/*                </div>*/}
-                {/*                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">*/}
-                {/*                    <img src={PG8} alt="Global Exhibition 2" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />*/}
-                {/*                </div>*/}
-                {/*                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">*/}
-                {/*                    <img src={PG9} alt="Global Exhibition 3" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />*/}
-                {/*                </div>*/}
-                {/*                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">*/}
-                {/*                    <img src={PG10} alt="Global Exhibition 4" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />*/}
-                {/*                </div>*/}
-                {/*                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">*/}
-                {/*                    <img src={PG11} alt="Global Exhibition 5" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />*/}
-                {/*                </div>*/}
-                {/*                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">*/}
-                {/*                    <img src={PG12} alt="Global Exhibition 6" className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300" />*/}
-                {/*                </div>*/}
-                {/*            </>*/}
-                {/*        )}*/}
-                {/*    </div>*/}
-                {/*</div>*/}
             </div>
         </section>
-    )
-}
+    );
+};
 
 export default AboutUs;

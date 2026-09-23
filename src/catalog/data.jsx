@@ -146,7 +146,7 @@ export const categories = [
                     description: <p className="text-xl">SKT series Automatic Transfer Switch(ATS) is the most advanced 3rd generation ATS.
                             It's of PC Class (one-piece structure). SKT standard type can handle current from 20A to 3200A.  
                             It  reaches the highest AC-33A Use Class. <br /> <br/> <br/>
-                            <b className="text-primary font-secondary text-2xl font-bold underline italic">STANDARDS</b> <br />
+                            <b className="text-link text-sm font-medium tracking-widest">STANDARDS</b> <br />
                             IEC60947-6-1 <br/> <br/>
                             <b>FEATURES</b> <br />
                             Using LED indicators for working conditions
@@ -161,19 +161,19 @@ export const categories = [
                         </p>,
                     technicalparameters: TPATS2,
                     faq: <p className="text-xl">
-                        <b className="text-primary text-xl">1. Your nameplate color is not we see in the market. Which color is the authentic？</b><br />
+                        <b className="text-link text-xl">1. Your nameplate color is not we see in the market. Which color is the authentic？</b><br />
                         In the past, the ATS we sold to foreign and domestic markets use the classic AISIKAI BLUE . Recently, we use this new light blue for foreign market. Both are authentic.<br /> <br />
-                        <b className="text-primary text-xl">2. What is the meaning of  CK in our model? Why does some ATS have, some does not?</b><br />
+                        <b className="text-link text-xl">2. What is the meaning of  CK in our model? Why does some ATS have, some does not?</b><br />
                         CK means "Export". Because foreign trade transportation usually has a higher risk of damage than domestic transportation, our workers  take additional measures such as bubble wrap when shipping ATS with CK. Recently, we started using different nameplate colors to distinguish Export goods, and CK may not be used.<br /><br />
-                        <b className="text-primary text-xl">3. What will this ATS operate when a power failure occurs?</b><br />
+                        <b className="text-link text-xl">3. What will this ATS operate when a power failure occurs?</b><br />
                         In general, ATS will transfer to the standby power when the utility power(main power) fails. Also, ATS will transfer to the utility power when utility power returns. In this way, ATS ensures you have the continuous power.<br /><br />
-                        <b className="text-primary text-xl">4. What's the other control voltage besides 220V AC?</b><br />
+                        <b className="text-link text-xl">4. What's the other control voltage besides 220V AC?</b><br />
                         AC110V, AC280V, DC24V are available. Please consult us for other voltages.<br /><br />
-                        <b className="text-primary text-xl">5. Can I operate this ATS  manually?</b><br />
+                        <b className="text-link text-xl">5. Can I operate this ATS  manually?</b><br />
                         Yes, our ATS have both electric and manual mode(switchable using the black button on front panel), you can operate our ATS using handler.  <br /><br />
-                        <b className="text-primary text-xl">6. What does accessories list include?</b><br />
+                        <b className="text-link text-xl">6. What does accessories list include?</b><br />
                         Scews and bolts; A pair of safety protection boards; A handler for manual operation.<br /><br />
-                        <b className="text-primary text-xl">7. Does this ATS must work with an ATS controller for automatic transfer?</b><br />
+                        <b className="text-link text-xl">7. Does this ATS must work with an ATS controller for automatic transfer?</b><br />
                         No, using this ATS alone is sufficient for the automatic transfer between 2 power sources. But with ATS controller, more functions can be achieved like delay before transfer, voltage detection, communication and etc. <br /><br />
                     </p>,
                     brochure: [ATS2File1, ATS2File2, ATS2File3],
@@ -188,11 +188,11 @@ export const categories = [
                     description: <p className="text-xl"> SKT series automatic transfer switch(ATS) is the most advanced 3rd generation ATS.  
                         It's in the one-piece structure and  PC Class. SKT2 series is the most compact type that is just the of 50% size of the standard SKT.
                         <br />
-                        <strong className="text-primary font-secondary text-2xl font-bold underline italic">STANDARDS</strong>
+                        <strong className="text-link text-sm font-medium tracking-widest">STANDARDS</strong>
                         <br />
                         IEC60947-6-1 <br />
                         GB/T14048.11 <br />
-                        <b className="text-primary font-secondary text-2xl font-bold underline italic">FEATURES</b>
+                        <b className="text-link text-sm font-medium tracking-widest">FEATURES</b>
                         Compact Volume,  Saving Space <br />
                         External Replaceable Fuses, Easy For Maintenance <br />   
                         Rear Copper Bars Are Made Longer,  Convenient For Wiring Cables <br />
@@ -204,21 +204,21 @@ export const categories = [
                     </p>,
                     technicalparameters: TPATS3,
                     faq: <p className="text-xl">
-                        <b className="text-primary text-xl">1. Your nameplate color is not we see in the market. Which color is the authentic？</b><br />
+                        <b className="text-link text-xl">1. Your nameplate color is not we see in the market. Which color is the authentic？</b><br />
                         In the past, the ATS we sold to foreign and domestic markets use the classic AISIKAI BLUE . Recently, we use this new light blue for foreign market. Both are authentic.   
-                        <b className="text-primary text-xl">2. What is the meaning of  CK in our model? Why does some ATS have, some does not?</b><br />
+                        <b className="text-link text-xl">2. What is the meaning of  CK in our model? Why does some ATS have, some does not?</b><br />
                         CK means "Export". Because foreign trade transportation usually has a higher risk of damage than domestic transportation, our workers  take additional measures such as bubble wrap when shipping ATS with CK. Recently, we started using different nameplate colors to distinguish Export goods, and CK may not be used. <br /> 
-                        <b className="text-primary text-xl">3. What will this ATS operate when a power failure occurs?</b><br />
+                        <b className="text-link text-xl">3. What will this ATS operate when a power failure occurs?</b><br />
                         In general, ATS will transfer to the standby power when the utility power(main power) fails. Also, ATS will transfer to the utility power when utility power returns. In this way, ATS ensures you have the continuous power. <br />
-                        <b className="text-primary text-xl">4. What's the maximum current can SKT2  handle ?</b><br />
+                        <b className="text-link text-xl">4. What's the maximum current can SKT2  handle ?</b><br />
                         100A. <br />
-                        <b className="text-primary text-xl">5. What's the other control voltage besides 220V AC?</b><br />
+                        <b className="text-link text-xl">5. What's the other control voltage besides 220V AC?</b><br />
                         AC110V, AC280V, DC24V are available. Please consult us for other voltages.<br />
-                        <b className="text-primary text-xl">6. Can I operate this ATS  manually?</b><br />
+                        <b className="text-link text-xl">6. Can I operate this ATS  manually?</b><br />
                         Yes, our ATS have both electric and manual mode(switchable using the black button on front panel), you can operate our ATS using handler.<br />
-                        <b className="text-primary text-xl">7. What does accessories list include?</b><br />
+                        <b className="text-link text-xl">7. What does accessories list include?</b><br />
                         Scews and bolts; A pair of safety protection boards; A handler for manual operation.<br />
-                        <b className="text-primary text-xl">8. Does this ATS must work with an ATS controller for automatic transfer?</b><br />
+                        <b className="text-link text-xl">8. Does this ATS must work with an ATS controller for automatic transfer?</b><br />
                         No, using this ATS alone is sufficient for the automatic transfer between 2 power sources. But with ATS controller, more functions can be achieved like delay before transfer, voltage detection, communication and etc.<br />
                     </p>, 
                     brochure: [ATS3File1, ATS3File2, ATS3File3],
@@ -235,7 +235,7 @@ export const categories = [
                         It has 3 working modes:Automatic, Electric(external control) and Emergency Manual. ASKQ is suitable to be used 
                         in the 50/60Hz low voltage AC power distribution systems for the reliable transfer between two power supplies.
                         <br /><br /> 
-                        <b className="text-primary font-secondary text-2xl font-bold underline italic">FEATURES</b> <br />
+                        <b className="text-link text-sm font-medium tracking-widest">FEATURES</b> <br />
                         - Reasonalbe structure, compact volume, beautiful appearance. <br />
                         - Adopt excitation type electromagnet drive mechanism, which is extrmely fast in transferring. <br />
                         - The 6A-63A switch is suitable for home use, which meets the requiremnets of the level-3 power distribution system. <br />
@@ -277,7 +277,7 @@ export const categories = [
                         category is AC-33B non-frequently operation electrical transfer switch. It has 3 working modes:Automatic, 
                         Electric(external control) and Emergency Manual. SKQ1 is suitable to be used in the 50/60Hz low voltage AC power 
                         distribution systems for the reliable transfer between two power supplies. <br /><br />
-                        <b className="text-primary font-secondary text-2xl font-bold underline italic">FEATURES</b><br />
+                        <b className="text-link text-sm font-medium tracking-widest">FEATURES</b><br />
                         - Have Zero-position
                         - Reasonalbe structure, compact volume, beautiful appearance.
                         - Protective cover, much safer and more reliable
@@ -337,7 +337,7 @@ export const categories = [
                     model: "SKR2-A", 
                     brand: "Aisikai", 
                     description: <p className="text-xl">
-                        <b className="text-primary font-secondary text-2xl font-bold underline italic">OVERVIEW</b> <br />
+                        <b className="text-link text-sm font-medium tracking-widest">OVERVIEW</b> <br />
                         SKR2-A ATS controller is designed to work with automatic transfer switch. It's based on the micro-processor 
                         techonology. Controller can accurately detect the three/single phase(s) voltage of the dual power supplies, 
                         make accurate judgement of voltage anomalies (power loss, over voltage, under voltage, phase missing, over 
@@ -345,7 +345,7 @@ export const categories = [
                         position or no breaking position. <br /><br /> Controllers have the function of sending generator start signal after delay 
                         when power 1# becomes abnormal. Using RS485 communication interface, controllers realize functions of remote 
                         measurement, remote communication and remote control. <br /><br />
-                        <b className="text-primary font-secondary text-2xl font-bold underline italic">PANEL DESCRIPTION</b> <br />
+                        <b className="text-link text-sm font-medium tracking-widest">PANEL DESCRIPTION</b> <br />
                         <img src={DIAC1} alt="paneldescription-image" />
                     </p>, 
                     technicalparameters: TPIAC1,
@@ -358,7 +358,7 @@ export const categories = [
                     model: "SKR2-B", 
                     brand: "Aisikai", 
                     description: <p className="text-xl">
-                        <b className="text-primary font-secondary text-2xl font-bold underline italic">OVERVIEW</b><br />
+                        <b className="text-link text-sm font-medium tracking-widest">OVERVIEW</b><br />
                         SKR2-B ATS controller is the intelligent dual-power switch modual with programmable function, automatic measurement, 
                         LCD display and digital funtions. <br /> <br />
                         SKR2-B is digitalization, intellectualization and networking integrated. With the controller, the automation in 
@@ -370,7 +370,7 @@ export const categories = [
                         The controller can be directly used on specialized ATS, contactors made ATS, air circuit breakers made ATS and etc. <br /> <br />
                         It's widely used in the electrial equipment, automatic control and debug systems in the fields of power, post, 
                         petroleum, coal, metallurgy, railway, municipal, intelligent building. <br /> <br />
-                        <b className="text-primary font-secondary text-2xl font-bold underline italic">PANEL DESCRIPTION</b> <br />
+                        <b className="text-link text-sm font-medium tracking-widest">PANEL DESCRIPTION</b> <br />
                         <img src={DIAC2} alt="paneldescription-image" />
                     </p>, 
                     technicalparameters: TPIAC2,
@@ -529,7 +529,7 @@ export const categories = [
                     model: "ASKW1", 
                     brand: "Aisikai", 
                     description: <p className="text-xl">
-                        <b className="text-primary font-secondary text-2xl font-bold underline italic">PRODUCT OVERVIEW</b> <br />
+                        <b className="text-link text-sm font-medium tracking-widest">PRODUCT OVERVIEW</b> <br />
                         ASKW1 series intelligent type universal circuit breaker is suitable for AC50Hz/60Hz, rated voltage 400V, 690V, rated current 630A-6300A of the 
                         distribution network used to distribute power and protect circuits and power supply equipment against overload, under-voltage, short-circuit, 
                         single phase earth fault. <br /><br />
@@ -553,7 +553,7 @@ export const categories = [
                     model: "ASKW1", 
                     brand: "Aisikai", 
                     description: <p className="text-xl">
-                        <b className="text-primary font-secondary text-2xl font-bold underline italic">PRODUCT OVERVIEW</b> <br />
+                        <b className="text-link text-sm font-medium tracking-widest">PRODUCT OVERVIEW</b> <br />
                         ASKW1 series intelligent type universal air circuit breaker is suitable for AC50Hz/60Hz, rated voltage 400V, 690V, rated current 630A-6300A 
                         of the distribution network used to distribute power and protect circuits and power supply equipment against overload, under-voltage, 
                         short-circuit, single phase earth fault. <br /><br />
@@ -768,7 +768,7 @@ export const categories = [
                     model: "ASKB6L", 
                     brand: "Aisikai", 
                     description: <p className="text-xl">
-                        <b className="text-primary font-secondary text-2xl font-bold underline italic">OVERVIEW</b> <br />
+                        <b className="text-link text-sm font-medium tracking-widest">OVERVIEW</b> <br />
                         ASKB6L leakage protection type miniature circuit breaker is suitable for lines of AC 50Hzrated operational voltage 230V, rated current below 32A, used for 
                         indirect contact protection for people, and over-current protection for buildings and lines for similar purposesASKB6L also provide protection against fires 
                         caused by persistent ground faults due to theinaction of the over-current protection devices. Leakage circuit breakers with over-voltageprotection also protect 
@@ -941,14 +941,14 @@ export const categories = [
                     model: "SKG1", 
                     brand: "Aisikai", 
                     description: <p className="text-xl">
-                        <b className="text-primary font-secondary text-2xl font-bold underline italic">OVERVIEW</b><br />
+                        <b className="text-link text-sm font-medium tracking-widest">OVERVIEW</b><br />
                         Load isolation switch is indipensible device in power distribution field. SKG1 series LIS is installed on the primary 
                         distribution system, can isolate the main power from the lower distribution system, greatly  improve the safety factor of 
                         maintenance personnel when overhaul distribution system. Load isolation switch is capable of on load operating. Load 
                         isolation switch is the ideal substitute for the knife isolation switch, for LIS has much better performance in safety and 
                         reliability. LIS is widely used in the power distribution system and automation system in the fields of construction, 
                         electricity, petrochemistry and etc.<br /><br />
-                        <b className="text-primary font-secondary text-2xl font-bold underline italic">STANDARDS</b><br />
+                        <b className="text-link text-sm font-medium tracking-widest">STANDARDS</b><br />
                         IEC60898-1-2002 <br />
                         GB10963.1-2005
                     </p>, 
@@ -966,7 +966,7 @@ export const categories = [
                     model: "OAUP", 
                     brand: "Aisikai", 
                     description: <p className="text-xl">
-                        <b className="text-primary font-secondary text-2xl font-bold underline italic">OVERVIEW</b> <br />
+                        <b className="text-link text-sm font-medium tracking-widest">OVERVIEW</b> <br />
                         ASKP Overvoltage and Undervoltage Protector(also called VPS) cut off power fastly in the case of overvoltage or 
                         undervoltage, prevent electrical devices from being damaged from the transient impulse voltage. When power voltage 
                         recovers normal, after a delay time, ASKP VPS can re-connect power circuits and restore electric service. 
@@ -985,7 +985,7 @@ export const categories = [
                     model: "SKD3", 
                     brand: "Aisikai", 
                     description: <p className="text-xl">
-                        <b className="text-primary font-secondary text-2xl font-bold underline italic">OVERVIEW</b> <br />
+                        <b className="text-link text-sm font-medium tracking-widest">OVERVIEW</b> <br />
                         Surge Protective Device is used to limit the transient overvoltage and take surge current, providing protections from surges 
                         caused by indirect lightning, direct lightning or other transient overvoltage. <br /><br />
                         SPD have protective modes like phase-phase, phase-earth, phase-neutral, neutral-earth and etc.
@@ -1002,7 +1002,7 @@ export const categories = [
                     model: "SKD2", 
                     brand: "Aisikai", 
                     description: <p className="text-xl">
-                        <b className="text-primary font-secondary text-2xl font-bold underline italic">OVERVIEW</b> <br />
+                        <b className="text-link text-sm font-medium tracking-widest">OVERVIEW</b> <br />
                         Surge Protective Device is used to limit the transient overvoltage and take surge current, providing protections from surges 
                         caused by indirect lightning, direct lightning or other transient overvoltage. <br /><br />
                         SPD have protective modes like phase-phase, phase-earth, phase-neutral, neutral-earth and etc.
@@ -1019,7 +1019,7 @@ export const categories = [
                     model: "SKD1", 
                     brand: "Aisikai", 
                     description: <p className="text-xl">
-                    <b className="text-primary font-secondary text-2xl font-bold underline italic">OVERVIEW</b> <br />
+                    <b className="text-link text-sm font-medium tracking-widest">OVERVIEW</b> <br />
                     Surge Protective Device is used to limit the transient overvoltage and take surge current, providing protections from surges 
                     caused by indirect lightning, direct lightning or other transient overvoltage. <br /><br />
                     SPD have protective modes like phase-phase, phase-earth, phase-neutral, neutral-earth and etc.
@@ -1060,7 +1060,7 @@ export const categories = [
                         power components and 2-stages charging method. BAC06A is suitable for the long-term trickle charging(floating charge) of 
                         lead-acid battery. The maximum charging current for 12V charger is 6A, and the maximum charge current for 24V charger is 10A. 
                         <br /><br />
-                        <b className="text-primary font-secondary text-2xl font-bold underline italic">FEATURES</b> <br />
+                        <b className="text-link text-sm font-medium tracking-widest">FEATURES</b> <br />
                         1. Switch power structure design; wide range of AC voltage input; small volume, light weight and high efficiency. <br />
                         2. Use 2-stages charging method: constant current firsty and then constant voltage. Fully follow the charging
                            characteristic of the lead-acid battery, can avoid overcharging and largely extend the battery life. <br />
@@ -1068,7 +1068,7 @@ export const categories = [
                         4. Charging voltage and current can be field adjusted via potentiometer. <br />
                         5. LED display for AC power indication and charging indication. <br />
                         6. Easy to install horizontally. <br /><br />
-                        <b className="text-primary font-secondary text-2xl font-bold underline italic">CHARGING PRINCIPLE</b> <br />
+                        <b className="text-link text-sm font-medium tracking-widest">CHARGING PRINCIPLE</b> <br />
                         <img src={DIBC1} />
                     </p>, 
                     technicalparameters: TPIBC1, 

@@ -1,262 +1,334 @@
-import { useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import emailjs from "emailjs-com";
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import PageShell from "../components/PageShell";
 import Breadcrumb from "../components/Breadcrumb";
-import SideContact from "../components/SideContact";
 
-import { RiCustomerService2Fill } from "react-icons/ri";
-import { MdOutlineFax } from "react-icons/md";
-import { MdOutlineEmail } from "react-icons/md";
-import { MdOutlinePlace } from "react-icons/md";
+import { FiPhone } from "react-icons/fi";
+import { MdOutlineFax, MdOutlineEmail, MdOutlinePlace } from "react-icons/md";
 
-import SA from '../assets/images/southafrica.webp';
-import CD from '../assets/images/cambodia.webp';
-import TK from '../assets/images/turkey.webp';
-import RM from '../assets/images/romania.webp';
-import VN from '../assets/images/vietnam.webp';
+import SA from "../assets/images/southafrica.webp";
+import CD from "../assets/images/cambodia.webp";
+import TK from "../assets/images/turkey.webp";
+import RM from "../assets/images/romania.webp";
+import VN from "../assets/images/vietnam.webp";
+
+const EMPTY_FORM = { name: "", phone: "", email: "", message: "" };
+const FIELD_ORDER = ["name", "phone", "email", "message"];
+
+function validateForm(values) {
+    const errors = {};
+    if (!values.name.trim()) errors.name = "Enter your name.";
+    if (!values.phone.trim()) errors.phone = "Enter your phone number.";
+    if (!values.email.trim()) errors.email = "Enter your email.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim())) errors.email = "Enter a valid email address.";
+    if (!values.message.trim()) errors.message = "Enter your message.";
+    return errors;
+}
+
+function fieldClass(invalid) {
+    return `w-full min-h-11 rounded-lg border bg-card px-4 py-2 text-foreground ${invalid ? "border-foreground" : "border-border"}`;
+}
+
+const AGENCIES = [
+    { name: "SOUTH AFRICA", flag: SA, alt: "South Africa flag" },
+    { name: "CAMBODIA", flag: CD, alt: "Cambodia flag" },
+    { name: "TURKIYE", flag: TK, alt: "Turkiye flag" },
+    { name: "ROMANIA", flag: RM, alt: "Romania flag" },
+    { name: "VIETNAM", flag: VN, alt: "Vietnam flag" },
+];
+
+const CONTACT_DETAILS = [
+    {
+        title: "Tel",
+        Icon: FiPhone,
+        wrapClass: "w-full",
+        content: <a href="tel:+6285176879999" className="text-link hover:underline rounded-sm">+62 8517 687 9999</a>,
+    },
+    {
+        title: "Fax",
+        Icon: MdOutlineFax,
+        content: "+62 8517 687 9999",
+    },
+    {
+        title: "Email",
+        Icon: MdOutlineEmail,
+        wrapClass: "min-w-0",
+        textClass: "break-words",
+        content: (
+            <a href="mailto:detapowergensetindonesia@gmail.com" className="text-link hover:underline rounded-sm">
+                detapowergensetindonesia@gmail.com
+            </a>
+        ),
+    },
+    {
+        title: "Place",
+        Icon: MdOutlinePlace,
+        content: (
+            <>
+                East side of industrial zone,<br />
+                Chenji Town, Yizheng City,<br />
+                Jiangsu Province, China
+            </>
+        ),
+    },
+];
 
 const ContactUs = () => {
-    const [formData, setFormData] = useState({
-        name: "",
-        phone: "",
-        email: "",
-        message: "",
-        verifyCode: "",
-    });
+    const [formData, setFormData] = useState(EMPTY_FORM);
+    const [fieldErrors, setFieldErrors] = useState({});
+    const [formStatus, setFormStatus] = useState({ type: "", message: "" });
+    const [isSending, setIsSending] = useState(false);
+    const fieldRefs = useRef({});
+    const focusField = useRef(null);
 
-    const [formStatus, setFormStatus] = useState("");
+    useEffect(() => {
+        const name = focusField.current;
+        if (!name) return;
+        focusField.current = null;
+        fieldRefs.current[name]?.focus();
+    }, [fieldErrors]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        setFormData((prev) => ({ ...prev, [name]: value }));
+        setFieldErrors((prev) => {
+            if (!prev[name]) return prev;
+            const next = { ...prev };
+            delete next[name];
+            return next;
+        });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (isSending) return;
 
-        if (formData.verifyCode !== "12345") {
-            setFormStatus("Invalid verification code.");
+        const errors = validateForm(formData);
+        const firstInvalid = FIELD_ORDER.find((name) => errors[name]);
+        if (firstInvalid) {
+            focusField.current = firstInvalid;
+            setFieldErrors(errors);
+            setFormStatus({ type: "error", message: "Please correct the fields listed above." });
             return;
         }
 
+        setFieldErrors({});
+        setIsSending(true);
+        setFormStatus({ type: "", message: "" });
+
         emailjs
             .send(
-                "service_nv9huug", // Replace with your EmailJS service ID
-                "template_gkvywkj", // Replace with your EmailJS template ID
-                {
-                    name: formData.name,
-                    phone: formData.phone,
-                    email: formData.email,
-                    message: formData.message,
-                },
-                "Rendiero" // Replace with your EmailJS user ID
+                "service_nv9huug",
+                "template_gkvywkj",
+                formData,
+                "Rendiero"
             )
             .then(
                 () => {
-                    setFormStatus("Message sent successfully!");
-                    setFormData({
-                        name: "",
-                        phone: "",
-                        email: "",
-                        message: "",
-                        verifyCode: "",
-                    });
+                    setFormStatus({ type: "success", message: "Message sent successfully." });
+                    setFormData(EMPTY_FORM);
                 },
                 () => {
-                    setFormStatus("Failed to send message. Please try again.");
+                    setFormStatus({
+                        type: "error",
+                        message: "Failed to send message. Check your connection and try again.",
+                    });
                 }
-            );
+            )
+            .finally(() => {
+                setIsSending(false);
+            });
     };
 
+    const errorNames = FIELD_ORDER.filter((name) => fieldErrors[name]);
+
     return (
-        <section>
-            <SideContact className="absolute"/>
-            <Header />
+        <PageShell>
             <Breadcrumb pageName="Contact Us" />
 
             <div className="py-12 flex flex-col justify-center items-center gap-12 xl:gap-24">
                 <div className="w-full flex flex-col xl:flex-row justify-center gap-12 xl:gap-16 3xl:px-60">
                     <div className="flex flex-col px-6 xl:p-0 gap-2 justify-center items-center xl:items-start">
                         <div className="flex flex-col justify-center items-center xl:items-start gap-2">
-                            <h3 className="text-2xl xl:text-4xl font-bold mb-6">Feedback</h3>
-                            <p className="font-normal text-lg text-center xl:text-left xl:max-w-lg">We serve you wholeheartedly, your satisfaction is our pursuit, 
-                                and we look forward to working together with you to create a win-win situation.</p>
+                            <h2 className="text-2xl font-bold mb-6">Feedback</h2>
+                            <p className="font-normal text-lg text-center xl:text-left xl:max-w-lg">
+                                We serve you wholeheartedly, your satisfaction is our pursuit,
+                                and we look forward to working together with you to create a win-win situation.
+                            </p>
                         </div>
-                        
-                        <form onSubmit={handleSubmit} className="w-full max-w-2xl bg-white py-6">
-                            <div className="flex flex-col xl:flex-row justify-between">
-                                <div className="mb-4">
+
+                        <form onSubmit={handleSubmit} noValidate className="w-full max-w-2xl rounded-lg border border-border bg-card p-4">
+                            {errorNames.length > 0 && (
+                                <div
+                                    role="alert"
+                                    className="mb-4 rounded-lg border border-border bg-background p-4"
+                                >
+                                    <p className="font-semibold">Please fix the following:</p>
+                                    <ul className="mt-2 list-disc pl-5 text-sm">
+                                        {errorNames.map((name) => (
+                                            <li key={name}>
+                                                <button
+                                                    type="button"
+                                                    className="text-left text-link underline"
+                                                    onClick={() => fieldRefs.current[name]?.focus()}
+                                                >
+                                                    {fieldErrors[name]}
+                                                </button>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+                            <div className="flex flex-col xl:flex-row justify-between gap-4">
+                                <div className="mb-4 flex-1">
                                     <label htmlFor="name" className="block text-md font-normal mb-2">
                                         Name
                                     </label>
                                     <input
+                                        ref={(node) => { fieldRefs.current.name = node; }}
                                         type="text"
                                         id="name"
                                         name="name"
+                                        autoComplete="name"
                                         value={formData.name}
                                         onChange={handleChange}
-                                        className="w-full px-4 py-2 border border-gray-300"
-                                        size={25}
-                                        required
+                                        aria-invalid={fieldErrors.name ? true : undefined}
+                                        aria-describedby={fieldErrors.name ? "name-error" : undefined}
+                                        className={fieldClass(Boolean(fieldErrors.name))}
                                     />
+                                    {fieldErrors.name && (
+                                        <p id="name-error" className="mt-1 text-sm text-foreground">{fieldErrors.name}</p>
+                                    )}
                                 </div>
-                                <div className="mb-4">
+                                <div className="mb-4 flex-1">
                                     <label htmlFor="phone" className="block text-md font-normal mb-2">
                                         Phone
                                     </label>
                                     <input
+                                        ref={(node) => { fieldRefs.current.phone = node; }}
                                         type="tel"
                                         id="phone"
                                         name="phone"
+                                        autoComplete="tel"
+                                        inputMode="tel"
                                         value={formData.phone}
                                         onChange={handleChange}
-                                        className="w-full px-4 py-2 border border-gray-300"
-                                        size={25}
-                                        required
+                                        aria-invalid={fieldErrors.phone ? true : undefined}
+                                        aria-describedby={fieldErrors.phone ? "phone-error" : undefined}
+                                        className={fieldClass(Boolean(fieldErrors.phone))}
                                     />
+                                    {fieldErrors.phone && (
+                                        <p id="phone-error" className="mt-1 text-sm text-foreground">{fieldErrors.phone}</p>
+                                    )}
                                 </div>
                             </div>
-                            
+
                             <div className="mb-4">
                                 <label htmlFor="email" className="block text-md font-normal mb-2">
                                     Email
                                 </label>
                                 <input
+                                    ref={(node) => { fieldRefs.current.email = node; }}
                                     type="email"
                                     id="email"
                                     name="email"
+                                    autoComplete="email"
+                                    spellCheck={false}
                                     value={formData.email}
                                     onChange={handleChange}
-                                    className="w-full px-4 py-2 border border-gray-300"
-                                    required
+                                    aria-invalid={fieldErrors.email ? true : undefined}
+                                    aria-describedby={fieldErrors.email ? "email-error" : undefined}
+                                    className={fieldClass(Boolean(fieldErrors.email))}
                                 />
+                                {fieldErrors.email && (
+                                    <p id="email-error" className="mt-1 text-sm text-foreground">{fieldErrors.email}</p>
+                                )}
                             </div>
                             <div className="mb-4">
                                 <label htmlFor="message" className="block text-md font-normal mb-2">
                                     Message
                                 </label>
                                 <textarea
+                                    ref={(node) => { fieldRefs.current.message = node; }}
                                     id="message"
                                     name="message"
+                                    autoComplete="off"
                                     value={formData.message}
                                     onChange={handleChange}
-                                    className="w-full px-4 py-2 border border-gray-300"
+                                    aria-invalid={fieldErrors.message ? true : undefined}
+                                    aria-describedby={fieldErrors.message ? "message-error" : undefined}
+                                    className={fieldClass(Boolean(fieldErrors.message))}
                                     rows="4"
-                                    required
-                                ></textarea>
-                            </div>
-                            <div className="mb-4">
-                                <label htmlFor="verifyCode" className="block text-md font-normal mb-2">
-                                    Verify Code (Enter "12345")
-                                </label>
-                                <input
-                                    type="text"
-                                    id="verifyCode"
-                                    name="verifyCode"
-                                    value={formData.verifyCode}
-                                    onChange={handleChange}
-                                    className="w-50vh px-4 py-2 border border-gray-300"
-                                    required
                                 />
+                                {fieldErrors.message && (
+                                    <p id="message-error" className="mt-1 text-sm text-foreground">{fieldErrors.message}</p>
+                                )}
                             </div>
                             <button
                                 type="submit"
-                                className="w-full bg-primary text-white py-4 mt-4 rounded-lg font-medium"
+                                disabled={isSending}
+                                className="w-full btn-primary disabled:opacity-70"
                             >
-                                Submit
+                                {isSending ? "Sending…" : "Send Message"}
                             </button>
-                            {formStatus && (
-                                <p className="mt-4 text-center text-sm text-red-500">{formStatus}</p>
+                            {formStatus.message && (
+                                <p
+                                    className="mt-4 text-sm text-foreground"
+                                    role="status"
+                                    aria-live="polite"
+                                >
+                                    <span className="font-semibold">{formStatus.type === "success" ? "Sent: " : "Error: "}</span>
+                                    {formStatus.message}
+                                </p>
                             )}
                         </form>
                     </div>
-                    
 
-                    <div className=" flex flex-col justify-center xl:justify-start items-start sm:items-center xl:items-start gap-8 px-6">
-                        <div className="flex flex-row items-center justify-center gap-10">
-                            <div className=" border-2 rounded-full p-4 border-primary/25">
-                                <RiCustomerService2Fill className="text-primary size-10"/>
-                            </div>
-                            
-                            <div className="flex flex-col w-full">
-                                <h3 className="font-bold text-2xl">Tel</h3>
-                                <h3 className="font-normal text-lg xl:text-sm">+62 8517 687 9999</h3>
-                            </div>
-                        </div>
-
-                        <div className="border-[0.10rem] border-dashed border-gray-200 w-full"></div>
-
-                        <div className="flex flex-row items-center justify-center gap-10">
-                            <div className=" border-2 rounded-full p-4 border-primary/25"> 
-                                <MdOutlineFax className="text-primary size-16 xl:size-10"/>
-                            </div>
-                            
-                            <div className="flex flex-col">
-                                <h3 className="font-bold text-2xl">Fax</h3>
-                                <h3 className="font-normal text-lg xl:text-sm">+62 8517 687 9999</h3>
-                            </div>
-                        </div>
-
-                        <div className="border-[0.10rem] border-dashed border-gray-200 w-full"></div>
-
-                        <div className="flex flex-row items-center justify-center gap-10">
-                            <div className=" border-2 rounded-full p-4 border-primary/25">
-                                <MdOutlineEmail className="text-primary size-16 xl:size-10"/>
-                            </div>  
-                                
-                            <div className="flex flex-col">
-                                <h3 className="font-bold text-2xl">Email</h3>
-                                <h3 className="xl:hidden font-medium text-lg">detapowergensetindonesia <br /> @gmail.com</h3>
-                                <h3 className="font-normal text-lg xl:text-sm">detapowergensetindonesia@gmail.com</h3>
-                            </div>
-                        </div>
-
-                        <div className="border-[0.10rem] border-dashed border-gray-200 w-full"></div>
-
-                        <div className="flex flex-row items-center justify-center gap-10">
-                            <div className=" border-2 rounded-full p-4 border-primary/25">
-                                <MdOutlinePlace className="text-primary size-16 xl:size-10"/>
-                            </div>
-                            
-                            <div className="flex flex-col">
-                                <h3 className="font-bold text-2xl">Place</h3>
-                                <h3 className="font-normal text-lg xl:text-sm">East side of industiral zone, <br /> 
-                                    Chenji Town, Yizheng City, <br /> Jiangsu Province, China</h3>
-                            </div>
-                        </div>
+                    <div className="flex flex-col justify-center xl:justify-start items-start sm:items-center xl:items-start gap-8 px-6">
+                        {CONTACT_DETAILS.map((detail, index) => (
+                            <Fragment key={detail.title}>
+                                {index > 0 && (
+                                    <div className="w-full border-t border-dashed border-border" aria-hidden="true" />
+                                )}
+                                <div className="flex flex-row items-center justify-center gap-10">
+                                    <div className="rounded-full border-2 border-link/40 p-4" aria-hidden="true">
+                                        <detail.Icon className="size-10 text-link" />
+                                    </div>
+                                    <div className={`flex flex-col ${detail.wrapClass ?? ""}`}>
+                                        <h3 className="font-bold text-2xl">{detail.title}</h3>
+                                        <p className={`font-normal text-lg xl:text-sm ${detail.textClass ?? ""}`}>
+                                            {detail.content}
+                                        </p>
+                                        {detail.title === "Email" && (
+                                            <p className="mt-1 text-sm text-muted">Deta Power is the local Indonesia partner for AISIKAI.</p>
+                                        )}
+                                    </div>
+                                </div>
+                            </Fragment>
+                        ))}
                     </div>
                 </div>
-                
+
                 <div className="flex flex-col justify-center items-center gap-4 px-6 xl:px-24">
-                    <h3 className="text-2xl xl:text-4xl font-bold mb-6">Our Agency</h3>
+                    <h2 className="text-2xl font-bold mb-6">Our Agency</h2>
                     <div className="flex flex-row flex-wrap gap-8 xl:gap-12 2xl:gap-24 justify-center items-center">
-                        <div className="flex flex-col justify-center items-center gap-2">
-                            <img src={SA} alt="southafrica-flag" className="rounded-full size-26"/>
-                            <h4 className="font-bold text-xl">SOUTH AFRICA</h4>
-                            <p className="font-medium text-xl">oversea@aisikai.cc</p>
-                        </div>
-                        <div className="flex flex-col justify-center items-center gap-2">
-                            <img src={CD} alt="southafrica-flag" className="rounded-full size-26"/>
-                            <h4 className="font-bold text-xl">CAMBODIA</h4>
-                            <p className="font-medium text-xl">oversea@aisikai.cc</p>
-                        </div>
-                        <div className="flex flex-col justify-center items-center gap-2">
-                            <img src={TK} alt="southafrica-flag" className="rounded-full size-26"/>
-                            <h4 className="font-bold text-xl">TURKIYE</h4>
-                            <p className="font-medium text-xl">oversea@aisikai.cc</p>
-                        </div>
-                        <div className="flex flex-col justify-center items-center gap-2">
-                            <img src={RM} alt="southafrica-flag" className="rounded-full size-26"/>
-                            <h4 className="font-bold text-xl">ROMANIA</h4>
-                            <p className="font-medium text-xl">oversea@aisikai.cc</p>
-                        </div>
-                        <div className="flex flex-col justify-center items-center gap-2">
-                            <img src={VN} alt="southafrica-flag" className="rounded-full size-26"/>
-                            <h4 className="font-bold text-xl">VIETNAM</h4>
-                            <p className="font-medium text-xl">oversea@aisikai.cc</p>
-                        </div>
+                        {AGENCIES.map((agency) => (
+                            <div key={agency.name} className="flex flex-col justify-center items-center gap-2">
+                                <img
+                                    src={agency.flag}
+                                    alt={agency.alt}
+                                    width={104}
+                                    height={104}
+                                    loading="lazy"
+                                    className="rounded-full size-26 object-cover"
+                                />
+                                <h3 className="font-bold text-xl">{agency.name}</h3>
+                                <p className="font-medium text-xl">
+                                    <a href="mailto:oversea@aisikai.cc" className="text-link hover:underline rounded-sm">oversea@aisikai.cc</a>
+                                </p>
+                            </div>
+                        ))}
                     </div>
                 </div>
 
@@ -269,17 +341,11 @@ const ContactUs = () => {
                         allowFullScreen=""
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
-                        title="Google Maps Location">
-                    </iframe>
+                        title="AISIKAI factory location on Google Maps"
+                    />
                 </div>
-
             </div>
-
-            <div className="-mt-12">
-                <Footer />
-            </div>
-
-        </section>
+        </PageShell>
     );
 };
 

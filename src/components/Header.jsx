@@ -1,96 +1,98 @@
-import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect, useRef, useCallback } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { FiSearch, FiMenu } from "react-icons/fi";
 
-import { FiSearch } from "react-icons/fi";
-import { FiMenu } from "react-icons/fi";
+import Nav from "./Nav";
+import MobileMenu from "./MobileMenu";
+import ThemeToggle, { useTheme } from "./ThemeToggle";
+import { catalog, catalogHref } from "../catalog/catalog.js";
 
-import Nav from './Nav';
-import MobileMenu from './MobileMenu';
-import { catalog, catalogHref } from '../catalog/catalog.js';
+import logoAisikai from "../assets/images/logo-aisikai.jpg";
+import iconIndonesia from "../assets/icons/indonesia.svg";
+import iconUk from "../assets/icons/uk.svg";
 
-import logoAisikai from '../assets/images/logo-aisikai.jpg';
-import iconIndonesia from '../assets/icons/indonesia.svg';
-import iconUk from '../assets/icons/uk.svg';
+const NAV_LINKS = [
+    { label: "Home", href: "/" },
+    { label: "Products", href: "/products" },
+    { label: "About Us", href: "/about-us" },
+    { label: "Certificates", href: "/certificate" },
+    { label: "Gallery", href: "/gallery" },
+    { label: "Catalogue", href: "/catalogue" },
+    { label: "Contact Us", href: "/contact-us" },
+];
+
+const TRANSLATE_HIDE_CSS = `
+.goog-te-banner-frame, .skiptranslate { display: none !important; }
+body { top: 0 !important; }
+.goog-tooltip, .goog-tooltip:hover { display: none !important; }
+.goog-text-highlight {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+`;
+
+function getRootDomain() {
+    const hostname = window.location.hostname;
+    if (hostname === "localhost") return null;
+    const parts = hostname.split(".");
+    return parts.length <= 2 ? hostname : parts.slice(-2).join(".");
+}
+
+function setGoogtransCookie(value) {
+    const rootDomain = getRootDomain();
+    document.cookie = `googtrans=${value}; path=/;`;
+    if (rootDomain) {
+        document.cookie = `googtrans=${value}; path=/; domain=${rootDomain};`;
+    }
+    if (window.location.hostname !== "localhost") {
+        document.cookie = `googtrans=${value}; path=/; domain=.${window.location.hostname};`;
+    }
+}
+
+function clearGoogtransCookie() {
+    const expired = "expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    const rootDomain = getRootDomain();
+    document.cookie = `googtrans=; ${expired}; path=/;`;
+    if (rootDomain) {
+        document.cookie = `googtrans=; ${expired}; path=/; domain=${rootDomain};`;
+    }
+    document.cookie = `googtrans=; ${expired}; path=/; domain=.${window.location.hostname};`;
+}
 
 const Header = () => {
     const navigate = useNavigate();
+    const menuButtonRef = useRef(null);
 
-    const navLink = [
-        {label: "Home", href: "/"},
-        {label: "Products", href: "/products"},
-        {label: "About Us", href: "/about-us"},
-        {label: "Download", href: "/download"},
-        {label: "Contact Us", href: "/contact-us"},
-    ];
-
+    const { isDark, toggleTheme } = useTheme();
     const [showMenu, setShowMenu] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const [filteredProducts, setFilteredProducts] = useState([]);
-    const [, setLanguage] = useState(() => {
-        // Inisialisasi dari localStorage saat komponen dimuat pertama kali
-        return localStorage.getItem('preferredLanguage') || "en";
-    });
-    // Default language is English
+    const [language, setLanguage] = useState(
+        () => localStorage.getItem("preferredLanguage") || "en"
+    );
 
-    // Inject CSS untuk menyembunyikan bar Google Translate
     useEffect(() => {
-        const style = document.createElement('style');
-        style.textContent = `
-            .goog-te-banner-frame, .skiptranslate {
-                display: none !important;
-            }
-            body {
-                top: 0 !important;
-            }
-            .goog-tooltip {
-                display: none !important;
-            }
-            .goog-tooltip:hover {
-                display: none !important;
-            }
-            .goog-text-highlight {
-                background-color: transparent !important;
-                border: none !important; 
-                box-shadow: none !important;
-            }
-        `;
+        const style = document.createElement("style");
+        style.textContent = TRANSLATE_HIDE_CSS;
         document.head.appendChild(style);
-        return () => {
-            document.head.removeChild(style);
-        };
+        return () => document.head.removeChild(style);
     }, []);
 
-    // Fungsi untuk menetapkan cookie lintas domain
-    const setCrossDomainCookie = (name, value, domain) => {
-        // Set untuk domain saat ini
-        document.cookie = `${name}=${value}; path=/;`;
+    const closeMenu = useCallback(() => {
+        setShowMenu(false);
+        menuButtonRef.current?.focus();
+    }, []);
 
-        // Set untuk root domain
-        if (domain) {
-            document.cookie = `${name}=${value}; path=/; domain=${domain};`;
-        }
+    useEffect(() => {
+        if (!showMenu) return undefined;
 
-        // Set untuk subdomain
-        if (window.location.hostname !== 'localhost') {
-            document.cookie = `${name}=${value}; path=/; domain=.${window.location.hostname};`;
-        }
-    };
-
-    // Fungsi untuk mendapatkan domain root
-    const getRootDomain = () => {
-        const hostname = window.location.hostname;
-        if (hostname === 'localhost') return null;
-
-        const parts = hostname.split('.');
-        if (parts.length <= 2) return hostname; // domain.com
-
-        // mendapatkan domain.com dari subdomain.domain.com
-        return parts.slice(-2).join('.');
-    };
-
-    const handleShowMenu = () => {
-        setShowMenu(!showMenu);
-    };
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        return () => {
+            document.body.style.overflow = previousOverflow;
+        };
+    }, [showMenu]);
 
     const handleSearch = (e) => {
         const query = e.target.value;
@@ -105,123 +107,95 @@ const Header = () => {
 
     const submitSearch = () => {
         const query = searchQuery.trim();
-        if (!query) {
-            return;
-        }
+        if (!query) return;
         navigate(catalogHref({ query }));
         clearSearch();
     };
 
-    const handleLanguageChange = (lang) => {
-        // Simpan preferensi bahasa di localStorage
-        localStorage.setItem('preferredLanguage', lang);
+    const handleLanguageChange = useCallback((lang) => {
+        localStorage.setItem("preferredLanguage", lang);
         setLanguage(lang);
 
-        if (lang === "id") {
-            const existingElements = document.querySelectorAll('.skiptranslate, #google_translate_element');
-            existingElements.forEach(el => {
-                if (el.parentNode) {
-                    el.parentNode.removeChild(el);
-                }
-            });
-
-            // 2. Buat container untuk Google Translate yang tersembunyi
-            const div = document.createElement('div');
-            div.id = 'google_translate_element';
-            div.style.display = 'none';
-            document.body.appendChild(div);
-
-            // 3. Set cookie untuk Google Translate di semua domain/subdomain yang mungkin
-            const rootDomain = getRootDomain();
-            setCrossDomainCookie('googtrans', '/en/id', rootDomain);
-            setCrossDomainCookie('googtrans', '/en/id', null);
-
-            // 4. Hapus script yang sudah ada
-            const existingScript = document.getElementById('google-translate-script');
-            if (existingScript) {
-                existingScript.remove();
-            }
-
-            // 5. Tambahkan script baru
-            const script = document.createElement('script');
-            script.id = 'google-translate-script';
-            script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-            script.async = true;
-            document.body.appendChild(script);
-
-            // 6. Definisikan fungsi init global
-            window.googleTranslateElementInit = function() {
-                new window.google.translate.TranslateElement({
-                    pageLanguage: 'en',
-                    includedLanguages: 'id,en',
-                    autoDisplay: false,
-                    layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE
-                }, 'google_translate_element');
-
-                // Tambahkan class untuk membantu CSS menyembunyikan banner
-                document.body.classList.add('translated');
-
-                // Atur ulang posisi halaman setelah Google Translate mengubahnya
-                setTimeout(() => {
-                    document.body.style.top = '0px';
-                    document.getElementsByTagName('html')[0].style.transform = 'none';
-                }, 300);
-            };
-        } else {
-            // Kembali ke bahasa Inggris
-            // Hapus cookie Google Translate dari semua domain yang mungkin
-            const rootDomain = getRootDomain();
-            document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-            if (rootDomain) {
-                document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${rootDomain};`;
-            }
-            document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.${window.location.hostname};`;
-
-            // Hapus class
-            document.body.classList.remove('translated');
-
-            // Refresh halaman untuk kembali ke bahasa asli
+        if (lang !== "id") {
+            clearGoogtransCookie();
+            document.body.classList.remove("translated");
             window.location.reload();
-        }
-    };
-
-    // Panggil handleLanguageChange saat komponen dimount
-    // jika bahasa sudah diset sebagai 'id' di localStorage
-    useEffect(() => {
-        const savedLang = localStorage.getItem('preferredLanguage');
-        if (savedLang === 'id') {
-            handleLanguageChange('id');
+            return;
         }
 
-        // Cleanup
-        return () => {
-            // Bersihkan semua interval dan timeout yang dibuat
-            const highestTimeoutId = window.setTimeout(() => {}, 0);
-            for (let i = 0; i < highestTimeoutId; i++) {
-                window.clearTimeout(i);
-            }
+        document.querySelectorAll(".skiptranslate, #google_translate_element").forEach((el) => {
+            el.parentNode?.removeChild(el);
+        });
+
+        const div = document.createElement("div");
+        div.id = "google_translate_element";
+        div.style.display = "none";
+        document.body.appendChild(div);
+
+        setGoogtransCookie("/en/id");
+
+        document.getElementById("google-translate-script")?.remove();
+
+        const script = document.createElement("script");
+        script.id = "google-translate-script";
+        script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+        script.async = true;
+        document.body.appendChild(script);
+
+        window.googleTranslateElementInit = function () {
+            new window.google.translate.TranslateElement(
+                {
+                    pageLanguage: "en",
+                    includedLanguages: "id,en",
+                    autoDisplay: false,
+                    layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+                },
+                "google_translate_element"
+            );
+
+            document.body.classList.add("translated");
+            setTimeout(() => {
+                document.body.style.top = "0px";
+                document.getElementsByTagName("html")[0].style.transform = "none";
+            }, 300);
         };
     }, []);
 
+    useEffect(() => {
+        if (localStorage.getItem("preferredLanguage") === "id") {
+            handleLanguageChange("id");
+        }
+    }, [handleLanguageChange]);
+
     return (
-        <section className="bg-linear-to-r from-white via-blue-50 to-white relative flex flex-row gap-4 py-6 xl:py-[0.05rem] px-6 xl:px-16 justify-between items-center">
+        <header className="relative z-30 flex flex-row items-center justify-between gap-4 border-b border-border bg-card px-6 py-4 text-foreground xl:px-16 xl:py-2">
             <div className="flex items-center">
-                <Link to="/">
-                    <img src={logoAisikai} alt="logo-aisikai" className='w-[10rem] 2xl:w-[12rem]'/>
-                </Link> 
+                <Link to="/" className="rounded-sm" aria-label="AISIKAI home">
+                    <img
+                        src={logoAisikai}
+                        alt="AISIKAI"
+                        width={192}
+                        height={64}
+                        translate="no"
+                        className="w-[10rem] 2xl:w-[12rem] h-auto"
+                    />
+                </Link>
             </div>
 
             <div className="hidden xl:flex">
-                <Nav linkToNav={navLink} />
+                <Nav linkToNav={NAV_LINKS} />
             </div>
 
-            <div className='flex flex-row items-center justify-end gap-8'>
-                <div className='hidden xl:flex flex-col relative'>
-                    <div className='flex flex-row items-center px-4 bg-gray-100 rounded-full'>
-                        <FiSearch className="bg-gray-100 size-4"/>
+            <div className="flex flex-row items-center justify-end gap-2">
+                <div className="hidden xl:flex flex-col relative">
+                    <div className="flex flex-row items-center rounded-lg border border-border bg-background px-4 focus-within:ring-2 focus-within:ring-focus">
+                        <FiSearch className="size-4 text-muted" aria-hidden="true" />
+                        <label htmlFor="header-search" className="sr-only">Search products</label>
                         <input
+                            id="header-search"
                             type="search"
                             name="search"
+                            autoComplete="off"
                             placeholder="Search…"
                             value={searchQuery}
                             onChange={handleSearch}
@@ -230,17 +204,18 @@ const Header = () => {
                                 event.preventDefault();
                                 submitSearch();
                             }}
-                            className="px-4 py-2 rounded-full outline-none flex-1 w-40"
+                            className="w-40 flex-1 bg-transparent px-4 py-2 text-foreground focus:outline-none"
                         />
                     </div>
                     {filteredProducts.length > 0 && (
-                        <ul className="absolute top-12 left-0 bg-white border border-gray-300 rounded-lg shadow-lg w-full z-10">
+                        <ul className="absolute top-12 left-0 z-10 w-full rounded-lg border border-border bg-card shadow-lg" role="listbox">
                             {filteredProducts.map((product) => (
                                 <li key={product.productId}>
                                     <Link
                                         to={catalogHref({ productId: product.productId })}
-                                        className="block px-4 py-2 hover:bg-gray-100"
+                                        className="block rounded-lg px-4 py-2 hover:bg-background"
                                         onClick={clearSearch}
+                                        translate="no"
                                     >
                                         {product.name}
                                     </Link>
@@ -250,35 +225,56 @@ const Header = () => {
                     )}
                 </div>
 
-                <div className='hidden xl:flex flex-row gap-4 justify-center items-center'>
-                    <button className="w-8 cursor-pointer" onClick={() => handleLanguageChange("id")}>
-                        <img src={iconIndonesia} alt="button-bahasaindonesia" className="w-full h-full object-cover"/>
+                <div className="hidden xl:flex flex-row gap-2 justify-center items-center">
+                    <button
+                        type="button"
+                        className={`inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border-2 p-1 ${language === "id" ? "border-link bg-background" : "border-border bg-card"}`}
+                        onClick={() => handleLanguageChange("id")}
+                        aria-label="Switch to Bahasa Indonesia"
+                        aria-pressed={language === "id"}
+                    >
+                        <img src={iconIndonesia} alt="" width={28} height={28} className="size-7 object-cover" aria-hidden="true" />
                     </button>
-                    <button className="w-8 cursor-pointer" onClick={() => handleLanguageChange("en")}>
-                        <img src={iconUk} alt="button-english" className="w-full h-full object-cover"/>
+                    <button
+                        type="button"
+                        className={`inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border-2 p-1 ${language === "en" ? "border-link bg-background" : "border-border bg-card"}`}
+                        onClick={() => handleLanguageChange("en")}
+                        aria-label="Switch to English"
+                        aria-pressed={language === "en"}
+                    >
+                        <img src={iconUk} alt="" width={28} height={28} className="size-7 object-cover" aria-hidden="true" />
                     </button>
                 </div>
+
+                <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
             </div>
-            
-            <button className='xl:hidden'>
-                <FiMenu className="size-[2.5rem]" onClick={handleShowMenu}/>
+
+            <button
+                ref={menuButtonRef}
+                type="button"
+                className="xl:hidden min-h-11 min-w-11 flex items-center justify-center rounded-sm"
+                aria-label="Open menu"
+                aria-expanded={showMenu}
+                aria-controls="mobile-menu"
+                onClick={() => setShowMenu((open) => !open)}
+            >
+                <FiMenu className="size-[2.5rem]" aria-hidden="true" />
             </button>
 
-            {showMenu && 
-                (
-                    <div className="absolute top-0 w-full left-0 z-20">
-                        <div className="">
-                            <MobileMenu logo={logoAisikai} handleShowMenu={handleShowMenu} />
-                        </div>
-                    </div> 
-                )
-            }
+            {showMenu && (
+                <MobileMenu
+                    logo={logoAisikai}
+                    onClose={closeMenu}
+                    onLanguageChange={handleLanguageChange}
+                    language={language}
+                    isDark={isDark}
+                    onToggleTheme={toggleTheme}
+                />
+            )}
 
-            <div id='google_translate_element' className='hidden'></div>
-        </section>
+            <div id="google_translate_element" className="hidden" />
+        </header>
     );
-
-    
 };
 
 export default Header;
