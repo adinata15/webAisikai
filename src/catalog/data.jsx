@@ -101,6 +101,7 @@ import TPUCB3 from '../assets/images/TPUCB3.webp';
 import TPUCB4 from '../assets/images/TPUCB4.webp';
 import TPUCB5 from '../assets/images/TDUCB5.webp';
 import TPUCB6 from '../assets/images/TPUCB6.webp';
+import TPMCCB1 from '../assets/images/TPMCCB1.jpg';
 import TPMCCB3 from '../assets/images/TPMCCB3.webp';
 import TPMCB71 from '../assets/images/TPMCB71.webp';
 import TPMCB72 from '../assets/images/TPMCB72.webp';
@@ -582,8 +583,14 @@ export const categories = [
                     subtitle: "ASKM2E-Y Molded Case Circuit Breaker Intelligent Electronic with LCD display",
                     model: "ASKM2E-Y", 
                     brand: "Aisikai", 
-                    description: "", 
-                    techinicalparameters: "",
+                    description: (
+                        <>
+                            ASKM2E-Y LCD electronic molded case circuit breaker (hereinafter referred to as MCCB) is a new type of circuit breaker designed and developed by our company using international advanced technology. MCCB is suitable for the distribution network of AC 50Hz, rated insulation voltage 1000V, rated voltage 400V and rated current up to 1250A. MCCB can be used for infrequent switching of lines and infrequent starting of motors.
+                            <br /><br />
+                            MCCB has 3-section protection (LSI: overload long-delay, short-circuit short-delay, and grounding), 4-section protection (LSIG, which adds short-circuit instantaneous protection), and under-voltage protection. MCCB can protect circuits and power equipment from damage. A low-temperature type to -40°C is available.
+                        </>
+                    ),
+                    technicalparameters: TPMCCB1,
                     faq: "",
                     brochure: MCCB1File1,
                     categori: "ASKM2 MCCB"
@@ -595,7 +602,7 @@ export const categories = [
                     model: "ASKM2E", 
                     brand: "Aisikai", 
                     description: "An intelligent electronic molded case circuit breaker.",
-                    techinicalparameters: "",
+                    technicalparameters: "",
                     faq: "", 
                     brochure: MCCB2File1,
                     categori: "ASKM2 MCCB"

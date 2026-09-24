@@ -32,6 +32,30 @@ function fileName(path, fallback) {
     return path?.split('/').pop() || fallback;
 }
 
+function technicalParameterImages(product) {
+    const value = product.technicalparameters;
+    if (Array.isArray(value)) return value.filter(Boolean);
+    return value ? [value] : [];
+}
+
+function TechnicalParameters({ product }) {
+    const images = technicalParameterImages(product);
+    if (images.length === 0) {
+        return <p className="text-sm font-medium">No technical parameters available.</p>;
+    }
+    return images.map((image, index) => (
+        <img
+            key={`${image}-${index}`}
+            src={image}
+            alt={images.length > 1 ? `${product.name} technical parameters ${index + 1}` : `${product.name} technical parameters`}
+            width={1200}
+            height={800}
+            loading="lazy"
+            className="mb-4 h-auto w-full last:mb-0"
+        />
+    ));
+}
+
 function paginate(items, page, perPage) {
     const start = (page - 1) * perPage;
     return items.slice(start, start + perPage);
@@ -270,28 +294,7 @@ function ProductDetail({ product, category, activeTab, onTabChange }) {
                 </DetailPanel>
 
                 <DetailPanel tabId="technicalparameters" activeTab={activeTab} className="h-auto bg-card p-6 text-foreground">
-                    {Array.isArray(product.technicalparameters) ? (
-                        product.technicalparameters.map((image, index) => (
-                            <img
-                                key={`${image}-${index}`}
-                                src={image || product.none}
-                                alt={`${product.name} technical parameters ${index + 1}`}
-                                width={1200}
-                                height={800}
-                                loading="lazy"
-                                className="w-full mb-4 h-auto"
-                            />
-                        ))
-                    ) : (
-                        <img
-                            src={product.technicalparameters || product.none}
-                            alt={`${product.name} technical parameters`}
-                            width={1200}
-                            height={800}
-                            loading="lazy"
-                            className="w-full h-auto"
-                        />
-                    )}
+                    <TechnicalParameters product={product} />
                 </DetailPanel>
 
                 <DetailPanel tabId="structureoverview" activeTab={activeTab} className="h-auto bg-card p-6 text-foreground">
